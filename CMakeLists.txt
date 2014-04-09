@@ -4,6 +4,7 @@ project(NMdE NONE)
 include(UseLATEX)
 
 set(CHAPTERS
+	title.tex
 	chapters/chapter-01.tex
 )
 
