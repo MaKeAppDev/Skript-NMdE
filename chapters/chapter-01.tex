@@ -14,10 +14,10 @@
 \begin{align*}
 a_{11}\,x_1 + \ldots + a_{1n}\,x_n &= b_1\\
 a_{21}\,x_1 + \ldots + a_{2n}\,x_n &= b_2\\
-\vdots\\
+&\vdots\\
 a_{m1}\,x_1 + \ldots + a_{mn}\,x_n &= b_m\\
 \ma{A} \cdot \vec{x} &= \vec{b}\\
-\ma{A} \in R^{m\times n},\ \vec{x} \in R^n,\ \vec{b} \in R^m
+\ma{A} &\in R^{m\times n},\ \vec{x} \in R^n,\ \vec{b} \in R^m
 \end{align*}
 
 \subsection{Matrizen}
@@ -94,3 +94,22 @@ c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots
 \ma{I}^n = \ma{I}\\
 \ma{I}^{-1} = \ma{I}
 \end{align*}
+
+\textbf{Transponierte Matrix:}
+\begin{align*}
+\ma{A}_{<m\times n>}^T &= \ma{B}_{<n\times m>},\ b_{\nu\mu} = a_{\mu\nu}\\
+\left(\ma{A} \cdot \ma{B}\right)^T &= \ma{B}^T \cdot \ma{A}^T\\
+\ma{A} &= \ma{A}^T \quad \Rightarrow \text{ symmetrische Matrix}
+\end{align*}
+
+\textbf{Inverse Matrix:}
+\begin{align*}
+\ma{A} &\in R^{n\times n}\\
+\ma{A}^{-1} \cdot \ma{A} &= \ma{A} \cdot \ma{A}^{-1} = \ma{I}\\
+\text{$\ma{A}^{-1}$ existiert nur für nicht singuläre $\ma{A}$}&\text{ und ist eindeutig.}\\
+\ma{A} = \text{diag}\begin{bmatrix}d_1 & \ldots & d_n\end{bmatrix} & \Rightarrow \ma{A}^{-1} = \text{diag}\begin{bmatrix}\frac{1}{d_1} & \ldots & \frac{1}{d_n}\end{bmatrix}\\
+\left(\ma{A} \cdot \ma{B}\right) &= \ma{B}^{-1} \cdot \ma{A}^{-1}
+\end{align*}
+
+% Siehe auch Strang:Anhang
+
