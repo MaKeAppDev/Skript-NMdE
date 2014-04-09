@@ -1,0 +1,8 @@
+syntax: glob
+*build/*
+*.aux
+*.log
+*.out
+*.dvi
+*.synctex.*
+.DS_Store
