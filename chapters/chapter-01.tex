@@ -4,6 +4,20 @@
 \section{Zusammenfassung}
 
 \subsection{Überblick}
+\begin{center}
+\begin{tikzpicture}[very thick,
+		node distance=2.5cm,on grid,>=stealth',
+		block/.style={rectangle,draw,rounded corners=1mm,minimum height=1cm,minimum width=2cm}]
+
+\node [block] (top)						{Mathematik};
+\node [block] (down3) [below=of top]	{Analysis} edge [-] (top);
+\node [block] (down2) [left=of down3]	{Algebra} edge [-] (top);
+\node [block] (down1) [left=of down2]	{\begin{tabular}{c}Logik und\\ Mengenlehre\end{tabular}} edge [-] (top);
+\node [block] (down4) [right=of down3]	{Stochastik} edge [-] (top);
+\node [block] (down5) [right=of down4]	{Numerik} edge [-] (top);
+
+\end{tikzpicture}
+\end{center}
 
 \subsection{Vorgehen}
 
