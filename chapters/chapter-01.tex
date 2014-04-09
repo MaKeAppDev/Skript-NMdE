@@ -2,3 +2,95 @@
 \label{chap:einfuehrung}
 
 \section{Zusammenfassung}
+
+\subsection{Überblick}
+
+\subsection{Vorgehen}
+
+\section{Rückblick}
+
+\subsection{Lineares Gleichungssystem}
+
+\begin{align*}
+a_{11}\,x_1 + \ldots + a_{1n}\,x_n &= b_1\\
+a_{21}\,x_1 + \ldots + a_{2n}\,x_n &= b_2\\
+\vdots\\
+a_{m1}\,x_1 + \ldots + a_{mn}\,x_n &= b_m\\
+\mat{A} \cdot \vec{x} &= \vec{b}\\
+\mat{A} \in R^{m\times n},\ \vec{x} \in R^n,\ \vec{b} \in R^m
+\end{align*}
+
+\subsection{Matrizen}
+\subsubsection{Elementare Matrix-Operationen}
+
+
+\textbf{Addition:}
+\begin{align*}
+\mat{A}_{<m\times n>} + \mat{B}_{<m\times n>} &= \mat{C}_{<m\times n>}\\
+c_{\mu\nu} &= a_{\mu\nu} + b_{\mu\nu}
+\end{align*}
+
+\textbf{Multiplikation mit Skalar:}
+\begin{align*}
+k \cdot \mat{A} = \mat{A} \cdot k = B\\
+b_{\mu\nu} = k \cdot a_{\mu\nu}
+\end{align*}
+
+\textbf{Matrix-Multiplikation:}
+\begin{align*}
+\mat{A}_{<m\times n>} \cdot \mat{B}_{<n\times l>} &= \mat{C}_{<m\times l>}\\
+c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots m,\ \lambda=1\ldots l
+\end{align*}
+
+\textbf{Multiplikation Matrix-Vektor:}
+\begin{align*}
+\text{Spezialfall der Matrix-Multiplikation: } <n\times 1> \text{ bzw. } <1\times n>
+\end{align*}
+
+\textbf{Auffassen als Linearkombination der Spalten der Matrix:}
+\begin{align*}
+\mat{A} \cdot \vec{x} &= \vec{b}\\
+\begin{bmatrix}\vec{a}_1 & \vec{a}_2 & \ldots & \vec{a}_n\end{bmatrix} \cdot \vec{x} &= \vec{b}\\
+\vec{a}_1\,\vec{x} + \ldots + \vec{a}_n\,\vec{x}_n &= \vec{b}
+\end{align*}
+
+\textbf{Vektoren:}
+\begin{align*}
+\text{Spaltenvektor:} \quad & \vec{a}_{<n\times 1>}: \vec{a}\\
+\text{Zeilenvektor:} \quad & \vec{b}_{<1\times m>}^T: \vec{b}^T
+\end{align*}
+
+\subsubsection{Vektormultiplikation}
+\begin{align*}
+\vec{b}^T\cdot \vec{a} &= c \quad \text{(Skalarprodukt $m=n$!)}\\
+\vec{a} \cdot \vec{b}^T &= \mat{C} \quad \text{(Vektorprodukt, dyadisches Produkt)}
+\end{align*}
+
+\textbf{Matrix als Kombination von Zeilen- und Spaltenvektoren:}
+\begin{align*}
+\mat{A}_{<m\times n>} &= \begin{bmatrix} \vec{a}_1^T \\ \vec{a}_2^T \\ \vdots \\ \vec{a}_m^T \end{bmatrix}\\
+\mat{B}_{<n\times l>} &= \begin{bmatrix} \vec{b}_1 & \vec{b}_2 & \ldots & \vec{b}_l \end{bmatrix}\\
+\mat{A} \cdot \mat{B} &= \mat{C}\\
+\vec{c}_{\mu\lambda} &= \vec{a}_\mu^T \cdot \vec{b}_\lambda
+\end{align*}
+
+\textbf{Rechenregeln:}
+\begin{align*}
+\left(\mat{A}\cdot \mat{B}\right)\cdot \mat{C} &= \mat{A} \cdot \left(\mat{B} \cdot \mat{C}\right) \quad \text{Assoziativität}\\
+\mat{A} \cdot \left(\mat{B} + \mat{C}\right) &= \mat{A}\,\mat{B} + \mat{A}\,\mat{B} \quad \text{Distributivität}\\
+\mat{A} \cdot \mat{B} &\neq \mat{B} \cdot \mat{A} \quad \text{Kumutativität gilt im Allgemeinen nicht}
+\end{align*}
+
+\textbf{Diagonalmatrix:}
+\begin{align*}
+\mat{D} &= \text{diag}\begin{bmatrix}d_1 & d_2 & \ldots & d_n\end{bmatrix} = \begin{bmatrix}d_1 & \ldots & 0 \\ 0 & \ldots & d_n\end{bmatrix}\\
+\mat{D}_1 \cdot \mat{D}_2 &= \mat{D}_2 \cdot \mat{D}_1
+\end{align*}
+
+\textbf{Einheitsmatrix:}
+\begin{align*}
+\mat{I} = \mat{E} = \mat{1} = \text{diag}\begin{bmatrix}1 & \ldots & 1\end{bmatrix}\\
+\mat{A} \cdot \mat{I} = \mat{I} \cdot \mat{A}\\
+\mat{I}^n = \mat{I}\\
+\mat{I}^{-1} = \mat{I}
+\end{align*}
