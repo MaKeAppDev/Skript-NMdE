@@ -1,14 +1,30 @@
 %+------------------------------------------------------------------------------+
 %| Numerische Methoden der Elektrotechnik                                       |
-%| Skript geschrieben von Kevin Meyer                                           |
+%| Skript geschrieben von Markus Hofbauer und Kevin Meyer                                           |
 %+------------------------------------------------------------------------------+
-\documentclass[10pt,a4paper]{scrbook}
+\documentclass[fontsize=11pt,   % Schriftgröße
+    DIV=12,          % Seitenaufteilung
+    BCOR=5mm,        % Bindekorrektur
+    ngerman,         % für Umlaute, Silbentrennung etc.
+    paper=a4,        % Papierformat
+    twoside,         % zweiseitig
+    titlepage,       % es wird eine Titelseite verwendet
+    parskip=half,    % Abstand zwischen Absätzen (halbe Zeile)
+    listof=totoc,    % Verzeichnisse im Inhaltsverzeichnis aufführen
+    ]{scrbook}
 
+% Packages
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{scientific}
 \usepackage[european]{circuitikz}
+\usepackage{scrpage2}
 \usetikzlibrary{trees,positioning,arrows}
+
+% Seitenstiel
+\pagestyle{scrheadings}
+% Trennlinie unter Kopfzeile
+\setheadsepline[text]{0.4pt}
 
 % From undertilde.sty
 \def\undertilde#1{\mathord{\vtop{\ialign{##\crcr

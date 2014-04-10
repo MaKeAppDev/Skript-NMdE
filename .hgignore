@@ -6,3 +6,5 @@ syntax: glob
 *.dvi
 *.synctex.*
 .DS_Store
+*.toc
+skript.pdf
