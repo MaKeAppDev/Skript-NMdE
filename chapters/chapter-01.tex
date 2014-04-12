@@ -42,7 +42,7 @@
 \end{tikzpicture}
 \end{center}
 
-\textbf{Aspekte für die Lösung einer mathematischen Aufgabenstellung:}
+\subsection{Aspekte für die Lösung einer mathematischen Aufgabenstellung}
 \begin{itemize}
 \item Kondition eines Problems (Empfindlichkeit für Störungen)
 \item Numerische Lösungsverfahren
@@ -155,5 +155,22 @@ c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots
 \left(\ma{A} \cdot \ma{B}\right) &= \ma{B}^{-1} \cdot \ma{A}^{-1}
 \end{align*}
 
+\section{Schaltungsanalyse}
+\begin{center}
+\begin{circuitikz}
+\draw
+	(0,4)
+	to [R=$Y_1$, i=\textcolor{green!70!blue}{$i_1$},-o] (4,4)
+	to [R=$Y_3$, i=\textcolor{green!70!blue}{$i_3$},v>=\textcolor{blue}{$u_3$},-o] (8,4)
+	to [R=$Y_5$, i<=\textcolor{green!70!blue}{$i_5$},v=\textcolor{blue}{$u_5$},o-o] (12,4) to (12,3)
+	to [R=$Y_2$,i<=\textcolor{green!70!blue}{$i_2$},*-*] (12,1)
+	to (14,1)
+	to [I,i=$I_{01}$] (14,3) to (12,3)
+	(12,1) to (12,0) to (8,0)
+	to [R=$Y_4$, i=\textcolor{green!70!blue}{$i_4$},v>=\textcolor{blue}{$u_4$},o-] (8,4)
+	(8,0) to (0,0)
+	to [V=$U_{01}$] (0,4);
+\end{circuitikz}
+\end{center}
 % Siehe auch Strang:Anhang
 
