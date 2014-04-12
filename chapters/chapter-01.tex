@@ -172,5 +172,67 @@ c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots
 	to [V=$U_{01}$] (0,4);
 \end{circuitikz}
 \end{center}
+
+\subsection{Gerichteter Graph der Schaltung}
+
+\subsection{Inzidenz Matrix}
+\begin{align*}
+\ma{A}_{<m\times n>} = \begin{bmatrix}
+1 & & & -1\\
+ & 1 & & -1\\
+-1 & & 1 & \\
+ & & 1 & -1\\
+ & -1 & 1 & 
+\end{bmatrix}
+\end{align*}
+Summen der Spaltenvektoren $= \vec{0}$.\\
+$\Rightarrow \ma{A}$ hat linear abhängige Spalten.
+
+Rang der Matrix $\ma{A}$: $r = \rang{\ma{A}} = 3 = n-1$.\\
+Dimension des Nullraums: Zahl der Spalten $-\ r = 1$ .\\
+Vektor im Nullraum von $\ma{A}$:
+\begin{align*}
+\ma{A}\cdot\vec{u}=\vec{0}\Rightarrow\vec{u}\in ;\quad\vec{u}=\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+\end{align*}
+
+\subsection{Laplace Matrix}
+\begin{align*}
+\ma{A}^T\cdot\ma{A} = \begin{bmatrix}
+1 & 0 & -1 & 0 & 0\\ 
+0 & 1 & 0 & 0 & -1 \\ 
+0 & 0 & 1 & 1 & 1 \\ 
+-1 & -1 & 0 & -1 & 0
+\end{bmatrix}\cdot\begin{bmatrix}
+1 & 0 & 0 & -1 \\ 
+0 & 1 & 0 & -1 \\ 
+-1 & 0 & 1 & 0 \\ 
+0 & 0 & 1 & -1 \\ 
+0 & -1 & 1 & 0
+\end{bmatrix} = \begin{bmatrix}
+2 & 0 & -1 & -1 \\ 
+0 & 2 & -1 & -1 \\ 
+-1 & -1 & 3 & -1 \\ 
+-1 & -1 & 3 & -1
+\end{bmatrix}  
+\end{align*}
+\begin{itemize}
+\item singulär
+\item $r = 3$
+\item symmetrisch
+\end{itemize}
+\begin{align*}
+\ma{A}^T\cdot\ma{A} = \underset{\text{Grad (degree)}}{\ma{D}} - \underset{Adjazenz}{\ma{W}} = \begin{bmatrix}
+2 & 0 & 0 & 0 \\ 
+0 & 2 & 0 & 0 \\ 
+0 & 0 & 3 & 0 \\ 
+0 & 0 & 0 & 3
+\end{bmatrix} - \begin{bmatrix}
+0 & 0 & 1 & 1 \\ 
+0 & 0 & 1 & 1 \\ 
+1 & 1 & 0 & 1 \\ 
+1 & 1 & 1 & 0
+\end{bmatrix} 
+\end{align*}
+
 % Siehe auch Strang:Anhang
 
