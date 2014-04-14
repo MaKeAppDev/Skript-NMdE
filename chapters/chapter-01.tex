@@ -254,5 +254,42 @@ Vektor im Nullraum von $\ma{A}$:
 \end{bmatrix} 
 \end{align*}
 
-% Siehe auch Strang:Anhang
+\subsubsection{Kirchhoffsches Stromgesetz (KCL)}
 
+\begin{tabular}{lll}
+$\ma{A}^T\cdot \vec{w} = \vec{0}$ & (keine Stromquellen) & $\vec{w}$: Kantenströme\\
+$\ma{A}^T\cdot \vec{w} = \vec{f}$ & (mit Stromquellen) & $\vec{f}$: Stromquellen
+\end{tabular}
+
+\subsubsection{Ohmsches Gesetz}
+\begin{tabular}{ll}
+$\vec{w} = \ma{C} \cdot \vec{e}$ & $\ma{C}$: Diagonalmatrix der Kantenleitwerte\\
+ & $\vec{e}$: Kantenspannungen
+\end{tabular}
+
+\subsubsection{Kirchhoffsches Spannungsgesetz (KVL)}
+\begin{tabular}{ll}
+$\vec{e} = \vec{b} - \ma{A} \cdot \vec{u}$ & $\vec{u}$: Kantenspannungen - GESUCHT\\
+ & $\vec{b}$: Spannungsquellen
+\end{tabular}
+
+\begin{align*}
+\ma{A}^T \cdot \vec{w} = \vec{f}\\
+\ma{A}^T \cdot \ma{C} \cdot \vec{e} = \vec{f}\\
+\ma{A}^T \cdot \ma{C} \left( \vec{b} - \ma{A}\cdot\vec{u}\right) = \vec{f}\\
+\underset{\text{Systemmatrix, gewichtete Laplace Matrix}}{\ma{A}^T \cdot \ma{C} \cdot \ma{A}} \cal \vec{u} = \ma{A}^T \cdot \ma{C} \cdot \vec{b} \cdot \vec{f}\\
+\ma{Y}_{<n\times n>} \cdot \vec{u}_{<n>} = \vec{d}_{<n>}
+\end{align*}
+
+singulär \Rightarrow nicht invertierbar\\
+\Rightarrow keine Lösung für Gleichungssystem\\
+Abhilfe: Festlegung eines Bezugspunktes, z.B. $u_0 = 0$\\
+\ldots
+
+\subsubsection{Alternative Darstellung}
+\begin{align*}
+\ma{C}^{-1} \cdot \vec{w} + \ma{A} \cdot \vec{u} &= \vec{b}\\
+\ma{A}^T \cdot \vec{w} = \vec{f}\\
+\begin{bmatrix}
+\ma{C}^{-1} & \ma{A} \\ \ma{A}^T & \ma{0}\end{bmatrix} \cdot \begin{bmatrix}\vec{w} \\ \vec{w}\end{bmatrix} = \begin{bmatrix}\vec{b}\\\vec{f}\end{bmatrix}
+\end{align*}
