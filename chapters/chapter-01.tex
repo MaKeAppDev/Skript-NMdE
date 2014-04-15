@@ -378,4 +378,53 @@ x_1\\ x_2
 \end{align*}
 
 Änderung in der 5. Stelle von $\vec{b}$ wird zu einer Änderung in der ersten Stelle der Lösung $\vec{x}$ "'verstärkt"'.\\
-Kein Lösungsalgorithmus kann etwas daran ändern.1
+Kein Lösungsalgorithmus kann etwas daran ändern.
+\begin{align*}
+\text{cond}\left(\ma{A}\right) = \num{4.0002e4}
+\end{align*}
+
+\subsection{Einfluss der Pivotisierung auf die Ergebnisgenauigkeit}
+\begin{align*}
+\begin{pmatrix}
+\num{0.0001} & 1 \\ 1 & 1
+\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+1\\ 2
+\end{pmatrix}\\
+\begin{pmatrix}
+\num{0.0001} & 1 \\ 0 & -9999
+\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+1\\ -9998
+\end{pmatrix}\quad\Rightarrow ...
+\end{align*}
+
+Annahme: 3 Stellen Genauigkeit
+\begin{align*}
+\begin{pmatrix}
+\num{0.0001} & 1 \\ 0 & -\num{10000}
+\end{pmatrix}\cdot\vec{x} = \begin{pmatrix}
+1\\ -\num{10000}
+\end{pmatrix}\quad\Rightarrow ...
+\end{align*}
+
+Änderung der Pivotisierungsreihenfolge
+\begin{align*}
+\begin{pmatrix}
+1 & 1 \\ \num{0.0001} & 1
+\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+2\\ 1
+\end{pmatrix}\\
+\begin{pmatrix}
+1 & 1 \\ 0 & \num{0.9999}
+\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+2\\ \num{0.9998}
+\end{pmatrix}\quad\Rightarrow ...
+\end{align*}
+
+Annahme: 3 Stellen Genauigkeit
+\begin{align*}
+\begin{pmatrix}
+1 & 1 \\ 0 & 1
+\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+2\\ 1
+\end{pmatrix}\quad\Rightarrow ...
+\end{align*}
