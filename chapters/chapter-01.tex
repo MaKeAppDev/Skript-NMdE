@@ -281,8 +281,8 @@ $\vec{e} = \vec{b} - \ma{A} \cdot \vec{u}$ & $\vec{u}$: Kantenspannungen - GESUC
 \ma{Y}_{<n\times n>} \cdot \vec{u}_{<n>} = \vec{d}_{<n>}
 \end{align*}
 
-singulär -> nicht invertierbar\\
--> keine Lösung für Gleichungssystem\\
+singulär $\Rightarrow$ nicht invertierbar\\
+$\Rightarrow$ keine Lösung für Gleichungssystem\\
 Abhilfe: Festlegung eines Bezugspunktes, z.B. $u_0 = 0$\\
 \ldots
 
@@ -292,4 +292,13 @@ Abhilfe: Festlegung eines Bezugspunktes, z.B. $u_0 = 0$\\
 \ma{A}^T \cdot \vec{w} = \vec{f}\\
 \begin{bmatrix}
 \ma{C}^{-1} & \ma{A} \\ \ma{A}^T & \ma{0}\end{bmatrix} \cdot \begin{bmatrix}\vec{w} \\ \vec{w}\end{bmatrix} = \begin{bmatrix}\vec{b}\\\vec{f}\end{bmatrix}
+\end{align*}
+
+\ldots
+
+\subsubsection{Lösung eines linearen Gleichungssystems}
+\begin{align*}
+\ma{A} \cdot \vec{x} = \vec{b}, \qquad \ma{A} \in R^{n\times n}; \quad \vec{b}, \vec{x} \in R^n, \quad \ma{A} \neq 0\\
+\text{Theoretische: } \vec{x} = \ma{A}^{-1} \cdot \vec{b}\\
+\text{Alternativ: Lösung durch "`Division"'-Eliminierung} 
 \end{align*}
