@@ -254,20 +254,20 @@ Vektor im Nullraum von $\ma{A}$:
 \end{bmatrix} 
 \end{align*}
 
-\subsubsection{Kirchhoffsches Stromgesetz (KCL)}
+\subsection{Kirchhoffsches Stromgesetz (KCL)}
 
 \begin{tabular}{lll}
 $\ma{A}^T\cdot \vec{w} = \vec{0}$ & (keine Stromquellen) & $\vec{w}$: Kantenströme\\
 $\ma{A}^T\cdot \vec{w} = \vec{f}$ & (mit Stromquellen) & $\vec{f}$: Stromquellen
 \end{tabular}
 
-\subsubsection{Ohmsches Gesetz}
+\subsection{Ohmsches Gesetz}
 \begin{tabular}{ll}
 $\vec{w} = \ma{C} \cdot \vec{e}$ & $\ma{C}$: Diagonalmatrix der Kantenleitwerte\\
  & $\vec{e}$: Kantenspannungen
 \end{tabular}
 
-\subsubsection{Kirchhoffsches Spannungsgesetz (KVL)}
+\subsection{Kirchhoffsches Spannungsgesetz (KVL)}
 \begin{tabular}{ll}
 $\vec{e} = \vec{b} - \ma{A} \cdot \vec{u}$ & $\vec{u}$: Kantenspannungen - GESUCHT\\
  & $\vec{b}$: Spannungsquellen
@@ -286,7 +286,7 @@ $\Rightarrow$ keine Lösung für Gleichungssystem\\
 Abhilfe: Festlegung eines Bezugspunktes, z.B. $u_0 = 0$\\
 \ldots
 
-\subsubsection{Alternative Darstellung}
+\subsection{Alternative Darstellung}
 \begin{align*}
 \ma{C}^{-1} \cdot \vec{w} + \ma{A} \cdot \vec{u} &= \vec{b}\\
 \ma{A}^T \cdot \vec{w} = \vec{f}\\
@@ -296,9 +296,36 @@ Abhilfe: Festlegung eines Bezugspunktes, z.B. $u_0 = 0$\\
 
 \ldots
 
-\subsubsection{Lösung eines linearen Gleichungssystems}
+\subsection{Lösung eines linearen Gleichungssystems}
 \begin{align*}
 \ma{A} \cdot \vec{x} = \vec{b}, \qquad \ma{A} \in R^{n\times n}; \quad \vec{b}, \vec{x} \in R^n, \quad \ma{A} \neq 0\\
 \text{Theoretische: } \vec{x} = \ma{A}^{-1} \cdot \vec{b}\\
 \text{Alternativ: Lösung durch "`Division"'-Eliminierung} 
 \end{align*}
+
+\subsection{Methode zur Bestimmung von $A^{-1}$}
+\begin{align*}
+\ma{A}\cdot\ma{A}^{-1} &= \ma{I}\\
+\text{Sei }\ma{X} &= \ma{A}{^-1}\\
+\ma{A}\cdot\ma{X} &= \ma{I}\\
+\ma{A}\cdot\begin{bmatrix}
+\vec{x}_1 & \vec{x}_2 & \ldots & \vec{x}_n
+\end{bmatrix} &= \begin{bmatrix}
+\vec{l}_1 & \vec{l}_2 & \ldots & \vec{l}_n
+\end{bmatrix};\quad ...
+\end{align*}
+$\ma{A}\cdot\vec{x}_1 = \vec{l}_1;\quad\ma{A}\cdot\vec{x}_2 = \vec{l}_2;\quad\ldots;\ma{A}\cdot\vec{x}_n = \vec{l}_n;$\\
+Nur rechte Seite ändert sich; $\ma{A} = \ma{L}\cdot\ma{U}$ nur 1 mal erforderlich.\\
+Aufwand $n\cdot 2\cdot\frac{1}{2}(n^2 + n) = n^3 + n^2 \rightarrow O(n^3)$ für Substitution.
+
+Probleme:
+\begin{itemize}
+\item Pivot $p = 0$
+\item Pivot $p$ "'sehr klein"'
+\end{itemize}
+Abhilfe: "'Pivotisierung"'- Zeilen-/Spaltentausch
+\begin{itemize}
+\item "'partial pivoting"': Wähle Zeile mit betragsmäßig größtem Element in Pivotspalte
+\item "'complete pivoting"': Zeilen- und Spaltentausch
+\item Pivotisierung auch zur Aufwandreduktion
+\end{itemize}
