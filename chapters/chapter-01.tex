@@ -428,3 +428,38 @@ Annahme: 3 Stellen Genauigkeit
 2\\ 1
 \end{pmatrix}\quad\Rightarrow ...
 \end{align*}
+
+Uns interessieren alse zwei Themen:\\
+- \textbf{Kondition} der Gleichungssystems\\
+- \textbf{Stabilität} des Lösungsverfahrens
+
+\subsection{Maschinendarstellung von Zahlen}
+(IEEE 754-2008-"'Binary Floating Point Arithmetic Standard"')\\
+Darstellung reeller Zahlen: 64 bit:\\
+\begin{tabular}{lll}
+s & 1 bit & Vorzeichen\\
+c & 11 bit & Exponent\\
+f & 52 bit & Mantisse
+\end{tabular}
+
+\[ x = (-1)^s \cdot 2 ^{c-1023}\cdot (1 + f)\]
+
+z.B.: \[ 10: \underbrace{0}_{s} \quad \underbrace{100000000010}_{c:\ 1026-1023=3}\quad\underbrace{0100\ldots010}_{f:\ \num{1.25}}\]\\
+\[\num{-0.8}: \underbrace{1}_{s} \quad \underbrace{01111111110}_{c:\ 1022-1023=-1}\quad\underbrace{10011001\ldots10011010}_{f:\ \num{1.59999}}\]
+
+\subsection{Gleitkomma-Arithmetik: Eigenschaften und Fehlerarten}
+$x$: beliebige reelle Zahl (mathematisch exakt)\\
+$z_1,\,z_2$: Gleitkomma-Maschinenzahlen (endliche Stellenzahl)\\
+\textbf{Gl}eitkomma - Grund\textbf{op}erationen\\
+$gl(z_1,\, op\, z_2)$, op:= +, -, *, /\\
+\begin{enumerate}
+%[label={\alph*)}]
+\item $z_1 \, op\, z_2 = x$ \quad $x$ nicht notwendigerweise Gleitkomma-Maschinenzahl
+\item $+,\ -$: Exponentenangleich erforderlich - Mantissenstellen können verloren gehen.
+\item Subtraktion nahezu gleichgroßer Zahlen:
+	\begin{itemize}
+	\item Ergebnis mit wesentlich kleinerer Mantisse
+	\item Normalisierung (Linksverschiebung, Exponentenangleich)
+	\end{itemize}
+\item Unterlauf/Überlauf
+\end{enumerate}
