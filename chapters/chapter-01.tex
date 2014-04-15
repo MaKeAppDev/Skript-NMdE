@@ -332,49 +332,49 @@ Abhilfe: "'Pivotisierung"'- Zeilen-/Spaltentausch
 
 Beispiel $p = 0$
 \begin{align*}
-\begin{bmatrix}
+\begin{pmatrix}
 10 & -7 & 0 \\ 
 -3 & \num{2.1} & 6 \\ 
 5 & -1 & 5
-\end{bmatrix}\cdot\vec{x} &= \begin{bmatrix}
+\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
 7\\ \num{3.9}\\ 6
-\end{bmatrix}\quad ... \\
-\begin{bmatrix}
+\end{pmatrix}\quad ... \\
+\begin{pmatrix}
 10 & -7 & 0 \\ 
 0 & 0 & 6 \\ 
 0 & \num{2.5} & 5
-\end{bmatrix}\cdot\vec{x}& = \begin{bmatrix}
+\end{pmatrix}\cdot\vec{x}& = \begin{pmatrix}
 7\\ 6\\ \num{2.5}
-\end{bmatrix}\quad ...\\
-\begin{bmatrix}
+\end{pmatrix}\quad ...\\
+\begin{pmatrix}
 10 & -7 & 0 \\
 0 & \num{2.5} & 5 \\
 0 & 0 & 6
-\end{bmatrix}\cdot\vec{x}& = \begin{bmatrix}
+\end{pmatrix}\cdot\vec{x}& = \begin{pmatrix}
 7\\ \num{2.5}\\ 6
-\end{bmatrix} 
+\end{pmatrix} 
 \end{align*}
 
 \subsection{Kondition eines Gleichungssystems}
 \begin{align*}
-\begin{bmatrix}
+\begin{pmatrix}
 1 & 1\\ 1 & \num{1.0001}
-\end{bmatrix}\cdot\begin{bmatrix}
+\end{pmatrix}\cdot\begin{pmatrix}
 x_1\\ x_2
-\end{bmatrix} &= \begin{bmatrix}
+\end{pmatrix} &= \begin{pmatrix}
 2\\ 2
-\end{bmatrix}&\Rightarrow\vec{x} = \begin{bmatrix}
+\end{pmatrix}&\Rightarrow\vec{x} = \begin{pmatrix}
 2\\ 0
-\end{bmatrix}\\
-\begin{bmatrix}
+\end{pmatrix}\\
+\begin{pmatrix}
 1 & 1\\ 1 & \num{1.0001}
-\end{bmatrix}\cdot\begin{bmatrix}
+\end{pmatrix}\cdot\begin{pmatrix}
 x_1\\ x_2
-\end{bmatrix} &= \begin{bmatrix}
+\end{pmatrix} &= \begin{pmatrix}
 2\\ \num{2.0001}
-\end{bmatrix}&\Rightarrow\vec{x} = \begin{bmatrix}
+\end{pmatrix}&\Rightarrow\vec{x} = \begin{pmatrix}
 1\\ 1
-\end{bmatrix}
+\end{pmatrix}
 \end{align*}
 
 Änderung in der 5. Stelle von $\vec{b}$ wird zu einer Änderung in der ersten Stelle der Lösung $\vec{x}$ "'verstärkt"'.\\
