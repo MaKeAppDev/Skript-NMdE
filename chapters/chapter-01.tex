@@ -463,3 +463,26 @@ $gl(z_1,\, op\, z_2)$, op:= +, -, *, /\\
 	\end{itemize}
 \item Unterlauf/Überlauf
 \end{enumerate}
+
+\subsection{Matrix- und Vektornormen}
+
+\[||\cdot||:\ R^n \rightarrow R;\ R^{n\times n} \rightarrow R\]\\
+Bedingungen für \textbf{Vektornormen}:
+\begin{itemize}
+\item \[||\vec{x}|| \geq 0,\ ||\vec{x}|| = 0 \text{ nur für } \vec{x} = \vec{0}\]
+\item \[||c \cdot\vec{x}|| = c \cdot ||\vec{x}||,\ c \in R\]
+\item \[||\vec{x} + \vec{y}|| \leq ||\vec{x}|| + ||\vec{y}||\] Dreiecksungleichung
+\end{itemize}
+
+Bedingungen für \textbf{Matrixnormen}
+\begin{itemize}
+\item \[||\ma{A}|| \geq 0,\ ||\ma{A}|| = 0 \text{ nur für } \ma{A} = \ma{0}\]
+\item \[|| c \cdot \ma{A}|| = c \cdot ||\ma{A}||,\ c \in R\]
+\item \[||\ma{A} + \ma{B}|| \leq ||\ma{A}|| + ||\ma{B}||\]
+\item \[||\ma{A} \cdot \ma{B}|| \leq ||\ma{A}|| \cdot ||\ma{B}||\] Multiplikativitätsbedingung
+\item \[||\ma{A} \cdot \vec{x}|| \leq ||\ma{A}|| \cdot ||\vec{x}||\] Kompatibilitätsbedingung
+\end{itemize}
+
+\textbf{Vektornormen}\\
+
+...
