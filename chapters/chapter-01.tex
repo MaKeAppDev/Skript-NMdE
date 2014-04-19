@@ -390,14 +390,14 @@ x_1\\ x_2
 \end{pmatrix}
 \end{align*}
 
-Änderung in der 5. Stelle von $\vec{b}$ wird zu einer Änderung in der ersten Stelle der Lösung $\vec{x}$ "'verstärkt"'. Kein Lösungsalgorithmus kann etwas daran ändern.
+Änderung in der 5. Stelle von $\vec{b}$ wird zu einer Änderung in der ersten Stelle der Lösung $\vec{x}$ "'verstärkt"'. System reagiert sehr sensitiv auf kleine Änderungen der Ausgangsdaten. Kein Lösungsalgorithmus kann etwas daran ändern.
 \begin{align*}
 \cond{\ma{A}} = \num{4.0002e4}
 \end{align*}
 
 \subsection{Einfluss der Pivotisierung auf die Ergebnisgenauigkeit}
 \begin{align*}
-\begin{pmatrix}
+\ma{B}\rightarrow\begin{pmatrix}
 \num{0.0001} & 1 \\ 1 & 1
 \end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
 1\\ 2
@@ -406,7 +406,9 @@ x_1\\ x_2
 \num{0.0001} & 1 \\ 0 & -9999
 \end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
 1\\ -9998
-\end{pmatrix}\quad\Rightarrow ...
+\end{pmatrix}\quad\Rightarrow\begin{matrix}
+x_2 = \num{0.99989998}\\ x_1 = \num{1.00010001}
+\end{matrix}
 \end{align*}
 
 Annahme: 3 Stellen Genauigkeit
@@ -415,7 +417,24 @@ Annahme: 3 Stellen Genauigkeit
 \num{0.0001} & 1 \\ 0 & -\num{10000}
 \end{pmatrix}\cdot\vec{x} = \begin{pmatrix}
 1\\ -\num{10000}
-\end{pmatrix}\quad\Rightarrow ...
+\end{pmatrix}\quad\Rightarrow\begin{array}{l}
+x_2 = 1\\ x_1 = 0\text{ \lightning}
+\end{array}
+\end{align*}
+
+Zerlegung $\ma{B} = \ma{L}\ma{D}\ma{U}$ (ohne Genauigkeitsbeschränkung)
+\begin{align*}
+\begin{array}{c}
+\text{("'out of}\\ \text{scale}\\ \text{with }\ma{B}\text{ "')}
+\end{array}\quad = \begin{pmatrix}
+1 & 0 \\ 
+\num{10000} & 1
+\end{pmatrix}\cdot\begin{pmatrix}
+\num{0.0001} & 0 \\ 0 & -9999
+\end{pmatrix}\cdot\begin{pmatrix}
+1 & \num{10000} \\ 
+0 & 1
+\end{pmatrix}
 \end{align*}
 
 Änderung der Pivotisierungsreihenfolge
@@ -429,7 +448,9 @@ Annahme: 3 Stellen Genauigkeit
 1 & 1 \\ 0 & \num{0.9999}
 \end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
 2\\ \num{0.9998}
-\end{pmatrix}\quad\Rightarrow ...
+\end{pmatrix}\quad\Rightarrow\begin{matrix}
+x_2 = \num{0.99989998}\\ x_1 = \num{1.00010001}
+\end{matrix}
 \end{align*}
 
 Annahme: 3 Stellen Genauigkeit
@@ -438,8 +459,13 @@ Annahme: 3 Stellen Genauigkeit
 1 & 1 \\ 0 & 1
 \end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
 2\\ 1
-\end{pmatrix}\quad\Rightarrow ...
+\end{pmatrix}\quad\Rightarrow\begin{rcases}
+x_2 = 1\\ x_1 = 0
+\end{rcases}\quad\begin{matrix}
+\text{nur sehr geringer}\\ \text{Genauigkeitsverlust}
+\end{matrix}
 \end{align*}
+NB: $\cond{\ma{B}} = \num{2.61838527}$
 
 Uns interessieren alse zwei Themen:
 \begin{itemize}
