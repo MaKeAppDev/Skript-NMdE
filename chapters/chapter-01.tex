@@ -501,7 +501,7 @@ $gl(z_1,\, op\, z_2)$, op:= +, -, *, /
 \item Subtraktion nahezu gleichgroßer Zahlen:
 	\begin{itemize}
 	\item Ergebnis mit wesentlich kleinerer Mantisse
-	\item Normalisierung (Linksverschiebung, Exponentenangleich)
+	\item Normalisierung (Linksverschiebung Mantisse, Exponentenangleich): Nachziehen nicht signifikanter Ziffern, Verlust signifikanter Ziffern
 	\end{itemize}
 \item Unterlauf/Überlauf
 \end{enumerate}
@@ -526,5 +526,9 @@ Bedingungen für \textbf{Matrixnormen}
 \end{itemize}
 
 \textbf{Vektornormen}\\
-
-...
+\begin{tabular}{ll}
+$\norm{\vec{x}}_1 = \sum\limits_{i=1}^n\abs{xi}$ & Betragssummennorm, $l_1$-Norm\\
+$\norm{\vec{x}}_2 = \sqrt{\sum\limits_{i=1}^n\abs{xi}^2}$ & Euklidnorm, $l_2$-Norm, Vektorlänge\\
+$\norm{\vec{x}}_\infty = \underset{i}{\max}{\abs{xi}}$ & Maximumsnorm, $l_\infty$-Norm, Tschebychefnorm\\
+$\norm{\vec{x}}_p = \sqrt[p]{\sum\limits_{i=1}^n\abs{xi}^p}$, $p\geq 1$ & Höldernormnorm, $l_p$-Norm
+\end{tabular}
