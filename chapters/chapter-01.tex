@@ -516,7 +516,7 @@ Bedingungen für \textbf{Vektornormen}:
 \item \[||\vec{x} + \vec{y}|| \leq ||\vec{x}|| + ||\vec{y}||\] Dreiecksungleichung
 \end{itemize}
 
-Bedingungen für \textbf{Matrixnormen}
+Bedingungen für \textbf{Matrixnormen}:
 \begin{itemize}
 \item \[||\ma{A}|| \geq 0,\ ||\ma{A}|| = 0 \text{ nur für } \ma{A} = \ma{0}\]
 \item \[|| c \cdot \ma{A}|| = c \cdot ||\ma{A}||,\ c \in R\]
@@ -525,10 +525,21 @@ Bedingungen für \textbf{Matrixnormen}
 \item \[||\ma{A} \cdot \vec{x}|| \leq ||\ma{A}|| \cdot ||\vec{x}||\] Kompatibilitätsbedingung
 \end{itemize}
 
-\textbf{Vektornormen}\\
+\subsubsection{Vektornormen}
 \begin{tabular}{r@{ = }ll}
 $\norm{\vec{x}}_1$ & $\sum\limits_{i=1}^n\abs{xi}$ & Betragssummennorm, $l_1$-Norm\\
 $\norm{\vec{x}}_2$ & $\sqrt{\sum\limits_{i=1}^n\abs{xi}^2}$ & Euklidnorm, $l_2$-Norm, Vektorlänge\\
 $\norm{\vec{x}}_\infty$ & $\underset{i}{\max}{\abs{xi}}$ & Maximumsnorm, $l_\infty$-Norm, Tschebychefnorm\\
 $\norm{\vec{x}}_p$ & $\sqrt[p]{\sum\limits_{i=1}^n\abs{xi}^p}$, $p\geq 1$ & Höldernormnorm, $l_p$-Norm
 \end{tabular}
+
+\subsubsection{Matrixnormen $(A\in\mathbb{R}^{n\times n})$}
+\begin{tabular}{r@{ = }ll}
+$||\ma{A}||_M$ & $n\cdot\underset{i,j}{\max}\abs{a_{ij}}$ & Gesamtnorm, Matrixnorm $(||\ma{I}|| = n)$\\
+$(||\ma{A}||_\infty = )||\ma{A}||_Z$ & $\underset{i}{\max}\sum\limits_{j=1}^n\abs{a_{ij}}$ & Zeilennorm $(||\ma{I}||_Z = 1)$\\
+$(||\ma{A}||_1 = )||\ma{A}||_S$ & $\underset{j}{\max}\sum\limits_{i=1}^n\abs{a_{ij}}$ & Spaltennorm $(||\ma{I}||_S = 1)$\\
+$||\ma{A}||_E$ & $\sqrt{\sum\limits_{i=1}\sum\limits_{j=1}\abs{a_{ij}}^2}$ & Euklidnorm, Schurnorm, Frobeniusnorm $(||\ma{I}||_E = \sqrt{n})$\\
+$(\ma{A}||_\lambda = )||\ma{A}||_\lambda$ & $\sqrt{\lambda_\text{max}(\ma{A}^T\cdot\ma{A})}$ & Spektralnorm, Hilbertnorm $(||\ma{I}||_\lambda = 1)$\\
+\end{tabular}
+
+\subsubsection{Kompatibilität zwischen Vektor und Matrixnorm}
