@@ -306,21 +306,25 @@ Abhilfe: Festlegung eines Bezugspunktes, z.B. $u_0 = 0$\\
 \subsection{Methode zur Bestimmung von $A^{-1}$}
 \begin{align*}
 \ma{A}\cdot\ma{A}^{-1} &= \ma{I}\\
-\text{Sei }\ma{X} &= \ma{A}{^-1}\\
+\text{Sei }\ma{X} &= \ma{A}^{-1}\\
 \ma{A}\cdot\ma{X} &= \ma{I}\\
 \ma{A}\cdot\begin{bmatrix}
 \vec{x}_1 & \vec{x}_2 & \ldots & \vec{x}_n
 \end{bmatrix} &= \begin{bmatrix}
 \vec{l}_1 & \vec{l}_2 & \ldots & \vec{l}_n
-\end{bmatrix};\quad ...
+\end{bmatrix};\quad\vec{l}_1 = \begin{pmatrix}
+1\\ 0\\ \vdots\\ 0\\ 0
+\end{pmatrix}, \ldots, \vec{l}_n = \begin{pmatrix}
+0\\ 0\\ \vdots\\ 0\\ 1
+\end{pmatrix}
 \end{align*}
 $\ma{A}\cdot\vec{x}_1 = \vec{l}_1;\quad\ma{A}\cdot\vec{x}_2 = \vec{l}_2;\quad\ldots;\ma{A}\cdot\vec{x}_n = \vec{l}_n;$\\
-Nur rechte Seite ändert sich; $\ma{A} = \ma{L}\cdot\ma{U}$ nur 1 mal erforderlich.\\
+Nur rechte Seite ändert sich; $\ma{A} = \ma{L}\cdot\ma{U}$ nur einmal erforderlich.\\
 Aufwand $n\cdot 2\cdot\frac{1}{2}(n^2 + n) = n^3 + n^2 \rightarrow O(n^3)$ für Substitution.
 
 Probleme:
 \begin{itemize}
-\item Pivot $p = 0$
+\item Pivot $p = 0$ \lightning\lightning 
 \item Pivot $p$ "'sehr klein"'
 \end{itemize}
 Abhilfe: "'Pivotisierung"'- Zeilen-/Spaltentausch
@@ -339,7 +343,7 @@ Beispiel $p = 0$
 \end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
 7\\ \num{3.9}\\ 6
 \end{pmatrix}& \begin{matrix}
-l_{21} = \frac{5}{10} = \frac{1}{2}\\ l_{31} = \frac{-3}{10}
+p_{21} = \frac{5}{10} = \frac{1}{2}\\ p_{31} = \frac{-3}{10}
 \end{matrix}\\
 \begin{pmatrix}
 10 & -7 & 0 \\ 
@@ -347,7 +351,8 @@ l_{21} = \frac{5}{10} = \frac{1}{2}\\ l_{31} = \frac{-3}{10}
 0 & \num{2.5} & 5
 \end{pmatrix}\cdot\vec{x}& = \begin{pmatrix}
 7\\ 6\\ \num{2.5}
-\end{pmatrix}& l_{32} = \frac{-\num{0.1}}{\num{2.5}}\\
+\end{pmatrix}& p_{32} = \frac{0}{\num{2.5}}\quad\text{\lightning}\\
+\Longrightarrow\text{ Zeilentausch}\\
 \begin{pmatrix}
 10 & -7 & 0 \\
 0 & \num{2.5} & 5 \\
@@ -356,6 +361,12 @@ l_{21} = \frac{5}{10} = \frac{1}{2}\\ l_{31} = \frac{-3}{10}
 7\\ \num{2.5}\\ 6
 \end{pmatrix} 
 \end{align*}
+Zeilentausch durch Permutationsmatrix $\ma{P}$.\\
+$\ma{P}\ma{A}\vec{x} = \ma{P}\vec{b}\Rightarrow$ dann $\ma{P}\ma{A}\rightarrow\ma{L}\ma{U}$\\
+hier: $\ma{P} = \begin{pmatrix}
+1 & 0 & 0\\ 0 & 0 & 1\\ 0 & 1 & 0
+\end{pmatrix}$
+
 
 \subsection{Kondition eines Gleichungssystems}
 \begin{align*}
