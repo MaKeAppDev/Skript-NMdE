@@ -61,7 +61,7 @@ a_{21}\,x_1 + \ldots + a_{2n}\,x_n &= b_2\\
 &\vdots\\
 a_{m1}\,x_1 + \ldots + a_{mn}\,x_n &= b_m\\
 \ma{A} \cdot \vec{x} &= \vec{b}\\
-\ma{A} &\in R^{m\times n},\ \vec{x} \in R^n,\ \vec{b} \in R^m
+\ma{A} &\in \mathbb{R}^{m\times n},\ \vec{x} \in \mathbb{R}^n,\ \vec{b} \in \mathbb{R}^m
 \end{align*}
 
 \subsection{Matrizen}
@@ -148,7 +148,7 @@ c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots
 
 \textbf{Inverse Matrix:}
 \begin{align*}
-\ma{A} &\in R^{n\times n}\\
+\ma{A} &\in \mathbb{R}^{n\times n}\\
 \ma{A}^{-1} \cdot \ma{A} &= \ma{A} \cdot \ma{A}^{-1} = \ma{I}\\
 \text{$\ma{A}^{-1}$ existiert nur für nicht singuläre $\ma{A}$}&\text{ und ist eindeutig.}\\
 \ma{A} = \text{diag}\begin{bmatrix}d_1 & \ldots & d_n\end{bmatrix} & \Rightarrow \ma{A}^{-1} = \text{diag}\begin{bmatrix}\frac{1}{d_1} & \ldots & \frac{1}{d_n}\end{bmatrix}\\
@@ -298,7 +298,7 @@ Abhilfe: Festlegung eines Bezugspunktes, z.B. $u_0 = 0$\\
 
 \subsection{Lösung eines linearen Gleichungssystems}
 \begin{align*}
-\ma{A} \cdot \vec{x} = \vec{b}, \qquad \ma{A} \in R^{n\times n}; \quad \vec{b}, \vec{x} \in R^n, \quad \ma{A} \neq 0\\
+\ma{A} \cdot \vec{x} = \vec{b}, \qquad \ma{A} \in \mathbb{R}^{n\times n}; \quad \vec{b}, \vec{x} \in \mathbb{R}^n, \quad \ma{A} \neq 0\\
 \text{Theoretische: } \vec{x} = \ma{A}^{-1} \cdot \vec{b}\\
 \text{Alternativ: Lösung durch "`Division"'-Eliminierung} 
 \end{align*}
@@ -508,18 +508,18 @@ $gl(z_1,\, op\, z_2)$, op:= +, -, *, /
 
 \subsection{Matrix- und Vektornormen}
 
-\[||\cdot||:\ R^n \rightarrow R;\ R^{n\times n} \rightarrow R\]\\
+\[||\cdot||:\ \mathbb{R}^n \rightarrow \mathbb{R};\ \mathbb{R}^{n\times n} \rightarrow \mathbb{R}\]\\
 Bedingungen für \textbf{Vektornormen}:
 \begin{itemize}
 \item \[||\vec{x}|| \geq 0,\ ||\vec{x}|| = 0 \text{ nur für } \vec{x} = \vec{0}\]
-\item \[||c \cdot\vec{x}|| = c \cdot ||\vec{x}||,\ c \in R\]
+\item \[||c \cdot\vec{x}|| = c \cdot ||\vec{x}||,\ c \in \mathbb{R}\]
 \item \[||\vec{x} + \vec{y}|| \leq ||\vec{x}|| + ||\vec{y}||\] Dreiecksungleichung
 \end{itemize}
 
 Bedingungen für \textbf{Matrixnormen}:
 \begin{itemize}
 \item \[||\ma{A}|| \geq 0,\ ||\ma{A}|| = 0 \text{ nur für } \ma{A} = \ma{0}\]
-\item \[|| c \cdot \ma{A}|| = c \cdot ||\ma{A}||,\ c \in R\]
+\item \[|| c \cdot \ma{A}|| = c \cdot ||\ma{A}||,\ c \in \mathbb{R}\]
 \item \[||\ma{A} + \ma{B}|| \leq ||\ma{A}|| + ||\ma{B}||\]
 \item \[||\ma{A} \cdot \ma{B}|| \leq ||\ma{A}|| \cdot ||\ma{B}||\] Multiplikativitätsbedingung
 \item \[||\ma{A} \cdot \vec{x}|| \leq ||\ma{A}|| \cdot ||\vec{x}||\] Kompatibilitätsbedingung
