@@ -577,29 +577,24 @@ Dies ist nötig beispielsweise in der Schaltungsanalyse inklusiver nichtlinearer
 
 \begin{center}
 \begin{circuitikz}
-\draw
-	(0,4)
-	to [R=$R_0$, i=\textcolor{green!70!blue}{$i_1$},-o] (4,4) node[above] {1}
-	to [R=$Y_3$, i=\textcolor{green!70!blue}{$i_3$},v>=\textcolor{blue}{$u_3$},-o] (8,4) node[above] {3}
-	to [R=$Y_5$, i<^=\textcolor{green!70!blue}{$i_5$},v=\textcolor{blue}{$u_5$},o-o] (12,4) node[above] {2} 
-	to [short,i<=\textcolor{green!70!blue}{$i_2$}] (12,3)
-	to [R=$Y_2$,v=\textcolor{blue}{$u_2$},*-*] (12,1)
-	to (13.5,1)
-	to [I,i_=$I_{02}$] (13.5,3) to (12,3)
-	(12,1) to (12,0) to (8,0) node[ground] {}
-	to [R=$Y_4$, i=\textcolor{green!70!blue}{$i_4$},v>=\textcolor{blue}{$u_4$},o-] (8,4) 
-	(8,0) +(0.2,0) node[above] {0} to (0,0)
-	to [V=$U_{01}$] (0,4)
-	(4,4) 
-	to [open,v=\textcolor{blue}{$u_1$}] (0,0);
-
-\draw[color=red](8,0)
-	to [open,v^>=\textcolor{red}{$u_{n1}$}] (4,4)
-	(9,0)
-	to [open,v>=\textcolor{red}{$u_{n3}$}] (9,4)
-	(11,0)
-	to [open,v^>=\textcolor{red}{$u_{n2}$}] (11,4);
-
+	\def\sourceX{0}
+	\def\resistanceX{2}
+	\def\diodeX{4}
+	\def\upperY{4}
+	\def\lowerY{0}
+	
+	\draw
+		(\sourceX , \lowerY) to [I,i_=$I_0$] (\sourceX , \upperY)
+		(\resistanceX , \lowerY) to [R=$R_0$,*-*,v=$u$] (\resistanceX , \upperY)
+		(\sourceX , \upperY) to (\resistanceX , \upperY)
+		(\sourceX , \lowerY) to (\resistanceX , \lowerY)
+	;
+	
+	\draw
+		(\diodeX , \upperY) to [D,v_>=$u_d$,i=$i_d$] (\diodeX, \lowerY)	
+		(\resistanceX , \upperY) to (\diodeX , \upperY)
+		(\resistanceX , \lowerY) to (\diodeX , \lowerY)
+	;
 \end{circuitikz}
 \end{center}
 
@@ -608,7 +603,7 @@ Gesucht sei hierbei das stationäre Verhalten bei konstanter Erregung (\emph{DC-
 Gesucht ist somit die Nullstelle von
 \[F(u_D) = f(u_D) - g(u_D) = 0\]
 Nullstellensuchen sind meist iterative Verfahren welche aus einem Startwert $\vec{x}$ eine Lösung $\vec{x}^\star$ mit $F(\vec{x}^\star) = 0$ ermitteln. Zuerst einmal wollen wir das Problem eindimensional betrachten:
-\[F(X) = 0\]
+\[F(x) = 0\]
 Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(b) < 0$ und gesucht ist $x^\star$ mit $F(x^\star) = 0$, $a \le x^\star \le b$.
 
 Ein mögliches Verfahren ist dabei die \emph{Intervallhalbierung}.
