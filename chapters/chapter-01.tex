@@ -549,3 +549,92 @@ $l_1$ : & $||\ma{A}\vec{x}||_1 \leq ||\ma{A}||_M\cdot||\vec{x}||_1$\\
 $l_2$ : & $M,\lambda,E$\\
 $l_\infty$ : & $M,Z$\\
 \end{tabular}
+
+\subsubsection{Kondition einer Matrix}
+Ausgehend von einem linearen Gleichungssystem
+\[\ma{A} \cdot \vec{x} = \vec{b}\]
+kann man auf der rechten Seite einen Fehler $\delta \vec{b}$ hinzufügen.
+\[\ma{A} ( \cdot \vec{x} + \delta \vec{x} = \vec{b} + \delta \vec{b}\]
+Dieser resultiert dann in einem Fehler $\delta \vec{x}$ der Lösung in $\vec{x}$.
+Der Zusammenhang zwischen diesen Größen lautet
+\[\ma{A} \delta \vec{x} = \delta \vec{b}\]
+und kann umgeformt werden zu
+\[ \delta \vec{x} = \ma{A}^{-1} \cdot \delta \vec{b}\]
+\[ ||\delta \vec{x}|| \le ||\ma{A}^{-1}|| \cdot ||\delta \vec{b}||\]
+Gleichzeitig kann
+\[\vec{b} = \ma{A} \vec{x}\]
+umgeformt werden zu
+\[||\vec{b}|| \le ||\ma{A}|| \cdot ||\vec{x}||\]
+\[\frac{1}{||\vec{x}||} \le ||\ma{A}|| \cdot \frac{1}{||\vec{b}||}\]
+Diese Gleichungen zusammengefasst ergeben dann
+\[\frac{||\delta \vec{x}||}{||\vec{x}||} \le ||\ma{A}^{-1}|| \cdot ||\ma{A}|| \cdot \frac{||\delta \vec{b}||}{||\vec{b}||}\]
+Darin stellen dann $\frac{||\delta \vec{x}||}{||\vec{x}||}$ den relativen Fehler des Ergebnisses, $||\ma{A}^{-1}|| \cdot ||\ma{A}||$ den \emph{Verstärkungsfaktor} für Fehler in $\vec{b}$ und $\frac{||\delta \vec{b}||}{||\vec{b}||}$ den relativen Fehler in $\vec{b}$ dar. Wir definieren die Kondition von A über
+\[\cond(\ma{A}) = ||\ma{A}^{-1}|| \cdot ||\ma{A}\],
+welche offensichtlich abhängig von der gewählten Matrixnorm ist. Eine $\cond(\ma{A}) \rightarrow \infty$ bedeutet dabei eine schlechte, $\cond(\ma{A}) \rightarrow 0$ eine gute \emph{Kondition}.
+
+\subsubsection{Nichtlineare Gleichungen: Linearisierung}
+Dies ist nötig beispielsweise in der Schaltungsanalyse inklusiver nichtlinearer Elemente (z.B. Diode, Transistor).
+
+\begin{center}
+\begin{circuitikz}
+\draw
+	(0,4)
+	to [R=$R_0$, i=\textcolor{green!70!blue}{$i_1$},-o] (4,4) node[above] {1}
+	to [R=$Y_3$, i=\textcolor{green!70!blue}{$i_3$},v>=\textcolor{blue}{$u_3$},-o] (8,4) node[above] {3}
+	to [R=$Y_5$, i<^=\textcolor{green!70!blue}{$i_5$},v=\textcolor{blue}{$u_5$},o-o] (12,4) node[above] {2} 
+	to [short,i<=\textcolor{green!70!blue}{$i_2$}] (12,3)
+	to [R=$Y_2$,v=\textcolor{blue}{$u_2$},*-*] (12,1)
+	to (13.5,1)
+	to [I,i_=$I_{02}$] (13.5,3) to (12,3)
+	(12,1) to (12,0) to (8,0) node[ground] {}
+	to [R=$Y_4$, i=\textcolor{green!70!blue}{$i_4$},v>=\textcolor{blue}{$u_4$},o-] (8,4) 
+	(8,0) +(0.2,0) node[above] {0} to (0,0)
+	to [V=$U_{01}$] (0,4)
+	(4,4) 
+	to [open,v=\textcolor{blue}{$u_1$}] (0,0);
+
+\draw[color=red](8,0)
+	to [open,v^>=\textcolor{red}{$u_{n1}$}] (4,4)
+	(9,0)
+	to [open,v>=\textcolor{red}{$u_{n3}$}] (9,4)
+	(11,0)
+	to [open,v^>=\textcolor{red}{$u_{n2}$}] (11,4);
+
+\end{circuitikz}
+\end{center}
+
+Gesucht sei hierbei das stationäre Verhalten bei konstanter Erregung (\emph{DC-Arbeitspunkt}). Die Diode kann mithilfe von $i_D = I_S \cdot (e^{\frac{u_D}{U_T}} - 1)$ beschrieben werden. Daraus folgt dann
+\[I_0 \cdot \frac{u_D}{R} = I_S \cdot (e^{\frac{u_D}{U_T}} - 1)\]
+Gesucht ist somit die Nullstelle von
+\[F(u_D) = f(u_D) - g(u_D) = 0\]
+Nullstellensuchen sind meist iterative Verfahren welche aus einem Startwert $\vec{x}$ eine Lösung $\vec{x}^\star$ mit $F(\vec{x}^\star) = 0$ ermitteln. Zuerst einmal wollen wir das Problem eindimensional betrachten:
+\[F(X) = 0\]
+Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(b) < 0$ und gesucht ist $x^\star$ mit $F(x^\star) = 0$, $a \le x^\star \le b$.
+
+Ein mögliches Verfahren ist dabei die \emph{Intervallhalbierung}.
+\begin{enumerate}
+\item Startintervall $[a^{(0)}, b^{(0)}] = [a, b]$, $k = 0$
+\item Intervallmitte $m = \frac{a^{(k)} \cdot b^{(k)}}{2}$
+\item $[a^{k + 1)}, b^{(k + 1)}] = \begin{cases} [m, b^{k)}] & \text{fuer\ } F(m) \cdot F(a^{(k)}) > 0 \\ [m, b^{k)}] & \text{fuer\ } F(m) \cdot F(a^{(k)}) < 0 \end{cases}$
+\item Falls $\abs{a^{k + 1)} - b^{k + 1)}} > \epsilon$ dann gehe zu Schritt 2, $k = k + 1$
+\end{enumerate}
+
+Die Konvergenz eines iterativen Verfahrens wird mithilfe der Parameter $L$, dem Konvergenzfaktor, und $p$, der Konvergenzordnung, beschrieben.
+\[\Delta^{(k + 1)} = \frac{1}{2} \Delta^{(k)} = (\frac{1}{2})^{k + 1} \Delta^{(0)}\]
+\[\epsilon = x - x^\star\]
+\[\abs{\epsilon^{(k + 1)}} \le L \abs{\epsilon^{(k)}}^p\]
+Die Intervallhalbierung liegt bei $p = 1$, also linearer Konvergenz, und $L = 1/2$. Die Anzahl der Iterationsschritte bis zu einem Restfehler $\Delta^R$ ist damit
+\[\kappa = \ceil{\ld \left( \frac{\Delta^{(0)}}{\Delta^R}\right)}\]
+
+Ein weiteres weit verbreitetes Verfahren ist das \emph{Newton-Raphson-Verfahren}. Die Idee dahinter ist eine Taylorreihe erster Ordnung:
+\[F(x) = F(x^{(k)}) + F'(x^{(k)}) \cdot (x - x^{(k)}) + F''(x^{(k)}) \cdot \frac{(x - x^{(k)})^2}{2} + \dots\]
+\[x^{(k + 1)} = x^{(k)} - \frac{F(x^{(k)})}{F'(x^{(k)})}\]
+
+Das Konvergenzverhalten des Newton-Raphson-Verfahrens erhält man aus einer Taylorreihe:
+\[x^{(k + 1)} = x^{(k)} - \frac{F(x^\star) + F'(x^\star)(x^{(k)} - x^\star) + \frac{1}{2} F''(x^\star) \cdot {\epsilon^{k}}^2 + ... + \frac{1}{n!} F^{(n)}(x^\star) \cdot {\epsilon^{k}}^n}{F'(x^\star) + F''(x^\star) \cdot \epsilon^{(k)} + \frac{1}{(n - 1)!} \cdot F^{(n)} {\epsilon^{(k)}}^{n - 1}}\]
+\[\epsilon^{(k + 1)} = \epsilon^{(k)} \left( 1 - \frac{F' + \frac{1}{2} F'' \cdot \epsilon^{(k)} + \dots}{F' + F'' \cdot \epsilon^{(k)} + \dots} \right) \approx \epsilon^{(k)} \left( \left(1 + \frac{1}{2} \epsilon^{(k)} \frac{F''}{F'} \right) \cdot \left( 1 - \frac{1}{2} \epsilon^{(k)} \frac{F''}{F'} \right) \right)\]
+\[\epsilon^{(k + 1)} \approx \epsilon^{(k)} \left( 1 - \left( 1 + \frac{1}{2} \cdot \epsilon^{(k)} \frac{F''}{F'} - \epsilon^{(k)} \frac{F''}{F'}\right)\right) = \frac{1}{2} \cdot {\epsilon^{(k)}}^2 \frac{F''}{F'}\]
+
+Ein Problem beim Newton-Raphson-Verfahren tritt bei n-fachen Nullstellen ($F'(x^\star) = \dots = F^{(n - 1)}(x^\star) = 0)$, $F^{(n)}(x^\star) \ne 0$) auf.
+\[\epsilon^{(k + 1)} \approx \epsilon^{(k)} \cdot \left( 1 - \frac{(n - 1)!}{n!}\right) - \epsilon^{(k)} \cdot \left( 1 - \frac{1}{n}\right) = \epsilon^{(k)} \frac{n - 1}{n}\]
+z.B.: $F(x) = e^x - 1 \Rightarrow x^{(k + 1)} = x^{(k)} - \frac{e^{x^{(k)}} - 1}{e^{x^{(k)}}}$
