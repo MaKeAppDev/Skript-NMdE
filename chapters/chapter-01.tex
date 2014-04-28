@@ -550,29 +550,29 @@ $l_2$ : & $M,\lambda,E$\\
 $l_\infty$ : & $M,Z$\\
 \end{tabular}
 
-\subsubsection{Kondition einer Matrix}
+\subsection{Kondition einer Matrix}
 Ausgehend von einem linearen Gleichungssystem
 \[\ma{A} \cdot \vec{x} = \vec{b}\]
-kann man auf der rechten Seite einen Fehler $\delta \vec{b}$ hinzufügen.
-\[\ma{A} ( \cdot \vec{x} + \delta \vec{x} = \vec{b} + \delta \vec{b}\]
-Dieser resultiert dann in einem Fehler $\delta \vec{x}$ der Lösung in $\vec{x}$.
+kann man auf der rechten Seite einen Fehler $\Delta \vec{b}$ hinzufügen.
+\[\ma{A} ( \cdot \vec{x} + \Delta \vec{x} = \vec{b} + \Delta \vec{b}\]
+Dieser resultiert dann in einem Fehler $\Delta \vec{x}$ der Lösung in $\vec{x}$.
 Der Zusammenhang zwischen diesen Größen lautet
-\[\ma{A} \delta \vec{x} = \delta \vec{b}\]
+\[\ma{A} \Delta \vec{x} = \Delta \vec{b}\]
 und kann umgeformt werden zu
-\[ \delta \vec{x} = \ma{A}^{-1} \cdot \delta \vec{b}\]
-\[ ||\delta \vec{x}|| \le ||\ma{A}^{-1}|| \cdot ||\delta \vec{b}||\]
+\[ \Delta \vec{x} = \ma{A}^{-1} \cdot \Delta \vec{b}\]
+\[ ||\Delta \vec{x}|| \le ||\ma{A}^{-1}|| \cdot ||\Delta \vec{b}||\]
 Gleichzeitig kann
 \[\vec{b} = \ma{A} \vec{x}\]
 umgeformt werden zu
 \[||\vec{b}|| \le ||\ma{A}|| \cdot ||\vec{x}||\]
 \[\frac{1}{||\vec{x}||} \le ||\ma{A}|| \cdot \frac{1}{||\vec{b}||}\]
 Diese Gleichungen zusammengefasst ergeben dann
-\[\frac{||\delta \vec{x}||}{||\vec{x}||} \le ||\ma{A}^{-1}|| \cdot ||\ma{A}|| \cdot \frac{||\delta \vec{b}||}{||\vec{b}||}\]
-Darin stellen dann $\frac{||\delta \vec{x}||}{||\vec{x}||}$ den relativen Fehler des Ergebnisses, $||\ma{A}^{-1}|| \cdot ||\ma{A}||$ den \emph{Verstärkungsfaktor} für Fehler in $\vec{b}$ und $\frac{||\delta \vec{b}||}{||\vec{b}||}$ den relativen Fehler in $\vec{b}$ dar. Wir definieren die Kondition von A über
+\[\frac{||\Delta \vec{x}||}{||\vec{x}||} \le ||\ma{A}^{-1}|| \cdot ||\ma{A}|| \cdot \frac{||\Delta \vec{b}||}{||\vec{b}||}\]
+Darin stellen dann $\frac{||\Delta \vec{x}||}{||\vec{x}||}$ den relativen Fehler des Ergebnisses, $||\ma{A}^{-1}|| \cdot ||\ma{A}||$ den \emph{Verstärkungsfaktor} für Fehler in $\vec{b}$ und $\frac{||\Delta \vec{b}||}{||\vec{b}||}$ den relativen Fehler in $\vec{b}$ dar. Wir definieren die Kondition von A über
 \[\cond(\ma{A}) = ||\ma{A}^{-1}|| \cdot ||\ma{A}\],
 welche offensichtlich abhängig von der gewählten Matrixnorm ist. Eine $\cond(\ma{A}) \rightarrow \infty$ bedeutet dabei eine schlechte, $\cond(\ma{A}) \rightarrow 0$ eine gute \emph{Kondition}.
 
-\subsubsection{Nichtlineare Gleichungen: Linearisierung}
+\subsection{Nichtlineare Gleichungen: Linearisierung}
 Dies ist nötig beispielsweise in der Schaltungsanalyse inklusiver nichtlinearer Elemente (z.B. Diode, Transistor).
 
 \begin{center}
@@ -606,7 +606,7 @@ Nullstellensuchen sind meist iterative Verfahren welche aus einem Startwert $\ve
 \[F(x) = 0\]
 Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(b) < 0$ und gesucht ist $x^\star$ mit $F(x^\star) = 0$, $a \le x^\star \le b$.
 
-Ein mögliches Verfahren ist dabei die \emph{Intervallhalbierung}.
+\subsubsection{Intervallhalbierung}
 \begin{enumerate}
 \item Startintervall $[a^{(0)}, b^{(0)}] = [a, b]$, $k = 0$
 \item Intervallmitte $m = \frac{a^{(k)} \cdot b^{(k)}}{2}$
@@ -621,7 +621,7 @@ Die Konvergenz eines iterativen Verfahrens wird mithilfe der Parameter $L$, dem 
 Die Intervallhalbierung liegt bei $p = 1$, also linearer Konvergenz, und $L = 1/2$. Die Anzahl der Iterationsschritte bis zu einem Restfehler $\Delta^R$ ist damit
 \[\kappa = \ceil{\ld \left( \frac{\Delta^{(0)}}{\Delta^R}\right)}\]
 
-Ein weiteres weit verbreitetes Verfahren ist das \emph{Newton-Raphson-Verfahren}. Die Idee dahinter ist eine Taylorreihe erster Ordnung:
+\subsubsection{Newton-Raphson-Verfahren} Die Idee hinter dem Newton-Raphson-Verfahren ist eine Taylorreihe erster Ordnung:
 \[F(x) = F(x^{(k)}) + F'(x^{(k)}) \cdot (x - x^{(k)}) + F''(x^{(k)}) \cdot \frac{(x - x^{(k)})^2}{2} + \dots\]
 \[x^{(k + 1)} = x^{(k)} - \frac{F(x^{(k)})}{F'(x^{(k)})}\]
 
@@ -630,6 +630,6 @@ Das Konvergenzverhalten des Newton-Raphson-Verfahrens erhält man aus einer Tayl
 \[\epsilon^{(k + 1)} = \epsilon^{(k)} \left( 1 - \frac{F' + \frac{1}{2} F'' \cdot \epsilon^{(k)} + \dots}{F' + F'' \cdot \epsilon^{(k)} + \dots} \right) \approx \epsilon^{(k)} \left( \left(1 + \frac{1}{2} \epsilon^{(k)} \frac{F''}{F'} \right) \cdot \left( 1 - \frac{1}{2} \epsilon^{(k)} \frac{F''}{F'} \right) \right)\]
 \[\epsilon^{(k + 1)} \approx \epsilon^{(k)} \left( 1 - \left( 1 + \frac{1}{2} \cdot \epsilon^{(k)} \frac{F''}{F'} - \epsilon^{(k)} \frac{F''}{F'}\right)\right) = \frac{1}{2} \cdot {\epsilon^{(k)}}^2 \frac{F''}{F'}\]
 
-Ein Problem beim Newton-Raphson-Verfahren tritt bei n-fachen Nullstellen ($F'(x^\star) = \dots = F^{(n - 1)}(x^\star) = 0)$, $F^{(n)}(x^\star) \ne 0$) auf.
+Probleme beim Newton-Raphson-Verfahren treten bei n-fachen Nullstellen ($F'(x^\star) = \dots = F^{(n - 1)}(x^\star) = 0)$, $F^{(n)}(x^\star) \ne 0$) auf.
 \[\epsilon^{(k + 1)} \approx \epsilon^{(k)} \cdot \left( 1 - \frac{(n - 1)!}{n!}\right) - \epsilon^{(k)} \cdot \left( 1 - \frac{1}{n}\right) = \epsilon^{(k)} \frac{n - 1}{n}\]
 z.B.: $F(x) = e^x - 1 \Rightarrow x^{(k + 1)} = x^{(k)} - \frac{e^{x^{(k)}} - 1}{e^{x^{(k)}}}$
