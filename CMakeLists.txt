@@ -9,6 +9,7 @@ set(CHAPTERS
 )
 
 set(IMAGES
+	pics/bisection.png
 )
 
 add_latex_document(skript.tex DEFAULT_PDF
