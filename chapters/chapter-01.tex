@@ -664,3 +664,46 @@ Das Konvergenzverhalten des Newton-Raphson-Verfahrens erhält man aus einer Tayl
 Probleme beim Newton-Raphson-Verfahren treten bei n-fachen Nullstellen ($F'(x^\star) = \dots = F^{(n - 1)}(x^\star) = 0)$, $F^{(n)}(x^\star) \ne 0$) auf.
 \[\epsilon^{(k + 1)} \approx \epsilon^{(k)} \cdot \left( 1 - \frac{(n - 1)!}{n!}\right) - \epsilon^{(k)} \cdot \left( 1 - \frac{1}{n}\right) = \epsilon^{(k)} \frac{n - 1}{n}\]
 z.B.: $F(x) = e^x - 1 \Rightarrow x^{(k + 1)} = x^{(k)} - \frac{e^{x^{(k)}} - 1}{e^{x^{(k)}}}$
+
+\begin{figure}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (4,0) node[right]{$u_D$};
+		\draw[thick,->] (0,0) -- (0,3) node[above]{$i_D$};
+		
+		\draw[blue,domain=0:2,name path=exp] plot (\x,{exp(0.7*\x)-1});
+		\draw[red,domain=0:3,name path=line] (0,2) node [left] {$I_0$} -- (3,0) node [below] {$I_0 R_0$};
+		\path [name intersections={of=exp and line,by=intersect}];
+		
+		\filldraw [color=red] (intersect) circle (2pt);
+		\draw (intersect) node [right=0.2] {Lösungspunkt};
+		\draw [dashed] (intersect) -- ($(0,0)!(intersect)!(4,0)$) node [below] {$U_D^*$};
+		
+		\begin{scope}[shift={(6,1.5)}]
+			\draw[thick,->, name path=xaxis] (-0.1,0) -- (4,0) node[right]{$u_D$};
+			\draw[thick,->] (0,-3) -- (0,3) node[above]{$F(u_D)$};
+			
+			\draw[domain=0:2.5,name path=exp] plot (\x,{exp(0.7*\x)-3}) node [right] {$F(u_D)$};
+			
+			\path [name intersections={of=exp and xaxis,by=intersect}];
+			\draw [<-, thick, >=stealth] (intersect)  -- ++(0.5,0.5) node [right] {Lösungspunkt};
+			\draw (0,-2)node [left] {$-I_0$};		
+		\end{scope}
+	
+	\end{tikzpicture}
+	\centering
+	\caption{Random Graph 1}
+\end{figure}
+
+\begin{figure}
+	\begin{tikzpicture}
+		\draw[thick,->] (0,0) -- (4,0) node[right]{$x$};
+		\draw[thick,->] (0,0) -- (0,3) node[above]{$F(x)$};
+		
+		\draw (0.8, -0.2) node [below] {$x^{(k+2)}$} -- (2.8, 1) node [right] {$\bar{F}^{(k+1)}(x)$};
+		\draw (1.2, -0.2) node [below] {$x^{(k+1)}$} -- (3, 2) node [right] {$\bar{F}^{(k)}(x)$};
+		
+		\draw [dashed] (2, 0) node [below] {$x^{(k)}$} -- ++(0,1);	
+	\end{tikzpicture}
+	\centering
+	\caption{Random Graph 2 (Obviously not perfect ;) )}
+\end{figure}
