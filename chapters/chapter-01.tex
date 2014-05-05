@@ -702,4 +702,12 @@ Das Konvergenzverhalten des Newton-Raphson-Verfahrens erhält man aus einer Tayl
 
 Probleme beim Newton-Raphson-Verfahren treten bei n-fachen Nullstellen ($F'(x^\star) = \dots = F^{(n - 1)}(x^\star) = 0)$, $F^{(n)}(x^\star) \ne 0$) auf.
 \[\epsilon^{(k + 1)} \approx \epsilon^{(k)} \cdot \left( 1 - \frac{(n - 1)!}{n!}\right) - \epsilon^{(k)} \cdot \left( 1 - \frac{1}{n}\right) = \epsilon^{(k)} \frac{n - 1}{n}\]
+Somit erhält man nur mehr lineare Konvergenz.
 z.B.: $F(x) = e^x - 1 \Rightarrow x^{(k + 1)} = x^{(k)} - \frac{e^{x^{(k)}} - 1}{e^{x^{(k)}}}$
+
+\paragraph{Variation: Sekanten-Methode}
+\[F'(x^{(k)}) = \lim_{x \rightarrow x^{(k)}} \frac{F(x) - F(x^{(k)})}{x - x^{(k)}}\]
+\[F'(x^{(k)}) = \frac{F(x^{(k - 1)}) - F(x^{(k)})}{x^{(k - 1)} - x^{(k)}}\]
+Eingesetzt in die Newton-Gleichung erhält man somit
+\[x^{(k + 1)} = x^{(k)} - \frac{F(x^{(k)}) \cdot (x^{(k)} - x^{(k - 1)})}{F(x^{(k)}) - F(x^{(k - 1)})}\]
+Dadurch ist pro Schritt nur eine Funktionsauswertung nötig.
