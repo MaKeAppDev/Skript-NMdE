@@ -599,7 +599,7 @@ Dies ist nötig beispielsweise in der Schaltungsanalyse inklusiver nichtlinearer
 \end{center}
 
 Gesucht sei hierbei das stationäre Verhalten bei konstanter Erregung (\emph{DC-Arbeitspunkt}). Die Diode kann mithilfe von $i_D = I_S \cdot \left(e^{\frac{u_D}{U_T}} - 1\right)$ beschrieben werden. Daraus folgt dann
-\[I_0 \cdot \frac{u_D}{R} = I_S \cdot \left(e^{\frac{u_D}{U_T}} - 1\right)\]
+\[I_0 - \frac{u_D}{R} = I_S \cdot \left(e^{\frac{u_D}{U_T}} - 1\right)\]
 Gesucht ist somit die Nullstelle von
 \[F(u_D) = f(u_D) - g(u_D) = 0\]
 Nullstellensuchen sind meist iterative Verfahren welche aus einem Startwert $\vec{x}$ eine Lösung $\vec{x}^\star$ mit $F(\vec{x}^\star) = 0$ ermitteln. Zuerst einmal wollen wir das Problem eindimensional betrachten:
@@ -637,7 +637,7 @@ Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(
 \begin{enumerate}
 \item Startintervall $[a^{(0)}, b^{(0)}] = [a, b]$, $k = 0$
 \item Intervallmitte $m = \frac{a^{(k)} \cdot b^{(k)}}{2}$
-\item $[a^{k + 1)}, b^{(k + 1)}] = \begin{cases} [m, b^{k)}] & \text{fuer\ } F(m) \cdot F(a^{(k)}) > 0 \\ [m, b^{k)}] & \text{fuer\ } F(m) \cdot F(a^{(k)}) < 0 \end{cases}$
+\item $[a^{k + 1)}, b^{(k + 1)}] = \begin{cases} [m, b^{(k)}] & \text{fuer\ } F(m) \cdot F(a^{(k)}) > 0 \\ [a^{(k)}, m] & \text{fuer\ } F(m) \cdot F(a^{(k)}) < 0 \end{cases}$
 \item Falls $\abs{a^{k + 1)} - b^{k + 1)}} > \epsilon$ dann gehe zu Schritt 2, $k = k + 1$
 \end{enumerate}
 
