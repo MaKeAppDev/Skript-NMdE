@@ -4,43 +4,48 @@
 \section{Zusammenfassung}
 
 \subsection{Überblick}
-\begin{center}
-\begin{tikzpicture}[very thick,
-		node distance=2.5cm,on grid,>=stealth',
-		block/.style={rectangle,draw,rounded corners=1mm,minimum height=1cm,minimum width=2cm}]
-
-\node [block] (top)						{Mathematik};
-\node [block] (down3) [below=of top]	{Analysis} edge [-] (top);
-\node [block] (down2) [left=of down3]	{Algebra} edge [-] (top);
-\node [block] (down1) [left=of down2]	{\begin{tabular}{c}Logik und\\ Mengenlehre\end{tabular}} edge [-] (top);
-\node [block] (down4) [right=of down3]	{Stochastik} edge [-] (top);
-\node [block] (down5) [right=of down4]	{Numerik} edge [-] (top);
-\end{tikzpicture}
-\end{center}
+\begin{figure}
+	\center
+	\begin{tikzpicture}[very thick,
+			node distance=2.5cm,on grid,>=stealth',
+			block/.style={rectangle,draw,rounded corners=1mm,minimum height=1cm,minimum width=2cm}]
+	
+	\node [block] (top)						{Mathematik};
+	\node [block] (down3) [below=of top]	{Analysis} edge [-] (top);
+	\node [block] (down2) [left=of down3]	{Algebra} edge [-] (top);
+	\node [block] (down1) [left=of down2]	{\begin{tabular}{c}Logik und\\ Mengenlehre\end{tabular}} edge [-] (top);
+	\node [block] (down4) [right=of down3]	{Stochastik} edge [-] (top);
+	\node [block] (down5) [right=of down4]	{Numerik} edge [-] (top);
+	\end{tikzpicture}
+	\caption{Teilgebiete der Mathematik}
+\end{figure}
 
 \textbf{Definitionsversuch:} Entwicklung und mathematisches Verständnis von numerischen Algorithmen, als von Rechenmethoden zur zahlenmäßigen Lösung mathematischer Probleme.
 
 \textbf{Zusammenspiel mit Informatik:}
-\begin{center}
-\begin{tikzpicture}[very thick,node distance=1.5cm,on grid,>=stealth']
-\node (top)	{Numerische Mathematik};
-\node (mid) [below=of top] {\begin{tabular}{l}Scientific Computing\\ Wissenschaftliches Rechnen\end{tabular}} edge [<-] (top);
-\node (down) [below=of mid]	{Informatik} edge [<-] (mid);
-\node [node distance=7cm, right=of mid] {\begin{tabular}{c}Logik und\\ Mengenlehre\end{tabular}} edge [<-] node [midway,above] {Computer} (mid);
-\end{tikzpicture}
-\end{center}
+\begin{figure}
+	\begin{tikzpicture}[very thick,node distance=1.5cm,on grid,>=stealth']
+	\node (top)	{Numerische Mathematik};
+	\node (mid) [below=of top] {\begin{tabular}{l}Scientific Computing\\ Wissenschaftliches Rechnen\end{tabular}} edge [<-] (top);
+	\node (down) [below=of mid]	{Informatik} edge [<-] (mid);
+	\node [node distance=7cm, right=of mid] {\begin{tabular}{c}Logik und\\ Mengenlehre\end{tabular}} edge [<-] node [midway,above] {Computer} (mid);
+	\end{tikzpicture}
+	\caption{Zusammenspiel Mathematik und Information in der Numerik}
+\end{figure}
 
 \subsection{Vorgehen}
-\begin{center}
-\begin{tikzpicture}[very thick,node distance=1.5cm,on grid,>=stealth']
-\node (top)	{Anwendungsproblem};
-\node (down1) [below=of top] {Primäres mathematisches Problem} edge [<-] node [right] {Mathematisierung} (top);
-\node (down2) [below=of down1] {Sekundäre mathematische Probleme} edge [<-] node [right] {Mathematische Umformungen} (down1);
-\node (down3) [below=of down2] {Algorithmus/Computerprogramm} edge [<-] node [right] {Programmierung} (down2);
-\node (down4) [below=of down3] {"'Lösung"'} edge [<-] node [right] {Rechnung} (down3);
-\node [below=of down4] {Lösung} edge [<-] node [right] {Beurteilung, "'Entmathematisierung"'} (down4);
-\end{tikzpicture}
-\end{center}
+\begin{figure}
+	\center
+	\begin{tikzpicture}[very thick,node distance=1.5cm,on grid,>=stealth']
+	\node (top)	{Anwendungsproblem};
+	\node (down1) [below=of top] {Primäres mathematisches Problem} edge [<-] node [right] {Mathematisierung} (top);
+	\node (down2) [below=of down1] {Sekundäre mathematische Probleme} edge [<-] node [right] {Mathematische Umformungen} (down1);
+	\node (down3) [below=of down2] {Algorithmus/Computerprogramm} edge [<-] node [right] {Programmierung} (down2);
+	\node (down4) [below=of down3] {"'Lösung"'} edge [<-] node [right] {Rechnung} (down3);
+	\node [below=of down4] {Lösung} edge [<-] node [right] {Beurteilung, "'Entmathematisierung"'} (down4);
+	\end{tikzpicture}
+	\caption{Vorgehen zur Lösung eines mathematischen Problems}
+\end{figure}
 
 \subsection{Aspekte für die Lösung einer mathematischen Aufgabenstellung}
 \begin{itemize}
@@ -156,33 +161,35 @@ c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots
 \end{align*}
 
 \section{Schaltungsanalyse}
-\begin{center}
-\begin{circuitikz}
-\draw
-	(0,4)
-	to [R=$Y_1$, i=\textcolor{green!70!blue}{$i_1$},-o] (4,4) node[above] {1}
-	to [R=$Y_3$, i=\textcolor{green!70!blue}{$i_3$},v>=\textcolor{blue}{$u_3$},-o] (8,4) node[above] {3}
-	to [R=$Y_5$, i<^=\textcolor{green!70!blue}{$i_5$},v=\textcolor{blue}{$u_5$},o-o] (12,4) node[above] {2} 
-	to [short,i<=\textcolor{green!70!blue}{$i_2$}] (12,3)
-	to [R=$Y_2$,v=\textcolor{blue}{$u_2$},*-*] (12,1)
-	to (13.5,1)
-	to [I,i_=$I_{02}$] (13.5,3) to (12,3)
-	(12,1) to (12,0) to (8,0) node[ground] {}
-	to [R=$Y_4$, i=\textcolor{green!70!blue}{$i_4$},v>=\textcolor{blue}{$u_4$},o-] (8,4) 
-	(8,0) +(0.2,0) node[above] {0} to (0,0)
-	to [V=$U_{01}$] (0,4)
-	(4,4) 
-	to [open,v=\textcolor{blue}{$u_1$}] (0,0);
-
-\draw[color=red](8,0)
-	to [open,v^>=\textcolor{red}{$u_{n1}$}] (4,4)
-	(9,0)
-	to [open,v>=\textcolor{red}{$u_{n3}$}] (9,4)
-	(11,0)
-	to [open,v^>=\textcolor{red}{$u_{n2}$}] (11,4);
-
-\end{circuitikz}
-\end{center}
+\begin{figure}
+	\center
+	\begin{circuitikz}
+	\draw
+		(0,4)
+		to [R=$Y_1$, i=\textcolor{green!70!blue}{$i_1$},-o] (4,4) node[above] {1}
+		to [R=$Y_3$, i=\textcolor{green!70!blue}{$i_3$},v>=\textcolor{blue}{$u_3$},-o] (8,4) node[above] {3}
+		to [R=$Y_5$, i<^=\textcolor{green!70!blue}{$i_5$},v=\textcolor{blue}{$u_5$},o-o] (12,4) node[above] {2} 
+		to [short,i<=\textcolor{green!70!blue}{$i_2$}] (12,3)
+		to [R=$Y_2$,v=\textcolor{blue}{$u_2$},*-*] (12,1)
+		to (13.5,1)
+		to [I,i_=$I_{02}$] (13.5,3) to (12,3)
+		(12,1) to (12,0) to (8,0) node[ground] {}
+		to [R=$Y_4$, i=\textcolor{green!70!blue}{$i_4$},v>=\textcolor{blue}{$u_4$},o-] (8,4) 
+		(8,0) +(0.2,0) node[above] {0} to (0,0)
+		to [V=$U_{01}$] (0,4)
+		(4,4) 
+		to [open,v=\textcolor{blue}{$u_1$}] (0,0);
+	
+	\draw[color=red](8,0)
+		to [open,v^>=\textcolor{red}{$u_{n1}$}] (4,4)
+		(9,0)
+		to [open,v>=\textcolor{red}{$u_{n3}$}] (9,4)
+		(11,0)
+		to [open,v^>=\textcolor{red}{$u_{n2}$}] (11,4);
+	
+	\end{circuitikz}
+	\caption{Beispielschaltung}
+\end{figure}
 \begin{tabular}{llll}
 \textcolor{green!70!blue}{$\vec{i}_{<k>}$} & \textcolor{green!70!blue}{Kantenstromvektor} & \textcolor{blue}{$\vec{u}_{<k>}$} & \textcolor{blue}{Kantenspannungsvektor}\\
 $\vec{i}_{0<k>}$ & Kantenquellenstromvektor & $\vec{u}_{0<k>}$ & Kantenquellenspannungsvektor\\
@@ -496,14 +503,14 @@ $z_1,\,z_2$: Gleitkomma-Maschinenzahlen (endliche Stellenzahl)\\
 \textbf{Gl}eitkomma - Grund\textbf{op}erationen\\
 $\text{gl}(z_1\, \text{op}\, z_2)$,\quad op := $+$, $-$, $\times$, $/$
 \begin{enumerate}[label=\alph*)]
-\item $z_1 \, \text{op}\, z_2 = x;$ \quad $x$ nicht notwendigerweise Gleitkomma-Maschinenzahl
-\item $+,\ -$: Exponentenangleich erforderlich - Mantissenstellen können verloren gehen.
-\item Subtraktion nahezu gleichgroßer Zahlen:
-	\begin{itemize}
-	\item Ergebnis mit wesentlich kleinerer Mantisse
-	\item Normalisierung (Linksverschiebung Mantisse, Exponentenangleich): Nachziehen nicht signifikanter Ziffern, Verlust signifikanter Ziffern
-	\end{itemize}
-\item Unterlauf/Überlauf
+	\item $z_1 \, \text{op}\, z_2 = x;$ \quad $x$ nicht notwendigerweise Gleitkomma-Maschinenzahl
+	\item $+,\ -$: Exponentenangleich erforderlich - Mantissenstellen können verloren gehen.
+	\item Subtraktion nahezu gleichgroßer Zahlen:
+		\begin{itemize}
+			\item Ergebnis mit wesentlich kleinerer Mantisse
+			\item Normalisierung (Linksverschiebung Mantisse, Exponentenangleich): Nachziehen nicht signifikanter Ziffern, Verlust signifikanter Ziffern
+		\end{itemize}
+	\item Unterlauf/Überlauf
 \end{enumerate}
 
 \subsection{Matrix- und Vektornormen}
@@ -511,18 +518,18 @@ $\text{gl}(z_1\, \text{op}\, z_2)$,\quad op := $+$, $-$, $\times$, $/$
 \[||\cdot||:\ \mathbb{R}^n \rightarrow \mathbb{R};\ \mathbb{R}^{n\times n} \rightarrow \mathbb{R}\]\\
 Bedingungen für \textbf{Vektornormen}:
 \begin{itemize}
-\item \[||\vec{x}|| \geq 0,\ ||\vec{x}|| = 0 \text{ nur für } \vec{x} = \vec{0}\]
-\item \[||c \cdot\vec{x}|| = \abs{c} \cdot ||\vec{x}||,\ c \in \mathbb{R}\]
-\item \[||\vec{x} + \vec{y}|| \leq ||\vec{x}|| + ||\vec{y}||\] Dreiecksungleichung
+	\item \[||\vec{x}|| \geq 0,\ ||\vec{x}|| = 0 \text{ nur für } \vec{x} = \vec{0}\]
+	\item \[||c \cdot\vec{x}|| = \abs{c} \cdot ||\vec{x}||,\ c \in \mathbb{R}\]
+	\item \[||\vec{x} + \vec{y}|| \leq ||\vec{x}|| + ||\vec{y}||\] Dreiecksungleichung
 \end{itemize}
 
 Bedingungen für \textbf{Matrixnormen}:
 \begin{itemize}
-\item \[||\ma{A}|| \geq 0,\ ||\ma{A}|| = 0 \text{ nur für } \ma{A} = \ma{0}\]
-\item \[|| c \cdot \ma{A}|| = \abs{c} \cdot ||\ma{A}||,\ c \in \mathbb{R}\]
-\item \[||\ma{A} + \ma{B}|| \leq ||\ma{A}|| + ||\ma{B}||\]
-\item \[||\ma{A} \cdot \ma{B}|| \leq ||\ma{A}|| \cdot ||\ma{B}||\] Multiplikativitätsbedingung
-\item \[||\ma{A} \cdot \vec{x}|| \leq ||\ma{A}|| \cdot ||\vec{x}||\] Kompatibilitätsbedingung
+	\item \[||\ma{A}|| \geq 0,\ ||\ma{A}|| = 0 \text{ nur für } \ma{A} = \ma{0}\]
+	\item \[|| c \cdot \ma{A}|| = \abs{c} \cdot ||\ma{A}||,\ c \in \mathbb{R}\]
+	\item \[||\ma{A} + \ma{B}|| \leq ||\ma{A}|| + ||\ma{B}||\]
+	\item \[||\ma{A} \cdot \ma{B}|| \leq ||\ma{A}|| \cdot ||\ma{B}||\] Multiplikativitätsbedingung
+	\item \[||\ma{A} \cdot \vec{x}|| \leq ||\ma{A}|| \cdot ||\vec{x}||\] Kompatibilitätsbedingung
 \end{itemize}
 
 \subsubsection{Vektornormen}
@@ -575,28 +582,30 @@ welche offensichtlich abhängig von der gewählten Matrixnorm ist. Eine $\cond{\
 \subsection{Nichtlineare Gleichungen: Linearisierung}
 Dies ist nötig beispielsweise in der Schaltungsanalyse inklusiver nichtlinearer Elemente (z.B. Diode, Transistor).
 
-\begin{center}
-\begin{circuitikz}
-	\def\sourceX{0}
-	\def\resistanceX{2}
-	\def\diodeX{4}
-	\def\upperY{4}
-	\def\lowerY{0}
-	
-	\draw
-		(\sourceX , \lowerY) to [I,i_=$I_0$] (\sourceX , \upperY)
-		(\resistanceX , \lowerY) to [R=$R_0$,*-*,v=$u$] (\resistanceX , \upperY)
-		(\sourceX , \upperY) to (\resistanceX , \upperY)
-		(\sourceX , \lowerY) to (\resistanceX , \lowerY)
-	;
-	
-	\draw
-		(\diodeX , \upperY) to [D,v_>=$u_d$,i=$i_d$] (\diodeX, \lowerY)	
-		(\resistanceX , \upperY) to (\diodeX , \upperY)
-		(\resistanceX , \lowerY) to (\diodeX , \lowerY)
-	;
-\end{circuitikz}
-\end{center}
+\begin{figure}
+	\begin{circuitikz}
+		\def\sourceX{0}
+		\def\resistanceX{2}
+		\def\diodeX{4}
+		\def\upperY{4}
+		\def\lowerY{0}
+		
+		\draw
+			(\sourceX , \lowerY) to [I,i_=$I_0$] (\sourceX , \upperY)
+			(\resistanceX , \lowerY) to [R=$R_0$,*-*,v=$u$] (\resistanceX , \upperY)
+			(\sourceX , \upperY) to (\resistanceX , \upperY)
+			(\sourceX , \lowerY) to (\resistanceX , \lowerY)
+		;
+		
+		\draw
+			(\diodeX , \upperY) to [D,v_>=$u_d$,i=$i_d$] (\diodeX, \lowerY)	
+			(\resistanceX , \upperY) to (\diodeX , \upperY)
+			(\resistanceX , \lowerY) to (\diodeX , \lowerY)
+		;
+	\end{circuitikz}
+	\center
+	\caption{Beispiel einer Schaltung}
+\end{figure}
 
 Gesucht sei hierbei das stationäre Verhalten bei konstanter Erregung (\emph{DC-Arbeitspunkt}). Die Diode kann mithilfe von $i_D = I_S \cdot \left(e^{\frac{u_D}{U_T}} - 1\right)$ beschrieben werden. Daraus folgt dann
 \[I_0 - \frac{u_D}{R} = I_S \cdot \left(e^{\frac{u_D}{U_T}} - 1\right)\]
@@ -606,7 +615,7 @@ Nullstellensuchen sind meist iterative Verfahren welche aus einem Startwert $\ve
 \[F(x) = 0\]
 Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(b) < 0$ und gesucht ist $x^\star$ mit $F(x^\star) = 0$, $a \le x^\star \le b$.
 
-\begin{center}
+\begin{figure}
 	\begin{tikzpicture}
 		\draw[thick,->] (0,0) -- (4,0) node[right]{$u_D$};
 		\draw[thick,->] (0,0) -- (0,3) node[above]{$i_D$};
@@ -631,7 +640,9 @@ Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(
 		\end{scope}
 	
 	\end{tikzpicture}
-\end{center}
+	\center
+	\caption{Arbeitspunktermittlung durch Nullstellensuche}
+\end{figure}
 
 \subsubsection{Intervallhalbierung}
 \begin{enumerate}
@@ -641,36 +652,38 @@ Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(
 \item Falls $\abs{a^{k + 1)} - b^{k + 1)}} > \epsilon$ dann gehe zu Schritt 2, $k = k + 1$
 \end{enumerate}
 
-\begin{center}
-\begin{tikzpicture}
-\coordinate (a) at (0,0);
-\coordinate (b) at (5,0);
-
-\draw [thick] (a) node [left] {$a$} -- (b) node[right] {$b$};
-\draw[thick] (a) -- ++(0,-1) node[left] {$f(a)$} [out=10,in=-115] to (1.5625,0) node[above] {\color{red}{$\xi$}} [out=65,in=185] to (5,3);
-\draw[thick] (b) -- ++(0,3) node[right] {$f(b)$};
-
-\draw[thick,dashed] ($(a)!.25!(b)$) -- ++(0,-.45);
-\draw[thick,dashed] ($(a)!.375!(b)$) -- ++(0,.6);
-\draw[thick,dashed] ($(a)!.5!(b)$) -- ++(0,1.6);
-
-\draw[thick] (0,-2) node [left] {$a_0$} -- (5,-2) node[right] {$b_0$};
-\draw[thick] (0,-1.9) -- (0,-2.1); 
-\draw[thick] (5,-1.9) -- (5,-2.1);
-\draw[thick] (2.5,-1.9) node[above] {\color{red}{$x_1$}} -- (2.5,-2.1); 
-\draw[thick] (0,-3) node [left] {$a_1$} -- (2.5,-3) node[right] {$b_1$};
-\draw[thick] (0,-2.9) -- (0,-3.1); 
-\draw[thick] (2.5,-2.9) -- (2.5,-3.1);
-\draw[thick] (1.25,-2.9) node[above] {\color{red}{$x_2$}} -- (1.25,-3.1);
-\draw[thick] (1.25,-4) node [left] {$a_2$} -- (2.5,-4) node[right] {$b_2$};
-\draw[thick] (1.25,-3.9) -- (1.25,-4.1); 
-\draw[thick] (2.5,-3.9) -- (2.5,-4.1);
-\draw[thick] (1.875,-3.9) node[above] {\color{red}{$x_3$}} -- (1.875,-4.1);
-\draw[thick] (1.25,-5) node [left] {$a_3$} -- (1.875,-5) node[right] {$b_3$};
-\draw[thick] (1.25,-4.9) -- (1.25,-5.1); 
-\draw[thick] (1.875,-4.9) -- (1.875,-5.1); 
-\end{tikzpicture}
-\end{center}
+\begin{figure}
+	\begin{tikzpicture}
+		\coordinate (a) at (0,0);
+		\coordinate (b) at (5,0);
+		
+		\draw [thick] (a) node [left] {$a$} -- (b) node[right] {$b$};
+		\draw[thick] (a) -- ++(0,-1) node[left] {$f(a)$} [out=10,in=-115] to (1.5625,0) node[above] {\color{red}{$\xi$}} [out=65,in=185] to (5,3);
+		\draw[thick] (b) -- ++(0,3) node[right] {$f(b)$};
+		
+		\draw[thick,dashed] ($(a)!.25!(b)$) -- ++(0,-.45);
+		\draw[thick,dashed] ($(a)!.375!(b)$) -- ++(0,.6);
+		\draw[thick,dashed] ($(a)!.5!(b)$) -- ++(0,1.6);
+		
+		\draw[thick] (0,-2) node [left] {$a_0$} -- (5,-2) node[right] {$b_0$};
+		\draw[thick] (0,-1.9) -- (0,-2.1); 
+		\draw[thick] (5,-1.9) -- (5,-2.1);
+		\draw[thick] (2.5,-1.9) node[above] {\color{red}{$x_1$}} -- (2.5,-2.1); 
+		\draw[thick] (0,-3) node [left] {$a_1$} -- (2.5,-3) node[right] {$b_1$};
+		\draw[thick] (0,-2.9) -- (0,-3.1); 
+		\draw[thick] (2.5,-2.9) -- (2.5,-3.1);
+		\draw[thick] (1.25,-2.9) node[above] {\color{red}{$x_2$}} -- (1.25,-3.1);
+		\draw[thick] (1.25,-4) node [left] {$a_2$} -- (2.5,-4) node[right] {$b_2$};
+		\draw[thick] (1.25,-3.9) -- (1.25,-4.1); 
+		\draw[thick] (2.5,-3.9) -- (2.5,-4.1);
+		\draw[thick] (1.875,-3.9) node[above] {\color{red}{$x_3$}} -- (1.875,-4.1);
+		\draw[thick] (1.25,-5) node [left] {$a_3$} -- (1.875,-5) node[right] {$b_3$};
+		\draw[thick] (1.25,-4.9) -- (1.25,-5.1); 
+		\draw[thick] (1.875,-4.9) -- (1.875,-5.1); 
+	\end{tikzpicture}
+	\center
+	\caption{Intervallhalbierung}
+\end{figure}
 
 Die Konvergenz eines iterativen Verfahrens wird mithilfe der Parameter $L$, dem Konvergenzfaktor, und $p$, der Konvergenzordnung, beschrieben.
 \[\Delta^{(k + 1)} = \frac{1}{2} \Delta^{(k)} = (\frac{1}{2})^{k + 1} \Delta^{(0)}\]
@@ -679,7 +692,8 @@ Die Konvergenz eines iterativen Verfahrens wird mithilfe der Parameter $L$, dem 
 Die Intervallhalbierung liegt bei $p = 1$, also linearer Konvergenz, und $L = 1/2$. Die Anzahl der Iterationsschritte bis zu einem Restfehler $\Delta^R$ ist damit
 \[\kappa = \ceil{\ld \left( \frac{\Delta^{(0)}}{\Delta^R}\right)}\]
 
-\begin{center}
+\begin{figure}
+	\center
 	\begin{tikzpicture}
 		\draw[thick,->] (0,0) -- (4,0) node[right]{$x$};
 		\draw[thick,->] (0,0) -- (0,3) node[above]{$F(x)$};
@@ -689,7 +703,8 @@ Die Intervallhalbierung liegt bei $p = 1$, also linearer Konvergenz, und $L = 1/
 		
 		\draw [dashed] (2, 0) node [below] {$x^{(k)}$} -- ++(0,1);	
 	\end{tikzpicture}
-\end{center}
+	\caption{Newton-Iteration}
+\end{figure}
 
 \subsubsection{Newton-Raphson-Verfahren} Die Idee hinter dem Newton-Raphson-Verfahren ist eine Taylorreihe erster Ordnung:
 \[F(x) = F(x^{(k)}) + F'(x^{(k)}) \cdot (x - x^{(k)}) + F''(x^{(k)}) \cdot \frac{(x - x^{(k)})^2}{2} + \dots\]
@@ -720,12 +735,12 @@ Nullstellenproblem und Fixpunktproblem können ineinander überführt werden., z
 
 \subsubsection{Fixpunkttheorem}
 \begin{enumerate}
-\item Sei $g(x)$ stetig auf $[a,b]$, sowie $g(x)\in [a,b]$ für alle $x\in [a,b]$.\\
+	\item Sei $g(x)$ stetig auf $[a,b]$, sowie $g(x)\in [a,b]$ für alle $x\in [a,b]$.\\
 Dann hat $g(x)$ mindestens einen Fixpunkt auf $[a,b]$
-\item Existiere zusaätzlich $g'(x) auf (a,b)$, sowie eine positive Konstante $k<1$ mit $\abs{g'(x)}\leq k$, für alle $x\in (a,b)$
+	\item Existiere zusaätzlich $g'(x) auf (a,b)$, sowie eine positive Konstante $k<1$ mit $\abs{g'(x)}\leq k$, für alle $x\in (a,b)$
 \begin{itemize}
-\item Dann hat $g(x)$ exakt einen Fixpunkt auf $[a,b]$
-\item Gilt $0<k<1$, dann konvergiert für jedes $x^{(0)}\in [a,b]$ die Folge 
+	\item Dann hat $g(x)$ exakt einen Fixpunkt auf $[a,b]$
+	\item Gilt $0<k<1$, dann konvergiert für jedes $x^{(0)}\in [a,b]$ die Folge 
 \[x^{(n)} = g(x^{(n-1)})\quad,n\geq 1\]
 zum eindeutigen Fixpunkt $x^*\in [0,b]$.
 \end{itemize}
@@ -747,7 +762,8 @@ Taylorreihe von $g(x)$ um $x^*$
 \item $g'(x^*) = 0$, $g''(x^*)\neq 0 \quad\Rightarrow$ quadratische Konvergenz ("Konstruktionshinweis")
 \end{itemize}
 
-\begin{center}
+\begin{figure}
+	\center
 	\begin{tikzpicture}
 		\draw[thick,->] (0,0) -- (4,0) node[right]{$x^{(i)}$};
 		\draw[thick,->] (0,0) -- (0,4) node[above]{$x^{(i + 1)} = g(x^{(i)})$};
@@ -773,12 +789,13 @@ Taylorreihe von $g(x)$ um $x^*$
 		\draw [dashed] (\xThree, 0) node [below] {$x^{(3)}$} -- (\xThree, \xFour);
 		\draw [dashed] (0, \xFour) node [left] {$g(x^{(3)})$} -- (\xThree, \xFour);
 	\end{tikzpicture}
-\end{center}
+	\caption{Fixpunktiteration}
+\end{figure}
 
 \subsubsection{Mehrdimensionaler Newton}
 \begin{align*}
 \vec{F}(\vec{x}) &= \vec{0}\quad,\vec{F} = (F_1,\ldots,F_r)^T\\
-\vec{F}(\vec{x}^{(k+1)}) &= \vec{F}(\vec{x}^{(k)}) + \underbrace{\frac{\partial\vec{F}(\vec{x}^{(k)})}{\partial\vec{x}^T}}_{}\cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right)\\
+\vec{F}(\vec{x}^{(k+1)}) &= \vec{F}(\vec{x}^{(k)}) + \underbrace{\frac{\partial\vec{F}(\vec{x}^{(k)})}{\partial\vec{x}^T}} \cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right)\\
 \begin{matrix}
 \text{Jacobi-Matrix}\\ \text{Fundamentalmatrix}
 \end{matrix}\qquad & \ma{J}(\vec{x}) = \frac{\partial\vec{F}(\vec{x})}{\partial\vec{x}^T} = \left(\frac{\partial\vec{F}}{\partial\vec{x}_1},\ldots,\frac{\partial\vec{F}}{\partial\vec{x}_r}\right) =\begin{pmatrix}
