@@ -1,0 +1,8 @@
+\begin{tikzpicture}[very thick,node distance=1.5cm,on grid,>=stealth']
+	\node (top)	{Anwendungsproblem};
+	\node (down1) [below=of top] {Primäres mathematisches Problem} edge [<-] node [right] {Mathematisierung} (top);
+	\node (down2) [below=of down1] {Sekundäre mathematische Probleme} edge [<-] node [right] {Mathematische Umformungen} (down1);
+	\node (down3) [below=of down2] {Algorithmus/Computerprogramm} edge [<-] node [right] {Programmierung} (down2);
+	\node (down4) [below=of down3] {"'Lösung"'} edge [<-] node [right] {Rechnung} (down3);
+	\node [below=of down4] {Lösung} edge [<-] node [right] {Beurteilung, "'Entmathematisierung"'} (down4);
+\end{tikzpicture} 

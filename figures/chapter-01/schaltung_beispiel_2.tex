@@ -1,0 +1,20 @@
+\begin{circuitikz}
+	\def\sourceX{0}
+	\def\resistanceX{2}
+	\def\diodeX{4}
+	\def\upperY{4}
+	\def\lowerY{0}
+	
+	\draw
+		(\sourceX , \lowerY) to [I,i_=$I_0$] (\sourceX , \upperY)
+		(\resistanceX , \lowerY) to [R=$R_0$,*-*,v=$u$] (\resistanceX , \upperY)
+		(\sourceX , \upperY) to (\resistanceX , \upperY)
+		(\sourceX , \lowerY) to (\resistanceX , \lowerY)
+	;
+	
+	\draw
+		(\diodeX , \upperY) to [D,v_>=$u_d$,i=$i_d$] (\diodeX, \lowerY)	
+		(\resistanceX , \upperY) to (\diodeX , \upperY)
+		(\resistanceX , \lowerY) to (\diodeX , \lowerY)
+	;
+\end{circuitikz} 
