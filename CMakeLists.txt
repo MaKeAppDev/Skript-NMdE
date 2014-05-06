@@ -8,10 +8,19 @@ set(CHAPTERS
 	chapters/chapter-01.tex
 )
 
+set(FIGURES
+	figures/chapter-01/mathematik_teilgebiete.tex
+)
+
 set(IMAGES
 	pics/bisection.png
 )
 
+set(LATEX_INPUTS
+	${CHAPTERS}
+	${FIGURES}
+)
+
 add_latex_document(skript.tex DEFAULT_PDF
-	INPUTS ${CHAPTERS}
+	INPUTS ${LATEX_INPUTS}
 	IMAGES ${IMAGES})
