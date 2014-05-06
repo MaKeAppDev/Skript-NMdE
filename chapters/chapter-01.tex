@@ -764,3 +764,17 @@ Taylorreihe von $g(x)$ um $x^*$
 \[\vec{x}^{(k+1)} = \vec{x}^{(k)}-\ma{J}^{-1}(\vec{x}^{(k)})\cdot\vec{F}(\vec{x}^{(k)})\]
 \textbf{Praktisch:}
 \[\ma{J}(\vec{x}^{(k)})\cdot\vec{x}^{(k+1)} = \ma{J}(\vec{x}^{(k)})\cdot\vec{x}^{(k)} - \vec{F}(\vec{x}^{(k)})\]
+
+% Insert Content
+
+\subsection{Allgemeines Iterationsverfahren für lineare Gleichungssysteme}
+\begin{align*}
+\ma{A} \cdot \vec{x} &= \vec{b}\\
+\vec{x}^{(k+1)} &= \vec{\Phi} \left( \vec{x}^{(k)}\right)\\
+\ma{B} &\text{ beliebig}\\
+\ma{B} \cdot \vec{x} + \left( \ma{A} \cdot \ma{B} \right) \cdot \vec{x} &= \vec{b} \quad \\
+\Rightarrow \text{ Iterationsvorschrift:}&\\
+\ma{B} \cdot \vec{x}^{(k+1)} + \left(  \ma{A} - \ma{B} \right) \cdot \vec{x}^{(k)} &= \vec{b}\\
+\vec{x}^{(k+1)} &= \vec{x}^{(k)} - \ma{B}^{-1} \cdot \left( \ma{A} \cdot \vec{x}^{(k) - \vec{b}} \right) \\
+&= \underbrace{\left( \ma{I} - \ma{B}^{-1} \cdot \ma{A}\right)}_{\text{Konvergenz, wenn }|\lambda| < 1} \cdot \vec{x}^{(k)} + \ma{B}^{-1} \cdot \vec{b}
+\end{align*}
