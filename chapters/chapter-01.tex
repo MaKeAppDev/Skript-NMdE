@@ -711,3 +711,30 @@ z.B.: $F(x) = e^x - 1 \Rightarrow x^{(k + 1)} = x^{(k)} - \frac{e^{x^{(k)}} - 1}
 Eingesetzt in die Newton-Gleichung erhält man somit
 \[x^{(k + 1)} = x^{(k)} - \frac{F(x^{(k)}) \cdot (x^{(k)} - x^{(k - 1)})}{F(x^{(k)}) - F(x^{(k - 1)})}\]
 Dadurch ist pro Schritt nur eine Funktionsauswertung nötig.
+
+
+\subsection{Fixpunktiteration}
+Fixpunkt $x^*$ einer Funktion $g(x)\cdot x^* = g(x^*)$.\\
+Nullstellenproblem und Fixpunktproblem können ineinander überführt werden., z.B.
+\[g(x) = x - F(x)\]
+
+\subsubsection{Fixpunkttheorem}
+\begin{enumerate}
+\item Sei $g(x)$ stetig auf $[a,b]$, sowie $g(x)\in [a,b]$ für alle $x\in [a,b]$.\\
+Dann hat $g(x)$ mindestens einen Fixpunkt auf $[a,b]$
+\item Existiere zusaätzlich $g'(x) auf (a,b)$, sowie eine positive Konstante $k<1$ mit $\abs{g'(x)}\leq k$, für alle $x\in (a,b)$
+\begin{itemize}
+\item Dann hat $g(x)$ exakt einen Fixpunkt auf $[a,b]$
+\item Gilt $0<k<1$, dann konvergiert für jedes $x^{(0)}\in [a,b]$ die Folge 
+\[x^{(n)} = g(x^{(n-1)})\quad,n\geq 1\]
+zum eindeutigen Fixpunkt $x^*\in [0,b]$.
+\end{itemize}
+\end{enumerate}
+
+\subsubsection{Konvergenzverhalten iterativer Verfahren}
+\begin{align*}
+x^{(k+1)} &= g(x^{(k)}) & \text{Iterationsvorschrift}\\
+x^* &= g(x^*) & \text{Fixpunkt}
+\end{align*}
+
+% Figure
