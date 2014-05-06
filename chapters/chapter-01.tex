@@ -798,7 +798,7 @@ Taylorreihe von $g(x)$ um $x^*$
 \subsubsection{Konvergenz}
 \[\vec x^{(k + 1)} = \vec \Phi(\vec x^{(k)}) = \vec \Phi(\vec x^\star) + \frac{\partial \vec \Phi}{\partial \vec x^T} \bigg|_{\vec x  = \vec x^\star} \cdot \left( \vec x^{(k)} - \vec x^\star \right) + \mathcal O\left( \left( \vec x^{(k)} - \vec x^\star \right) \cdot \left( \vec x^{(k)} - \vec x^\star \right)^T\right)\]
 
-\[\vec \epsilon^{(k + 1)} = \frac{\partial \vec \Phi}{\partial \vec x^T} \bigg|_{\vec x = \vec x^\star} \vec \epsilon^{(k)} + \mathcal O \left( \vec \epsilon^{(k)} \cdot \vec \epsilon^{(k)}^T \right)\]
+\[\vec \epsilon^{(k + 1)} = \frac{\partial \vec \Phi}{\partial \vec x^T} \bigg|_{\vec x = \vec x^\star} \vec \epsilon^{(k)} + \mathcal O \left( \vec \epsilon^{(k)} \cdot {\vec \epsilon^{(k)}}^T \right)\]
 
 \[\vec \Phi(\vec x) = \vec x - \ma{J}^{-1} \cdot \vec F\]
 \[\frac{\partial \vec \Phi}{\partial \vec x^T} = \underbrace{\ma{E} - \underbrace{\ma{J}^{-1} \underbrace{\frac{\partial \vec F}{\partial \vec x^T}}_{\ma J^{-1}}}_{\ma E}}_{\ma 0} - \underbrace{\frac{\partial \ma{J}^{-1}}{\partial \vec x^T} \cdot \vec F}_{\ma 0}\]
@@ -817,3 +817,14 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 	\item $||\vec F(\vec x^{(k)})|| \le F_{min}$
 	\item $k > k_{max}$
 \end{itemize}
+
+\subsubsection{Verschiedene Iterationsverfahren}
+\begin{enumerate}
+\item $\ma{S} = \ma{D}\quad$ : Jacobi (Gesamtschrittverfahren)
+\item $\ma{S} = \ma{D}+\ma{L}\quad$ : Gauß-Seidl (Einzelschrittverfahren)
+\item $\ma{S} = \frac{1}{w}(\ma{D}+w\ma{L})\quad$ : sukzessive Überrelaxation (SOR, successive Over-Relaxation)
+\end{enumerate}
+\begin{enumerate}
+\item Jacobi: $\ma{S} = \ma{D};\ma{D}$ nicht singulär
+\[\ma{A}\vec{x} = \vec{B}\Rightarrow\ma{D}\cdot\vec{x}^{(k+1)} ...\]
+\end{enumerate}
