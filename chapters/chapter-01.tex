@@ -737,6 +737,16 @@ x^{(k+1)} &= g(x^{(k)}) & \text{Iterationsvorschrift}\\
 x^* &= g(x^*) & \text{Fixpunkt}
 \end{align*}
 
+Taylorreihe von $g(x)$ um $x^*$ 
+\begin{align*}
+\left[g(x^{(k)})\right]x^{(k+1)} &= \underbrace{g(x^*)}_{x^*} + g'(x^*)\cdot (x^{(k)}-x^*) + \frac{1}{2} g''(x^*)\cdot (x^{(k)}-x^*)^2 + \ldots\\
+\varepsilon^{(k+1)} &= g'(x^*)\cdot \varepsilon^{(k)} + \frac{1}{2} g''(x^*)\cdot {\varepsilon^{(k)}}^2 + \ldots
+\end{align*}
+\begin{itemize}
+\item $g'(x^*)\neq 0$, $\abs{g'(x^*)} < 1 \quad\rightarrow$ lineare Konvergenz
+\item $g'(x^*) = 0$, $g''(x^*)\neq 0 \quad\Rightarrow$ quadratische Konvergenz ("Konstruktionshinweis")
+\end{itemize}
+
 \begin{center}
 	\begin{tikzpicture}
 		\draw[thick,->] (0,0) -- (4,0) node[right]{$x^{(i)}$};
@@ -764,6 +774,24 @@ x^* &= g(x^*) & \text{Fixpunkt}
 		\draw [dashed] (0, \xFour) node [left] {$g(x^{(3)})$} -- (\xThree, \xFour);
 	\end{tikzpicture}
 \end{center}
+
+\subsubsection{Mehrdimensionaler Newton}
+\begin{align*}
+\vec{F}(\vec{x}) &= \vec{0}\quad,\vec{F} = (F_1,\ldots,F_r)^T\\
+\vec{F}(\vec{x}^{(k+1)}) &= \vec{F}(\vec{x}^{(k)}) + \underbrace{\frac{\partial\vec{F}(\vec{x}^{(k)})}{\partial\vec{x}^T}}_{}\cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right)\\
+\begin{matrix}
+\text{Jacobi-Matrix}\\ \text{Fundamentalmatrix}
+\end{matrix}\qquad & \ma{J}(\vec{x}) = \frac{\partial\vec{F}(\vec{x})}{\partial\vec{x}^T} = \left(\frac{\partial\vec{F}}{\partial\vec{x}_1},\ldots,\frac{\partial\vec{F}}{\partial\vec{x}_r}\right) =\begin{pmatrix}
+\frac{\partial\vec{F}_1}{\partial\vec{x}_1} & \ldots & \frac{\partial\vec{F}_1}{\partial\vec{x}_r}\\
+\vdots & & \vdots\\
+\frac{\partial\vec{F}_r}{\partial\vec{x}_1} & \ldots & \frac{\partial\vec{F}_r}{\partial\vec{x}_r}
+\end{pmatrix}\\
+\vec{F}(\vec{x}^{(k+1)}) &= \vec{0}\Rightarrow\ma{J}(\vec{x}^{(k)})\cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right) = -\vec{F}(\vec{x}^{(1)})
+\end{align*}
+%% Box um gleichung below
+\[\vec{x}^{(k+1)} = \vec{x}^{(k)}-\ma{J}^{-1}(\vec{x}^{(k)})\cdot\vec{F}(\vec{x}^{(k)})\]
+\textbf{Praktisch:}
+\[\ma{J}(\vec{x}^{(k)})\cdot\vec{x}^{(k+1)} = \ma{J}(\vec{x}^{(k)})\cdot\vec{x}^{(k)} - \vec{F}(\vec{x}^{(k)})\]
 
 \subsubsection{Konvergenz}
 \[\vec x^{(k + 1)} = \vec \Phi(\vec x^{(k)}) = \vec \Phi(\vec x^\star) + \frac{\partial \vec \Phi}{\partial \vec x^T} \bigg|_{\vec x  = \vec x^\star} \cdot \left( \vec x^{(k)} - \vec x^\star \right) + \mathcal O\left( \left( \vec x^{(k)} - \vec x^\star \right) \cdot \left( \vec x^{(k)} - \vec x^\star \right)^T\right)\]
