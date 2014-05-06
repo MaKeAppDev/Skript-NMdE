@@ -11,15 +11,15 @@
 	\def\xThree{2.02796602315439250323}
 	\def\xFour{1.83747033351067410687}
 			
-	\draw [dashed] (\xZero, 0) node [below] {$x^{(0)}$} -- (\xZero, \xOne);
-	\draw [dashed] (0, \xOne) node [left] {$g(x^{(0)})$} -- (\xZero, \xOne);
+	\draw [dashed,gray] (\xZero, 0) node [below,black] {$x^{(0)}$} -- (\xZero, \xOne);
+	\draw [dashed,gray] (0, \xOne) node [left,black] {$g(x^{(0)})$} -- (\xZero, \xOne);
 	
-	\draw [dashed] (\xOne, 0) node [below] {$x^{(1)}$} -- (\xOne, \xTwo);
-	\draw [dashed] (0, \xTwo) node [left] {$g(x^{(1)})$} -- (\xOne, \xTwo);
+	\draw [dashed,gray] (\xOne, 0) node [above,black] {$x^{(1)}$} -- (\xOne, \xTwo);
+	\draw [dashed,gray] (0, \xTwo) node [right,black] {$g(x^{(1)})$} -- (\xOne, \xTwo);
 	
-	\draw [dashed] (\xTwo, 0) node [below] {$x^{(2)}$} -- (\xTwo, \xThree);
-	\draw [dashed] (0, \xThree) node [left] {$g(x^{(2)})$} -- (\xTwo, \xThree);
+	\draw [dashed,gray] (\xTwo, 0) node [below,black] {$x^{(2)}$} -- (\xTwo, \xThree);
+	\draw [dashed,gray] (0, \xThree) node [left,black] {$g(x^{(2)})$} -- (\xTwo, \xThree);
 	
-	\draw [dashed] (\xThree, 0) node [below] {$x^{(3)}$} -- (\xThree, \xFour);
-	\draw [dashed] (0, \xFour) node [left] {$g(x^{(3)})$} -- (\xThree, \xFour);
+	\draw [dashed,gray] (\xThree, 0) node [above,black] {$x^{(3)}$} -- (\xThree, \xFour);
+	\draw [dashed,gray] (0, \xFour) node [right,black] {$g(x^{(3)})$} -- (\xThree, \xFour);
 \end{tikzpicture} 
