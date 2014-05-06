@@ -764,3 +764,26 @@ x^* &= g(x^*) & \text{Fixpunkt}
 		\draw [dashed] (0, \xFour) node [left] {$g(x^{(3)})$} -- (\xThree, \xFour);
 	\end{tikzpicture}
 \end{center}
+
+\subsubsection{Konvergenz}
+\[\vec x^{(k + 1)} = \vec \Phi(\vec x^{(k)}) = \vec \Phi(\vec x^\star) + \frac{\partial \vec \Phi}{\partial \vec x^T} \bigg|_{\vec x  = \vec x^\star} \cdot \left( \vec x^{(k)} - \vec x^\star \right) + \mathcal O\left( \left( \vec x^{(k)} - \vec x^\star \right) \cdot \left( \vec x^{(k)} - \vec x^\star \right)^T\right)\]
+
+\[\vec \epsilon^{(k + 1)} = \frac{\partial \vec \Phi}{\partial \vec x^T} \bigg|_{\vec x = \vec x^\star} \vec \epsilon^{(k)} + \mathcal O \left( \vec \epsilon^{(k)} \cdot \vec \epsilon^{(k)}^T \right)\]
+
+\[\vec \Phi(\vec x) = \vec x - \ma{J}^{-1} \cdot \vec F\]
+\[\frac{\partial \vec \Phi}{\partial \vec x^T} = \underbrace{\ma{E} - \underbrace{\ma{J}^{-1} \underbrace{\frac{\partial \vec F}{\partial \vec x^T}}_{\ma J^{-1}}}_{\ma E}}_{\ma 0} - \underbrace{\frac{\partial \ma{J}^{-1}}{\partial \vec x^T} \cdot \vec F}_{\ma 0}\]
+
+\subsubsection{Abbruchkriterien}
+Gegeben sei eine Nullstellen-Suche: $\vec F(\vec x) = \vec 0 \Rightarrow \vec x^\star$
+
+Als Abbruchkriterium wäre schön
+\[||\vec x^{(k)} - \vec x^\star|| = || \vec \epsilon^{(k)} || \le || \vec \epsilon^{(A)} ||\]
+oder
+\[\frac{|| \vec \epsilon^{(k)} ||}{|| \vec x^\star ||} \le || \vec \epsilon^{(R)} ||\]
+Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in der Anwendung ein anderes Kriterium wählen:
+\begin{itemize}
+	\item $||\vec x^{(k + 1)} - \vec x^{(k)}|| \vec \epsilon^{(A)} ||$ bzw. $\frac{||\vec x^{(k + 1)} - \vec x^{(k)}||}{|| \vec x^{(k + 1)} ||} \le || \vec \epsilon^{(R)} ||$
+	\item $||\vec F(\vec x^{(k + 1)}) - \vec F(\vec x^{(k)})|| \le \Delta_F^{(A)}$
+	\item $||\vec F(\vec x^{(k)})|| \le F_{min}$
+	\item $k > k_{max}$
+\end{itemize}
