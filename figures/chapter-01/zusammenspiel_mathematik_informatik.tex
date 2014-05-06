@@ -1,0 +1,6 @@
+\begin{tikzpicture}[very thick,node distance=1.5cm,on grid,>=stealth']
+\node (top)	{Numerische Mathematik};
+\node (mid) [below=of top] {\begin{tabular}{l}Scientific Computing\\ Wissenschaftliches Rechnen\end{tabular}} edge [<-] (top);
+\node (down) [below=of mid]	{Informatik} edge [<-] (mid);
+\node [node distance=7cm, right=of mid] {\begin{tabular}{c}Logik und\\ Mengenlehre\end{tabular}} edge [<-] node [midway,above] {Computer} (mid);
+\end{tikzpicture} 

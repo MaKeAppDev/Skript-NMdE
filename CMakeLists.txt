@@ -10,6 +10,7 @@ set(CHAPTERS
 
 set(FIGURES
 	figures/chapter-01/mathematik_teilgebiete.tex
+	figures/chapter-01/zusammenspiel_mathematik_informatik.tex
 )
 
 set(IMAGES
