@@ -703,7 +703,9 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 
 \begin{align*}
 \textbf{Splitting: } \ma{A} &= \begin{bmatrix}a_{ij}\end{bmatrix} = \ma{D} + \ma{L} + \ma{U}\\
-&= \begin{bmatrix}a_{11} & & & \\ & a_{22} & &\\ & & \ddots & \\ & & & a_{nn}\end{bmatrix} + \begin{bmatrix}0 & & & \\ a_{21} & 0 & &\\ & & \ddots & \\ \vdots & &\vdots & \\ a_{n1} & \ldots & a_{n\, n-1} & 0\end{bmatrix} + \begin{bmatrix}0 & a_{12} & \ldots & a_{1n} \\ & 0 & &\\ & & \ddots & \vdots \\ & & & a_{n-1\,n} \\ & & & 0\end{bmatrix}
+&= \begin{bmatrix}a_{11} & & & \\ & a_{22} & &\\ & & \ddots & \\ & & & a_{nn}\end{bmatrix} + 
+\begin{bmatrix}0 & & & \\ a_{21} & 0 & &\\ \vdots & & \ddots &  \\ a_{n1} & \ldots & a_{n\, n-1} & 0\end{bmatrix} + 
+\begin{bmatrix}0 & a_{12} & \ldots & a_{1n} \\ & 0 & & \vdots \\ & & \ddots & a_{n-1\,n} \\ & & & 0\end{bmatrix}
 \end{align*}
 
 % Fix this !
