@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+	\coordinate (a) at (0,0);
+	\coordinate (b) at (5,0);
+	
+	\draw [thick] (a) node [left] {$a$} -- (b) node[right] {$b$};
+	\draw[thick] (a) -- ++(0,-1) node[left] {$f(a)$} [out=10,in=-115] to (1.5625,0) node[above] {\color{red}{$\xi$}} [out=65,in=185] to (5,3);
+	\draw[thick] (b) -- ++(0,3) node[right] {$f(b)$};
+	
+	\draw[thick,dashed] ($(a)!.25!(b)$) -- ++(0,-.45);
+	\draw[thick,dashed] ($(a)!.375!(b)$) -- ++(0,.6);
+	\draw[thick,dashed] ($(a)!.5!(b)$) -- ++(0,1.6);
+	
+	\draw[thick] (0,-2) node [left] {$a_0$} -- (5,-2) node[right] {$b_0$};
+	\draw[thick] (0,-1.9) -- (0,-2.1); 
+	\draw[thick] (5,-1.9) -- (5,-2.1);
+	\draw[thick] (2.5,-1.9) node[above] {\color{red}{$x_1$}} -- (2.5,-2.1); 
+	\draw[thick] (0,-3) node [left] {$a_1$} -- (2.5,-3) node[right] {$b_1$};
+	\draw[thick] (0,-2.9) -- (0,-3.1); 
+	\draw[thick] (2.5,-2.9) -- (2.5,-3.1);
+	\draw[thick] (1.25,-2.9) node[above] {\color{red}{$x_2$}} -- (1.25,-3.1);
+	\draw[thick] (1.25,-4) node [left] {$a_2$} -- (2.5,-4) node[right] {$b_2$};
+	\draw[thick] (1.25,-3.9) -- (1.25,-4.1); 
+	\draw[thick] (2.5,-3.9) -- (2.5,-4.1);
+	\draw[thick] (1.875,-3.9) node[above] {\color{red}{$x_3$}} -- (1.875,-4.1);
+	\draw[thick] (1.25,-5) node [left] {$a_3$} -- (1.875,-5) node[right] {$b_3$};
+	\draw[thick] (1.25,-4.9) -- (1.25,-5.1); 
+	\draw[thick] (1.875,-4.9) -- (1.875,-5.1); 
+\end{tikzpicture} 

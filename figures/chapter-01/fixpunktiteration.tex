@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+	\draw[thick,->] (0,0) -- (4,0) node[right]{$x^{(i)}$};
+	\draw[thick,->] (0,0) -- (0,4) node[above]{$x^{(i + 1)} = g(x^{(i)})$};
+	
+	\draw (0, -0) node [below] {$x^{(k+2)}$} -- (4, 4);
+	\draw[blue,domain=0:4,name path=exp] plot (\x,{exp(0.3*\x)});
+	
+	\def\xZero{3.5}
+	\def\xOne{2.85765111806316378986}
+	\def\xTwo{2.35677777239982118523}
+	\def\xThree{2.02796602315439250323}
+	\def\xFour{1.83747033351067410687}
+			
+	\draw [dashed,gray] (\xZero, 0) node [below,black] {$x^{(0)}$} -- (\xZero, \xOne);
+	\draw [dashed,gray] (0, \xOne) node [left,black] {$g(x^{(0)})$} -- (\xZero, \xOne);
+	
+	\draw [dashed,gray] (\xOne, 0) node [above,black] {$x^{(1)}$} -- (\xOne, \xTwo);
+	\draw [dashed,gray] (0, \xTwo) node [right,black] {$g(x^{(1)})$} -- (\xOne, \xTwo);
+	
+	\draw [dashed,gray] (\xTwo, 0) node [below,black] {$x^{(2)}$} -- (\xTwo, \xThree);
+	\draw [dashed,gray] (0, \xThree) node [left,black] {$g(x^{(2)})$} -- (\xTwo, \xThree);
+	
+	\draw [dashed,gray] (\xThree, 0) node [above,black] {$x^{(3)}$} -- (\xThree, \xFour);
+	\draw [dashed,gray] (0, \xFour) node [right,black] {$g(x^{(3)})$} -- (\xThree, \xFour);
+\end{tikzpicture} 
