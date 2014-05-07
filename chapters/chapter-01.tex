@@ -4,24 +4,24 @@
 \section{Zusammenfassung}
 
 \subsection{Überblick}
-\begin{figure}
+\begin{figure}[htdp]
 	\center
-	\include{figures/chapter-01/mathematik_teilgebiete}
+	\input{figures/chapter-01/mathematik_teilgebiete}
 	\caption{Teilgebiete der Mathematik}
 \end{figure} 
 
 \textbf{Definitionsversuch:} Entwicklung und mathematisches Verständnis von numerischen Algorithmen, als von Rechenmethoden zur zahlenmäßigen Lösung mathematischer Probleme.
 
 \textbf{Zusammenspiel mit Informatik:}
-\begin{figure}
-	\include{figures/chapter-01/zusammenspiel_mathematik_informatik}
+\begin{figure}[htdp]
+	\input{figures/chapter-01/zusammenspiel_mathematik_informatik}
 	\caption{Zusammenspiel Mathematik und Information in der Numerik}
 \end{figure}
 
 \subsection{Vorgehen}
-\begin{figure}
+\begin{figure}[htdp]
 	\center
-	\include{figures/chapter-01/loesung_mathematisches_problem}
+	\input{figures/chapter-01/loesung_mathematisches_problem}
 	\caption{Vorgehen zur Lösung eines mathematischen Problems}
 \end{figure}
 
@@ -139,9 +139,9 @@ c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots
 \end{align*}
 
 \section{Schaltungsanalyse}
-\begin{figure}
+\begin{figure}[htdp]
 	\center
-	\include{figures/chapter-01/schaltung_beispiel_1}
+	\input{figures/chapter-01/schaltung_beispiel_1}
 	\caption{Beispielschaltung}
 \end{figure}
 \begin{tabular}{llll}
@@ -536,9 +536,9 @@ welche offensichtlich abhängig von der gewählten Matrixnorm ist. Eine $\cond{\
 \subsection{Nichtlineare Gleichungen: Linearisierung}
 Dies ist nötig beispielsweise in der Schaltungsanalyse inklusiver nichtlinearer Elemente (z.B. Diode, Transistor).
 
-\begin{figure}
+\begin{figure}[htdp]
 	\center
-	\include{figures/chapter-01/schaltung_beispiel_2}
+	\input{figures/chapter-01/schaltung_beispiel_2}
 	\caption{Beispiel einer Schaltung}
 \end{figure}
 
@@ -550,9 +550,9 @@ Nullstellensuchen sind meist iterative Verfahren welche aus einem Startwert $\ve
 \[F(x) = 0\]
 Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(b) < 0$ und gesucht ist $x^\star$ mit $F(x^\star) = 0$, $a \le x^\star \le b$.
 
-\begin{figure}
+\begin{figure}[htdp]
 	\center
-	\include{figures/chapter-01/arbeitspunkt}
+	\input{figures/chapter-01/arbeitspunkt}
 	\caption{Arbeitspunktermittlung durch Nullstellensuche}
 \end{figure}
 
@@ -564,9 +564,9 @@ Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(
 \item Falls $\abs{a^{k + 1)} - b^{k + 1)}} > \epsilon$ dann gehe zu Schritt 2, $k = k + 1$
 \end{enumerate}
 
-\begin{figure}
+\begin{figure}[htdp]
 	\center
-	\include{figures/chapter-01/intervallhalbierung}
+	\input{figures/chapter-01/intervallhalbierung}
 	\caption{Intervallhalbierung}
 \end{figure}
 
@@ -577,9 +577,9 @@ Die Konvergenz eines iterativen Verfahrens wird mithilfe der Parameter $L$, dem 
 Die Intervallhalbierung liegt bei $p = 1$, also linearer Konvergenz, und $L = 1/2$. Die Anzahl der Iterationsschritte bis zu einem Restfehler $\Delta^R$ ist damit
 \[\kappa = \ceil{\ld \left( \frac{\Delta^{(0)}}{\Delta^R}\right)}\]
 
-\begin{figure}
+\begin{figure}[htdp]
 	\center
-	\include{figures/chapter-01/newton_iteration}
+	\input{figures/chapter-01/newton_iteration}
 	\caption{Newton-Iteration}
 \end{figure}
 
@@ -639,9 +639,9 @@ Taylorreihe von $g(x)$ um $x^*$
 \item $g'(x^*) = 0$, $g''(x^*)\neq 0 \quad\Rightarrow$ quadratische Konvergenz ("Konstruktionshinweis")
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[htdp]
 	\center
-	\include{figures/chapter-01/fixpunktiteration}
+	\input{figures/chapter-01/fixpunktiteration}
 	\caption{Fixpunktiteration}
 \end{figure}
 
