@@ -9,14 +9,15 @@ set(CHAPTERS
 )
 
 set(FIGURES
-	figures/chapter-01/mathematik_teilgebiete.tex
-	figures/chapter-01/zusammenspiel_mathematik_informatik.tex
+	figures/chapter-01/arbeitspunkt.tex
+	figures/chapter-01/fixpunktiteration.tex
+	figures/chapter-01/intervallhalbierung.tex
 	figures/chapter-01/loesung_mathematisches_problem.tex
+	figures/chapter-01/mathematik_teilgebiete.tex
+	figures/chapter-01/newton_iteration.tex
 	figures/chapter-01/schaltung_beispiel_1.tex
 	figures/chapter-01/schaltung_beispiel_2.tex
-	figures/chapter-01/arbeitspunkt.tex
-	figures/chapter-01/intervallhalbierung.tex
-	figures/chapter-01/fixpunktiteration.tex
+	figures/chapter-01/zusammenspiel_mathematik_informatik.tex
 )
 
 set(IMAGES
