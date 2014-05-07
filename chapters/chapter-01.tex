@@ -778,3 +778,23 @@ Taylorreihe von $g(x)$ um $x^*$
 \vec{x}^{(k+1)} &= \vec{x}^{(k)} - \ma{B}^{-1} \cdot \left( \ma{A} \cdot \vec{x}^{(k) - \vec{b}} \right) \\
 &= \underbrace{\left( \ma{I} - \ma{B}^{-1} \cdot \ma{A}\right)}_{\text{Konvergenz, wenn }|\lambda| < 1} \cdot \vec{x}^{(k)} + \ma{B}^{-1} \cdot \vec{b}
 \end{align*}
+
+\subsection{Iterative Verfahren zum Lösen linearer Gleichungssysteme}
+\[\ma{A} \cdot \vec{x} = \vec{b},\ \ma{A} \in \mathrm{R}^{n\times n},\ \vec{x},\vec{b} \in \mathrm{R}^n,\ \ma{A} \text{ nicht singulär}\]
+
+\begin{align*}
+\textbf{Splitting: } \ma{A} &= \begin{bmatrix}a_{ij}\end{bmatrix} = \ma{D} + \ma{L} + \ma{U}\\
+&= \begin{bmatrix}a_{11} & & & \\ & a_{22} & &\\ & & \ddots & \\ & & & a_{nn}\end{bmatrix} + \begin{bmatrix}0 & & & \\ a_{21} & 0 & &\\ & & \ddots & \\ \vdots & &\vdots & \\ a_{n1} & \ldots & a_{n\, n-1} & 0\end{bmatrix} + \begin{bmatrix}0 & a_{12} & \ldots & a_{1n} \\ & 0 & &\\ & & \ddots & \vdots \\ & & & a_{n-1\,n} \\ & & & 0\end{bmatrix}
+\end{align*}
+
+% Fix this !
+
+\begin{align*}
+\ma{A} &= \ma{S} - \ma{T}\\
+\ma{A} \cdot \vec{x} &= \left( \ma{S} - \ma{T} \right) \cdot \vec{x} = \vec{b}\\
+\Rightarrow \ma{S} \cdot \vec{x} &= \ma{T} \cdot \vec{x} + \vec{b}\\
+&= \left( \ma{S} - \ma{A} \right) \cdot \vec{x} + \vec{b}\\
+\Rightarrow \vec{x} &= \ma{S}^{-1} \cdot \left( \ma{S} - \ma{A} \right) \cdot \vec{x} + \ma{S}^{-1} \cdot \vec{b}
+\end{align*}
+
+\ldots
