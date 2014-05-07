@@ -7,4 +7,6 @@ syntax: glob
 *.synctex.*
 .DS_Store
 *.toc
+*.lof
+*.lot
 skript.pdf
