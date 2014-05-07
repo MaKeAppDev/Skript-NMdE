@@ -1,6 +1,6 @@
 %+------------------------------------------------------------------------------+
 %| Numerische Methoden der Elektrotechnik                                       |
-%| Skript geschrieben von Markus Hofbauer und Kevin Meyer                                           |
+%| Skript geschrieben von Markus Hofbauer, Kevin Meyer und Benedikt Schmidt	    |
 %+------------------------------------------------------------------------------+
 \documentclass[fontsize=11pt,   % Schriftgröße
     DIV=12,          % Seitenaufteilung
@@ -13,12 +13,11 @@
     listof=totoc,    % Verzeichnisse im Inhaltsverzeichnis aufführen
     ]{scrbook}
 
-% Packages
+%% Packages
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage{scientific}
 \usepackage[european]{circuitikz}
-\usepackage{scrpage2}
 \usetikzlibrary{trees,positioning,arrows,calc,intersections}
 \usepackage{enumitem}
 \usepackage{wasysym}
@@ -29,13 +28,30 @@
     citecolor=black,
     filecolor=black,
     linkcolor=black,
-    urlcolor=black
+    urlcolor=black,
+    %linktocpage % Seitenzahlen anstatt Text im Inhaltsverzeichnis verlinken
 }
 
 % Seitenstiel
+\usepackage[automark, headsepline]{scrpage2}
 \pagestyle{scrheadings}
+\automark[section]{chapter}
 % Trennlinie unter Kopfzeile
 \setheadsepline[text]{0.4pt}
+% Nummerierung der Kapitel beeinflussen
+% -1 keine Überschrift wird numeriert
+% 0  Kapitelüberschriften werden numeriert
+% 1  Kapitel- und Abschnittsüberschriften werden numeriert
+% 2  Kapitel- bis Unterabschnittsüberschriften werden numeriert
+% 3  Kapitel- bis Unterunterabschnittsüberschriften werden numeriert
+% 4  Kapitel- bis Paragraphsüberschriften werden numeriert
+% 5  alle Überschriften werden numeriert
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+% Schusterjungen und Hurenkinder vermeiden
+\clubpenalty = 10000 
+\widowpenalty = 10000 
+\displaywidowpenalty = 10000
 
 % From undertilde.sty
 \def\undertilde#1{\mathord{\vtop{\ialign{##\crcr
@@ -47,7 +63,7 @@ $\hfil\tilde{}\hfil$\crcr\noalign{\kern1.5pt}}}}}
 \newcommand{\ld}{\ensuremath{\text{ld}}}
 \renewcommand{\ma}[1]{\ensuremath{\undertilde{\boldsymbol {#1}}}}
 
-\sisetup{locale=DE}
+\sisetup{per-mode=fraction, locale=DE}
 
 \DeclareSIUnit \voltampere {VA}
 \DeclareSIUnit \var {Var}
@@ -60,7 +76,23 @@ $\hfil\tilde{}\hfil$\crcr\noalign{\kern1.5pt}}}}}
 	
 	\input{title}
 	
+% Inhaltsverzeichnis
+	\cleardoublepage
+	\pagenumbering{Roman}
+	\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
 	\tableofcontents
+	
+% Inhalt
+	\cleardoublepage
+	\pagenumbering{arabic}
 	\input{chapters/chapter-01}
+	
+% Verzeichnisse
+	\cleardoublepage
+	\pagenumbering{roman}
+	% Abbildungs- und Tabellenverzeichnis
+	%\setcounter{lofdepth}{2}
+	\listoffigures
+	%\listoftables
 	
 \end{document}
