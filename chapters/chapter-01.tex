@@ -709,16 +709,17 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 \begin{bmatrix}0 & a_{12} & \ldots & a_{1n} \\ & 0 & & \vdots \\ & & \ddots & a_{n-1\,n} \\ & & & 0\end{bmatrix}
 \end{align*}
 
+% Fix this !
+
 \begin{align*}
 \ma{A} &= \ma{S} - \ma{T}\\
 \ma{A} \cdot \vec{x} &= \left( \ma{S} - \ma{T} \right) \cdot \vec{x} = \vec{b}\\
 \Rightarrow \ma{S} \cdot \vec{x} &= \ma{T} \cdot \vec{x} + \vec{b}\\
 &= \left( \ma{S} - \ma{A} \right) \cdot \vec{x} + \vec{b}\\
-\Rightarrow \vec{x} &= \ma{S}^{-1} \cdot \left( \ma{S} - \ma{A} \right) \cdot \vec{x} + \ma{S}^{-1} \cdot \vec{b}\\
-&= \left( \ma{I} - \ma{S}^{-1}\cdot\ma{A} \right) \cdot \vec{x} + \ma{S}^{-1}\cdot \vec{b}\\
-\textbf{Iterationsvorschrift:}\\
-\vec{x}^{(k+1)} &= \left( \ma{I} - \ma{S}^{-1}\cdot\ma{A} \right) \cdot \vec{x}^{(k)} + \ma{S}^{-1}\cdot \vec{b}
+\Rightarrow \vec{x} &= \ma{S}^{-1} \cdot \left( \ma{S} - \ma{A} \right) \cdot \vec{x} + \ma{S}^{-1} \cdot \vec{b}
 \end{align*}
+
+\ldots
 
 \subsubsection{Verschiedene Iterationsverfahren}
 \begin{enumerate}
@@ -792,3 +793,9 @@ Man erkennt bei Gauß-Seidel die Abhängigkeit von Werten, welche erst im aktuel
 \[\ma{S} \vec{e}^{(k + 1)} = \ma{T} \vec{e}^{(k)}\]
 \[\vec{e}^{(k + 1)} = \ma{S}^{-1} \ma{T} \vec{e}^{(k)}\]
 \[\vec{e}^{(k + 1)} = \ma{G} \vec{e}^{(k)} = \ma{G}^k \vec{e}^{(0)}\]
+
+\begin{figure}[htdp]
+	\center
+	\input{figures/chapter-01/steepest_descent}
+	\caption{Gradientenverfahren - steepest descent}
+\end{figure}
