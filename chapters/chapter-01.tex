@@ -736,19 +736,19 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 \end{align*}
 \item Gauss-Seidel: $\ma{S} = \ma{D} + \ma{L}$ (nicht singulär)
 \[\ma{A} \vec{x} + \vec{b} = \vec{0} \Rightarrow (\ma{D} + \ma{L}) \vec{x}^{(k + 1)} = (\ma{D} + \ma{L} - \ma{A}) \vec{x}^{(k)} + \vec{b} = -\ma{U} \vec{x}^{(k)} + \vec{b}\]
-\[\vec{x}^{(k + 1)} = \underbrace{-(\ma{D} + \ma{L})^{-1} \cdot \ma{U}}_{\ma{K}_g} \vec{x}^{(k)} + \underbrace{(\ma{D} + \ma{L})^{-1} \vec{b}}_{C_g}\]
-\[\vec{x}^{(k + 1)} = \ma{K}_g \vec{x}^{(k)} + C_g\]
+\[\vec{x}^{(k + 1)} = \underbrace{-(\ma{D} + \ma{L})^{-1} \cdot \ma{U}}_{\ma{K}_g} \vec{x}^{(k)} + \underbrace{(\ma{D} + \ma{L})^{-1} \vec{b}}_{\vec{c}_g}\]
+\[\vec{x}^{(k + 1)} = \ma{K}_g \vec{x}^{(k)} + \vec{c}_g\]
 \item Successive Over-Relaxation: $\ma{S} = \frac{1}{\omega} (\ma{D} + \omega \ma{L})$
 \[\ma{A} \vec{x} = \vec{b}\]
 \[\frac{1}{\omega} (\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = \frac{1}{\omega} (\ma{D} + \omega \ma{L} - \ma{A}) \vec{x}^{(k)} + \vec{b}\]
 \[\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = (\ma{D} + \omega \ma{L} - \omega \ma{A}) \vec{x}^{(k)} + \omega \vec{b}\]
 \[\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = (\ma{D}(1 - \omega) - \omega \ma{U}) \vec{x}^{(k)} + \omega \vec{b}\]
-\[\vec{x}^{(k + 1)} = \underbrace{(\ma{D} + \omega \ma{L})^{-1} (\ma{D} (1 - \omega) - \omega \ma{U})}_{\ma{K}_\omega} \vec{x}^{(k)} + \underbrace{(\ma{D} + \omega \ma{L}) \omega \vec{b}}_{C_\omega}\]
-\[\vec{x}^{(k + 1)} = \ma{K}_\omega \vec{x}^{(k)} + C_\omega\]
+\[\vec{x}^{(k + 1)} = \underbrace{(\ma{D} + \omega \ma{L})^{-1} (\ma{D} (1 - \omega) - \omega \ma{U})}_{\ma{K}_\omega} \vec{x}^{(k)} + \underbrace{(\ma{D} + \omega \ma{L}) \omega \vec{b}}_{\vec{c}_\omega}\]
+\[\vec{x}^{(k + 1)} = \ma{K}_\omega \vec{x}^{(k)} + \vec{c}_\omega\]
 Die jeweilige Wahl von $\omega$ bei SOR beeinflusst dann das Konvergenzverhalten. Für Spezialfälle können Empfehlungen gegeben werden:
 \begin{enumerate}
 \item Falls $a_{ii} \ne 0$, $i = 1, \dots, n$ $\Rightarrow \varrho(\ma{K}_\omega) \ge |1 - \omega| \Rightarrow$ Konvergenz für $0 < \omega < 2$
-\item Falls $\ma{A}$ positiv definit und $0 < \omega < 2$, dann konvergiert SOR für jede Initiallösung $\vec{x}^^{(0)}$
+\item Falls $\ma{A}$ positiv definit und $0 < \omega < 2$, dann konvergiert SOR für jede Initiallösung $\vec{x}^{(0)}$
 \item Falls $\ma{A}$ positiv definit und tridiagonal ist, dann $\varrho(\ma{K}_g) = \varrho(\ma{K}_j)^2 < 1$ und die optimale Wahl für $\omega$ ist:
 \[\omega = \frac{2}{1 + \sqrt{1 - \varrho(\ma{K}_j)^2}}\]
 \end{enumerate}
