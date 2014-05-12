@@ -727,6 +727,10 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 \item $\ma{S} = \frac{1}{w}(\ma{D}+w\ma{L})\quad$ : sukzessive Überrelaxation (SOR, successive Over-Relaxation)
 \end{enumerate}
 \begin{enumerate}
-\item Jacobi: $\ma{S} = \ma{D};\ma{D}$ nicht singulär
-\[\ma{A}\vec{x} = \vec{B}\Rightarrow\ma{D}\cdot\vec{x}^{(k+1)} ...\]
+\item Jacobi: $\ma{S} = \ma{D};\ma{D}$ nicht singulär (d.h. $a_{ii}\neq 0$)
+\begin{align*}
+{A}\vec{x} = \vec{b}\Rightarrow\ma{D}\cdot\vec{x}^{(k+1)} &= (\ma{D}-\ma{A})\cdot\vec{x}^{(k)}+\vec{b} = (-\ma{L}-\ma{U})\cdot\vec{x}^{(k)}+\vec{b}\\
+\vec{x}^{(k+1)} &= \underbrace{\ma{D}^{-1}\cdot(-\ma{L}-\ma{U})}_{\ma{K}_j}\cdot\vec{x}^{(k)}+\underbrace{\ma{D}^{-1}\vec{b}}_{\vec{c}_j}\\
+&= \ma{K}_j\cdot\vec{x}^{(k)}+\vec{c}_j
+\end{align*}
 \end{enumerate}
