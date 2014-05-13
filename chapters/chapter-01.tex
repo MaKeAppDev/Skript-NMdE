@@ -794,10 +794,8 @@ Man erkennt bei Gauß-Seidel die Abhängigkeit von Werten, welche erst im aktuel
 \[\vec{e}^{(k + 1)} = \ma{S}^{-1} \ma{T} \vec{e}^{(k)}\]
 \[\vec{e}^{(k + 1)} = \ma{G} \vec{e}^{(k)} = \ma{G}^k \vec{e}^{(0)}\]
 
-\end{enumerate}
-
 \subsection{Gradientenverfahren}
-Sei \ma{A} \in \mathbb{R}^{n\times n} mit
+Sei $ \ma{A} \in \mathbb{R}^{n\times n} $ mit
 \begin{itemize}
 \item $\ma{A}^T = \ma{A}$
 \item $\vec{x}^T \cdot \ma{A} \cdot \vec{x} > 0$ für $\vec{x} \neq 0$ (positiv definit)
@@ -822,13 +820,13 @@ $\Rightarrow$ Minimierung der quadratischen Form entspricht Lösung des linearen
 \alpha_k = ? \text{ Minimiere } \vec{\Phi}\\
 \vec{x}^{(k+1)} = \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\\
 \vec{\Phi}(x^{(k+1)}) = \frac{1}{2} \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right)^T \cdot \ma{A} \cdot \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right) - \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right)^T \cdot \vec{b}\\
-\frac{\delta \vec{\Phi}(x^{(k+1)})}{\delta \alpha_k} = \frac{1}{2} \vec{r}^{(k)}^T \cdot \ma{A} \cdot \vec{x}^{(k)} + \frac{1}{2} \vec{x}^{(k)}^T \cdot \ma{A} \cdot \vec{r}^{(k)} + \alpha_k \cdot \vec{r}^{(k)}^T \cdot \ma{A} \cdot \vec{r}^{(k)} - \vec{r}^{(k)}^T \cdot \vec{b}\\
-= \vec{r}^{(k)}^T \cdot \ma{A} \vec{x}^{(k)} - \vec{r}^{(k)}^T \cdot \vec{b} + \alpha_k \cdot \vec{r}^{(k)}^T \cdot \ma{A} \cdot \vec{r}^{(k)} \neq 0\\
+\frac{\delta \vec{\Phi}(x^{(k+1)})}{\delta \alpha_k} = \frac{1}{2} {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{x}^{(k)} + \frac{1}{2} {\vec{x}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b}\\
+= {\vec{r}^{(k)}}^T \cdot \ma{A} \vec{x}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} \neq 0\\
 \ldots\\
-\Rightarrow \alpha = \frac{\vec{r}^{(k)}^T \cdot \vec{r}^{(k)}}{\vec{r}^{(k)}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
+\Rightarrow \alpha = \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
 \textbf{Verfahren: } k = 0,1,2,\ldots\\
 \vec{r}^{(k)} = \vec{b} \cdot \ma{A} \cdot \vec{x}^{(k)}\\
-\alpha_k = \frac{\vec{r}^{(k)}^T \cdot \vec{r}^{(k)}}{\vec{r}^{(k)}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
+\alpha_k = \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
 \vec{x}^{(k+1)} = \vec{x}^{(k)} + \alpha_k \cdot \vec{r}^{(k)}
 \end{align*}
 
