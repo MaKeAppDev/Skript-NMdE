@@ -814,20 +814,20 @@ $\Rightarrow$ Minimierung der quadratischen Form entspricht Lösung des linearen
 \subsection{Iterativer Ansatz für Minimierungsproblem}
 \begin{align*}
 \text{Allgemein: } \vec{x}^{(k+1)} &= \vec{x}^{(k)} + \alpha_K \cdot \vec{d}^{(k)}\\
-\alpha_k, \vec{d} &= ?
-\text{Idee: Wähle Richtung des steilsten Abstiegs ("sleepest descent")}\\
+\alpha_k,\ \vec{d} &= ?\\
+\text{Idee: } & \text{Wähle Richtung des steilsten Abstiegs ("'sleepest descent"')}\\
 \vec{d}^{(k)} &= - \nabla \Phi(\vec{x^{(k)}}) = \vec{b} \cdot \ma{A} \cdot \vec{x}^{(k)} =: \vec{r}^{(k)} \text{ Residium}\\
-\alpha_k = ? \text{ Minimiere } \vec{\Phi}\\
-\vec{x}^{(k+1)} = \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\\
-\vec{\Phi}(x^{(k+1)}) = \frac{1}{2} \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right)^T \cdot \ma{A} \cdot \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right) - \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right)^T \cdot \vec{b}\\
-\frac{\delta \vec{\Phi}(x^{(k+1)})}{\delta \alpha_k} = \frac{1}{2} {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{x}^{(k)} + \frac{1}{2} {\vec{x}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b}\\
-= {\vec{r}^{(k)}}^T \cdot \ma{A} \vec{x}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} \neq 0\\
+\alpha_k &= ? \text{ Minimiere } \vec{\Phi}\\
+\vec{x}^{(k+1)} &= \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\\
+\vec{\Phi}(x^{(k+1)}) &= \frac{1}{2} \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right)^T \cdot \ma{A} \cdot \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right) - \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right)^T \cdot \vec{b}\\
+\frac{\partial \vec{\Phi}(x^{(k+1)})}{\partial \alpha_k} &= \frac{1}{2} {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{x}^{(k)} + \frac{1}{2} {\vec{x}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b}\\
+&= {\vec{r}^{(k)}}^T \cdot \ma{A} \vec{x}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} \neq 0\\
 \ldots\\
-\Rightarrow \alpha = \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
-\textbf{Verfahren: } k = 0,1,2,\ldots\\
-\vec{r}^{(k)} = \vec{b} \cdot \ma{A} \cdot \vec{x}^{(k)}\\
-\alpha_k = \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
-\vec{x}^{(k+1)} = \vec{x}^{(k)} + \alpha_k \cdot \vec{r}^{(k)}
+\Rightarrow \alpha &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
+\textbf{Verfahren: } k &= 0,1,2,\ldots\\
+\vec{r}^{(k)} &= \vec{b} \cdot \ma{A} \cdot \vec{x}^{(k)}\\
+\alpha_k &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
+\vec{x}^{(k+1)} &= \vec{x}^{(k)} + \alpha_k \cdot \vec{r}^{(k)}
 \end{align*}
 
 2 Matrix-Vektormult. (dominant)\\
@@ -835,7 +835,7 @@ $\Rightarrow$ Minimierung der quadratischen Form entspricht Lösung des linearen
 Alternative:\\
 \begin{align*}
 - \ma{A} \cdot \vec{x}^{(k+1)} + \vec{b} &= - \ma{A} \cdot \vec{x}^{(k)} - \alpha_k \cdot \ma{A} \cdot \vec{r}^{(k)} + \vec{b}\\
-\vec{r}^{(k+1)} = \vec{r}^{(k)} - \alpha_k \cdot \ma{A} \vec{r}^{(k)}\\
+\vec{r}^{(k+1)} &= \vec{r}^{(k)} - \alpha_k \cdot \ma{A} \vec{r}^{(k)}\\
 \Rightarrow \text{ nur eine Matrix-Vektormultiplikation je Iteration}
 \end{align*}
 
