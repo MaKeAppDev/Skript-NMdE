@@ -1,0 +1,22 @@
+\begin{tikzpicture}	
+	\coordinate (center) at (3, 4);
+	
+	\clip (-2, -2) -- (8, -2) -- (8, 8) -- (-2, 8) -- (-2, -2);
+	\draw[thick,->] (0,0) -- (7,0) node[right]{$x_1$};
+	\draw[thick,->] (0,0) -- (0,7) node[above]{$x_2$};
+	\node[draw,circle,inner sep=0.2pt,fill,black] at (center) {};
+	\draw[rotate=10] (center) ellipse (0.5cm and 0.2cm);
+	\draw[rotate=10] (center) ellipse (1cm and 0.4cm);
+	\draw[rotate=10] (center) ellipse (2cm and 0.8cm);
+	\draw[rotate=10] (center) ellipse (4cm and 1.6cm);
+	\draw[rotate=10] (center) ellipse (8cm and 3.2cm);
+	
+	\node[draw,circle,inner sep=0.2pt,fill,black] at (1, 5.1) {};
+	\node at (1, 5.5) {$\vec{x}^{(0)}$};
+	\draw[->] (1, 5.1) -- (1.3, 4.5) node[right] {$\vec{r}^{(0)}$};
+	\draw[thin, dashed] (1, 5.1) -- (4, -1) node[right] {};
+	\node[draw,circle,inner sep=0.2pt,fill,black] at (1.42, 4.25) {};
+	\node at (1, 4) {$\vec{x}^{(1)}$};
+	\draw[->] (1.42, 4.25) -- (1.7, 3.8) node[right] {$\vec{r}^{(1)}$};
+
+\end{tikzpicture} 
