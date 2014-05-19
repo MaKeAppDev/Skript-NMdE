@@ -31,6 +31,7 @@
     urlcolor=black,
     %linktocpage % Seitenzahlen anstatt Text im Inhaltsverzeichnis verlinken
 }
+\usepackage{todonotes}
 
 % Seitenstiel
 \usepackage[automark, headsepline]{scrpage2}
@@ -75,19 +76,19 @@ $\hfil\tilde{}\hfil$\crcr\noalign{\kern1.5pt}}}}}
 \begin{document}
 	
 	\input{title}
-	
-% Inhaltsverzeichnis
+	\listoftodos
+	% Inhaltsverzeichnis
 	\cleardoublepage
 	\pagenumbering{Roman}
 	\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
 	\tableofcontents
 	
-% Inhalt
+	% Inhalt
 	\cleardoublepage
 	\pagenumbering{arabic}
 	\input{chapters/chapter-01}
 	
-% Verzeichnisse
+	% Verzeichnisse
 	\cleardoublepage
 	\pagenumbering{roman}
 	% Abbildungs- und Tabellenverzeichnis
