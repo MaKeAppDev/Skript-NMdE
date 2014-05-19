@@ -893,10 +893,11 @@ Wie Gradientenverfahren, aber Suchrichtung $\vec{p}$
 
 \subsubsection{Suchrichtung}
 \textbf{Definition:} Lösung $\vec{x}^{(k)}$ heißt optimal bzgl. einer Richtung $\vec{p}\neq 0$, wenn $\vec{\Phi}(\vec{x}^{(k)})\leq\vec{\Phi}(\vec{x}^{(k)}+\lambda\vec{p})\;,\;\forall\lambda\in\R$\\
-$\Leftrightarrow\vec{\Phi}$ besitzt lokales Minimum entlang $\vec{p}$ für $\lambda = 0$\\
-$\Leftrightarrow\frac{\partial\vec{\Phi}}{\partial\lambda}\left(\vec{x}^{(k)}+\lambda\vec{p}^{(k)}\right)\vert_{\lambda = 0} = \vec{p}^T\cdot\ma{A}\cdot\vec{x}^{(k)} - \vec{p}\vec{b}^T + \lambda\vec{p}^T\cdot\ma{A}\cdot\vec{p}\vert_{\lambda = 0}$\\
-$\Leftrightarrow\vec{p}\vec{I}\vec{r}^{(k)}$
-
+\begin{itemize}
+\item[$\Leftrightarrow$] $\vec{\Phi}$ besitzt lokales Minimum entlang $\vec{p}$ für $\lambda = 0$
+\item[$\Leftrightarrow$] $\frac{\partial\vec{\Phi}}{\partial\lambda}\left(\vec{x}^{(k)}+\lambda\vec{p}^{(k)}\right)\vert_{\lambda = 0} = \vec{p}^T\cdot\ma{A}\cdot\vec{x}^{(k)} - \vec{p}\vec{b}^T + \lambda\vec{p}^T\cdot\ma{A}\cdot\vec{p}\vert_{\lambda = 0}$
+\item[$\Leftrightarrow$] $\vec{p}\vec{I}\vec{r}^{(k)}$
+\end{itemize}
 \begin{align*}
 \text{Sei }\vec{x}^{(k+1)} = \vec{x}^{(k)} + \vec{q}\Rightarrow\vec{r}^{(k+1)} &= \vec{b}\cdot\ma{A}\cdot\vec{x}^{(k+1)}\\
 &= \vec{b}\cdot\ma{A}\cdot\vec{x}^{(k)} - \ma{A}\vec{q}\\
