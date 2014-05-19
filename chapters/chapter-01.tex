@@ -849,3 +849,21 @@ Alternative:\\
 	\vec{r}^{(k+1)} &= \vec{r}^{(k)} - \alpha_k \cdot \ma{A} \vec{r}^{(k)}\\
 	\Rightarrow \text{ nur eine Matrix-Vektormultiplikation je Iteration}
 \end{align*}
+
+\subsection{Konvergenz}
+\begin{align*}
+	\vec{x}^{(k)} &= \vec{x}^* + \vec{e}^{(k)} \text{, Annahme: } \vec{e} \text{ is EV von} \ma{A}:\\
+	\ma{A} \cdot \vec{e} &= \lambda_e \cdot \vec{e}\\
+	\vec{r}^{(k)} &= \vec{b} - \ma{A} \cdot \vec{x}^{(k)}\\
+	&= \vec{b} - \ma{A} \cdot \left( \vec{x}^* + \vec{e}^{(k)}\right)\\
+	&= \underbrace{\vec{b} - \ma{A} \cdot \vec{x}^*}_{\vec{0}} - \ma{A} \cdot \vec{e}^{(k)}\\
+	\vec{r}^{(k)} &= - \ma{A} \cdot \vec{e}^{(k)} = - \lambda_e \cdot \vec{e}^{(k)} \Rightarrow \vec{r}^{(k)} \text{ ist ebenfalls EV}
+\end{align*}
+
+\begin{align*}
+\text{Aus (3): } \vec{x}^{(k+1)} &= \vec{x}^{(k)} + \alpha_k \cdot \vec{r}^{(k)}\\
+\vec{e}^{(k+1)} &= \vec{e}^{(k)} + \alpha_k \cdot \vec{r}^{(k)}\\
+&= \vec{e}^{(k)} + \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}} \cdot \left( -\lambda_e \cdot \vec{e}^{(k)}\right)\\
+&= \vec{e}^{(k)} + \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)} \cdot \lambda_e} \cdot \left( -\lambda_e \cdot \vec{e}^{(k)}\right)\\
+&= \vec{e}^{(k)} - \vec{e}^{(k)} = \vec{0} \Rightarrow \text{Exakte Lösung in einem Schritt}
+\end{align*}
