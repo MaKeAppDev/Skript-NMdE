@@ -874,3 +874,12 @@ Alternative:\\
 ||\vec{x}||_A &= \sqrt{\vec{x}^T \cdot \ma{A} \cdot \vec{x}} \text{ Energienorm}\\
 \text{Es gilt: } ||\vec{e}^{(k+1)}||_A &= \frac{k_2(\ma{A})-1}{k_2(\ma{A})+1} \cdot ||\vec{e}^{(k)}||_A
 \end{align*}
+
+\subsection{CG - Konjugierte Gradientenmethode}
+$ \vec{p}^{(k)} $ ist eine Menge mit $ {\underbrace{\vec{p}^{(i)}}^T \cdot \ma{A} \cdot \vec{p}^{(j)} = 0}_{\text{paarweise A-orthogonal bzw. A-konjugiert}}, \forall_{i,j=1,\ldots,n} i \neq j$\\
+$ \Rightarrow \vec{p}^{(k)}$ bilden eine Basis des $\mathbb{R}^n$
+
+\begin{align*}
+\text{Daher: } \vec{x}^* &= \sum^n_{i=1} \alpha_i \cdot \vec{p}^{(i)}\\
+\Rightarrow \vec{b} &= \ma{A} \cdot \vec{x}^* = \sum^n_{i=1} \alpha_i \cdot \ma{A} \cdot \vec{p}^{(i)}
+\end{align*}
