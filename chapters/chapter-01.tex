@@ -814,14 +814,14 @@ $\Rightarrow$ Minimierung der quadratischen Form entspricht Lösung des linearen
 \begin{tabular}{ll}
 	\textbf{Allgemein:} & $\vec{x}^{(k+1)} = \vec{x}^{(k)} + \alpha_K \cdot \vec{d}^{(k)}$\\
 	\textbf{Bestimme:} & $\alpha_k,\ \vec{d} = ?$\\
-	\textbf{Idee:} & Wähle Richtung des steilsten Abstiegs ("'sleepest descent"', siehe \autoref{fig:sleepest-descent})\\
+	\textbf{Idee:} & Wähle Richtung des steilsten Abstiegs ("'steepest descent"', siehe \autoref{fig:steepest-descent})\\
 \end{tabular}
 
 \begin{figure}[htdp]
 	\center
 	\input{figures/chapter-01/steepest_descent}
-	\caption{Gradientenverfahren - sleepest descent}
-	\label{fig:sleepest-descent}
+	\caption{Gradientenverfahren - steepest descent}
+	\label{fig:steepest-descent}
 \end{figure}
 
 \begin{align*}
@@ -921,9 +921,7 @@ Forderung $\vec{x}^{(k+1)}$ ebenfalls optimal bzgl. $\vec{p}$, also
 Zu zeigen: $\vec{p}^{(k+1)}$ ist $\ma{A}$ orthogonal zu $\vec{p}^{(j)}\;\forall j<k$\\
 Beweisidee: vollständige Induktion
 
-
-
-\paragraph{Verfahren}
+\paragraph{Zusammenfassung des Verfahrens}
 \begin{equation}
 	\vec{r}^{(0)} = \vec{b} - \ma{A} \vec{x}^{(0)}
 \end{equation}
@@ -962,7 +960,7 @@ In der Praxis mit endlicher Rechengenauigkeit erhält man allerdings nicht die e
 
 Verbessert werden kann das Konvergenzverhalten durch eine Vorkonditionierung.
 
-\paragraph{Vorkoniditionierung} Transformiere $\ma{A} \vec{x} = \vec{b}$ in (Linksvorkonditionierung)
+\paragraph{Vorkonditionierung} Transformiere $\ma{A} \vec{x} = \vec{b}$ in (Linksvorkonditionierung)
 \begin{equation}
 	\ma{P}^{-1} \ma{A} \vec{x} = \ma{P}^{-1} \vec{b}
 \end{equation}
