@@ -876,13 +876,50 @@ Alternative:\\
 \end{align*}
 
 \subsection{CG - Konjugierte Gradientenmethode}
-$ \vec{p}^{(k)} $ ist eine Menge mit $ {\underbrace{\vec{p}^{(i)}}^T \cdot \ma{A} \cdot \vec{p}^{(j)} = 0}_{\text{paarweise A-orthogonal bzw. A-konjugiert}}, \forall_{i,j=1,\ldots,n} i \neq j$\\
+$ \vec{p}^{(k)} $ ist eine Menge mit $ \underbrace{{\vec{p}^{(i)}}^T}_{\text{paarweise A-orthogonal bzw. A-konjugiert}} \cdot \ma{A} \cdot \vec{p}^{(j)} = 0, \forall i,j=1,\ldots,n\quad i \neq j$\\
 $ \Rightarrow \vec{p}^{(k)}$ bilden eine Basis des $\mathbb{R}^n$
 
 \begin{align*}
 \text{Daher: } \vec{x}^* &= \sum^n_{i=1} \alpha_i \cdot \vec{p}^{(i)}\\
 \Rightarrow \vec{b} &= \ma{A} \cdot \vec{x}^* = \sum^n_{i=1} \alpha_i \cdot \ma{A} \cdot \vec{p}^{(i)}
 \end{align*}
+
+\subsubsection{Schrittweite}
+\begin{align*}
+0 = \frac{\partial\vec{\Phi}}{\partial\alpha_k}\left(\vec{x}^{(k)}+\alpha_k\vec{p}^{(k)}\right)\\
+\Rightarrow\alpha_k = \frac{{\vec{p}^{(k)}}^T\cdot\vec{r}^{(k)}}{{\vec{p}^{(k)}}^T\cdot\ma{A}\cdot\vec{p}^{(k)}}
+\end{align*}
+Wie Gradientenverfahren, aber Suchrichtung $\vec{p}$
+
+\subsubsection{Suchrichtung}
+\textbf{Definition:} Lösung $\vec{x}^{(k)}$ heißt optimal bzgl. einer Richtung $\vec{p}\neq 0$, wenn $\vec{\Phi}(\vec{x}^{(k)})\leq\vec{\Phi}(\vec{x}^{(k)}+\lambda\vec{p})\;,\;\forall\lambda\in\R$\\
+\begin{itemize}
+\item[$\Leftrightarrow$] $\vec{\Phi}$ besitzt lokales Minimum entlang $\vec{p}$ für $\lambda = 0$
+\item[$\Leftrightarrow$] $\frac{\partial\vec{\Phi}}{\partial\lambda}\left(\vec{x}^{(k)}+\lambda\vec{p}^{(k)}\right)\vert_{\lambda = 0} = \vec{p}^T\cdot\ma{A}\cdot\vec{x}^{(k)} - \vec{p}\vec{b}^T + \lambda\vec{p}^T\cdot\ma{A}\cdot\vec{p}\vert_{\lambda = 0}$
+\item[$\Leftrightarrow$] $\vec{p}\vec{I}\vec{r}^{(k)}$
+\end{itemize}
+\begin{align*}
+\text{Sei }\vec{x}^{(k+1)} = \vec{x}^{(k)} + \vec{q}\Rightarrow\vec{r}^{(k+1)} &= \vec{b}\cdot\ma{A}\cdot\vec{x}^{(k+1)}\\
+&= \vec{b}\cdot\ma{A}\cdot\vec{x}^{(k)} - \ma{A}\vec{q}\\
+&= \vec{r}^{(k)} - \ma{A}\vec{q}
+\end{align*} 
+Forderung $\vec{x}^{(k+1)}$ ebenfalls optimal bzgl. $\vec{p}$, also
+\begin{align*}
+0 = \vec{p}^T\cdot\vec{r}^{(k+1)} &= \vec{p}^T\cdot(\vec{r}^{(k)} - \ma{A}\vec{q})\\
+&= \underbrace{\vec{p}^T\cdot\vec{r}^{(k)}}_{0}-\vec{p}^T\cdot\ma{A}\cdot\vec{q} = \underbrace{-\vec{p}^T\cdot\ma{A}\cdot\vec{q}}_{\vec{p},\vec{q},\ma{A}\text{orthogonal}} = 0
+\end{align*}
+
+\textbf{Konstruktion der Suchrichtung}
+\begin{itemize}
+\item Start $\vec{p}^{(0)} = \vec{r}^{(0)}$ (Ausgehend von Initiallösung $\vec{x}^{(0)}$, Gradient an $\vec{x}^{(0)}$)
+\item Suche Richtungen $\vec{p}^{(k+1)} = \vec{r}^{(k+1)} - \beta_k\cdot\vec{p}^{(k)}\;,k=0,1,2,\ldots$ mit $\beta_k\in\R$, so dass gilt:
+\begin{align*}
+{\vec{p}^{(j)}}^T\cdot\ma{A}\cdot\vec{p}^{(k+1)} = 0 = {\left(\ma{A}\cdot\vec{p}^{(j)}\right)}^T\cdot\vec{p}^{(k+1)} = 0\;,j=0,1,\ldots,k\\
+\Rightarrow {\left(\ma{A}\cdot\vec{p}^{(j)}\right)}^T\cdot\left(\vec{r}^{(k+1)}-\beta_k\cdot\vec{p}^{(k)}\right) = 0 \underset{(j=k)}{\Rightarrow}\beta_k = \frac{\left(\ma{A}\cdot\vec{p}^{(k)}\right)^T\cdot\vec{r}^{(k+1)}}{\left(\ma{A}\cdot\vec{p}^{(k)}\right)^T\cdot\vec{p}^{(k)}}
+\end{align*}
+\end{itemize}
+Zu zeigen: $\vec{p}^{(k+1)}$ ist $\ma{A}$ orthogonal zu $\vec{p}^{(j)}\;\forall j<k$\\
+Beweisidee: vollständige Induktion
 
 
 
@@ -895,7 +932,7 @@ $ \Rightarrow \vec{p}^{(k)}$ bilden eine Basis des $\mathbb{R}^n$
 \end{equation}
 Für $k = 0, 1, \ldots$
 \begin{equation}
-	\alpha_k = \frac{\vec{p}^{(k)}^T \cdot \vec{r}^{(k)}}{\vec{p}^{(k + 1)}^T \ma{A} \vec{p}^{(k)}}
+	\alpha_k = \frac{\vec{p}^{(k)T} \cdot \vec{r}^{(k)}}{\vec{p}^{(k + 1)}^T \ma{A} \vec{p}^{(k)}}
 \end{equation}
 \begin{equation}
 	\vec{x}^{(k + 1)} = \vec{x}^{(k)} + \alpha_k \vec{p}^{(k)}
