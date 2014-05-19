@@ -21,9 +21,7 @@ set(FIGURES
 	figures/chapter-01/steepest_descent.tex
 )
 
-set(IMAGES
-	pics/bisection.png
-)
+set(IMAGES)
 
 set(LATEX_INPUTS
 	${CHAPTERS}
