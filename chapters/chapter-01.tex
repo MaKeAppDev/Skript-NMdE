@@ -27,11 +27,11 @@
 
 \subsection{Aspekte für die Lösung einer mathematischen Aufgabenstellung}
 \begin{itemize}
-\item Kondition eines Problems (Empfindlichkeit für Störungen)
-\item Numerische Lösungsverfahren
-\item Stabilität des Lösungsverfahrens (Empfindlichkeit für Störungen)
-\item Effizienz des Lösungsverfahrens
-\item Genauigkeit der Lösung
+	\item Kondition eines Problems (Empfindlichkeit für Störungen)
+	\item Numerische Lösungsverfahren
+	\item Stabilität des Lösungsverfahrens (Empfindlichkeit für Störungen)
+	\item Effizienz des Lösungsverfahrens
+	\item Genauigkeit der Lösung
 \end{itemize}
 
 \section{Wiederholung}
@@ -39,12 +39,12 @@
 \subsection{Lineares Gleichungssystem}
 
 \begin{align*}
-a_{11}\,x_1 + \ldots + a_{1n}\,x_n &= b_1\\
-a_{21}\,x_1 + \ldots + a_{2n}\,x_n &= b_2\\
-&\vdots\\
-a_{m1}\,x_1 + \ldots + a_{mn}\,x_n &= b_m\\
-\ma{A} \cdot \vec{x} &= \vec{b}\\
-\ma{A} &\in \mathbb{R}^{m\times n},\ \vec{x} \in \mathbb{R}^n,\ \vec{b} \in \mathbb{R}^m
+	a_{11}\,x_1 + \ldots + a_{1n}\,x_n &= b_1\\
+	a_{21}\,x_1 + \ldots + a_{2n}\,x_n &= b_2\\
+	&\vdots\\
+	a_{m1}\,x_1 + \ldots + a_{mn}\,x_n &= b_m\\
+	\ma{A} \cdot \vec{x} &= \vec{b}\\
+	\ma{A} &\in \mathbb{R}^{m\times n},\ \vec{x} \in \mathbb{R}^n,\ \vec{b} \in \mathbb{R}^m
 \end{align*}
 
 \subsection{Matrizen}
@@ -53,89 +53,89 @@ a_{m1}\,x_1 + \ldots + a_{mn}\,x_n &= b_m\\
 
 \textbf{Addition:}
 \begin{align*}
-\ma{A}_{<m\times n>} + \ma{B}_{<m\times n>} &= \ma{C}_{<m\times n>}\\
-c_{\mu\nu} &= a_{\mu\nu} + b_{\mu\nu}
+	\ma{A}_{<m\times n>} + \ma{B}_{<m\times n>} &= \ma{C}_{<m\times n>}\\
+	c_{\mu\nu} &= a_{\mu\nu} + b_{\mu\nu}
 \end{align*}
 
 \textbf{Multiplikation mit Skalar:}
 \begin{align*}
-k \cdot \ma{A} = \ma{A} \cdot k = B\\
-b_{\mu\nu} = k \cdot a_{\mu\nu}
+	k \cdot \ma{A} = \ma{A} \cdot k = B\\
+	b_{\mu\nu} = k \cdot a_{\mu\nu}
 \end{align*}
 
 \textbf{Matrix-Multiplikation:}
 \begin{align*}
-\ma{A}_{<m\times n>} \cdot \ma{B}_{<n\times l>} &= \ma{C}_{<m\times l>}\\
-c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots m,\ \lambda=1\ldots l
+	\ma{A}_{<m\times n>} \cdot \ma{B}_{<n\times l>} &= \ma{C}_{<m\times l>}\\
+	c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots m,\ \lambda=1\ldots l
 \end{align*}
 
 \textbf{Multiplikation Matrix-Vektor:}
 \begin{align*}
-\text{Spezialfall der Matrix-Multiplikation: } <n\times 1> \text{ bzw. } <1\times n>
+	\text{Spezialfall der Matrix-Multiplikation: } <n\times 1> \text{ bzw. } <1\times n>
 \end{align*}
 
 \textbf{Auffassen als Linearkombination der Spalten der Matrix:}
 \begin{align*}
-\ma{A} \cdot \vec{x} &= \vec{b}\\
-\begin{bmatrix}\vec{a}_1 & \vec{a}_2 & \ldots & \vec{a}_n\end{bmatrix} \cdot \vec{x} &= \vec{b}\\
-\vec{a}_1\,\vec{x} + \ldots + \vec{a}_n\,\vec{x}_n &= \vec{b}
+	\ma{A} \cdot \vec{x} &= \vec{b}\\
+	\begin{bmatrix}\vec{a}_1 & \vec{a}_2 & \ldots & \vec{a}_n\end{bmatrix} \cdot \vec{x} &= \vec{b}\\
+	\vec{a}_1\,\vec{x} + \ldots + \vec{a}_n\,\vec{x}_n &= \vec{b}
 \end{align*}
 
 \textbf{Vektoren:}
 \begin{align*}
-\text{Spaltenvektor:} \quad & \vec{a}_{<n\times 1>}: \vec{a}\\
-\text{Zeilenvektor:} \quad & \vec{b}_{<1\times m>}^T: \vec{b}^T
+	\text{Spaltenvektor:} \quad & \vec{a}_{<n\times 1>}: \vec{a}\\
+	\text{Zeilenvektor:} \quad & \vec{b}_{<1\times m>}^T: \vec{b}^T
 \end{align*}
 
 \subsubsection{Vektormultiplikation}
 \begin{align*}
-\vec{b}^T\cdot \vec{a} &= c \quad \text{(Skalarprodukt $m=n$!)}\\
-\vec{a} \cdot \vec{b}^T &= \ma{C} \quad \text{(Vektorprodukt, dyadisches Produkt)}
+	\vec{b}^T\cdot \vec{a} &= c \quad \text{(Skalarprodukt $m=n$!)}\\
+	\vec{a} \cdot \vec{b}^T &= \ma{C} \quad \text{(Vektorprodukt, dyadisches Produkt)}
 \end{align*}
 
 \textbf{Matrix als Kombination von Zeilen- und Spaltenvektoren:}
 \begin{align*}
-\ma{A}_{<m\times n>} &= \begin{bmatrix} \vec{a}_1^T \\ \vec{a}_2^T \\ \vdots \\ \vec{a}_m^T \end{bmatrix}\\
-\ma{B}_{<n\times l>} &= \begin{bmatrix} \vec{b}_1 & \vec{b}_2 & \ldots & \vec{b}_l \end{bmatrix}\\
-\ma{A} \cdot \ma{B} &= \ma{C}\\
-\vec{c}_{\mu\lambda} &= \vec{a}_\mu^T \cdot \vec{b}_\lambda
+	\ma{A}_{<m\times n>} &= \begin{bmatrix} \vec{a}_1^T \\ \vec{a}_2^T \\ \vdots \\ \vec{a}_m^T \end{bmatrix}\\
+	\ma{B}_{<n\times l>} &= \begin{bmatrix} \vec{b}_1 & \vec{b}_2 & \ldots & \vec{b}_l \end{bmatrix}\\
+	\ma{A} \cdot \ma{B} &= \ma{C}\\
+	\vec{c}_{\mu\lambda} &= \vec{a}_\mu^T \cdot \vec{b}_\lambda
 \end{align*}
 
 \textbf{Rechenregeln:}
 \begin{align*}
-\left(\ma{A}\cdot \ma{B}\right)\cdot \ma{C} &= \ma{A} \cdot \left(\ma{B} \cdot \ma{C}\right) \quad \text{Assoziativität}\\
-\ma{A} \cdot \left(\ma{B} + \ma{C}\right) &= \ma{A}\,\ma{B} + \ma{A}\,\ma{B} \quad \text{Distributivität}\\
-\ma{A} \cdot \ma{B} &\neq \ma{B} \cdot \ma{A} \quad \text{Kumutativität gilt im Allgemeinen nicht}
+	\left(\ma{A}\cdot \ma{B}\right)\cdot \ma{C} &= \ma{A} \cdot \left(\ma{B} \cdot \ma{C}\right) \quad \text{Assoziativität}\\
+	\ma{A} \cdot \left(\ma{B} + \ma{C}\right) &= \ma{A}\,\ma{B} + \ma{A}\,\ma{B} \quad \text{Distributivität}\\
+	\ma{A} \cdot \ma{B} &\neq \ma{B} \cdot \ma{A} \quad \text{Kumutativität gilt im Allgemeinen nicht}
 \end{align*}
 
 \textbf{Diagonalmatrix:}
 \begin{align*}
-\ma{D} &= \text{diag}\begin{bmatrix}d_1 & d_2 & \ldots & d_n\end{bmatrix} = \begin{bmatrix}d_1 & \ldots & 0 \\ 0 & \ldots & d_n\end{bmatrix}\\
-\ma{D}_1 \cdot \ma{D}_2 &= \ma{D}_2 \cdot \ma{D}_1
+	\ma{D} &= \text{diag}\begin{bmatrix}d_1 & d_2 & \ldots & d_n\end{bmatrix} = \begin{bmatrix}d_1 & \ldots & 0 \\ 0 & \ldots & d_n\end{bmatrix}\\
+	\ma{D}_1 \cdot \ma{D}_2 &= \ma{D}_2 \cdot \ma{D}_1
 \end{align*}
 
 \textbf{Einheitsmatrix:}
 \begin{align*}
-\ma{I} = \ma{E} = \ma{1} = \text{diag}\begin{bmatrix}1 & \ldots & 1\end{bmatrix}\\
-\ma{A} \cdot \ma{I} = \ma{I} \cdot \ma{A}\\
-\ma{I}^n = \ma{I}\\
-\ma{I}^{-1} = \ma{I}
+	\ma{I} = \ma{E} = \ma{1} = \text{diag}\begin{bmatrix}1 & \ldots & 1\end{bmatrix}\\
+	\ma{A} \cdot \ma{I} = \ma{I} \cdot \ma{A}\\
+	\ma{I}^n = \ma{I}\\
+	\ma{I}^{-1} = \ma{I}
 \end{align*}
 
 \textbf{Transponierte Matrix:}
 \begin{align*}
-\ma{A}_{<m\times n>}^T &= \ma{B}_{<n\times m>},\ b_{\nu\mu} = a_{\mu\nu}\\
-\left(\ma{A} \cdot \ma{B}\right)^T &= \ma{B}^T \cdot \ma{A}^T\\
-\ma{A} &= \ma{A}^T \quad \Rightarrow \text{ symmetrische Matrix}
+	\ma{A}_{<m\times n>}^T &= \ma{B}_{<n\times m>},\ b_{\nu\mu} = a_{\mu\nu}\\
+	\left(\ma{A} \cdot \ma{B}\right)^T &= \ma{B}^T \cdot \ma{A}^T\\
+	\ma{A} &= \ma{A}^T \quad \Rightarrow \text{ symmetrische Matrix}
 \end{align*}
 
 \textbf{Inverse Matrix:}
 \begin{align*}
-\ma{A} &\in \mathbb{R}^{n\times n}\\
-\ma{A}^{-1} \cdot \ma{A} &= \ma{A} \cdot \ma{A}^{-1} = \ma{I}\\
-\text{$\ma{A}^{-1}$ existiert nur für nicht singuläre $\ma{A}$}&\text{ und ist eindeutig.}\\
-\ma{A} = \text{diag}\begin{bmatrix}d_1 & \ldots & d_n\end{bmatrix} & \Rightarrow \ma{A}^{-1} = \text{diag}\begin{bmatrix}\frac{1}{d_1} & \ldots & \frac{1}{d_n}\end{bmatrix}\\
-\left(\ma{A} \cdot \ma{B}\right) &= \ma{B}^{-1} \cdot \ma{A}^{-1}
+	\ma{A} &\in \mathbb{R}^{n\times n}\\
+	\ma{A}^{-1} \cdot \ma{A} &= \ma{A} \cdot \ma{A}^{-1} = \ma{I}\\
+	\text{$\ma{A}^{-1}$ existiert nur für nicht singuläre $\ma{A}$}&\text{ und ist eindeutig.}\\
+	\ma{A} = \text{diag}\begin{bmatrix}d_1 & \ldots & d_n\end{bmatrix} & \Rightarrow \ma{A}^{-1} = \text{diag}\begin{bmatrix}\frac{1}{d_1} & \ldots & \frac{1}{d_n}\end{bmatrix}\\
+	\left(\ma{A} \cdot \ma{B}\right) &= \ma{B}^{-1} \cdot \ma{A}^{-1}
 \end{align*}
 
 \section{Schaltungsanalyse}
@@ -145,26 +145,26 @@ c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots
 	\caption{Beispielschaltung}
 \end{figure}
 \begin{tabular}{llll}
-\textcolor{green!70!blue}{$\vec{i}_{<k>}$} & \textcolor{green!70!blue}{Kantenstromvektor} & \textcolor{blue}{$\vec{u}_{<k>}$} & \textcolor{blue}{Kantenspannungsvektor}\\
-$\vec{i}_{0<k>}$ & Kantenquellenstromvektor & $\vec{u}_{0<k>}$ & Kantenquellenspannungsvektor\\
-$\vec{i}_{n<k>}$ & Knotenquellenstromvektor & \textcolor{red}{$\vec{u}_{n<k>}$} & \textcolor{red}{Knotenquellenspannungsvektor}\\
-\\
-$\ma{A}_{<n\times k>}$ & Kontenmatrix, Knoteninzidenzmatrix & &\\
-$\ma{Y}_{<k\times k>}$ & Kantenadmittanzmatrix & &\\
-$\ma{Y}_{n<n\times n>}$ & Kontenadmittanzmatrix & &\\
+	\textcolor{green!70!blue}{$\vec{i}_{<k>}$} & \textcolor{green!70!blue}{Kantenstromvektor} & \textcolor{blue}{$\vec{u}_{<k>}$} & \textcolor{blue}{Kantenspannungsvektor}\\
+	$\vec{i}_{0<k>}$ & Kantenquellenstromvektor & $\vec{u}_{0<k>}$ & Kantenquellenspannungsvektor\\
+	$\vec{i}_{n<k>}$ & Knotenquellenstromvektor & \textcolor{red}{$\vec{u}_{n<k>}$} & \textcolor{red}{Knotenquellenspannungsvektor}\\
+	\\
+	$\ma{A}_{<n\times k>}$ & Kontenmatrix, Knoteninzidenzmatrix & &\\
+	$\ma{Y}_{<k\times k>}$ & Kantenadmittanzmatrix & &\\
+	$\ma{Y}_{n<n\times n>}$ & Kontenadmittanzmatrix & &\\
 \end{tabular}
 
 \subsection{Gerichteter Graph der Schaltung}
 
 \subsection{Inzidenz Matrix}
 \begin{align*}
-\ma{A}_{<m\times n>} = \begin{bmatrix}
-1 & & & -1\\
- & 1 & & -1\\
--1 & & 1 & \\
- & & 1 & -1\\
- & -1 & 1 & 
-\end{bmatrix}
+	\ma{A}_{<m\times n>} = \begin{bmatrix}
+	1 & & & -1\\
+	 & 1 & & -1\\
+	-1 & & 1 & \\
+	 & & 1 & -1\\
+	 & -1 & 1 & 
+	\end{bmatrix}
 \end{align*}
 Summen der Spaltenvektoren $= \vec{0}$.\\
 $\Rightarrow \ma{A}$ hat linear abhängige Spalten.
@@ -173,73 +173,73 @@ Rang der Matrix $\ma{A}$: $r = \rang{\ma{A}} = 3 = n-1$.\\
 Dimension des Nullraums: Zahl der Spalten $-\ r = 1$ .\\
 Vektor im Nullraum von $\ma{A}$:
 \begin{align*}
-\ma{A}\cdot\vec{u}=\vec{0}\Rightarrow\vec{u}\in ;\quad\vec{u}=\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
+	\ma{A}\cdot\vec{u}=\vec{0}\Rightarrow\vec{u}\in ;\quad\vec{u}=\begin{bmatrix}1\\1\\1\\1\end{bmatrix}
 \end{align*}
 
 \subsection{Laplace Matrix}
 \begin{align*}
-\ma{A}^T\cdot\ma{A} = \begin{bmatrix}
-1 & 0 & -1 & 0 & 0\\ 
-0 & 1 & 0 & 0 & -1 \\ 
-0 & 0 & 1 & 1 & 1 \\ 
--1 & -1 & 0 & -1 & 0
-\end{bmatrix}\cdot\begin{bmatrix}
-1 & 0 & 0 & -1 \\ 
-0 & 1 & 0 & -1 \\ 
--1 & 0 & 1 & 0 \\ 
-0 & 0 & 1 & -1 \\ 
-0 & -1 & 1 & 0
-\end{bmatrix} = \begin{bmatrix}
-2 & 0 & -1 & -1 \\ 
-0 & 2 & -1 & -1 \\ 
--1 & -1 & 3 & -1 \\ 
--1 & -1 & 3 & -1
-\end{bmatrix}  
+	\ma{A}^T\cdot\ma{A} = \begin{bmatrix}
+	1 & 0 & -1 & 0 & 0\\ 
+	0 & 1 & 0 & 0 & -1 \\ 
+	0 & 0 & 1 & 1 & 1 \\ 
+	-1 & -1 & 0 & -1 & 0
+	\end{bmatrix}\cdot\begin{bmatrix}
+	1 & 0 & 0 & -1 \\ 
+	0 & 1 & 0 & -1 \\ 
+	-1 & 0 & 1 & 0 \\ 
+	0 & 0 & 1 & -1 \\ 
+	0 & -1 & 1 & 0
+	\end{bmatrix} = \begin{bmatrix}
+	2 & 0 & -1 & -1 \\ 
+	0 & 2 & -1 & -1 \\ 
+	-1 & -1 & 3 & -1 \\ 
+	-1 & -1 & 3 & -1
+	\end{bmatrix}  
 \end{align*}
 \begin{itemize}
-\item singulär
-\item $r = 3$
-\item symmetrisch
+	\item singulär
+	\item $r = 3$
+	\item symmetrisch
 \end{itemize}
 \begin{align*}
-\ma{A}^T\cdot\ma{A} = \underset{\text{Grad (degree)}}{\ma{D}} - \underset{\text{Adjazenz}}{\ma{W}} = \begin{bmatrix}
-2 & 0 & 0 & 0 \\ 
-0 & 2 & 0 & 0 \\ 
-0 & 0 & 3 & 0 \\ 
-0 & 0 & 0 & 3
-\end{bmatrix} - \begin{bmatrix}
-0 & 0 & 1 & 1 \\ 
-0 & 0 & 1 & 1 \\ 
-1 & 1 & 0 & 1 \\ 
-1 & 1 & 1 & 0
-\end{bmatrix} 
+	\ma{A}^T\cdot\ma{A} = \underset{\text{Grad (degree)}}{\ma{D}} - \underset{\text{Adjazenz}}{\ma{W}} = \begin{bmatrix}
+	2 & 0 & 0 & 0 \\ 
+	0 & 2 & 0 & 0 \\ 
+	0 & 0 & 3 & 0 \\ 
+	0 & 0 & 0 & 3
+	\end{bmatrix} - \begin{bmatrix}
+	0 & 0 & 1 & 1 \\ 
+	0 & 0 & 1 & 1 \\ 
+	1 & 1 & 0 & 1 \\ 
+	1 & 1 & 1 & 0
+	\end{bmatrix} 
 \end{align*}
 
 \subsection{Kirchhoffsches Stromgesetz (KCL)}
 
 \begin{tabular}{lll}
-$\ma{A}^T\cdot \vec{w} = \vec{0}$ & (keine Stromquellen) & $\vec{w}$: Kantenströme\\
-$\ma{A}^T\cdot \vec{w} = \vec{f}$ & (mit Stromquellen) & $\vec{f}$: Stromquellen
+	$\ma{A}^T\cdot \vec{w} = \vec{0}$ & (keine Stromquellen) & $\vec{w}$: Kantenströme\\
+	$\ma{A}^T\cdot \vec{w} = \vec{f}$ & (mit Stromquellen) & $\vec{f}$: Stromquellen
 \end{tabular}
 
 \subsection{Ohmsches Gesetz}
 \begin{tabular}{ll}
-$\vec{w} = \ma{C} \cdot \vec{e}$ & $\ma{C}$: Diagonalmatrix der Kantenleitwerte\\
- & $\vec{e}$: Kantenspannungen
+	$\vec{w} = \ma{C} \cdot \vec{e}$ & $\ma{C}$: Diagonalmatrix der Kantenleitwerte\\
+	 & $\vec{e}$: Kantenspannungen
 \end{tabular}
 
 \subsection{Kirchhoffsches Spannungsgesetz (KVL)}
 \begin{tabular}{ll}
-$\vec{e} = \vec{b} - \ma{A} \cdot \vec{u}$ & $\vec{u}$: Kantenspannungen - GESUCHT\\
- & $\vec{b}$: Spannungsquellen
+	$\vec{e} = \vec{b} - \ma{A} \cdot \vec{u}$ & $\vec{u}$: Kantenspannungen - GESUCHT\\
+	 & $\vec{b}$: Spannungsquellen
 \end{tabular}
 
 \begin{align*}
-\ma{A}^T \cdot \vec{w} = \vec{f}\\
-\ma{A}^T \cdot \ma{C} \cdot \vec{e} = \vec{f}\\
-\ma{A}^T \cdot \ma{C} \left( \vec{b} - \ma{A}\cdot\vec{u}\right) = \vec{f}\\
-\underset{\text{Systemmatrix, gewichtete Laplace Matrix}}{\ma{A}^T \cdot \ma{C} \cdot \ma{A}} \cal \vec{u} = \ma{A}^T \cdot \ma{C} \cdot \vec{b} \cdot \vec{f}\\
-\ma{Y}_{<n\times n>} \cdot \vec{u}_{<n>} = \vec{d}_{<n>}
+	\ma{A}^T \cdot \vec{w} = \vec{f}\\
+	\ma{A}^T \cdot \ma{C} \cdot \vec{e} = \vec{f}\\
+	\ma{A}^T \cdot \ma{C} \left( \vec{b} - \ma{A}\cdot\vec{u}\right) = \vec{f}\\
+	\underset{\text{Systemmatrix, gewichtete Laplace Matrix}}{\ma{A}^T \cdot \ma{C} \cdot \ma{A}} \cal \vec{u} = \ma{A}^T \cdot \ma{C} \cdot \vec{b} \cdot \vec{f}\\
+	\ma{Y}_{<n\times n>} \cdot \vec{u}_{<n>} = \vec{d}_{<n>}
 \end{align*}
 
 singulär $\Rightarrow$ nicht invertierbar\\
@@ -249,10 +249,10 @@ Abhilfe: Festlegung eines Bezugspunktes, z.B. $u_0 = 0$\\
 
 \subsection{Alternative Darstellung}
 \begin{align*}
-\ma{C}^{-1} \cdot \vec{w} + \ma{A} \cdot \vec{u} &= \vec{b}\\
-\ma{A}^T \cdot \vec{w} = \vec{f}\\
-\begin{bmatrix}
-\ma{C}^{-1} & \ma{A} \\ \ma{A}^T & \ma{0}\end{bmatrix} \cdot \begin{bmatrix}\vec{w} \\ \vec{w}\end{bmatrix} = \begin{bmatrix}\vec{b}\\\vec{f}\end{bmatrix}
+	\ma{C}^{-1} \cdot \vec{w} + \ma{A} \cdot \vec{u} &= \vec{b}\\
+	\ma{A}^T \cdot \vec{w} = \vec{f}\\
+	\begin{bmatrix}
+	\ma{C}^{-1} & \ma{A} \\ \ma{A}^T & \ma{0}\end{bmatrix} \cdot \begin{bmatrix}\vec{w} \\ \vec{w}\end{bmatrix} = \begin{bmatrix}\vec{b}\\\vec{f}\end{bmatrix}
 \end{align*}
 
 \ldots
@@ -260,25 +260,25 @@ Abhilfe: Festlegung eines Bezugspunktes, z.B. $u_0 = 0$\\
 \section{Grundlagen der Numerik}
 \subsection{Lösung eines linearen Gleichungssystems}
 \begin{align*}
-\ma{A} \cdot \vec{x} = \vec{b}, \qquad \ma{A} \in \mathbb{R}^{n\times n}; \quad \vec{b}, \vec{x} \in \mathbb{R}^n, \quad \ma{A} \neq 0\\
-\text{Theoretische: } \vec{x} = \ma{A}^{-1} \cdot \vec{b}\\
-\text{Alternativ: Lösung durch "`Division"'-Eliminierung} 
+	\ma{A} \cdot \vec{x} = \vec{b}, \qquad \ma{A} \in \mathbb{R}^{n\times n}; \quad \vec{b}, \vec{x} \in \mathbb{R}^n, \quad \ma{A} \neq 0\\
+	\text{Theoretische: } \vec{x} = \ma{A}^{-1} \cdot \vec{b}\\
+	\text{Alternativ: Lösung durch "`Division"'-Eliminierung} 
 \end{align*}
 
 \subsection{Methode zur Bestimmung von $A^{-1}$}
 \begin{align*}
-\ma{A}\cdot\ma{A}^{-1} &= \ma{I}\\
-\text{Sei }\ma{X} &= \ma{A}^{-1}\\
-\ma{A}\cdot\ma{X} &= \ma{I}\\
-\ma{A}\cdot\begin{bmatrix}
-\vec{x}_1 & \vec{x}_2 & \ldots & \vec{x}_n
-\end{bmatrix} &= \begin{bmatrix}
-\vec{l}_1 & \vec{l}_2 & \ldots & \vec{l}_n
-\end{bmatrix};\quad\vec{l}_1 = \begin{pmatrix}
-1\\ 0\\ \vdots\\ 0\\ 0
-\end{pmatrix}, \ldots, \vec{l}_n = \begin{pmatrix}
-0\\ 0\\ \vdots\\ 0\\ 1
-\end{pmatrix}
+	\ma{A}\cdot\ma{A}^{-1} &= \ma{I}\\
+	\text{Sei }\ma{X} &= \ma{A}^{-1}\\
+	\ma{A}\cdot\ma{X} &= \ma{I}\\
+	\ma{A}\cdot\begin{bmatrix}
+	\vec{x}_1 & \vec{x}_2 & \ldots & \vec{x}_n
+	\end{bmatrix} &= \begin{bmatrix}
+	\vec{l}_1 & \vec{l}_2 & \ldots & \vec{l}_n
+	\end{bmatrix};\quad\vec{l}_1 = \begin{pmatrix}
+	1\\ 0\\ \vdots\\ 0\\ 0
+	\end{pmatrix}, \ldots, \vec{l}_n = \begin{pmatrix}
+	0\\ 0\\ \vdots\\ 0\\ 1
+	\end{pmatrix}
 \end{align*}
 $\ma{A}\cdot\vec{x}_1 = \vec{l}_1;\quad\ma{A}\cdot\vec{x}_2 = \vec{l}_2;\quad\ldots;\ma{A}\cdot\vec{x}_n = \vec{l}_n;$\\
 Nur rechte Seite ändert sich; $\ma{A} = \ma{L}\cdot\ma{U}$ nur einmal erforderlich.\\
@@ -286,42 +286,42 @@ Aufwand $n\cdot 2\cdot\frac{1}{2}(n^2 + n) = n^3 + n^2 \rightarrow O(n^3)$ für 
 
 Probleme:
 \begin{itemize}
-\item Pivot $p = 0$ \lightning\lightning 
-\item Pivot $p$ "'sehr klein"'
+	\item Pivot $p = 0$ \lightning\lightning 
+	\item Pivot $p$ "'sehr klein"'
 \end{itemize}
 Abhilfe: "'Pivotisierung"'- Zeilen-/Spaltentausch
 \begin{itemize}
-\item "'partial pivoting"': Wähle Zeile mit betragsmäßig größtem Element in Pivotspalte
-\item "'complete pivoting"': Zeilen- und Spaltentausch
-\item Pivotisierung auch zur Aufwandreduktion (Nullelemente erhalten)
+	\item "'partial pivoting"': Wähle Zeile mit betragsmäßig größtem Element in Pivotspalte
+	\item "'complete pivoting"': Zeilen- und Spaltentausch
+	\item Pivotisierung auch zur Aufwandreduktion (Nullelemente erhalten)
 \end{itemize}
 
 Beispiel $p = 0$
 \begin{align*}
-\begin{pmatrix}
-10 & -7 & 0 \\ 
--3 & \num{2.1} & 6 \\ 
-5 & -1 & 5
-\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
-7\\ \num{3.9}\\ 6
-\end{pmatrix}& \begin{matrix}
-p_{21} = \frac{5}{10} = \frac{1}{2}\\ p_{31} = \frac{-3}{10}
-\end{matrix}\\
-\begin{pmatrix}
-10 & -7 & 0 \\ 
-0 & 0 & 6 \\ 
-0 & \num{2.5} & 5
-\end{pmatrix}\cdot\vec{x}& = \begin{pmatrix}
-7\\ 6\\ \num{2.5}
-\end{pmatrix}& p_{32} = \frac{0}{\num{2.5}}\quad\text{\lightning}\\
-\Longrightarrow\text{ Zeilentausch}\\
-\begin{pmatrix}
-10 & -7 & 0 \\
-0 & \num{2.5} & 5 \\
-0 & 0 & 6
-\end{pmatrix}\cdot\vec{x}& = \begin{pmatrix}
-7\\ \num{2.5}\\ 6
-\end{pmatrix} 
+	\begin{pmatrix}
+	10 & -7 & 0 \\ 
+	-3 & \num{2.1} & 6 \\ 
+	5 & -1 & 5
+	\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+	7\\ \num{3.9}\\ 6
+	\end{pmatrix}& \begin{matrix}
+	p_{21} = \frac{5}{10} = \frac{1}{2}\\ p_{31} = \frac{-3}{10}
+	\end{matrix}\\
+	\begin{pmatrix}
+	10 & -7 & 0 \\ 
+	0 & 0 & 6 \\ 
+	0 & \num{2.5} & 5
+	\end{pmatrix}\cdot\vec{x}& = \begin{pmatrix}
+	7\\ 6\\ \num{2.5}
+	\end{pmatrix}& p_{32} = \frac{0}{\num{2.5}}\quad\text{\lightning}\\
+	\Longrightarrow\text{ Zeilentausch}\\
+	\begin{pmatrix}
+	10 & -7 & 0 \\
+	0 & \num{2.5} & 5 \\
+	0 & 0 & 6
+	\end{pmatrix}\cdot\vec{x}& = \begin{pmatrix}
+	7\\ \num{2.5}\\ 6
+	\end{pmatrix} 
 \end{align*}
 Zeilentausch durch Permutationsmatrix $\ma{P}$.\\
 $\ma{P}\ma{A}\vec{x} = \ma{P}\vec{b}\Rightarrow$ dann $\ma{P}\ma{A}\rightarrow\ma{L}\ma{U}$\\
@@ -332,124 +332,124 @@ hier: $\ma{P} = \begin{pmatrix}
 
 \subsection{Kondition eines Gleichungssystems}
 \begin{align*}
-\begin{pmatrix}
-1 & 1\\ 1 & \num{1.0001}
-\end{pmatrix}\cdot\begin{pmatrix}
-x_1\\ x_2
-\end{pmatrix} &= \begin{pmatrix}
-2\\ 2
-\end{pmatrix}&\Rightarrow\vec{x} = \begin{pmatrix}
-2\\ 0
-\end{pmatrix}\\
-\begin{pmatrix}
-1 & 1\\ 1 & \num{1.0001}
-\end{pmatrix}\cdot\begin{pmatrix}
-x_1\\ x_2
-\end{pmatrix} &= \begin{pmatrix}
-2\\ \num{2.0001}
-\end{pmatrix}&\Rightarrow\vec{x} = \begin{pmatrix}
-1\\ 1
-\end{pmatrix}
+	\begin{pmatrix}
+	1 & 1\\ 1 & \num{1.0001}
+	\end{pmatrix}\cdot\begin{pmatrix}
+	x_1\\ x_2
+	\end{pmatrix} &= \begin{pmatrix}
+	2\\ 2
+	\end{pmatrix}&\Rightarrow\vec{x} = \begin{pmatrix}
+	2\\ 0
+	\end{pmatrix}\\
+	\begin{pmatrix}
+	1 & 1\\ 1 & \num{1.0001}
+	\end{pmatrix}\cdot\begin{pmatrix}
+	x_1\\ x_2
+	\end{pmatrix} &= \begin{pmatrix}
+	2\\ \num{2.0001}
+	\end{pmatrix}&\Rightarrow\vec{x} = \begin{pmatrix}
+	1\\ 1
+	\end{pmatrix}
 \end{align*}
 
 Änderung in der 5. Stelle von $\vec{b}$ wird zu einer Änderung in der ersten Stelle der Lösung $\vec{x}$ "'verstärkt"'. System reagiert sehr sensitiv auf kleine Änderungen der Ausgangsdaten. Kein Lösungsalgorithmus kann etwas daran ändern.
 \begin{align*}
-\cond{\ma{A}} = \num{4.0002e4}
+	\cond{\ma{A}} = \num{4.0002e4}
 \end{align*}
 
 \subsection{Einfluss der Pivotisierung auf die Ergebnisgenauigkeit}
 \begin{align*}
-\ma{B}\rightarrow\begin{pmatrix}
-\num{0.0001} & 1 \\ 1 & 1
-\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
-1\\ 2
-\end{pmatrix}\\
-\begin{pmatrix}
-\num{0.0001} & 1 \\ 0 & -9999
-\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
-1\\ -9998
-\end{pmatrix}\quad\Rightarrow\begin{matrix}
-x_2 = \num{0.99989998}\\ x_1 = \num{1.00010001}
-\end{matrix}
+	\ma{B}\rightarrow\begin{pmatrix}
+	\num{0.0001} & 1 \\ 1 & 1
+	\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+	1\\ 2
+	\end{pmatrix}\\
+	\begin{pmatrix}
+	\num{0.0001} & 1 \\ 0 & -9999
+	\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+	1\\ -9998
+	\end{pmatrix}\quad\Rightarrow\begin{matrix}
+	x_2 = \num{0.99989998}\\ x_1 = \num{1.00010001}
+	\end{matrix}
 \end{align*}
 
 Annahme: 3 Stellen Genauigkeit
 \begin{align*}
-\begin{pmatrix}
-\num{0.0001} & 1 \\ 0 & -\num{10000}
-\end{pmatrix}\cdot\vec{x} = \begin{pmatrix}
-1\\ -\num{10000}
-\end{pmatrix}\quad\Rightarrow\begin{array}{l}
-x_2 = 1\\ x_1 = 0\text{ \lightning}
-\end{array}
+	\begin{pmatrix}
+	\num{0.0001} & 1 \\ 0 & -\num{10000}
+	\end{pmatrix}\cdot\vec{x} = \begin{pmatrix}
+	1\\ -\num{10000}
+	\end{pmatrix}\quad\Rightarrow\begin{array}{l}
+	x_2 = 1\\ x_1 = 0\text{ \lightning}
+	\end{array}
 \end{align*}
 
 Zerlegung $\ma{B} = \ma{L}\ma{D}\ma{U}$ (ohne Genauigkeitsbeschränkung)
 \begin{align*}
-\begin{array}{c}
-\text{("'out of}\\ \text{scale}\\ \text{with }\ma{B}\text{ "')}
-\end{array}\quad = \begin{pmatrix}
-1 & 0 \\ 
-\num{10000} & 1
-\end{pmatrix}\cdot\begin{pmatrix}
-\num{0.0001} & 0 \\ 0 & -9999
-\end{pmatrix}\cdot\begin{pmatrix}
-1 & \num{10000} \\ 
-0 & 1
-\end{pmatrix}
+	\begin{array}{c}
+	\text{("'out of}\\ \text{scale}\\ \text{with }\ma{B}\text{ "')}
+	\end{array}\quad = \begin{pmatrix}
+	1 & 0 \\ 
+	\num{10000} & 1
+	\end{pmatrix}\cdot\begin{pmatrix}
+	\num{0.0001} & 0 \\ 0 & -9999
+	\end{pmatrix}\cdot\begin{pmatrix}
+	1 & \num{10000} \\ 
+	0 & 1
+	\end{pmatrix}
 \end{align*}
 
 Änderung der Pivotisierungsreihenfolge
 \begin{align*}
-\begin{pmatrix}
-1 & 1 \\ \num{0.0001} & 1
-\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
-2\\ 1
-\end{pmatrix}\\
-\begin{pmatrix}
-1 & 1 \\ 0 & \num{0.9999}
-\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
-2\\ \num{0.9998}
-\end{pmatrix}\quad\Rightarrow\begin{matrix}
-x_2 = \num{0.99989998}\\ x_1 = \num{1.00010001}
-\end{matrix}
+	\begin{pmatrix}
+	1 & 1 \\ \num{0.0001} & 1
+	\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+	2\\ 1
+	\end{pmatrix}\\
+	\begin{pmatrix}
+	1 & 1 \\ 0 & \num{0.9999}
+	\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+	2\\ \num{0.9998}
+	\end{pmatrix}\quad\Rightarrow\begin{matrix}
+	x_2 = \num{0.99989998}\\ x_1 = \num{1.00010001}
+	\end{matrix}
 \end{align*}
 
 Annahme: 3 Stellen Genauigkeit
 \begin{align*}
-\begin{pmatrix}
-1 & 1 \\ 0 & 1
-\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
-2\\ 1
-\end{pmatrix}\quad\Rightarrow\begin{rcases}
-x_2 = 1\\ x_1 = 0
-\end{rcases}\quad\begin{matrix}
-\text{nur sehr geringer}\\ \text{Genauigkeitsverlust}
-\end{matrix}
+	\begin{pmatrix}
+	1 & 1 \\ 0 & 1
+	\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
+	2\\ 1
+	\end{pmatrix}\quad\Rightarrow\begin{rcases}
+	x_2 = 1\\ x_1 = 0
+	\end{rcases}\quad\begin{matrix}
+	\text{nur sehr geringer}\\ \text{Genauigkeitsverlust}
+	\end{matrix}
 \end{align*}
 NB: $\cond{\ma{B}} = \num{2.61838527}$
 
 Uns interessieren alse zwei Themen:
 \begin{itemize}
-\item \textbf{Kondition} der Gleichungssystems
-\item \textbf{Stabilität} des Lösungsverfahrens
+	\item \textbf{Kondition} der Gleichungssystems
+	\item \textbf{Stabilität} des Lösungsverfahrens
 \end{itemize}
 
 \subsection{Maschinendarstellung von Zahlen}
 (IEEE 754-2008-"'Binary Floating Point Arithmetic Standard"')\\
 Darstellung reeller Zahlen: 64 bit:\\
 \begin{tabular}{lll}
-s & 1 bit & Vorzeichen\\
-c & 11 bit & Exponent\\
-f & 52 bit & Mantisse
+	s & 1 bit & Vorzeichen\\
+	c & 11 bit & Exponent\\
+	f & 52 bit & Mantisse
 \end{tabular}
 
 \[ x = (-1)^s \cdot 2 ^{c-1023}\cdot (1 + f)\]
 
 z.B.: 
 \begin{align*}
-10:& \underbrace{0}_{s} \quad \underbrace{100000000010}_{c:\ 1026-1023=3}\quad\underbrace{0100\ldots010}_{f:\ \num{1.25}}\\
-\num{-0.8}:& \underbrace{1}_{s} \quad \underbrace{01111111110}_{c:\ 1022-1023=-1}\quad\underbrace{10011001\ldots10011010}_{f:\ \num{1.59999}}
+	10:& \underbrace{0}_{s} \quad \underbrace{100000000010}_{c:\ 1026-1023=3}\quad\underbrace{0100\ldots010}_{f:\ \num{1.25}}\\
+	\num{-0.8}:& \underbrace{1}_{s} \quad \underbrace{01111111110}_{c:\ 1022-1023=-1}\quad\underbrace{10011001\ldots10011010}_{f:\ \num{1.59999}}
 \end{align*}
 
 \subsection{Gleitkomma-Arithmetik: Eigenschaften und Fehlerarten}
@@ -489,27 +489,27 @@ Bedingungen für \textbf{Matrixnormen}:
 
 \subsubsection{Vektornormen}
 \begin{tabular}{r@{ = }ll}
-$\norm{\vec{x}}_1$ & $\sum\limits_{i=1}^n\abs{xi}$ & Betragssummennorm, $l_1$-Norm\\
-$\norm{\vec{x}}_2$ & $\sqrt{\sum\limits_{i=1}^n\abs{xi}^2}$ & Euklidnorm, $l_2$-Norm, Vektorlänge\\
-$\norm{\vec{x}}_\infty$ & $\underset{i}{\max}{\abs{xi}}$ & Maximumsnorm, $l_\infty$-Norm, Tschebychefnorm\\
-$\norm{\vec{x}}_p$ & $\sqrt[p]{\sum\limits_{i=1}^n\abs{xi}^p}$, $p\geq 1$ & Höldernormnorm, $l_p$-Norm
+	$\norm{\vec{x}}_1$ & $\sum\limits_{i=1}^n\abs{xi}$ & Betragssummennorm, $l_1$-Norm\\
+	$\norm{\vec{x}}_2$ & $\sqrt{\sum\limits_{i=1}^n\abs{xi}^2}$ & Euklidnorm, $l_2$-Norm, Vektorlänge\\
+	$\norm{\vec{x}}_\infty$ & $\underset{i}{\max}{\abs{xi}}$ & Maximumsnorm, $l_\infty$-Norm, Tschebychefnorm\\
+	$\norm{\vec{x}}_p$ & $\sqrt[p]{\sum\limits_{i=1}^n\abs{xi}^p}$, $p\geq 1$ & Höldernormnorm, $l_p$-Norm
 \end{tabular}
 
 \subsubsection{Matrixnormen $(A\in\mathbb{R}^{n\times n})$}
 \begin{tabular}{r@{ = }ll}
-$||\ma{A}||_M$ & $n\cdot\underset{i,j}{\max}\abs{a_{ij}}$ & Gesamtnorm, Matrixnorm $(||\ma{I}|| = n)$\\
-$(||\ma{A}||_\infty = )||\ma{A}||_Z$ & $\underset{i}{\max}\sum\limits_{j=1}^n\abs{a_{ij}}$ & Zeilennorm $(||\ma{I}||_Z = 1)$\\
-$(||\ma{A}||_1 = )||\ma{A}||_S$ & $\underset{j}{\max}\sum\limits_{i=1}^n\abs{a_{ij}}$ & Spaltennorm $(||\ma{I}||_S = 1)$\\
-$||\ma{A}||_E$ & $\sqrt{\sum\limits_{i=1}\sum\limits_{j=1}\abs{a_{ij}}^2}$ & Euklidnorm, Schurnorm, Frobeniusnorm $(||\ma{I}||_E = \sqrt{n})$\\
-$(\ma{A}||_\lambda = )||\ma{A}||_\lambda$ & $\sqrt{\lambda_\text{max}(\ma{A}^T\cdot\ma{A})}$ & Spektralnorm, Hilbertnorm $(||\ma{I}||_\lambda = 1)$\\
+	$||\ma{A}||_M$ & $n\cdot\underset{i,j}{\max}\abs{a_{ij}}$ & Gesamtnorm, Matrixnorm $(||\ma{I}|| = n)$\\
+	$(||\ma{A}||_\infty = )||\ma{A}||_Z$ & $\underset{i}{\max}\sum\limits_{j=1}^n\abs{a_{ij}}$ & Zeilennorm $(||\ma{I}||_Z = 1)$\\
+	$(||\ma{A}||_1 = )||\ma{A}||_S$ & $\underset{j}{\max}\sum\limits_{i=1}^n\abs{a_{ij}}$ & Spaltennorm $(||\ma{I}||_S = 1)$\\
+	$||\ma{A}||_E$ & $\sqrt{\sum\limits_{i=1}\sum\limits_{j=1}\abs{a_{ij}}^2}$ & Euklidnorm, Schurnorm, Frobeniusnorm $(||\ma{I}||_E = \sqrt{n})$\\
+	$(\ma{A}||_\lambda = )||\ma{A}||_\lambda$ & $\sqrt{\lambda_\text{max}(\ma{A}^T\cdot\ma{A})}$ & Spektralnorm, Hilbertnorm $(||\ma{I}||_\lambda = 1)$\\
 \end{tabular}
 
 \subsubsection{Kompatibilität zwischen Vektor und Matrixnorm}
 \begin{tabular}{r@{\hspace{0.7cm}}l}
-$l_1$ : & $||\ma{A}\vec{x}||_1 \leq ||\ma{A}||_M\cdot||\vec{x}||_1$\\
-& $||\ma{A}\vec{x}||_1 \leq ||\ma{A}||_S\cdot||\vec{x}||_1$\\
-$l_2$ : & $M,\lambda,E$\\
-$l_\infty$ : & $M,Z$\\
+	$l_1$ : & $||\ma{A}\vec{x}||_1 \leq ||\ma{A}||_M\cdot||\vec{x}||_1$\\
+	& $||\ma{A}\vec{x}||_1 \leq ||\ma{A}||_S\cdot||\vec{x}||_1$\\
+	$l_2$ : & $M,\lambda,E$\\
+	$l_\infty$ : & $M,Z$\\
 \end{tabular}
 
 \subsection{Kondition einer Matrix}
@@ -559,10 +559,10 @@ Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(
 
 \subsubsection{Intervallhalbierung}
 \begin{enumerate}
-\item Startintervall $[a^{(0)}, b^{(0)}] = [a, b]$, $k = 0$
-\item Intervallmitte $m = \frac{a^{(k)} \cdot b^{(k)}}{2}$
-\item $[a^{k + 1)}, b^{(k + 1)}] = \begin{cases} [m, b^{(k)}] & \text{fuer\ } F(m) \cdot F(a^{(k)}) > 0 \\ [a^{(k)}, m] & \text{fuer\ } F(m) \cdot F(a^{(k)}) < 0 \end{cases}$
-\item Falls $\abs{a^{k + 1)} - b^{k + 1)}} > \epsilon$ dann gehe zu Schritt 2, $k = k + 1$
+	\item Startintervall $[a^{(0)}, b^{(0)}] = [a, b]$, $k = 0$
+	\item Intervallmitte $m = \frac{a^{(k)} \cdot b^{(k)}}{2}$
+	\item $[a^{k + 1)}, b^{(k + 1)}] = \begin{cases} [m, b^{(k)}] & \text{fuer\ } F(m) \cdot F(a^{(k)}) > 0 \\ [a^{(k)}, m] & \text{fuer\ } F(m) \cdot F(a^{(k)}) < 0 \end{cases}$
+	\item Falls $\abs{a^{k + 1)} - b^{k + 1)}} > \epsilon$ dann gehe zu Schritt 2, $k = k + 1$
 \end{enumerate}
 
 \begin{figure}[htdp]
@@ -614,30 +614,30 @@ Nullstellenproblem und Fixpunktproblem können ineinander überführt werden., z
 \subsubsection{Fixpunkttheorem}
 \begin{enumerate}
 	\item Sei $g(x)$ stetig auf $[a,b]$, sowie $g(x)\in [a,b]$ für alle $x\in [a,b]$.\\
-Dann hat $g(x)$ mindestens einen Fixpunkt auf $[a,b]$
+	Dann hat $g(x)$ mindestens einen Fixpunkt auf $[a,b]$
 	\item Existiere zusaätzlich $g'(x) auf (a,b)$, sowie eine positive Konstante $k<1$ mit $\abs{g'(x)}\leq k$, für alle $x\in (a,b)$
-\begin{itemize}
-	\item Dann hat $g(x)$ exakt einen Fixpunkt auf $[a,b]$
-	\item Gilt $0<k<1$, dann konvergiert für jedes $x^{(0)}\in [a,b]$ die Folge 
-\[x^{(n)} = g(x^{(n-1)})\quad,n\geq 1\]
-zum eindeutigen Fixpunkt $x^*\in [0,b]$.
-\end{itemize}
+	\begin{itemize}
+		\item Dann hat $g(x)$ exakt einen Fixpunkt auf $[a,b]$
+		\item Gilt $0<k<1$, dann konvergiert für jedes $x^{(0)}\in [a,b]$ die Folge 
+		\[x^{(n)} = g(x^{(n-1)})\quad,n\geq 1\]
+		zum eindeutigen Fixpunkt $x^*\in [0,b]$.
+	\end{itemize}
 \end{enumerate}
 
 \subsubsection{Konvergenzverhalten iterativer Verfahren}
 \begin{align*}
-x^{(k+1)} &= g(x^{(k)}) & \text{Iterationsvorschrift}\\
-x^* &= g(x^*) & \text{Fixpunkt}
+	x^{(k+1)} &= g(x^{(k)}) & \text{Iterationsvorschrift}\\
+	x^* &= g(x^*) & \text{Fixpunkt}
 \end{align*}
 
 Taylorreihe von $g(x)$ um $x^*$ 
 \begin{align*}
-\left[g(x^{(k)})\right]x^{(k+1)} &= \underbrace{g(x^*)}_{x^*} + g'(x^*)\cdot (x^{(k)}-x^*) + \frac{1}{2} g''(x^*)\cdot (x^{(k)}-x^*)^2 + \ldots\\
-\varepsilon^{(k+1)} &= g'(x^*)\cdot \varepsilon^{(k)} + \frac{1}{2} g''(x^*)\cdot {\varepsilon^{(k)}}^2 + \ldots
+	\left[g(x^{(k)})\right]x^{(k+1)} &= \underbrace{g(x^*)}_{x^*} + g'(x^*)\cdot (x^{(k)}-x^*) + \frac{1}{2} g''(x^*)\cdot (x^{(k)}-x^*)^2 + \ldots\\
+	\varepsilon^{(k+1)} &= g'(x^*)\cdot \varepsilon^{(k)} + \frac{1}{2} g''(x^*)\cdot {\varepsilon^{(k)}}^2 + \ldots
 \end{align*}
 \begin{itemize}
-\item $g'(x^*)\neq 0$, $\abs{g'(x^*)} < 1 \quad\rightarrow$ lineare Konvergenz
-\item $g'(x^*) = 0$, $g''(x^*)\neq 0 \quad\Rightarrow$ quadratische Konvergenz ("Konstruktionshinweis")
+	\item $g'(x^*)\neq 0$, $\abs{g'(x^*)} < 1 \quad\rightarrow$ lineare Konvergenz
+	\item $g'(x^*) = 0$, $g''(x^*)\neq 0 \quad\Rightarrow$ quadratische Konvergenz ("Konstruktionshinweis")
 \end{itemize}
 
 \begin{figure}[htdp]
@@ -648,16 +648,16 @@ Taylorreihe von $g(x)$ um $x^*$
 
 \subsubsection{Mehrdimensionaler Newton}
 \begin{align*}
-\vec{F}(\vec{x}) &= \vec{0}\quad,\vec{F} = (F_1,\ldots,F_r)^T\\
-\vec{F}(\vec{x}^{(k+1)}) &= \vec{F}(\vec{x}^{(k)}) + \underbrace{\frac{\partial\vec{F}(\vec{x}^{(k)})}{\partial\vec{x}^T}} \cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right)\\
-\begin{matrix}
-\text{Jacobi-Matrix}\\ \text{Fundamentalmatrix}
-\end{matrix}\qquad & \ma{J}(\vec{x}) = \frac{\partial\vec{F}(\vec{x})}{\partial\vec{x}^T} = \left(\frac{\partial\vec{F}}{\partial\vec{x}_1},\ldots,\frac{\partial\vec{F}}{\partial\vec{x}_r}\right) =\begin{pmatrix}
-\frac{\partial\vec{F}_1}{\partial\vec{x}_1} & \ldots & \frac{\partial\vec{F}_1}{\partial\vec{x}_r}\\
-\vdots & & \vdots\\
-\frac{\partial\vec{F}_r}{\partial\vec{x}_1} & \ldots & \frac{\partial\vec{F}_r}{\partial\vec{x}_r}
-\end{pmatrix}\\
-\vec{F}(\vec{x}^{(k+1)}) &= \vec{0}\Rightarrow\ma{J}(\vec{x}^{(k)})\cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right) = -\vec{F}(\vec{x}^{(1)})
+	\vec{F}(\vec{x}) &= \vec{0}\quad,\vec{F} = (F_1,\ldots,F_r)^T\\
+	\vec{F}(\vec{x}^{(k+1)}) &= \vec{F}(\vec{x}^{(k)}) + \underbrace{\frac{\partial\vec{F}(\vec{x}^{(k)})}{\partial\vec{x}^T}} \cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right)\\
+	\begin{matrix}
+	\text{Jacobi-Matrix}\\ \text{Fundamentalmatrix}
+	\end{matrix}\qquad & \ma{J}(\vec{x}) = \frac{\partial\vec{F}(\vec{x})}{\partial\vec{x}^T} = \left(\frac{\partial\vec{F}}{\partial\vec{x}_1},\ldots,\frac{\partial\vec{F}}{\partial\vec{x}_r}\right) =\begin{pmatrix}
+	\frac{\partial\vec{F}_1}{\partial\vec{x}_1} & \ldots & \frac{\partial\vec{F}_1}{\partial\vec{x}_r}\\
+	\vdots & & \vdots\\
+	\frac{\partial\vec{F}_r}{\partial\vec{x}_1} & \ldots & \frac{\partial\vec{F}_r}{\partial\vec{x}_r}
+	\end{pmatrix}\\
+	\vec{F}(\vec{x}^{(k+1)}) &= \vec{0}\Rightarrow\ma{J}(\vec{x}^{(k)})\cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right) = -\vec{F}(\vec{x}^{(1)})
 \end{align*}
 \todo{Box um gleichung below}
 \[\vec{x}^{(k+1)} = \vec{x}^{(k)}-\ma{J}^{-1}(\vec{x}^{(k)})\cdot\vec{F}(\vec{x}^{(k)})\]
@@ -689,103 +689,103 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 
 \subsection{Allgemeines Iterationsverfahren für lineare Gleichungssysteme}
 \begin{align*}
-\ma{A} \cdot \vec{x} &= \vec{b}\\
-\vec{x}^{(k+1)} &= \vec{\Phi} \left( \vec{x}^{(k)}\right)\\
-\ma{B} &\text{ beliebig}\\
-\ma{B} \cdot \vec{x} + \left( \ma{A} \cdot \ma{B} \right) \cdot \vec{x} &= \vec{b} \quad \\
-\Rightarrow \text{ Iterationsvorschrift:}&\\
-\ma{B} \cdot \vec{x}^{(k+1)} + \left(  \ma{A} - \ma{B} \right) \cdot \vec{x}^{(k)} &= \vec{b}\\
-\vec{x}^{(k+1)} &= \vec{x}^{(k)} - \ma{B}^{-1} \cdot \left( \ma{A} \cdot \vec{x}^{(k) - \vec{b}} \right) \\
-&= \underbrace{\left( \ma{I} - \ma{B}^{-1} \cdot \ma{A}\right)}_{\text{Konvergenz, wenn }|\lambda| < 1} \cdot \vec{x}^{(k)} + \ma{B}^{-1} \cdot \vec{b}
+	\ma{A} \cdot \vec{x} &= \vec{b}\\
+	\vec{x}^{(k+1)} &= \vec{\Phi} \left( \vec{x}^{(k)}\right)\\
+	\ma{B} &\text{ beliebig}\\
+	\ma{B} \cdot \vec{x} + \left( \ma{A} \cdot \ma{B} \right) \cdot \vec{x} &= \vec{b} \quad \\
+	\Rightarrow \text{ Iterationsvorschrift:}&\\
+	\ma{B} \cdot \vec{x}^{(k+1)} + \left(  \ma{A} - \ma{B} \right) \cdot \vec{x}^{(k)} &= \vec{b}\\
+	\vec{x}^{(k+1)} &= \vec{x}^{(k)} - \ma{B}^{-1} \cdot \left( \ma{A} \cdot \vec{x}^{(k) - \vec{b}} \right) \\
+	&= \underbrace{\left( \ma{I} - \ma{B}^{-1} \cdot \ma{A}\right)}_{\text{Konvergenz, wenn }|\lambda| < 1} \cdot \vec{x}^{(k)} + \ma{B}^{-1} \cdot \vec{b}
 \end{align*}
 
 \subsection{Iterative Verfahren zum Lösen linearer Gleichungssysteme}
 \[\ma{A} \cdot \vec{x} = \vec{b},\ \ma{A} \in \mathrm{R}^{n\times n},\ \vec{x},\vec{b} \in \mathrm{R}^n,\ \ma{A} \text{ nicht singulär}\]
 
 \begin{align*}
-\textbf{Splitting: } \ma{A} &= \begin{bmatrix}a_{ij}\end{bmatrix} = \ma{D} + \ma{L} + \ma{U}\\
-&= \begin{bmatrix}a_{11} & & & \\ & a_{22} & &\\ & & \ddots & \\ & & & a_{nn}\end{bmatrix} + 
-\begin{bmatrix}0 & & & \\ a_{21} & 0 & &\\ \vdots & & \ddots &  \\ a_{n1} & \ldots & a_{n\, n-1} & 0\end{bmatrix} + 
-\begin{bmatrix}0 & a_{12} & \ldots & a_{1n} \\ & 0 & & \vdots \\ & & \ddots & a_{n-1\,n} \\ & & & 0\end{bmatrix}
+	\textbf{Splitting: } \ma{A} &= \begin{bmatrix}a_{ij}\end{bmatrix} = \ma{D} + \ma{L} + \ma{U}\\
+	&= \begin{bmatrix}a_{11} & & & \\ & a_{22} & &\\ & & \ddots & \\ & & & a_{nn}\end{bmatrix} + 
+	\begin{bmatrix}0 & & & \\ a_{21} & 0 & &\\ \vdots & & \ddots &  \\ a_{n1} & \ldots & a_{n\, n-1} & 0\end{bmatrix} + 
+	\begin{bmatrix}0 & a_{12} & \ldots & a_{1n} \\ & 0 & & \vdots \\ & & \ddots & a_{n-1\,n} \\ & & & 0\end{bmatrix}
 \end{align*}
 
 \todo{Fix this !}
 
 \begin{align*}
-\ma{A} &= \ma{S} - \ma{T}\\
-\ma{A} \cdot \vec{x} &= \left( \ma{S} - \ma{T} \right) \cdot \vec{x} = \vec{b}\\
-\Rightarrow \ma{S} \cdot \vec{x} &= \ma{T} \cdot \vec{x} + \vec{b}\\
-&= \left( \ma{S} - \ma{A} \right) \cdot \vec{x} + \vec{b}\\
-\Rightarrow \vec{x} &= \ma{S}^{-1} \cdot \left( \ma{S} - \ma{A} \right) \cdot \vec{x} + \ma{S}^{-1} \cdot \vec{b}
+	\ma{A} &= \ma{S} - \ma{T}\\
+	\ma{A} \cdot \vec{x} &= \left( \ma{S} - \ma{T} \right) \cdot \vec{x} = \vec{b}\\
+	\Rightarrow \ma{S} \cdot \vec{x} &= \ma{T} \cdot \vec{x} + \vec{b}\\
+	&= \left( \ma{S} - \ma{A} \right) \cdot \vec{x} + \vec{b}\\
+	\Rightarrow \vec{x} &= \ma{S}^{-1} \cdot \left( \ma{S} - \ma{A} \right) \cdot \vec{x} + \ma{S}^{-1} \cdot \vec{b}
 \end{align*}
 
 \ldots
 
 \subsubsection{Verschiedene Iterationsverfahren}
 \begin{enumerate}
-\item $\ma{S} = \ma{D}\quad$ : Jacobi (Gesamtschrittverfahren)
-\item $\ma{S} = \ma{D}+\ma{L}\quad$ : Gauß-Seidl (Einzelschrittverfahren)
-\item $\ma{S} = \frac{1}{w}(\ma{D}+w\ma{L})\quad$ : sukzessive Überrelaxation (SOR, successive Over-Relaxation)
+	\item $\ma{S} = \ma{D}\quad$ : Jacobi (Gesamtschrittverfahren)
+	\item $\ma{S} = \ma{D}+\ma{L}\quad$ : Gauß-Seidl (Einzelschrittverfahren)
+	\item $\ma{S} = \frac{1}{w}(\ma{D}+w\ma{L})\quad$ : sukzessive Überrelaxation (SOR, successive Over-Relaxation)
 \end{enumerate}
 \begin{enumerate}
-\item Jacobi: $\ma{S} = \ma{D};\ma{D}$ nicht singulär (d.h. $a_{ii}\neq 0$)
-\begin{align*}
-{A}\vec{x} = \vec{b}\Rightarrow\ma{D}\cdot\vec{x}^{(k+1)} &= (\ma{D}-\ma{A})\cdot\vec{x}^{(k)}+\vec{b} = (-\ma{L}-\ma{U})\cdot\vec{x}^{(k)}+\vec{b}\\
-\vec{x}^{(k+1)} &= \underbrace{\ma{D}^{-1}\cdot(-\ma{L}-\ma{U})}_{\ma{K}_j}\cdot\vec{x}^{(k)}+\underbrace{\ma{D}^{-1}\vec{b}}_{\vec{c}_j}\\
-&= \ma{K}_j\cdot\vec{x}^{(k)}+\vec{c}_j
-\end{align*}
-\item Gauss-Seidel: $\ma{S} = \ma{D} + \ma{L}$ (nicht singulär)
-\[\ma{A} \vec{x} + \vec{b} = \vec{0} \Rightarrow (\ma{D} + \ma{L}) \vec{x}^{(k + 1)} = (\ma{D} + \ma{L} - \ma{A}) \vec{x}^{(k)} + \vec{b} = -\ma{U} \vec{x}^{(k)} + \vec{b}\]
-\[\vec{x}^{(k + 1)} = \underbrace{-(\ma{D} + \ma{L})^{-1} \cdot \ma{U}}_{\ma{K}_g} \vec{x}^{(k)} + \underbrace{(\ma{D} + \ma{L})^{-1} \vec{b}}_{\vec{c}_g}\]
-\[\vec{x}^{(k + 1)} = \ma{K}_g \vec{x}^{(k)} + \vec{c}_g\]
-\item Successive Over-Relaxation: $\ma{S} = \frac{1}{\omega} (\ma{D} + \omega \ma{L})$
-\[\ma{A} \vec{x} = \vec{b}\]
-\[\frac{1}{\omega} (\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = \frac{1}{\omega} (\ma{D} + \omega \ma{L} - \ma{A}) \vec{x}^{(k)} + \vec{b}\]
-\[\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = (\ma{D} + \omega \ma{L} - \omega \ma{A}) \vec{x}^{(k)} + \omega \vec{b}\]
-\[\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = (\ma{D}(1 - \omega) - \omega \ma{U}) \vec{x}^{(k)} + \omega \vec{b}\]
-\[\vec{x}^{(k + 1)} = \underbrace{(\ma{D} + \omega \ma{L})^{-1} (\ma{D} (1 - \omega) - \omega \ma{U})}_{\ma{K}_\omega} \vec{x}^{(k)} + \underbrace{(\ma{D} + \omega \ma{L}) \omega \vec{b}}_{\vec{c}_\omega}\]
-\[\vec{x}^{(k + 1)} = \ma{K}_\omega \vec{x}^{(k)} + \vec{c}_\omega\]
-Die jeweilige Wahl von $\omega$ bei SOR beeinflusst dann das Konvergenzverhalten. Für Spezialfälle können Empfehlungen gegeben werden:
-\begin{enumerate}
-\item Falls $a_{ii} \ne 0$, $i = 1, \dots, n$ $\Rightarrow \varrho(\ma{K}_\omega) \ge |1 - \omega| \Rightarrow$ Konvergenz für $0 < \omega < 2$
-\item Falls $\ma{A}$ positiv definit und $0 < \omega < 2$, dann konvergiert SOR für jede Initiallösung $\vec{x}^{(0)}$
-\item Falls $\ma{A}$ positiv definit und tridiagonal ist, dann $\varrho(\ma{K}_g) = \varrho(\ma{K}_j)^2 < 1$ und die optimale Wahl für $\omega$ ist:
-\[\omega = \frac{2}{1 + \sqrt{1 - \varrho(\ma{K}_j)^2}}\]
-\end{enumerate}
+	\item Jacobi: $\ma{S} = \ma{D};\ma{D}$ nicht singulär (d.h. $a_{ii}\neq 0$)
+	\begin{align*}
+		{A}\vec{x} = \vec{b}\Rightarrow\ma{D}\cdot\vec{x}^{(k+1)} &= (\ma{D}-\ma{A})\cdot\vec{x}^{(k)}+\vec{b} = (-\ma{L}-\ma{U})\cdot\vec{x}^{(k)}+\vec{b}\\
+		\vec{x}^{(k+1)} &= \underbrace{\ma{D}^{-1}\cdot(-\ma{L}-\ma{U})}_{\ma{K}_j}\cdot\vec{x}^{(k)}+\underbrace{\ma{D}^{-1}\vec{b}}_{\vec{c}_j}\\
+		&= \ma{K}_j\cdot\vec{x}^{(k)}+\vec{c}_j
+	\end{align*}
+	\item Gauss-Seidel: $\ma{S} = \ma{D} + \ma{L}$ (nicht singulär)
+	\[\ma{A} \vec{x} + \vec{b} = \vec{0} \Rightarrow (\ma{D} + \ma{L}) \vec{x}^{(k + 1)} = (\ma{D} + \ma{L} - \ma{A}) \vec{x}^{(k)} + \vec{b} = -\ma{U} \vec{x}^{(k)} + \vec{b}\]
+	\[\vec{x}^{(k + 1)} = \underbrace{-(\ma{D} + \ma{L})^{-1} \cdot \ma{U}}_{\ma{K}_g} \vec{x}^{(k)} + \underbrace{(\ma{D} + \ma{L})^{-1} \vec{b}}_{\vec{c}_g}\]
+	\[\vec{x}^{(k + 1)} = \ma{K}_g \vec{x}^{(k)} + \vec{c}_g\]
+	\item Successive Over-Relaxation: $\ma{S} = \frac{1}{\omega} (\ma{D} + \omega \ma{L})$
+	\[\ma{A} \vec{x} = \vec{b}\]
+	\[\frac{1}{\omega} (\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = \frac{1}{\omega} (\ma{D} + \omega \ma{L} - \ma{A}) \vec{x}^{(k)} + \vec{b}\]
+	\[\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = (\ma{D} + \omega \ma{L} - \omega \ma{A}) \vec{x}^{(k)} + \omega \vec{b}\]
+	\[\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = (\ma{D}(1 - \omega) - \omega \ma{U}) \vec{x}^{(k)} + \omega \vec{b}\]
+	\[\vec{x}^{(k + 1)} = \underbrace{(\ma{D} + \omega \ma{L})^{-1} (\ma{D} (1 - \omega) - \omega \ma{U})}_{\ma{K}_\omega} \vec{x}^{(k)} + \underbrace{(\ma{D} + \omega \ma{L}) \omega \vec{b}}_{\vec{c}_\omega}\]
+	\[\vec{x}^{(k + 1)} = \ma{K}_\omega \vec{x}^{(k)} + \vec{c}_\omega\]
+	Die jeweilige Wahl von $\omega$ bei SOR beeinflusst dann das Konvergenzverhalten. Für Spezialfälle können Empfehlungen gegeben werden:
+	\begin{enumerate}
+		\item Falls $a_{ii} \ne 0$, $i = 1, \dots, n$ $\Rightarrow \varrho(\ma{K}_\omega) \ge |1 - \omega| \Rightarrow$ Konvergenz für $0 < \omega < 2$
+		\item Falls $\ma{A}$ positiv definit und $0 < \omega < 2$, dann konvergiert SOR für jede Initiallösung $\vec{x}^{(0)}$
+		\item Falls $\ma{A}$ positiv definit und tridiagonal ist, dann $\varrho(\ma{K}_g) = \varrho(\ma{K}_j)^2 < 1$ und die optimale Wahl für $\omega$ ist:
+		\[\omega = \frac{2}{1 + \sqrt{1 - \varrho(\ma{K}_j)^2}}\]
+	\end{enumerate}
 \end{enumerate}
 Ein Beispiel zum Vergleich zwischen Jacobi und Gauß-Seidel
 \begin{align*}
-10 &x_1 - &x_2 + 2 &x_3 & &= 6 \\
-- &x_1 + 11 &x_2 - &x_3 + 3 &x_4 &= 25 \\
-2 &x_1 - &x_2 + 10 &x_3 - &x_4 &= -11 \\
-& 3 &x_2 - &x_3 + 8 &x_4 &= 15
+	10 &x_1 - &x_2 + 2 &x_3 & &= 6 \\
+	- &x_1 + 11 &x_2 - &x_3 + 3 &x_4 &= 25 \\
+	2 &x_1 - &x_2 + 10 &x_3 - &x_4 &= -11 \\
+	& 3 &x_2 - &x_3 + 8 &x_4 &= 15
 \end{align*}
 
 Jacobi:
 \begin{align*}
-x_1^{(k + 1)} &= \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
-x_2^{(k + 1)} &= \frac{1}{10} x_1^{(k)} + \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
-x_3^{(k + 1)} &=  -\frac{1}{5} x_1^{(k)} + \frac{1}{10} x_2^{(k)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
-x_4^{(k + 1)} &= \frac{3}{8} x_2^{(k)} + \frac{1}{8} x_3^{(k)} + \frac{15}{8}
+	x_1^{(k + 1)} &= \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
+	x_2^{(k + 1)} &= \frac{1}{10} x_1^{(k)} + \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
+	x_3^{(k + 1)} &=  -\frac{1}{5} x_1^{(k)} + \frac{1}{10} x_2^{(k)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
+	x_4^{(k + 1)} &= \frac{3}{8} x_2^{(k)} + \frac{1}{8} x_3^{(k)} + \frac{15}{8}
 \end{align*}
 
 Gauß-Seidel:
 \begin{align*}
-x_1^{(k + 1)} &= & \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
-x_2^{(k + 1)} &= \frac{1}{11} x_1^{(k + 1)} + & \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
-x_3^{(k + 1)} &= -\frac{1}{5} x_1^{(k + 1)} + & \frac{1}{10} x_2^{(k + 1)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
-x_4^{(k + 1)} &= & \frac{3}{8} x_2^{(k + 1)} + \frac{1}{8} x_3^{(k + 1)} + \frac{15}{8}
+	x_1^{(k + 1)} &= & \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
+	x_2^{(k + 1)} &= \frac{1}{11} x_1^{(k + 1)} + & \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
+	x_3^{(k + 1)} &= -\frac{1}{5} x_1^{(k + 1)} + & \frac{1}{10} x_2^{(k + 1)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
+	x_4^{(k + 1)} &= & \frac{3}{8} x_2^{(k + 1)} + \frac{1}{8} x_3^{(k + 1)} + \frac{15}{8}
 \end{align*}
 Man erkennt bei Gauß-Seidel die Abhängigkeit von Werten, welche erst im aktuellen Iterationsschritt berechnet werden. In der Praxis bietet Gauß-Seidel dadurch in der Regel eine schneller Konvergenz. Vorteil von Jacobi ist jedoch die bessere Parallelisierbarkeit eines Iterationsschrittes.
 
 \paragraph{Konvergenzbetrachtung}
 \begin{equation}
-\ma{S} \vec{x} = \ma{T} \vec{x} + \vec{b}
-\label{eq:jacobi_konvergenz_1}
+	\ma{S} \vec{x} = \ma{T} \vec{x} + \vec{b}
+	\label{eq:jacobi_konvergenz_1}
 \end{equation}
 \begin{equation}
-\ma{S} \vec{x}^{(x + 1)} = \ma{T} \vec{x}^{(k)} + \vec{b}
-\label{eq:jacobi_konvergenz_2}
+	\ma{S} \vec{x}^{(x + 1)} = \ma{T} \vec{x}^{(k)} + \vec{b}
+	\label{eq:jacobi_konvergenz_2}
 \end{equation}
 
 \ref{eq:jacobi_konvergenz_1} - \ref{eq:jacobi_konvergenz_2}:
@@ -797,16 +797,16 @@ Man erkennt bei Gauß-Seidel die Abhängigkeit von Werten, welche erst im aktuel
 \subsection{Gradientenverfahren}
 Sei $ \ma{A} \in \mathbb{R}^{n\times n} $ mit
 \begin{itemize}
-\item $\ma{A}^T = \ma{A}$
-\item $\vec{x}^T \cdot \ma{A} \cdot \vec{x} > 0$ für $\vec{x} \neq 0$ (positiv definit)
-\item $\vec{b} \in \mathbb{R}$
+	\item $\ma{A}^T = \ma{A}$
+	\item $\vec{x}^T \cdot \ma{A} \cdot \vec{x} > 0$ für $\vec{x} \neq 0$ (positiv definit)
+	\item $\vec{b} \in \mathbb{R}$
 \end{itemize}
 
 Dann existiert genau ein Minimum für die quadratische Form:
 \begin{align*}
-\Phi(\vec{x}) &= \num{0.5} \cdot \vec{x}^T \cdot \ma{A} \cdot \vec{x} - \vec{x}^T \cdot \vec{b}\\
-\nabla \Phi(\vec{x}) &= \num{0.5} \left( \ma{A}^T + \ma{A} \right) \cdot \vec{x} - \vec{b} = \ma{A} \cdot \vec{x} - \vec{b}\\
-\text{Minimum: } \nabla \Phi(\vec{x}) = \vec{0} \Rightarrow \ma{A} \cdot \vec{x} = \vec{b}
+	\Phi(\vec{x}) &= \num{0.5} \cdot \vec{x}^T \cdot \ma{A} \cdot \vec{x} - \vec{x}^T \cdot \vec{b}\\
+	\nabla \Phi(\vec{x}) &= \num{0.5} \left( \ma{A}^T + \ma{A} \right) \cdot \vec{x} - \vec{b} = \ma{A} \cdot \vec{x} - \vec{b}\\
+	\text{Minimum: } \nabla \Phi(\vec{x}) = \vec{0} \Rightarrow \ma{A} \cdot \vec{x} = \vec{b}
 \end{align*}
 
 $\Rightarrow$ Minimierung der quadratischen Form entspricht Lösung des linearen Gleichungssystem.
