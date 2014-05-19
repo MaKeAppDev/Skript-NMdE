@@ -815,8 +815,15 @@ $\Rightarrow$ Minimierung der quadratischen Form entspricht Lösung des linearen
 \begin{tabular}{ll}
 	\textbf{Allgemein:} & $\vec{x}^{(k+1)} = \vec{x}^{(k)} + \alpha_K \cdot \vec{d}^{(k)}$\\
 	\textbf{Bestimme:} & $\alpha_k,\ \vec{d} = ?$\\
-	\textbf{Idee:} & Wähle Richtung des steilsten Abstiegs ("'sleepest descent"')\\
+	\textbf{Idee:} & Wähle Richtung des steilsten Abstiegs ("'sleepest descent"', siehe \autoref{fig:sleepest-descent})\\
 \end{tabular}
+
+\begin{figure}[htdp]
+	\center
+	\input{figures/chapter-01/steepest_descent}
+	\caption{Gradientenverfahren - sleepest descent}
+	\label{fig:sleepest-descent}
+\end{figure}
 
 \begin{align*}
 	\vec{d}^{(k)} &= - \nabla \Phi(\vec{x}^{(k)}) = \vec{b} \cdot \ma{A} \cdot \vec{x}^{(k)} =: \vec{r}^{(k)} \text{ Residium}\\
@@ -843,9 +850,3 @@ Alternative:\\
 	\vec{r}^{(k+1)} &= \vec{r}^{(k)} - \alpha_k \cdot \ma{A} \vec{r}^{(k)}\\
 	\Rightarrow \text{ nur eine Matrix-Vektormultiplikation je Iteration}
 \end{align*}
-
-\begin{figure}[htdp]
-	\center
-	\input{figures/chapter-01/steepest_descent}
-	\caption{Gradientenverfahren - steepest descent}
-\end{figure}
