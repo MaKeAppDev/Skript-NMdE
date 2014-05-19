@@ -883,3 +883,50 @@ $ \Rightarrow \vec{p}^{(k)}$ bilden eine Basis des $\mathbb{R}^n$
 \text{Daher: } \vec{x}^* &= \sum^n_{i=1} \alpha_i \cdot \vec{p}^{(i)}\\
 \Rightarrow \vec{b} &= \ma{A} \cdot \vec{x}^* = \sum^n_{i=1} \alpha_i \cdot \ma{A} \cdot \vec{p}^{(i)}
 \end{align*}
+
+
+
+\paragraph{Verfahren}
+\begin{equation}
+	\vec{r}^{(0)} = \vec{b} - \ma{A} \vec{x}^{(0)}
+\end{equation}
+\begin{equation}
+	\vec{p}^{(0)} = \vec{r}^{(0)}
+\end{equation}
+Für $k = 0, 1, \ldots$
+\begin{equation}
+	\alpha_k = \frac{\vec{p}^{(k)}^T \cdot \vec{r}^{(k)}}{\vec{p}^{(k + 1)}^T \ma{A} \vec{p}^{(k)}}
+\end{equation}
+\begin{equation}
+	\vec{x}^{(k + 1)} = \vec{x}^{(k)} + \alpha_k \vec{p}^{(k)}
+\end{equation}
+\begin{equation}
+	\vec{b} - \ma{A} \vec{x}^{(k + 1)} = \vec{r}^{(k + 1)} = \vec{r}^{(k)} - \alpha_k \ma{A} \vec{p}^{(k)}
+\end{equation}
+\begin{equation}
+	\beta_k = \frac{(\ma{A} \vec{p}^{(k)})^T \cdot \vec{r}^{(k + 1)}}{(\ma{A} \vec{p}^{(k)})^T \cdot \vec{p}^{(k)}}
+\end{equation}
+\begin{equation}
+	\vec{p}^{(k + 1)} = \vec{r}^{(k + 1)} - \beta_k \vec{p}^{(k)}
+\end{equation}
+
+Der Aufwand je Iteration besteht maßgeblich aus
+\begin{itemize}
+	\item 1 Matrix-Vektorprodukt
+	\item 2 Vektor-Skalarprodukte (nach einer Umstellung der obigen Formeln)
+\end{itemize}
+
+\paragraph{Konvergenz} Sei $\ma{A}$ symmetrisch und positiv definit, dann gilt:
+\begin{itemize}
+	\item Das CG-Verfahren bricht nach höchstens $n$ Schritten mit der exakten Lösung ab
+	\item $||\vec{e}^{(k)}||_A \le \frac{2 c^k}{1 + c^{2k}} ||\vec{e}^{(0)}||_A$ mit $c = \frac{\sqrt{K_2(\ma{A})} - 1}{\sqrt{K_2(\ma{A})} + 1}$
+\end{itemize}
+In der Praxis mit endlicher Rechengenauigkeit erhält man allerdings nicht die exakte Lösung nach $n$ Schritten, anstelle dessen bricht man nach einem gewissen Kriterium (zum Beispiel Betrag des Residiums) ab.
+
+Verbessert werden kann das Konvergenzverhalten durch eine Vorkonditionierung.
+
+\paragraph{Vorkoniditionierung} Transformiere $\ma{A} \vec{x} = \vec{b}$ in (Linksvorkonditionierung)
+\begin{equation}
+	\ma{P}^{-1} \ma{A} \vec{x} = \ma{P}^{-1} \vec{b}
+\end{equation}
+Gilt $K(\ma{P}^{-1} \ma{A}) < K(\ma{A})$, dann erhält man ein besseres Konvergenzverhalten. Ideal wäre $\ma{P}^{-1} = \ma{A}^{-1}$, allerdings ist die Berechnung der Inversen aufwändiger als die Lösung des ursprünglichen Problems (die Lösung des Gleichungssystems).
