@@ -755,10 +755,10 @@ Die jeweilige Wahl von $\omega$ bei SOR beeinflusst dann das Konvergenzverhalten
 \end{enumerate}
 Ein Beispiel zum Vergleich zwischen Jacobi und Gauß-Seidel
 \begin{align*}
-10 &x_1 - &x_2 + 2 &x_3 & &= 6 \\
-- &x_1 + 11 &x_2 - &x_3 + 3 &x_4 &= 25 \\
-2 &x_1 - &x_2 + 10 &x_3 - &x_4 &= -11 \\
-& 3 &x_2 - &x_3 + 8 &x_4 &= 15
+10 x_1 - x_2 + 2 x_3 &= 6 \\
+- x_1 + 11 x_2 - x_3 + 3 x_4 &= 25 \\
+2 x_1 - x_2 + 10 x_3 - x_4 &= -11 \\
+3 x_2 - x_3 + 8 x_4 &= 15
 \end{align*}
 
 Jacobi:
@@ -771,10 +771,10 @@ x_4^{(k + 1)} &= \frac{3}{8} x_2^{(k)} + \frac{1}{8} x_3^{(k)} + \frac{15}{8}
 
 Gauß-Seidel:
 \begin{align*}
-x_1^{(k + 1)} &= & \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
-x_2^{(k + 1)} &= \frac{1}{11} x_1^{(k + 1)} + & \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
-x_3^{(k + 1)} &= -\frac{1}{5} x_1^{(k + 1)} + & \frac{1}{10} x_2^{(k + 1)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
-x_4^{(k + 1)} &= & \frac{3}{8} x_2^{(k + 1)} + \frac{1}{8} x_3^{(k + 1)} + \frac{15}{8}
+x_1^{(k + 1)} &= \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
+x_2^{(k + 1)} &= \frac{1}{11} x_1^{(k + 1)} + \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
+x_3^{(k + 1)} &= -\frac{1}{5} x_1^{(k + 1)} + \frac{1}{10} x_2^{(k + 1)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
+x_4^{(k + 1)} &= \frac{3}{8} x_2^{(k + 1)} + \frac{1}{8} x_3^{(k + 1)} + \frac{15}{8}
 \end{align*}
 Man erkennt bei Gauß-Seidel die Abhängigkeit von Werten, welche erst im aktuellen Iterationsschritt berechnet werden. In der Praxis bietet Gauß-Seidel dadurch in der Regel eine schneller Konvergenz. Vorteil von Jacobi ist jedoch die bessere Parallelisierbarkeit eines Iterationsschrittes.
 
