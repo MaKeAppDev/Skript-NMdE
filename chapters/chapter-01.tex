@@ -1025,3 +1025,123 @@ Für $k = 0, 1, 2, \ldots$
 \begin{equation}
 	\vec{p}^{(k + 1)} = \vec{z}^{(k + 1)} - \beta_k \vec{p}^{(k)}
 \end{equation}
+
+\subsection{Interpolation}
+Aufgabe: Eine (stetige) Funktion zu bestimmen, welche gegebene Datenpunkte \textit{bestmöglichst} abbildet.
+
+Eine möglicher Herangehensweise an diese Problem ist eine Entwicklung in eine Taylorreihe, welche allerdings gewisse Nachteile aufweist:
+\begin{itemize}
+	\item konzentriert sich auf einen Punkt
+	\item keine Aussage über Genauigkeit an anderen Punkten
+	\item Approximation verbessert sich nicht mit höheren Graden des Approximationspolynoms: z.B.: $e^x$, $\frac{1}{x}$
+\end{itemize}
+		
+Eine Interpolation hingegen zielt auf eine exakte Abbildung an den gegebenen Stützstellen eine Näherung dazwischen ab.
+
+Allgemein formuliert lautet das Interpolationsproblem: Gegeben $n + 1$ Paare von reellen oder komplexen Zahlen $\left( (x_0, f(x_0)), (x_1, f(x_1)), \ldots , (x_n, f(x_n)) \right)$. Mit Stützstellen bezeichnet man $x_i$, mit Stützwert $f(x_i)$ und mit Stützpunkt $(x_i, f(x_i))$.
+
+Ziel ist die Bestimmung von $\Phi(x, a_0, \ldots, a_n), a_0, a_1, \ldots, a_n$, so dass $\forall_{i = 0}^n f(x_i) = \Phi(x_i)$
+
+\paragraph{Lagrange Interpolationspolynom}
+\begin{equation}
+	L_{n, k} (x) = \frac{(x - x_0) \cdot (x - x_1) \cdot \ldots \cdot (x - x_{k-1}) \cdot (x - x_{k + 1}) \cdot \ldots \cdot (x - x_n)}{(x_k - x_0) \cdot (x_k - x_1) \cdot \ldots \cdot (x_k - x_{k - 1}) \cdot (x_k - x_{k + 1}) \cdot \ldots \cdot (x_k - x_n)}
+\end{equation}
+\begin{equation}
+	L_k(x) = L_{n, k} = \prod_{i = 0, i \ne k}^n \frac{(x - x_i)}{x_k - x_i)}
+\end{equation}
+$L_{n, k}(x_k) = 1$, $L_{n, k}(x_i) = 0$ für $x_i \ne x_k$
+\begin{equation}
+	P(x) = \sum_{k = 0}^n f(x_k) \cdot L_{n, k}(x)
+\end{equation}
+
+Theorem: Seien $n + 1$ paarweise unterschiedliche Stützstellen $x_i$ sowie die zugehörigen Stützwerte $f(x_i)$ gegeben. Dann existiert ein eindeutiges Interpolationspolynom $P(x)$ vom Grad höchstens $n$ mit $P(x_i) = f(x_i)$
+
+Fehlerabschätzung: Gegeben seien $n + 1$ paarweise unterschiedliche Stützstellen $x_i \in [a, b]$ sowie eine Funktion $f$ die auf diesem Intervall $[a, b]$ $(n + 1)$-mal stetig differenzierbar ist. Dann existiert für $x \in [a, b]$ ein $\xi(x) \in (a, b)$ mit der Eigenschaft
+\begin{equation}
+	f(x) = P(x) + \frac{f^{(n + 1)}(\xi(x))}{(n + 1)!} \prod_{i = 0}^{n} (x - x_i)
+\end{equation}
+
+\paragraph{Dividierte Differenzen} Sei $P(x)$ das Lagrange-Polynom $n$-ter Ordnung. Wähle
+\begin{equation}
+	P_n(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + \ldots + a_n(x - x_0)(x - x_1) \cdot \ldots \cdot (x - x_{n-1})
+\end{equation}
+Setzt man nun kontiniuerlich die Stützstellen $x_i$ in $P_n(x)$ erhält man
+\begin{equation}
+	P_n(x_0) = a_0 = f(x_0)
+\end{equation}
+und somit den Wert für $a_0$. Aus
+\begin{equation}
+	P_n(x_1) = f(x_0) + a_1(x_1 - x_0) = f(x_1)
+\end{equation}
+folgt dann die Bestimmung von $a_1$
+\begin{equation}
+	a_1 = \frac{f(x_1) - f(x_0)}{x_1 - x_0}
+\end{equation}
+
+\textit{Dividierte Differenzen}-Notation:
+\begin{itemize}
+	\item 0. dividierte Differenz
+	\begin{equation}
+		f[x_i] = f(x_i)
+	\end{equation}
+	\item 1. dividierte Differenz
+	\begin{equation}
+		f[x_i, x_{i + 1}] = \frac{f[x_{i + 1}] - f[x_i]}{x_{i + 1} - x_i} = \frac{f(x_{i + 1} - f(x_i)}{x_{i + 1} - x_i}
+	\end{equation}
+	\item k. dividierte Differenz
+	\begin{equation}
+		f[x_i, x_{i + 1}, \ldots, x_{i + k}] = \frac{f[x_{i + 1}, x_{i + 2}, \ldots x_{i + k}] - f[x_i, x_{i + 1}, x_{i + 2}, \ldots x_{i + k - 1}]}{x_{i + k} - x_i}
+	\end{equation}
+\end{itemize}
+
+Mithilfe dieser Notation erhält man $P_n(x)$ als sogenannte Newtons dividierte Differenz
+\begin{equation}
+	P_n(x) = f[x_0] + \sum_{k = 1}^n f[x_0, x_1, \ldots, x_k] \cdot (x - x_0) \cdot (x - x_{k - 1})
+\end{equation}
+
+Durch eine tabellarische Darstellung erhält man eine systematische Vorgehensweise zur Berechnung der dividierten Differenzen
+\begin{tabular}{c|c|c|c}
+$x$ & $f(x)$ & 1. div. Diff. & 2. div. Diff. \\ \hline
+$x_0$ & $f[x_0]$ & $f[x_0, x_1] = \frac{f[x_1] - f[x_0]}{x_1 - x_0}$ & $f[x_0, x_1, x_2] = \frac{f[x_1, x_2] - f[x_1, x_0]}{x_2 - x_0}$ \\
+$x_1$ & $f[x_1]$ & $f[x_1, x_2] = \frac{f[x_2] - f[x_1]}{x_2 - x_1}$ & \vdots \\
+$x_2$ & $f[x_2]$ & $f[x_2, x_3] = \frac{f[x_3] - f[x_2]}{x_3 - x_2}$ & \\
+\vdots & \vdots & \vdots & 
+\end{tabular}
+
+Bei äquidistanten Stützstellen bietet sich eine vereinfachte Notation an
+\begin{equation}
+	h = x_{i + 1} - x_i
+\end{equation}
+\begin{equation}
+	x = x_0 + s h
+\end{equation}
+\begin{equation}
+	x - x_i = (s - i) \cdot h
+\end{equation}
+Damit ist dann
+\begin{equation}
+	P_n(x) = P_n(x_0 + s \cdot h) = s \cdot h \cdot f[x_0, x_1] + s \cdot (s - 1) \cdot h^2 f[x_0, x_1, x_2] + \ldots + (s - n + 1) h^n f[x_0, x_1, \ldots, x_n]
+\end{equation}
+
+Mithilfe von Binomialkoeffizienten
+\begin{equation}
+	\begin{pmatrix} s \\ k \end{pmatrix} = \frac{s (s - 1) \cdot \ldots \cdot (s - k + 1)}{k!}
+\end{equation}
+\begin{equation}
+	P_n(x) = f[x_0] + \sum_{k = 1}^n \begin{pmatrix} s \\ k	\end{pmatrix} k! h^k f[x_0, x_1, \ldots, x_k]
+\end{equation}
+
+$\Delta$-Notation: $\Delta f(x_i) = f(x_{i + 1}) - f(x_i)$
+\begin{equation}
+	f[x_0, x_1] = \frac{f(x_1) - f(x_0)}{x_1 - x_0} = \frac{\Delta f(x_i)}{h}
+\end{equation}
+\begin{equation}
+	f[x_0, x_1, x_2] = \frac{1}{2h} \frac{\Delta f(x_1) - \Delta f(x_0)}{h} = \frac{1}{2} \Delta^2 f(x_0)
+\end{equation}
+\begin{equation}
+	f[x_0, x_1, \ldots, x_k] = \frac{1}{k! h!} \Delta^k f(x_0)
+\end{equation}
+Damit erhält man dann die Newton'sche Vorwärtsdifferenz
+\begin{equation}
+	P_n(x) = f(x_0) + \sum_{k = 1}^n \begin{pmatrix} s \\ k \end{pmatrix} \Delta^k f(x_0)
+\end{equation}
