@@ -960,8 +960,68 @@ In der Praxis mit endlicher Rechengenauigkeit erhält man allerdings nicht die e
 
 Verbessert werden kann das Konvergenzverhalten durch eine Vorkonditionierung.
 
-\paragraph{Vorkonditionierung} Transformiere $\ma{A} \vec{x} = \vec{b}$ in (Linksvorkonditionierung)
+\paragraph{Vorkonditionierung} Für eine Linksvorkonditionierung wird $\ma{A} \vec{x} = \vec{b}$ transformiert in
 \begin{equation}
 	\ma{P}^{-1} \ma{A} \vec{x} = \ma{P}^{-1} \vec{b}
 \end{equation}
-Gilt $K(\ma{P}^{-1} \ma{A}) < K(\ma{A})$, dann erhält man ein besseres Konvergenzverhalten. Ideal wäre $\ma{P}^{-1} = \ma{A}^{-1}$, allerdings ist die Berechnung der Inversen aufwändiger als die Lösung des ursprünglichen Problems (die Lösung des Gleichungssystems).
+Um eine Rechtsvorkonditionierung vorzunehmen (welche seltener benutzt wird) wird nach
+\begin{equation}
+	(\ma{A} \ma{P}^{-1}) \ma{P} \vec{x} = \vec{b}
+\end{equation}
+transformiert und in zwei Schritten gelöst, zuerst
+\begin{equation}
+	\ma{A} \ma{P}^{-1} \vec{y} = \vec{b}
+\end{equation}
+und danach
+\begin{equation}
+	\ma{P} \vec{x} = \vec{y}
+\end{equation}
+Gilt $K(\ma{P}^{-1} \ma{A}) < K(\ma{A})$, dann erhält man ein besseres Konvergenzverhalten. Ideal wäre $\ma{P}^{-1} = \ma{A}^{-1}$, allerdings ist die Berechnung der Inversen aufwändiger als die Lösung des ursprünglichen Problems (die Lösung des Gleichungssystems). Möglichst einfach wäre der Einsatz von $\ma{P} = \ma{I}$, allerdings erhält man damit keinen Gewinnung durch die Vorkonditionierung. Praktischerweise wählt man eine möglichst einfach ermittelbare Matrix $P$ welche zwischen diesen beiden Extrema liegt.
+
+Eine mögliche Lösung für dieses Problem ist der Einsatz von \emph{Preconditioned Conjugate Gradient (PCG)}: Sei $\ma{P}$ symmetrisch und positiv definit $\Rightarrow \exists$ Zerlegung
+\begin{equation}
+	\ma{P} = \ma{P}^\frac{1}{2} {\ma{P}^\frac{1}{2}}^T
+\end{equation}
+CG wird dann angewandt auf
+\begin{equation}
+	\tilde{\ma{A}} \tilde{\vec{x}} = \tilde{\vec{b}}
+\end{equation}
+\begin{equation}
+	\tilde{\ma{A}} = \ma{P}^{-\frac{1}{2}} \ma{A} {\ma{P}^{-\frac{1}{2}}}^T
+\end{equation}
+\begin{equation}
+	\tilde{\vec{x}} = {\ma{P}^\frac{1}{2}}^T \vec{x}
+\end{equation}
+\begin{equation}
+	\tilde{\vec{b}} = \ma{P}^{-\frac{1}{2}} \vec{b}
+\end{equation}
+
+Das Verfahren sieht dann wie folgt aus
+\begin{equation}
+	\vec{r}^{(0)} = \vec{b} - \ma{A} \vec{x}^{(0)}
+\end{equation}
+\begin{equation}
+	\ma{P} \vec{z}^{(0)} = \vec{r}^{(0)} \Rightarrow \vec{z}^{(0)}
+\end{equation}
+\begin{equation}
+	\vec{p}^{(0)} = \vec{z}^{(0)}
+\end{equation}
+Für $k = 0, 1, 2, \ldots$
+\begin{equation}
+	\alpha_k = \frac{{\vec{p}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{p}^{(k)}}^T \cdot \ma{A} \vec{p}^{(k)}}
+\end{equation}
+\begin{equation}
+	\vec{x}^{(k + 1)} = \vec{x}^{(k)} + \alpha_k \vec{p}^{(k)}
+\end{equation}
+\begin{equation}
+	\vec{r}^{(k + 1)} = \vec{r}^{(k)} - \alpha_k \ma{A} \vec{p}^{(k)}
+\end{equation}
+\begin{equation}
+	\ma{P} \vec{z}^{(k + 1)} = \vec{r}^{(k + 1)} \Rightarrow \vec{z}^{(k + 1)}
+\end{equation}
+\begin{equation}
+	\beta_k = \frac{(\ma{A} \vec{p}^{(k)})^T \cdot \vec{z}^{(k + 1)}}{(\ma{A} \vec{p}^{(k)})^T \cdot \vec{p}^{(k)}}
+\end{equation}
+\begin{equation}
+	\vec{p}^{(k + 1)} = \vec{z}^{(k + 1)} - \beta_k \vec{p}^{(k)}
+\end{equation}
