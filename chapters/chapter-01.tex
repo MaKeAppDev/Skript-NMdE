@@ -834,8 +834,11 @@ $\alpha_k = ? \quad \Rightarrow $ Minimiere $ \vec{\Phi}$\\
 	\frac{\partial \vec{\Phi}(x^{(k+1)})}{\partial \alpha_k} &= \frac{1}{2} {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{x}^{(k)} + \frac{1}{2} {\vec{x}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b}\\
 	&= {\vec{r}^{(k)}}^T \cdot \ma{A} \vec{x}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} \neq 0\\
 	\ldots\\
-	\Rightarrow \alpha &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
-	\textbf{Verfahren: } k &= 0,1,2,\ldots\\
+	\Rightarrow \alpha &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}
+\end{align}
+\textbf{Verfahren: }\\
+Für $k = 0,1,2,\ldots$
+\begin{align}
 	\vec{r}^{(k)} &= \vec{b} \cdot \ma{A} \cdot \vec{x}^{(k)}\\
 	\alpha_k &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
 	\vec{x}^{(k+1)} &= \vec{x}^{(k)} + \alpha_k \cdot \vec{r}^{(k)} \label{eq:verfahren-schritt-3}
@@ -843,12 +846,12 @@ $\alpha_k = ? \quad \Rightarrow $ Minimiere $ \vec{\Phi}$\\
 
 2 Matrix-Vektormultiplikationen (dominant)\\
 2 Vektor-Skalarprodukte\\
-Alternative:\\
+\textbf{Alternative:}
 \begin{align}
 	- \ma{A} \cdot \vec{x}^{(k+1)} + \vec{b} &= - \ma{A} \cdot \vec{x}^{(k)} - \alpha_k \cdot \ma{A} \cdot \vec{r}^{(k)} + \vec{b}\\
-	\vec{r}^{(k+1)} &= \vec{r}^{(k)} - \alpha_k \cdot \ma{A} \vec{r}^{(k)}\\
-	\Rightarrow \text{ nur eine Matrix-Vektormultiplikation je Iteration}
+	\vec{r}^{(k+1)} &= \vec{r}^{(k)} - \alpha_k \cdot \ma{A} \vec{r}^{(k)}
 \end{align}
+$\Rightarrow$ \text{ nur eine Matrix-Vektormultiplikation je Iteration}
 
 \subsection{Konvergenz}
 \begin{align}
