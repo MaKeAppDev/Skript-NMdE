@@ -754,10 +754,10 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 \end{enumerate}
 Ein Beispiel zum Vergleich zwischen Jacobi und Gauß-Seidel
 \begin{align*}
-	10 &x_1 - &x_2 + 2 &x_3 & &= 6 \\
-	- &x_1 + 11 &x_2 - &x_3 + 3 &x_4 &= 25 \\
-	2 &x_1 - &x_2 + 10 &x_3 - &x_4 &= -11 \\
-	& 3 &x_2 - &x_3 + 8 &x_4 &= 15
+10 x_1 - x_2 + 2 x_3 &= 6 \\
+- x_1 + 11 x_2 - x_3 + 3 x_4 &= 25 \\
+2 x_1 - x_2 + 10 x_3 - x_4 &= -11 \\
+3 x_2 - x_3 + 8 x_4 &= 15
 \end{align*}
 
 Jacobi:
@@ -770,10 +770,10 @@ Jacobi:
 
 Gauß-Seidel:
 \begin{align*}
-	x_1^{(k + 1)} &= & \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
-	x_2^{(k + 1)} &= \frac{1}{11} x_1^{(k + 1)} + & \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
-	x_3^{(k + 1)} &= -\frac{1}{5} x_1^{(k + 1)} + & \frac{1}{10} x_2^{(k + 1)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
-	x_4^{(k + 1)} &= & \frac{3}{8} x_2^{(k + 1)} + \frac{1}{8} x_3^{(k + 1)} + \frac{15}{8}
+x_1^{(k + 1)} &= \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
+x_2^{(k + 1)} &= \frac{1}{11} x_1^{(k + 1)} + \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
+x_3^{(k + 1)} &= -\frac{1}{5} x_1^{(k + 1)} + \frac{1}{10} x_2^{(k + 1)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
+x_4^{(k + 1)} &= \frac{3}{8} x_2^{(k + 1)} + \frac{1}{8} x_3^{(k + 1)} + \frac{15}{8}
 \end{align*}
 Man erkennt bei Gauß-Seidel die Abhängigkeit von Werten, welche erst im aktuellen Iterationsschritt berechnet werden. In der Praxis bietet Gauß-Seidel dadurch in der Regel eine schneller Konvergenz. Vorteil von Jacobi ist jedoch die bessere Parallelisierbarkeit eines Iterationsschrittes.
 
@@ -814,14 +814,14 @@ $\Rightarrow$ Minimierung der quadratischen Form entspricht Lösung des linearen
 \begin{tabular}{ll}
 	\textbf{Allgemein:} & $\vec{x}^{(k+1)} = \vec{x}^{(k)} + \alpha_K \cdot \vec{d}^{(k)}$\\
 	\textbf{Bestimme:} & $\alpha_k,\ \vec{d} = ?$\\
-	\textbf{Idee:} & Wähle Richtung des steilsten Abstiegs ("'sleepest descent"', siehe \autoref{fig:sleepest-descent})\\
+	\textbf{Idee:} & Wähle Richtung des steilsten Abstiegs ("'steepest descent"', siehe \autoref{fig:steepest-descent})\\
 \end{tabular}
 
 \begin{figure}[htdp]
 	\center
 	\input{figures/chapter-01/steepest_descent}
-	\caption{Gradientenverfahren - sleepest descent}
-	\label{fig:sleepest-descent}
+	\caption{Gradientenverfahren - steepest descent}
+	\label{fig:steepest-descent}
 \end{figure}
 
 \begin{align*}
@@ -876,10 +876,92 @@ Alternative:\\
 \end{align*}
 
 \subsection{CG - Konjugierte Gradientenmethode}
-$ \vec{p}^{(k)} $ ist eine Menge mit $ {\underbrace{\vec{p}^{(i)}}^T \cdot \ma{A} \cdot \vec{p}^{(j)} = 0}_{\text{paarweise A-orthogonal bzw. A-konjugiert}}, \forall_{i,j=1,\ldots,n} i \neq j$\\
+$ \vec{p}^{(k)} $ ist eine Menge mit $ \underbrace{{\vec{p}^{(i)}}^T}_{\text{paarweise A-orthogonal bzw. A-konjugiert}} \cdot \ma{A} \cdot \vec{p}^{(j)} = 0, \forall i,j=1,\ldots,n\quad i \neq j$\\
 $ \Rightarrow \vec{p}^{(k)}$ bilden eine Basis des $\mathbb{R}^n$
 
 \begin{align*}
 \text{Daher: } \vec{x}^* &= \sum^n_{i=1} \alpha_i \cdot \vec{p}^{(i)}\\
 \Rightarrow \vec{b} &= \ma{A} \cdot \vec{x}^* = \sum^n_{i=1} \alpha_i \cdot \ma{A} \cdot \vec{p}^{(i)}
 \end{align*}
+
+\subsubsection{Schrittweite}
+\begin{align*}
+0 = \frac{\partial\vec{\Phi}}{\partial\alpha_k}\left(\vec{x}^{(k)}+\alpha_k\vec{p}^{(k)}\right)\\
+\Rightarrow\alpha_k = \frac{{\vec{p}^{(k)}}^T\cdot\vec{r}^{(k)}}{{\vec{p}^{(k)}}^T\cdot\ma{A}\cdot\vec{p}^{(k)}}
+\end{align*}
+Wie Gradientenverfahren, aber Suchrichtung $\vec{p}$
+
+\subsubsection{Suchrichtung}
+\textbf{Definition:} Lösung $\vec{x}^{(k)}$ heißt optimal bzgl. einer Richtung $\vec{p}\neq 0$, wenn $\vec{\Phi}(\vec{x}^{(k)})\leq\vec{\Phi}(\vec{x}^{(k)}+\lambda\vec{p})\;,\;\forall\lambda\in\R$\\
+\begin{itemize}
+\item[$\Leftrightarrow$] $\vec{\Phi}$ besitzt lokales Minimum entlang $\vec{p}$ für $\lambda = 0$
+\item[$\Leftrightarrow$] $\frac{\partial\vec{\Phi}}{\partial\lambda}\left(\vec{x}^{(k)}+\lambda\vec{p}^{(k)}\right)\vert_{\lambda = 0} = \vec{p}^T\cdot\ma{A}\cdot\vec{x}^{(k)} - \vec{p}\vec{b}^T + \lambda\vec{p}^T\cdot\ma{A}\cdot\vec{p}\vert_{\lambda = 0}$
+\item[$\Leftrightarrow$] $\vec{p}\vec{I}\vec{r}^{(k)}$
+\end{itemize}
+\begin{align*}
+\text{Sei }\vec{x}^{(k+1)} = \vec{x}^{(k)} + \vec{q}\Rightarrow\vec{r}^{(k+1)} &= \vec{b}\cdot\ma{A}\cdot\vec{x}^{(k+1)}\\
+&= \vec{b}\cdot\ma{A}\cdot\vec{x}^{(k)} - \ma{A}\vec{q}\\
+&= \vec{r}^{(k)} - \ma{A}\vec{q}
+\end{align*} 
+Forderung $\vec{x}^{(k+1)}$ ebenfalls optimal bzgl. $\vec{p}$, also
+\begin{align*}
+0 = \vec{p}^T\cdot\vec{r}^{(k+1)} &= \vec{p}^T\cdot(\vec{r}^{(k)} - \ma{A}\vec{q})\\
+&= \underbrace{\vec{p}^T\cdot\vec{r}^{(k)}}_{0}-\vec{p}^T\cdot\ma{A}\cdot\vec{q} = \underbrace{-\vec{p}^T\cdot\ma{A}\cdot\vec{q}}_{\vec{p},\vec{q},\ma{A}\text{orthogonal}} = 0
+\end{align*}
+
+\textbf{Konstruktion der Suchrichtung}
+\begin{itemize}
+\item Start $\vec{p}^{(0)} = \vec{r}^{(0)}$ (Ausgehend von Initiallösung $\vec{x}^{(0)}$, Gradient an $\vec{x}^{(0)}$)
+\item Suche Richtungen $\vec{p}^{(k+1)} = \vec{r}^{(k+1)} - \beta_k\cdot\vec{p}^{(k)}\;,k=0,1,2,\ldots$ mit $\beta_k\in\R$, so dass gilt:
+\begin{align*}
+{\vec{p}^{(j)}}^T\cdot\ma{A}\cdot\vec{p}^{(k+1)} = 0 = {\left(\ma{A}\cdot\vec{p}^{(j)}\right)}^T\cdot\vec{p}^{(k+1)} = 0\;,j=0,1,\ldots,k\\
+\Rightarrow {\left(\ma{A}\cdot\vec{p}^{(j)}\right)}^T\cdot\left(\vec{r}^{(k+1)}-\beta_k\cdot\vec{p}^{(k)}\right) = 0 \underset{(j=k)}{\Rightarrow}\beta_k = \frac{\left(\ma{A}\cdot\vec{p}^{(k)}\right)^T\cdot\vec{r}^{(k+1)}}{\left(\ma{A}\cdot\vec{p}^{(k)}\right)^T\cdot\vec{p}^{(k)}}
+\end{align*}
+\end{itemize}
+Zu zeigen: $\vec{p}^{(k+1)}$ ist $\ma{A}$ orthogonal zu $\vec{p}^{(j)}\;\forall j<k$\\
+Beweisidee: vollständige Induktion
+
+\paragraph{Zusammenfassung des Verfahrens}
+\begin{equation}
+	\vec{r}^{(0)} = \vec{b} - \ma{A} \vec{x}^{(0)}
+\end{equation}
+\begin{equation}
+	\vec{p}^{(0)} = \vec{r}^{(0)}
+\end{equation}
+Für $k = 0, 1, \ldots$
+\begin{equation}
+	\alpha_k = \frac{{\vec{p}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{p}^{(k + 1)}}^T \ma{A} \vec{p}^{(k)}}
+\end{equation}
+\begin{equation}
+	\vec{x}^{(k + 1)} = \vec{x}^{(k)} + \alpha_k \vec{p}^{(k)}
+\end{equation}
+\begin{equation}
+	\vec{b} - \ma{A} \vec{x}^{(k + 1)} = \vec{r}^{(k + 1)} = \vec{r}^{(k)} - \alpha_k \ma{A} \vec{p}^{(k)}
+\end{equation}
+\begin{equation}
+	\beta_k = \frac{(\ma{A} \vec{p}^{(k)})^T \cdot \vec{r}^{(k + 1)}}{(\ma{A} \vec{p}^{(k)})^T \cdot \vec{p}^{(k)}}
+\end{equation}
+\begin{equation}
+	\vec{p}^{(k + 1)} = \vec{r}^{(k + 1)} - \beta_k \vec{p}^{(k)}
+\end{equation}
+
+Der Aufwand je Iteration besteht maßgeblich aus
+\begin{itemize}
+	\item 1 Matrix-Vektorprodukt
+	\item 2 Vektor-Skalarprodukte (nach einer Umstellung der obigen Formeln)
+\end{itemize}
+
+\paragraph{Konvergenz} Sei $\ma{A}$ symmetrisch und positiv definit, dann gilt:
+\begin{itemize}
+	\item Das CG-Verfahren bricht nach höchstens $n$ Schritten mit der exakten Lösung ab
+	\item $||\vec{e}^{(k)}||_A \le \frac{2 c^k}{1 + c^{2k}} ||\vec{e}^{(0)}||_A$ mit $c = \frac{\sqrt{K_2(\ma{A})} - 1}{\sqrt{K_2(\ma{A})} + 1}$
+\end{itemize}
+In der Praxis mit endlicher Rechengenauigkeit erhält man allerdings nicht die exakte Lösung nach $n$ Schritten, anstelle dessen bricht man nach einem gewissen Kriterium (zum Beispiel Betrag des Residiums) ab.
+
+Verbessert werden kann das Konvergenzverhalten durch eine Vorkonditionierung.
+
+\paragraph{Vorkonditionierung} Transformiere $\ma{A} \vec{x} = \vec{b}$ in (Linksvorkonditionierung)
+\begin{equation}
+	\ma{P}^{-1} \ma{A} \vec{x} = \ma{P}^{-1} \vec{b}
+\end{equation}
+Gilt $K(\ma{P}^{-1} \ma{A}) < K(\ma{A})$, dann erhält man ein besseres Konvergenzverhalten. Ideal wäre $\ma{P}^{-1} = \ma{A}^{-1}$, allerdings ist die Berechnung der Inversen aufwändiger als die Lösung des ursprünglichen Problems (die Lösung des Gleichungssystems).
