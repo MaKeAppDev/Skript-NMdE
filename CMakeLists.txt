@@ -19,6 +19,7 @@ set(FIGURES
 	figures/chapter-01/schaltung_beispiel_2.tex
 	figures/chapter-01/zusammenspiel_mathematik_informatik.tex
 	figures/chapter-01/steepest_descent.tex
+	figures/chapter-01/stueckweise_lin_interpolation.tex
 )
 
 set(IMAGES)
