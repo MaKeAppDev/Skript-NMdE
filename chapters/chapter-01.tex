@@ -1343,13 +1343,14 @@ P_n(x) &= a_0 + a_1x + \ldots + a_nx^n
 \missingfigure{sdjgfl}
 \end{figure}
 
-\paragraph{Trapezregel}
+\subsubsection{Trapezregel}
 Lineares Lagrange Polynom
 \begin{equation}
 \begin{split}
 P_1(x) &= \frac{x-x_1}{x_0-x_1}\cdot f(x_0) + \frac{x-x_0}{x_1-x_0}\cdot f(x_1)\\
 \int\limits_a^b &= \int\limits_{x_0}^{x_1}P_1(x)\diff x + \underbrace{\frac{1}{2}\int\limits_{x_0}^{x_1}f''(\xi(x))\cdot (x-x_0)\cdot (x-x_1)\diff x}_{x_1 \text{Fehlerterm}}\\
-\text{Mittelwert Integralrechnung} &= \frac{1}{2}f''(\xi)\int\limits_{x_0}^{x_1}(x-x_0)\cdot (x-x_1)\diff x = \frac{1}{2}f''(\xi)\left[\frac{x^3}{3}-\frac{(x_1+x_0)}{2}x^2+x_0x_1x\right]_{x_0}^{x_1} = \frac{-h^3}{12}f''(\xi)
+ & \text{Mittelwert Integralrechnung}\\
+ &= \frac{1}{2}f''(\xi)\int\limits_{x_0}^{x_1}(x-x_0)\cdot (x-x_1)\diff x = \frac{1}{2}f''(\xi)\left[\frac{x^3}{3}-\frac{(x_1+x_0)}{2}x^2+x_0x_1x\right]_{x_0}^{x_1} = \frac{-h^3}{12}f''(\xi)
 \end{split}
 \end{equation}
 mit $h = b-a = x_1-x_0$
@@ -1360,17 +1361,17 @@ Also:
 \end{equation}
 Exakt, sofern $f(x)$ höchstens linear ist
 
-\paragraph{Simpson Regel}
+\subsubsection{Simpson Regel}
 Quadratisches Lagrange Polynom
 \begin{equation}
 \begin{split}
-\int\limits_a^bf(x)\diff x &= \int\limits_{x_0}^{x_2}\frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)}f(x_0) + \frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}f(x_1) + \frac{(x-x_0)(x-x_1)}{(x_2-x_1)(x_2-x_1)}f(x_2)\diff x + \int\limits_{x_0}^{x_2}\frac{(x-x_0)(x-x_1)(x-x_2)}{6}f^{(3)}(\xi(x))\diff x\\
+\int\limits_a^bf(x)\diff x &= \int\limits_{x_0}^{x_2}\frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)}f(x_0) + \frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}f(x_1) + \frac{(x-x_0)(x-x_1)}{(x_2-x_1)(x_2-x_1)}f(x_2)\diff x\\ &+ \int\limits_{x_0}^{x_2}\frac{(x-x_0)(x-x_1)(x-x_2)}{6}f^{(3)}(\xi(x))\diff x\\
 &= \frac{h}{3}\left[f(x_0)+4f(x_1)+f(x_2)\right]-\frac{h^5}{90}f^{(4)}(\xi)
 \end{split}
 \end{equation}
 mit $h=x_1-x_0 = x_2-x_1$
 
-\paragraph{Simpson $\frac{3}{8}$ Regel}
+\subsubsection{Simpson $\frac{3}{8}$ Regel}
 \begin{equation}
 \int\limits_a^bf(x)\diff x = \frac{3h}{8}\left[f(x_0)+3f(x_1)+3f(x_2)+f(x_3)\right]-\frac{h^5}{6480}f^{(4)}(\xi)
 \end{equation}
@@ -1380,7 +1381,7 @@ mit $h=x_1-x_0 = x_2-x_1$
 Größte ganze Zahl $n$, so dass eine Integrationsformel für $x^k,\; k=0,1,\ldots,n$ exakte Resultate liefert.
 \end{itemize}
 
-\paragraph{"Composite" Simpson $\frac{1}{3}$}
+\subsubsection{Composite Simpson $\frac{1}{3}$}
 Teile $[a,b]$ in $n$ Teilintervalle auf. Wende die Simpson Regel auf jedes Paar nacheinanderfolgender Teilintervalle an.\\
 $h = \frac{b-a}{n}$; $x_j=a+j\cdot h$, $j=0,1,\ldots ,n$
 \begin{equation}
@@ -1392,9 +1393,9 @@ $h = \frac{b-a}{n}$; $x_j=a+j\cdot h$, $j=0,1,\ldots ,n$
 \end{equation}
 mit $x_{2j-2} < \xi_j y x_{2j}, f$ auf $[a,b]$ 4-mal stetig differenzierbar.
 
-\textbf{Fehler} $E(f) = \frac{-h^5}{90}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j)$, mit $x_{2j-2} < \xi_j y x_{2j}, j=1,2,\ldots,\frac{n}{2}$
+\paragraph{Fehler} $E(f) = \frac{-h^5}{90}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j)$, mit $x_{2j-2} < \xi_j y x_{2j}, j=1,2,\ldots,\frac{n}{2}$
 
-\textbf{Extremwertsatz}: $f^{(4)}$ nimmt Max und Min auf $[a,b]$ an, also
+\paragraph{Extremwertsatz}: $f^{(4)}$ nimmt Max und Min auf $[a,b]$ an, also
 \begin{equation}
 \begin{split}
 \min\limits_{x\in[a,b]}f^{(4)}(x) \leq f^{(4)}(\xi_j) \leq \max\limits_{x\in[a,b]}f^{(4)}(x)\\
@@ -1403,7 +1404,7 @@ mit $x_{2j-2} < \xi_j y x_{2j}, f$ auf $[a,b]$ 4-mal stetig differenzierbar.
 \end{split}
 \end{equation}
 
-\textbf{Zwischenwertsatz} Es existiert ein $\mu\in(a,b)$, so dass
+\paragraph{Zwischenwertsatz} Es existiert ein $\mu\in(a,b)$, so dass
 \begin{equation}
 f^{(4)}(\mu) = \frac{2}{n}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j)
 \end{equation}
