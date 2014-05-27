@@ -20,6 +20,9 @@ set(FIGURES
 	figures/chapter-01/zusammenspiel_mathematik_informatik.tex
 	figures/chapter-01/steepest_descent.tex
 	figures/chapter-01/stueckweise_lin_interpolation.tex
+	figures/chapter-01/newton_cotes_linear.tex
+	figures/chapter-01/newton_cotes_quadratisch.tex
+	figures/chapter-01/newton_cotes_multi.tex
 )
 
 set(IMAGES)
