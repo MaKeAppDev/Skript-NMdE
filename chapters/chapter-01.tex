@@ -1312,13 +1312,40 @@ Abbruch nach linearem Term: \[f(x_0+h) = f(x_0) + h\cdot f'(x_0) + R(h^2)\]
 	f(x_0 - h) = f(x_0) - h \cdot f(x_0) + \frac{h^2}{2} \cdot f''(x_0) - \ldots
 \end{equation}
 
-\begin{figure}[htdp]
+\subsection{Numerisches Differenzieren - Fehleranalyse}
+Zentrierte Differenz $f'(x_0) = \frac{f(x_0+h) - f(x_0-h)}{2h} - \frac{f^{(3)}(\xi)}{6}h^2$\\
+Rundungsfehler:
+\begin{equation}
+\begin{split}
+f(x_0+h) &= \underset{\text{gerundeter Wert}}{\tilde{f}(x_0-h)} + e_{-1}\\
+f(x_0-h) &= \tilde{f}(x_0+h) + e_{+1}
+\end{split}
+\end{equation}
+\begin{equation}
+f'(x_0) = \frac{\tilde{f}(x_0+h) - \tilde{f}(x_0-h)}{2h} + \frac{e_{+1} - e_{-1}}{2h} - \frac{f^{(3)}(\xi)}{6}h^2
+\end{equation}
+Annahmen: $\abs{e_{-1}},\abs{e_{+1}} \leq\varepsilon$ und $\abs{f^{(3)}(\xi)} \leq M$\\
+Damit $\abs{f'(x_0) - \frac{\tilde{f}(x_0+h) - \tilde{f}(x_0-h)}{2h}} \leq\frac{\varepsilon}{h} + \frac{h^2M}{6}$\\
+$\Rightarrow h_{\text{opt}} = \sqrt[3]{\frac{3\xi}{M}}$
+
+\subsection{Numerische Integration/Numerisches Lösen von Diffenertialgleichungen}
+Alternativer Begriff: "`Numerische Quadratur"' (bestimmte Integrale)
+
+\subsubsection{Newton-Codes-Ansätze}
+\begin{equation}
+\begin{split}
+J &= \int\limits_a^bf(x)\diff x \cong\int\limits_a^bP_h(x)\diff x\\
+P_n(x) &= a_0 + a_1x + \ldots + a_nx^n
+\end{split}
+\end{equation}
+
+\begin{figure}
 	\center
 	\input{figures/chapter-01/newton_cotes_linear}
 	\caption{Annäherung an eine Funktion durch ein Polynom erster Ordnung}
 \end{figure}
 
-\begin{figure}[htdp]
+\begin{figure}
 	\center
 	\input{figures/chapter-01/newton_cotes_quadratisch}
 	\caption{Annäherung an eine Funktion durch ein Polynom zweiter Ordnung}
@@ -1330,7 +1357,75 @@ Abbruch nach linearem Term: \[f(x_0+h) = f(x_0) + h\cdot f'(x_0) + R(h^2)\]
 	\caption{Annäherung an eine Funktion durch stückweise Polynome}
 \end{figure}
 
-ENDE MARKUS
+\subsubsection{Trapezregel}
+Lineares Lagrange Polynom
+\begin{equation}
+\begin{split}
+P_1(x) &= \frac{x-x_1}{x_0-x_1}\cdot f(x_0) + \frac{x-x_0}{x_1-x_0}\cdot f(x_1)\\
+\int\limits_a^b &= \int\limits_{x_0}^{x_1}P_1(x)\diff x + \underbrace{\frac{1}{2}\int\limits_{x_0}^{x_1}f''(\xi(x))\cdot (x-x_0)\cdot (x-x_1)\diff x}_{x_1 \text{Fehlerterm}}\\
+ & \text{Mittelwert Integralrechnung}\\
+ &= \frac{1}{2}f''(\xi)\int\limits_{x_0}^{x_1}(x-x_0)\cdot (x-x_1)\diff x = \frac{1}{2}f''(\xi)\left[\frac{x^3}{3}-\frac{(x_1+x_0)}{2}x^2+x_0x_1x\right]_{x_0}^{x_1} = \frac{-h^3}{12}f''(\xi)
+\end{split}
+\end{equation}
+mit $h = b-a = x_1-x_0$
+
+Also:
+\begin{equation}
+\int\limits_a^bf(x)\diff x = \left[\frac{(x-x_1)^2}{2(x_0-x_1)}\cdot f(x_0) + \frac{(x-x_0)^2}{2(x_1-x_0)}\cdot f(x_1)\right]_{x_0}^{x_1} - \frac{h^3}{12}f''(\xi) = \frac{h}{2}\left[f(x_0) + f(x_1)\right] - \frac{h^3}{12}f''(\xi)
+\end{equation}
+Exakt, sofern $f(x)$ höchstens linear ist
+
+\subsubsection{Simpson Regel}
+Quadratisches Lagrange Polynom
+\begin{equation}
+\begin{split}
+\int\limits_a^bf(x)\diff x &= \int\limits_{x_0}^{x_2}\frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)}f(x_0) + \frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}f(x_1) + \frac{(x-x_0)(x-x_1)}{(x_2-x_1)(x_2-x_1)}f(x_2)\diff x\\ &+ \int\limits_{x_0}^{x_2}\frac{(x-x_0)(x-x_1)(x-x_2)}{6}f^{(3)}(\xi(x))\diff x\\
+&= \frac{h}{3}\left[f(x_0)+4f(x_1)+f(x_2)\right]-\frac{h^5}{90}f^{(4)}(\xi)
+\end{split}
+\end{equation}
+mit $h=x_1-x_0 = x_2-x_1$
+
+\subsubsection{Simpson $\frac{3}{8}$ Regel}
+\begin{equation}
+\int\limits_a^bf(x)\diff x = \frac{3h}{8}\left[f(x_0)+3f(x_1)+3f(x_2)+f(x_3)\right]-\frac{h^5}{6480}f^{(4)}(\xi)
+\end{equation}
+\begin{itemize}
+\item benötigt $3m$ Segmente bzw. $3m+1$ Stützpunkte
+\item Grad der Genauigkeit/"`Degree of precision"'\\
+Größte ganze Zahl $n$, so dass eine Integrationsformel für $x^k,\; k=0,1,\ldots,n$ exakte Resultate liefert.
+\end{itemize}
+
+\subsubsection{Composite Simpson $\frac{1}{3}$}
+Teile $[a,b]$ in $n$ Teilintervalle auf. Wende die Simpson Regel auf jedes Paar nacheinanderfolgender Teilintervalle an.\\
+$h = \frac{b-a}{n}$; $x_j=a+j\cdot h$, $j=0,1,\ldots ,n$
+\begin{equation}
+\begin{split}
+\int\limits_a^bf(x)\diff x &= \sum_{j=1}^{\frac{n}{2}}\int\limits_{x_{2j-2}}^{x_{2j}}f(x)\diff x\\
+&= \sum_{j=1}^{\frac{n}{2}}\frac{h}{3}\left[f(x_{2j-2})+4f(x_{2j-1})+f(x_{2j})\right]\frac{h^5}{90}f^{(4)}(\xi_j)\\
+&= \frac{h}{3}\left[f(x_0)+2\sum_{j=1}^{\frac{n}{2}-1}f(x_{2j}) + 4\sum_{j=1}^{\frac{n}{2}}f(x_{2j-1} + f(x_n)\right] - \frac{h^5}{90}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_0)
+\end{split}
+\end{equation}
+mit $x_{2j-2} < \xi_j y x_{2j}, f$ auf $[a,b]$ 4-mal stetig differenzierbar.
+
+\paragraph{Fehler} $E(f) = \frac{-h^5}{90}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j)$, mit $x_{2j-2} < \xi_j y x_{2j}, j=1,2,\ldots,\frac{n}{2}$
+
+\paragraph{Extremwertsatz}: $f^{(4)}$ nimmt Max und Min auf $[a,b]$ an, also
+\begin{equation}
+\begin{split}
+\min\limits_{x\in[a,b]}f^{(4)}(x) \leq f^{(4)}(\xi_j) \leq \max\limits_{x\in[a,b]}f^{(4)}(x)\\
+\frac{n}{2}\min\limits_{x\in[a,b]}f^{(4)}(x) \leq \sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j) \leq \frac{n}{2}\max\limits_{x\in[a,b]}f^{(4)}(x)\\
+\min\limits_{x\in[a,b]}f^{(4)}(x) \leq \frac{n}{2}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j) \leq \max\limits_{x\in[a,b]}f^{(4)}(x)
+\end{split}
+\end{equation}
+
+\paragraph{Zwischenwertsatz} Es existiert ein $\mu\in(a,b)$, so dass
+\begin{equation}
+f^{(4)}(\mu) = \frac{2}{n}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j)
+\end{equation}
+Damit
+\begin{equation}
+E(f) = \frac{-h^5}{90}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j) = \frac{-h^5}{180}n\cdot f^{(4)}(\mu) \overset{h=\frac{b-a}{n}}{=} \frac{-(b-a)}{180}h^4\cdot f^{(4)}(\mu)
+\end{equation}
 
 Also, mit $\mu \in (a, b)$:
 \begin{equation}
