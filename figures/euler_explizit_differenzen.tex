@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+	\draw[thick,->] (0, 0) -- (7, 0) node[right]{$\nu$};
+	\draw[thick,->] (0, 0) -- (0, 7) node[above]{$y$};
+	
+	\draw[domain=1:6,samples=100] plot (\x,{\x});
+	\draw[domain=1:5,samples=100] plot (\x,{\x*\x/4 + 1});
+	\draw[dashed] (0, 2) node[left] {$y(\nu + 1)$} -- (2, 2);
+	\draw[dashed] (2, 0) node[below] {$\nu$} -- (2, 2);
+	\draw[dashed] (0, 4) node[left] {$y(\nu + 1)$} -- (4, 4);
+	\draw[dashed] (4, 0) node[below] {$\nu + 1$} -- (4, 4);
+\end{tikzpicture}

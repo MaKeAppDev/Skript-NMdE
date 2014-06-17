@@ -27,6 +27,8 @@ set(FIGURES
 	figures/newton_cotes_multi.tex
 	figures/schaltung_transiente_analyse.tex
 	figures/schaltung_transiente_analyse_diagramm.tex
+	figures/schaltung_transiente_analyse_euler_explizit.tex
+	figures/euler_explizit_differenzen.tex
 )
 
 set(IMAGES)
