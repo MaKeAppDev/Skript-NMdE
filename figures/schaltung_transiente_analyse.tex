@@ -1,0 +1,8 @@
+\begin{circuitikz}
+	\draw (2, 0) node[below] {0} to [R=$R$, i=\textcolor{red}{$i_R(t)$},*-*] (2, 4) node[above] {1};
+	\draw (0, 0) to [I,i_=\textcolor{red}{$i_{0}(t)$}] (0, 4);
+	\draw (4, 0) to [C=$C$, i=\textcolor{red}{$i_C(t)$}] (4, 4);
+	\draw (0, 0) to [short] (4, 0);
+	\draw (0, 4) to [short] (4, 4);
+	\draw (4.5, 0) to [open,v=\textcolor{blue}{$y(t)$}] (4.5, 4);
+\end{circuitikz} 
