@@ -165,7 +165,17 @@ Erstaunlich ist somit, dass der Rundungsfehler nicht wächst, wenn der zu integr
 \section{Numerische Lösung von DGLen}
 Bsp: Einschwinganalyse (TRansiente Analyse)
 
-\missingfigure{schaltung}
+\begin{figure}
+	\center
+	\begin{subfigure}{0.5\textwidth}
+		\input{figures/schaltung_transiente_analyse}
+		\caption{Schaltung}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\input{figures/schaltung_transiente_analyse_diagramm}
+		\caption{Spannungsverlauf}
+	\end{subfigure}
+\end{figure}
 
 \subsection{Analytische Lösung mittels Laplace-Transformation}
 \begin{equation}
@@ -192,7 +202,11 @@ y(t) = A + B e^{p_\infty t} = R\cdot I_0\cdot (1-e^{p_\infty t})
 \end{equation}
 
 \subsection{Numerische Lösung mittels explizite Euler-Methode (linear Z-Transformation)}
-\missingfigure{plot}
+\begin{figure}
+	\center
+	\input{figures/schaltung_transiente_analyse_euler_explizit}
+\end{figure}
+
 Diskretisierung der Zeit 
 \begin{equation}
 y(\nu)\hat{=} y(\nu\cdot\Delta t) = y(t)
@@ -206,7 +220,11 @@ Differenzengleichung (explizite Euler-Methode)
 y(\nu+1)\approx y(\nu) + \Delta t\cdot\dot{y}(\nu)
 \end{equation}
 
-\missingfigure{plot}
+\begin{figure}
+	\center
+	\input{figures/euler_explizit_differenzen}
+\end{figure}
+
 \begin{equation}
 y(\nu+1)\approx y(\nu) + \Delta t\cdot\left[p_\infty y(\nu) - p_\infty R\cdots i_0(\nu)\right]\quad ,\nu = 0,1,2,\ldots
 \end{equation}
