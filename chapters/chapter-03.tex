@@ -162,6 +162,8 @@ Seine alle Rundungsfehler $|e_i| \le \epsilon$, dann gilt
 \end{equation}
 Erstaunlich ist somit, dass der Rundungsfehler nicht wächst, wenn der zu integrierende Bereich in mehr Teilintervalle unterteilt wird. 
 
+\section{Numerische Lösung von DGLen}
+Bsp: Einschwinganalyse (TRansiente Analyse)
 
 \begin{figure}
 	\center
@@ -175,12 +177,84 @@ Erstaunlich ist somit, dass der Rundungsfehler nicht wächst, wenn der zu integr
 	\end{subfigure}
 \end{figure}
 
+\subsection{Analytische Lösung mittels Laplace-Transformation}
+\begin{equation}
+\begin{split}
+C\cdot\dot{y}(t) + \frac{1}{R}\cdot y(t) &= i_0(t)\\
+\dot{y}(t) + \underbrace{\frac{1}{RC}}_{-p_\infty}\cdot y(t) &= \frac{1}{RC}R\cdot i_0(t)\\
+\dot{y}(t) - p_\infty y(t) &= -p_\infty R\cdot i_0(t)\\
+\LT \text{Laplace}\\
+p\cdot Y(p) - \underbrace{y(+0)}_{=0} - p_\infty Y(p) &= -p_\infty R\frac{1}{p}\cdot I_0\\
+Y(p) &= \frac{-p_\infty R\cdot I_0}{(p-p_\infty)} = \frac{A}{p} + \frac{B}{p-p_\infty}
+\end{split}
+\end{equation}
+\begin{equation}
+A = \lim\limits_{p\rightarrow 0} p\cdot Y(p) = R\cdot I_0
+\end{equation}
+\begin{equation}
+B = \lim\limits_{p\rightarrow p_\infty} (p-p_\infty)\cdot Y(p) = -R\cdot I_0
+\end{equation}
+\begin{equation}
+\begin{split}
+\LT\\
+y(t) = A + B e^{p_\infty t} = R\cdot I_0\cdot (1-e^{p_\infty t})
+\end{split}
+\end{equation}
 
+\subsection{Numerische Lösung mittels explizite Euler-Methode (linear Z-Transformation)}
 \begin{figure}
+	\center
 	\input{figures/schaltung_transiente_analyse_euler_explizit}
 \end{figure}
 
+Diskretisierung der Zeit 
+\begin{equation}
+y(\nu)\hat{=} y(\nu\cdot\Delta t) = y(t)
+\end{equation}
+Diskretisierung der DGL 
+\begin{equation}
+\dot{y}(\nu)\approx p_\infty\cdot y(\nu) - p_\infty - p_\infty R\cdot i_0(\nu)
+\end{equation}
+Differenzengleichung (explizite Euler-Methode)
+\begin{equation}
+y(\nu+1)\approx y(\nu) + \Delta t\cdot\dot{y}(\nu)
+\end{equation}
 
 \begin{figure}
+	\center
 	\input{figures/euler_explizit_differenzen}
 \end{figure}
+
+\begin{equation}
+y(\nu+1)\approx y(\nu) + \Delta t\cdot\left[p_\infty y(\nu) - p_\infty R\cdots i_0(\nu)\right]\quad ,\nu = 0,1,2,\ldots
+\end{equation}
+\begin{equation}
+\hat{y}(\nu+1) = (1+p_\infty\Delta t)\cdot y(\nu) - \Delta t p_\infty R i_0(\nu)
+\label{eq:y_dach}
+\end{equation}
+sukzessive Berechnung ausgehend von $y(0),\;\nu = 1,2,3,\ldots$
+
+Bei linearen Schaltungen (linearen Differenzengleichungen) ist geschlossene numerische Lösung möglich durch $\ZT$ von \autoref{eq:y_dach}
+\begin{equation}
+z\cdot\dot{Y}(z)-\underbrace{z\cdot y(0)}_{0} - (1-p_\infty\Delta t)\cdot Y(z) = -p_\infty R\Delta t \frac{z}{z-1}I_0
+\end{equation}
+\begin{equation}
+\begin{split}
+Y(z) &= \frac{-p_\infty\Delta t R}{z-(1+p_\infty\Delta t)}\frac{zI_0}{z-1} = \frac{zRI_0}{z-1}\frac{zRI_0}{z-(1+p_\infty\Delta t)}\\
+\ZT\\
+\hat{y}(\nu) &= \left[1-(1+p_\infty\Delta t)^\nu\right]\cdot RI_0\quad ,\nu = 0,1,2,\ldots
+\end{split}
+\end{equation}
+
+Zahlenbeispiel: $I_0R = 1;\;p_\infty = -1,\; t=1$\\
+exakte Lösung: $y(1) = 1-e^{-1} = \num{0.632121}$\\
+numerische Lösung: $y(\nu) = 1-(1-\Delta t^\nu\quad ,\nu\cdot\Delta t = 1$
+
+\begin{tabular}{c|c|c|c}
+$\Delta t$ & $\nu$ & $\dot{y}(1)$ & $\varepsilon^{(A)} = \abs{\hat{y}(1)-y(1)}$\\
+\hline
+\num{0.1} & \num{10} & \num{0.651322} & \num{0.019201}\\
+\num{0.05} & \num{20} & \num{0.641514} & \num{0.009393}\\
+\num{0.025} & \num{40} & \num{0.636768} & \num{0.004647}\\
+\end{tabular} 
+$\quad$ Fehler $\varepsilon^{(A)}\sim \Delta t$
