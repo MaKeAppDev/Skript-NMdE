@@ -1,0 +1,6 @@
+\begin{tikzpicture}
+	\draw[thick,->] (0, 0) -- (5, 0) node[right]{$t$};
+	\draw[thick,->] (0, 0) -- (0, 3) node[above]{$y(t)$};
+	\draw[dashed] (0, 2) -- (5, 2);
+	\draw[domain=0:5,samples=100] plot (\x, {2*(1 - exp(-\x))});
+\end{tikzpicture}
