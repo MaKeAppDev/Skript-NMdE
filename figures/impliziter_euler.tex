@@ -1,0 +1,11 @@
+\begin{tikzpicture}
+	\draw[thick,->] (0,0) -- (4,0) node[right]{$x$};
+	\draw[thick,->] (0,0) -- (0,3) node[above]{$y(x)$};
+	
+	\draw (1, 1.5) -- (3, 2.5) node [right] {$\dot{y}(\nu)$};
+	\draw (1, 1.8) -- (3, 2.8) node [above] {$\dot{y}(\nu+1)$};
+	\draw[dashed] (1.5,0) node [below] {$\nu$} -- (1.5,1.75) --  (0,1.75) node [left] {$y(\nu)$};
+	\draw[dashed] (2.5,0) node [below] {$\nu+1$} -- (2.5,2.25) --  (0,2.25) node [left] {$y(\nu+1)$};
+	\draw[<->] (1.5,0.5) -- (2.5,0.5) node [midway,below,sloped] {$\Delta t$};
+	\draw (1.4,1.5) node[right] {y} arc (160:80:1.4) ;
+\end{tikzpicture} 
