@@ -160,7 +160,7 @@ Seine alle Rundungsfehler $|e_i| \le \epsilon$, dann gilt
 \begin{equation}
 	e(h) \le \frac{h}{3} \left[ \epsilon + 2(\frac{n}{2} - 1) \epsilon + 4 \frac{n}{2} \epsilon + \epsilon \right] = n h \epsilon = (b - a) \epsilon \ne f(h, n)
 \end{equation}
-Erstaunlich ist somit, dass der Rundungsfehler nicht wächst, wenn der zu integrierende Bereich in mehr Teilintervalle unterteilt wird. 
+Erstaunlich ist somit, dass der Rundungsfehler nicht wächst, wenn der zu integrierende Bereich in mehr Teilintervalle unterteilt wird.
 
 \section{Numerische Lösung von DGLen}
 Bsp: Einschwinganalyse (TRansiente Analyse)
@@ -193,11 +193,11 @@ y(t) = A + B e^{p_\infty t} = R\cdot I_0\cdot (1-e^{p_\infty t})
 
 \subsection{Numerische Lösung mittels explizite Euler-Methode (linear Z-Transformation)}
 \missingfigure{plot}
-Diskretisierung der Zeit 
+Diskretisierung der Zeit
 \begin{equation}
 y(\nu)\hat{=} y(\nu\cdot\Delta t) = y(t)
 \end{equation}
-Diskretisierung der DGL 
+Diskretisierung der DGL
 \begin{equation}
 \dot{y}(\nu)\approx p_\infty\cdot y(\nu) - p_\infty - p_\infty R\cdot i_0(\nu)
 \end{equation}
@@ -238,5 +238,57 @@ $\Delta t$ & $\nu$ & $\dot{y}(1)$ & $\varepsilon^{(A)} = \abs{\hat{y}(1)-y(1)}$\
 \num{0.1} & \num{10} & \num{0.651322} & \num{0.019201}\\
 \num{0.05} & \num{20} & \num{0.641514} & \num{0.009393}\\
 \num{0.025} & \num{40} & \num{0.636768} & \num{0.004647}\\
-\end{tabular} 
+\end{tabular}
 $\quad$ Fehler $\varepsilon^{(A)}\sim \Delta t$
+
+\textbf{Stabilität: }\\
+\begin{tabular}{rrr}
+Für & $|1+p_\infty \cdot \Delta t| = |1-\Delta t| < 1$ & $\Rightarrow \lim\limits_{x\rightarrow \infty} \hat{y}(\nu) = 1$\\
+& $0 < \Delta t < 2$ & Algorithmus stabil\\
+Für & $|1-\Delta t| > 1$ & $\Rightarrow \lim\limits_{v \rightarrow \infty} \hat{y}(\nu) \rightarrow \infty$ \\
+& $\Delta t > 2$ & Algorithmus instabil
+\end{tabular}
+
+\section{Einfache numerische Integrationsverfahren}
+\[ y(0) = 0,\ y(t) = \int\limits_0^t y(\tau) \diff \tau\\
+y(t+ \Delta t) = \int\limits_0^t y(\tau) \diff \tau + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau = y(t) + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau\\
+y(\nu +1) \approx y(\nu) + \tilde{\Delta y} = y(\nu) + \frac{\Delta t \cdot \tilde{\Delta y}}{\Delta t}
+\]
+
+\textbf{Expliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot y(\nu)$ (FE, Forward Euler)\\
+\missingfigure{plot}\\
+
+\textbf{Impliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot y(\nu +1)$ (BE, Backward Euler)\\
+\missingfigure{plot}\\
+
+\textbf{Trapez-Methode: } $y(\nu +1) \approx y(\nu) + \frac{\Delta t}{2} \cdot (y(\nu) + y(\nu + 1)$ (TR, Trapezvidal)\\
+\missingfigure{plot}\\
+
+\section{Eigenschaften numerischer Integrationsverfahren}
+\begin{itemize}
+\item explizit/implizit: wird Wert aus aktuellem Zeitschritt ($\nu + 1$) verwendet=
+\item Schrittzahl: Anzahl der verwendeten vergangenen Zeitschritte
+\item Genauigkeit: $\epsilon^{(A)}(\nu \cdot \Delta t) = \hat{x}(\nu) - x(\nu) \approx (\Delta t)^k$ (für$|p_\infty \Delta t| << 1$)
+\item Stabilität: \begin{itemize}
+\item für $\Re{p_\infty} < 0$
+\item für $\Delta t \rightarrow \infty$ ("'asymptotische Stabilität"')
+\end{itemize}
+\end{itemize}
+
+Test: DGL: $\dot{x}(t) = p_\infty \cdot x(t)$\\
+exakte Lösung: $x(t) = x(0) \cdot e^{p_\infty t}$\\
+$x(\nu) = x(0) \cdot e^{p_\infty \cdot \nu \cdot \Delta t},\ x(0) \neq 0$\\
+numerische Lösung: $\hat{x}(\nu) = \int \{\hat{f}(\nu)\}$\\
+Fehler: $\epsilon^{(A)}(\Delta t) = \hat{x}(\nu) - x(\nu) = \hat{x}(\nu) - x(0) \cdot e^{p_\infty \nu \Delta t}$
+
+\section{Expliziter Euler Eigenschaften}
+Differenzengleichung: $\hat{x}(\nu +1) = \hat{x}(\nu) + \Delta t \cdot \hat{f}(\nu),\ f(t) = \dot{x}(t)$\\
+Einschritt-Verfahren\\
+Test-DGL: $f(t) = \dot{x}(t) = p_\infty \cdot x(t),\ x(0) \neq 0$\\
+Differenzengleichung: $\dot{x}(\nu +1) = \hat{x}(\nu) + \Delta t p_\infty \cdot \hat{x}(\nu) = (1 + p_\infty \cdot \Delta t) \cdot \dot{x}(\nu)$\\
+numerische Lösung: $\hat{x}(\nu) = (1+ p_\infty \Delta t) \cdot x(\nu)$
+
+\textbf{Genauigkeit:}\\
+\begin{equation}
+\epsilon^{(A)} = \hat{x}(\nu) - x(\nu) = ... \approx ...
+\end{equation}
