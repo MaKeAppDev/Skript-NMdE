@@ -250,10 +250,13 @@ Für & $|1-\Delta t| > 1$ & $\Rightarrow \lim\limits_{v \rightarrow \infty} \hat
 \end{tabular}
 
 \section{Einfache numerische Integrationsverfahren}
-\[ y(0) = 0,\ y(t) = \int\limits_0^t y(\tau) \diff \tau\\
-y(t+ \Delta t) = \int\limits_0^t y(\tau) \diff \tau + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau = y(t) + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau\\
-y(\nu +1) \approx y(\nu) + \tilde{\Delta y} = y(\nu) + \frac{\Delta t \cdot \tilde{\Delta y}}{\Delta t}
-\]
+\begin{equation}
+\begin{split}
+y(0) &= 0,\ y(t) = \int\limits_0^t y(\tau) \diff \tau\\
+y(t+ \Delta t) &= \int\limits_0^t y(\tau) \diff \tau + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau = y(t) + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau\\
+y(\nu +1) &\approx y(\nu) + \tilde{\Delta y} = y(\nu) + \frac{\Delta t \cdot \tilde{\Delta y}}{\Delta t}
+\end{split}
+\end{equation}
 
 \textbf{Expliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot y(\nu)$ (FE, Forward Euler)\\
 \missingfigure{plot}\\
