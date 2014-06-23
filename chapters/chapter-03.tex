@@ -307,8 +307,11 @@ Ordnung & $k=1$ \\
 Asymptotische Stabilität ($\Delta t \rightarrow \infty$): & $\hat{x}(\nu + 1) \approx p_\infty \Delta t \hat{x}(\nu) \Rightarrow$ instabiles Verhalten!
 \end{tabular}
 
-\missingfigure{zinfty}
-\missingfigure{pinfty delta t}
+\begin{figure}
+\center
+\input{figures/z_infty}
+\caption{Stabilitätsbereich für den expliziten Euler}
+\end{figure}
 
 Somit ist die Wahl von $\Delta t$ aus Stabilitätsgründen eingeschränkt. Bei zu großem $\Delta t$ liegt das Produkt $p_\infty \Delta t$ nicht mehr im Stabilitätsbereicht. Praktisch beim expliziten Euler ist hingegen, dass es keine Stabilität in der rechten Halbebene gibt, es werden also instabile System als instabil detektiert.
 

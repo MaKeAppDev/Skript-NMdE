@@ -29,6 +29,7 @@ set(FIGURES
 	figures/schaltung_transiente_analyse_diagramm.tex
 	figures/schaltung_transiente_analyse_euler_explizit.tex
 	figures/euler_explizit_differenzen.tex
+	figures/z_infty.tex
 )
 
 set(IMAGES)
