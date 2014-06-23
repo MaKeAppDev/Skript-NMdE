@@ -325,3 +325,94 @@ Trapez & implizit & 1 & 2 & ja & nein \\ \hline
 Gear & implizit & 2 & 2 & ja & ja
 \end{tabular}
 Zudem haben Einschrittverfahren Vorteile beim Starten, mit Mehrschrittverfahren kann nicht direkt gestartet werden.
+
+\section{Taylor-Verfahren höherer Ordnung}
+Die eher im technischen Bereich gängige Schreibweise
+\begin{equation}
+y(\nu + 1) = y(\nu) + \Delta t T^{(n)}(\nu, y(\nu))
+\end{equation}
+ist äquivalent zur in der Mathematik üblichen Variante
+\begin{equation}
+y_{i + 1} = y_i + h T^{(n)} (t_i, y_i)
+\end{equation}
+mit
+\begin{equation}
+T^{(n)}(t_i, y_i) = f(t_i, y_i) + \frac{h}{2} f'(t_i, y_i) + \dots + \frac{h^{n - 1}}{n!} f^{(n - 1)}(t_i, y_i)
+\end{equation}
+
+Dadurch erhält man einer bessere Genauigkeit, genauer gesagt: $\epsilon O(h^n)$. Nachteilig kann sich allerdings auswirken, dass höhere Ableitungen der Funktion benötigt werden.
+
+\section{Prädiktor-Korrektor-Ansätze}
+Die Grundidee dahinter ist ein explizites Verfahren zur Vorhersage des Wertes $y_{i + 1}$ zu nutzen, und diesen Werte nachträglich mithilfe eines weiteren Verfahrens zu verbessern. Dieser Ansatz kann auch iterativ verwendet werden.
+
+Ein Beispiel für so einen Prädiktor-Korrektor-Ansatz ist das Verfahren von Heun, welches auf einem expliziten Euler basiert. Der explizite Euler liefert
+\begin{equation}
+y_{i + 1}^0 = y_i + h \cdot f(t_i, y_i)
+\end{equation}
+und daraus berechnet Hoin ein verbessertes
+\begin{equation}
+y_{i + 1}^1 = f(t_{i + 1}, y_{i + 1}^0) .
+\end{equation}
+
+Der iterativer Ansatz dazu wäre dann
+\begin{equation}
+y_{i + 1}^0 = y_i + h \cdot f(t_i, y_i)
+\end{equation}
+\begin{equation}
+y_{i + 1}^j = y_i^m + h \cdot \frac{f(t, y_i^m) + f(t_{i + 1}, y_{i + 1}^{j - 1}}{2}
+\end{equation}
+
+\section{Adams-Bashforth/Adams-Moulton}
+Die Grundidee hinter diesen Verfahren beruht darauf $f$ durch ein Interpolationspolynom zu ersetzen.
+
+Ausgangspunkt ist die Differentialgleichung
+\begin{equation}
+y' = f(t, y)
+\end{equation}
+wobei $a \le t \le b$ und $y(a) = \alpha$.
+
+Adams-Bashforth und Adams-Moulton sind $m$-schrittige Mehrschrittverfahren, in denen $y_{i + 1}$ ersetzt wird durch 
+\begin{equation}
+y_{i + 1} = a_{m - 1} y_i + a_{m - 2} y_{i - 1} + \dots + a_0 y_{i + 1 - m} + h \left[ b_m f(t_{i + 1}, y_{i + 1}) + b_{m - 1} f(t_i, y_i) + \dots + b_0 f(t_{i + 1 - m}, y_{i + 1 - m}) \right]
+\end{equation}
+mit $i = m - 1, m, \dots N - 1$, $h = \frac{b - a}{N}$. Falls $b_n = 0$ spricht man von einem expliziten Verfahren, ansonsten von einem impliziten.
+
+\paragraph{Herleitung}
+\begin{equation}
+y(t_{i + 1}) = y_{i + 1}
+\end{equation}
+\begin{equation}
+y_{i - 1} - y_i = \int_{t_i}^{t_{i + 1}} y'(t) \diff t = \int_{t_i}^{t_{i + 1}} f(t_i, y(t)) \diff t
+\end{equation}
+\begin{equation}
+y_{i + 1} = y_i + \int_{t_i}^{t_{i + 1}} f(t_i, y(t)) \diff t
+\end{equation}
+Ersetze $f(t_i, y(t)) $ durch Interpolationspolynom $P(t)$
+\begin{equation}
+y_{i + 1} \approx y_i + \int_{t_i}^{t_{i + 1}} P(t) \diff t
+\end{equation}
+
+Für das Interpolationspolynom bieten sich an
+\begin{itemize}
+\item Taylor
+\item Lagrange
+\item Newton'sche Rückwärtsdifferenzen
+\end{itemize}
+
+\paragraph{Adams-Bashforth (explizit)}
+Die explizite Einschrittvariante ist äquivalent zum expliziten Euler:
+\begin{equation}
+y_{i + 1} = y_i + h f(t_i, y_i)
+\end{equation}
+Die Variante mit zwei Schritten lautet
+\begin{equation}
+y_{i + 1} = y_i + \frac{h}{2} \left[ 3 f(t_i, y_i) - f(t_{i - 1}, y_{i - 1} \right]
+\end{equation}
+und hat eine quadratisches Fehlerverhalten.
+
+\paragraph{Adams-Moulton (implizit)}
+Die Einschrittvariante hiervon ist für $m = 0$ der implizite Euler, für $m = 1$ das Trapezverfahren. Wenn zwei Schritten verwendet werden sieht das Verfahren wie folgt aus
+\begin{equation}
+y_{i + 1} = y_i + \frac{h}{12} \left[ 5 f(t_{i + 1}, y_{i + 1} + 8 f(t_i, y_i) - f(t_{i - 1}, y_{i - 1}) \right]
+\end{equation}
+und besitzt ein kubisches Fehlerverhalten.
