@@ -156,9 +156,9 @@ Damit erhält man dann einen akkumulierten Fehler $e(h)$ bei Composite-Simpson v
 \begin{equation}
 	e(h) = \left| \frac{h}{3} \left[ e_0 + 2 \sum_{j = 1}^{n/2 - 1} e_{2j} + 4 \sum_{j = 1}^{n/2} e_{2j - 1} + e_n \right] \right| \le \frac{h}{3} \left[ |e_0| + 2 \sum_{j = 1}^{n/2 - 1} |e_{2j}| + 4 \sum_{j = 1}^{n/2} |e_{2j - 1}| + |e_n| \right]
 \end{equation}
-Seine alle Rundungsfehler $|e_i| \le \epsilon$, dann gilt
+Seine alle Rundungsfehler $|e_i| \le \varepsilon$, dann gilt
 \begin{equation}
-	e(h) \le \frac{h}{3} \left[ \epsilon + 2(\frac{n}{2} - 1) \epsilon + 4 \frac{n}{2} \epsilon + \epsilon \right] = n h \epsilon = (b - a) \epsilon \ne f(h, n)
+	e(h) \le \frac{h}{3} \left[ \varepsilon + 2(\frac{n}{2} - 1) \varepsilon + 4 \frac{n}{2} \varepsilon + \varepsilon \right] = n h \varepsilon = (b - a) \varepsilon \ne f(h, n)
 \end{equation}
 Erstaunlich ist somit, dass der Rundungsfehler nicht wächst, wenn der zu integrierende Bereich in mehr Teilintervalle unterteilt wird.
 
@@ -250,36 +250,39 @@ Für & $|1-\Delta t| > 1$ & $\Rightarrow \lim\limits_{v \rightarrow \infty} \hat
 \end{tabular}
 
 \section{Einfache numerische Integrationsverfahren}
-\[ y(0) = 0,\ y(t) = \int\limits_0^t y(\tau) \diff \tau\\
-y(t+ \Delta t) = \int\limits_0^t y(\tau) \diff \tau + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau = y(t) + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau\\
-y(\nu +1) \approx y(\nu) + \tilde{\Delta y} = y(\nu) + \frac{\Delta t \cdot \tilde{\Delta y}}{\Delta t}
+\[ y(0) = 0,\quad y(t) = \int\limits_0^t \dot{y}(\tau) \diff \tau \]\\
+\[ y(t+ \Delta t) = \int\limits_0^t \dot{y}(\tau) \diff \tau + \int\limits_t^{t+\Delta t} \dot{y}(\tau) \diff\tau = y(t) + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau\]\\
+\[ y(\nu +1) \approx y(\nu) + \tilde{\Delta y} = y(\nu) + \frac{\Delta t \cdot \tilde{\Delta y}}{\Delta t}
 \]
 
-\textbf{Expliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot y(\nu)$ (FE, Forward Euler)\\
+\textbf{Expliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot \dot{y}(\nu)$ (FE, Forward Euler)\\
 \missingfigure{plot}\\
 
-\textbf{Impliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot y(\nu +1)$ (BE, Backward Euler)\\
+\textbf{Impliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot \dot{y}(\nu +1)$ (BE, Backward Euler)\\
 \missingfigure{plot}\\
 
-\textbf{Trapez-Methode: } $y(\nu +1) \approx y(\nu) + \frac{\Delta t}{2} \cdot (y(\nu) + y(\nu + 1)$ (TR, Trapezvidal)\\
+\textbf{Trapez-Methode: } $y(\nu +1) \approx y(\nu) + \frac{\Delta t}{2} \cdot (\dot{y}(\nu) + \dot{y}(\nu + 1)$ (TR, Trapezvidal)\\
 \missingfigure{plot}\\
 
 \section{Eigenschaften numerischer Integrationsverfahren}
 \begin{itemize}
-\item explizit/implizit: wird Wert aus aktuellem Zeitschritt ($\nu + 1$) verwendet=
+\item explizit/implizit: wird Wert aus aktuellem Zeitschritt ($\nu + 1$) verwendet?
 \item Schrittzahl: Anzahl der verwendeten vergangenen Zeitschritte
-\item Genauigkeit: $\epsilon^{(A)}(\nu \cdot \Delta t) = \hat{x}(\nu) - x(\nu) \approx (\Delta t)^k$ (für$|p_\infty \Delta t| << 1$)
+\item Genauigkeit: $\varepsilon^{(A)}(\nu \cdot \Delta t) = \hat{x}(\nu) - x(\nu) \approx (\Delta t)^k$\\
+(für $|p_\infty \Delta t| << 1$) \quad Fehler der Ordnung $k$
 \item Stabilität: \begin{itemize}
 \item für $\Re{p_\infty} < 0$
 \item für $\Delta t \rightarrow \infty$ ("'asymptotische Stabilität"')
 \end{itemize}
 \end{itemize}
 
-Test: DGL: $\dot{x}(t) = p_\infty \cdot x(t)$\\
-exakte Lösung: $x(t) = x(0) \cdot e^{p_\infty t}$\\
-$x(\nu) = x(0) \cdot e^{p_\infty \cdot \nu \cdot \Delta t},\ x(0) \neq 0$\\
-numerische Lösung: $\hat{x}(\nu) = \int \{\hat{f}(\nu)\}$\\
-Fehler: $\epsilon^{(A)}(\Delta t) = \hat{x}(\nu) - x(\nu) = \hat{x}(\nu) - x(0) \cdot e^{p_\infty \nu \Delta t}$
+\begin{tabular}{lll}
+\textbf{Test-DGL:} & $\dot{x}(t) = p_\infty \cdot x(t)$ & $p_\infty$: Eigenwerte des Systems\\
+& exakte Lösung: & $x(t) = x(0) \cdot e^{p_\infty t}$\\
+&& $x(\nu) = x(0) \cdot e^{p_\infty \cdot \nu \cdot \Delta t},\ x(0) \neq 0$\\
+& numerische Lösung: & $\hat{x}(\nu) = \int \{\hat{f}(\nu)\}$\\
+& Fehler: & $\varepsilon^{(A)}(\Delta t) = \hat{x}(\nu) - x(\nu) = \hat{x}(\nu) - x(0) \cdot e^{p_\infty \nu \Delta t}$
+\end{tabular}
 
 \section{Expliziter Euler Eigenschaften}
 Differenzengleichung: $\hat{x}(\nu +1) = \hat{x}(\nu) + \Delta t \cdot \hat{f}(\nu),\ f(t) = \dot{x}(t)$\\
@@ -290,5 +293,5 @@ numerische Lösung: $\hat{x}(\nu) = (1+ p_\infty \Delta t) \cdot x(\nu)$
 
 \textbf{Genauigkeit:}\\
 \begin{equation}
-\epsilon^{(A)} = \hat{x}(\nu) - x(\nu) = ... \approx ...
+\varepsilon^{(A)} = \hat{x}(\nu) - x(\nu) = ... \approx ...
 \end{equation}
