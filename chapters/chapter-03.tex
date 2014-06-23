@@ -285,13 +285,15 @@ Für & $|1-\Delta t| > 1$ & $\Rightarrow \lim\limits_{v \rightarrow \infty} \hat
 \end{tabular}
 
 \section{Expliziter Euler Eigenschaften}
-Differenzengleichung: $\hat{x}(\nu +1) = \hat{x}(\nu) + \Delta t \cdot \hat{f}(\nu),\ f(t) = \dot{x}(t)$\\
+\textbf{Differenzengleichung:} $\hat{x}(\nu +1) = \hat{x}(\nu) + \Delta t \cdot \hat{f}(\nu),\ f(t) = \dot{x}(t)$\\
 Einschritt-Verfahren\\
-Test-DGL: $f(t) = \dot{x}(t) = p_\infty \cdot x(t),\ x(0) \neq 0$\\
-Differenzengleichung: $\dot{x}(\nu +1) = \hat{x}(\nu) + \Delta t p_\infty \cdot \hat{x}(\nu) = (1 + p_\infty \cdot \Delta t) \cdot \dot{x}(\nu)$\\
-numerische Lösung: $\hat{x}(\nu) = (1+ p_\infty \Delta t) \cdot x(\nu)$
 
-\textbf{Genauigkeit:}\\
-\begin{equation}
-\varepsilon^{(A)} = \hat{x}(\nu) - x(\nu) = ... \approx ...
-\end{equation}
+\begin{tabular}{ll}
+\textbf{Test-DGL:} & $f(t) = \dot{x}(t) = p_\infty \cdot x(t)$\\
+& $x(0) \neq 0$\\
+Differenzengleichung: & $\dot{x}(\nu +1) = \hat{x}(\nu) + \Delta t p_\infty \cdot \hat{x}(\nu) = (1 + p_\infty \cdot \Delta t) \cdot \dot{x}(\nu)$\\
+numerische Lösung: & $\hat{x}(\nu) = (1+ p_\infty \Delta t) \cdot x(\nu)$\\
+Genauigkeit: & $\varepsilon^{(A)} = \hat{x}(\nu) - x(\nu) = $\\
+& $... \approx ...$\\
+& Ordnung $k=1$
+\end{tabular}
