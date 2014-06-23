@@ -311,3 +311,14 @@ Asymptotische Stabilität ($\Delta t \rightarrow \infty$): & $\hat{x}(\nu + 1) \
 \missingfigure{pinfty delta t}
 
 Somit ist die Wahl von $\Delta t$ aus Stabilitätsgründen eingeschränkt. Bei zu großem $\Delta t$ liegt das Produkt $p_\infty \Delta t$ nicht mehr im Stabilitätsbereicht. Praktisch beim expliziten Euler ist hingegen, dass es keine Stabilität in der rechten Halbebene gibt, es werden also instabile System als instabil detektiert.
+
+Im folgenden noch einmal die Eigenschaften der Verfahren kurz zusammengefasst:
+
+\begin{tabular}{r|c|c|c|c|c}
+& explizit/implizit & Schritte & Ordnung & stabil für $\Re{p_\infty} < 0$ & asymptotisch stabil \\ \hline
+expliziter Euler & explizit & 1 & 1 & nein & nein \\ \hline
+impliziter Euler & implizit & 1 & 1 & ja & ja \\ \hline
+Trapez & implizit & 1 & 2 & ja & nein \\ \hline
+Gear & implizit & 2 & 2 & ja & ja
+\end{tabular}
+Zudem haben Einschrittverfahren Vorteile beim Starten, mit Mehrschrittverfahren kann nicht direkt gestartet werden.
