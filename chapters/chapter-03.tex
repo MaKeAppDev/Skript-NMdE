@@ -165,7 +165,11 @@ Erstaunlich ist somit, dass der Rundungsfehler nicht wächst, wenn der zu integr
 \section{Numerische Lösung von DGLen}
 Bsp: Einschwinganalyse (TRansiente Analyse)
 
-\missingfigure{schaltung}
+\begin{figure}
+\center
+\input{figures/schaltung_transiente_analyse}
+\caption{Beispielschaltung Transiente Analyse}
+\end{figure}
 
 \subsection{Analytische Lösung mittels Laplace-Transformation}
 \begin{equation}
@@ -250,10 +254,13 @@ Für & $|1-\Delta t| > 1$ & $\Rightarrow \lim\limits_{v \rightarrow \infty} \hat
 \end{tabular}
 
 \section{Einfache numerische Integrationsverfahren}
-\[ y(0) = 0,\quad y(t) = \int\limits_0^t \dot{y}(\tau) \diff \tau \]\\
-\[ y(t+ \Delta t) = \int\limits_0^t \dot{y}(\tau) \diff \tau + \int\limits_t^{t+\Delta t} \dot{y}(\tau) \diff\tau = y(t) + \int\limits_t^{t+\Delta t} y(\tau) \diff\tau\]\\
-\[ y(\nu +1) \approx y(\nu) + \tilde{\Delta y} = y(\nu) + \frac{\Delta t \cdot \tilde{\Delta y}}{\Delta t}
-\]
+\begin{equation}
+\begin{split}
+y(0) &= 0,\quad y(t) = \int\limits_0^t \dot{y}(\tau) \diff \tau\\
+y(t+ \Delta t) &= \int\limits_0^t \dot{y}(\tau) \diff \tau + \int\limits_t^{t+\Delta t} \dot{y}(\tau) \diff\tau = y(t) + \int\limits_t^{t+\Delta t} \dot{y}(\tau) \diff\tau\\
+y(\nu +1) &\approx y(\nu) + \tilde{\Delta y} = y(\nu) + \frac{\Delta t \cdot \tilde{\Delta y}}{\Delta t}
+\end{split}
+\end{equation}
 
 \textbf{Expliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot \dot{y}(\nu)$ (FE, Forward Euler)\\
 \missingfigure{plot}\\
