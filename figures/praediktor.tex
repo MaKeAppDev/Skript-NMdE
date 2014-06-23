@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+	\coordinate (null) at (0,0);
+	\coordinate (x) at (4,0);
+	\draw[thick,->] (null) -- (x) node[right]{$x$};
+	\draw[thick,->] (null) -- (0,4) node[above]{$f(x)$};
+	
+	\draw[blue,domain=.6:4,name path=exp] plot (\x,{1.5*sqrt(\x - 0.5)});
+	\draw (.5,.5) -- (3.5,3.5) node[above] {$f(t_i,y_i)$};
+	\draw[dashed] (0.75,0.75) -- ($(null)!(0.75,0.75)!(x)$) node[below] {$t_i$};
+	\draw[dashed] (3,3) -- ($(null)!(3,3)!(x)$) node[below] {$t_{i+1}$};
+	\draw (1,2.5) -- ($(1,2.5)!2.5cm!(3,3)$) node[right] {$f(t_{i+1},y_{i+1})$};
+	
+\end{tikzpicture} 
