@@ -300,7 +300,14 @@ Einschritt-Verfahren\\
 & $x(0) \neq 0$\\
 Differenzengleichung: & $\dot{x}(\nu +1) = \hat{x}(\nu) + \Delta t p_\infty \cdot \hat{x}(\nu) = (1 + p_\infty \cdot \Delta t) \cdot \dot{x}(\nu)$\\
 numerische Lösung: & $\hat{x}(\nu) = (1+ p_\infty \Delta t) \cdot x(\nu)$\\
-Genauigkeit: & $\varepsilon^{(A)} = \hat{x}(\nu) - x(\nu) = $\\
-& $... \approx ...$\\
-& Ordnung $k=1$
+Genauigkeit: & $\varepsilon^{(A)} = \hat{x}(\nu) - x(\nu) = \Delta t \cdot \frac{\overbrace{\nu \Delta t}^{=t}}{2} \cdot p_\infty^2 \cdot x(0) \cdot e^{p_\infty \overbrace{\nu \Delta t}^{=t}}$ \\
+Stabilität: & $\lim_{t \rightarrow \infty} x(t) \rightarrow 0$ für $\Re{p_\infty} < 0$ \\
+& $\lim_{\nu \rightarrow \infty} \hat{x}(\nu) = \lim_{\nu \rightarrow \infty} (1 + p_\infty \Delta t)^\nu x(0) \rightarrow 0$ falls $|1 + p_\infty \Delta t| < 1|$ \\
+Ordnung & $k=1$ \\
+Asymptotische Stabilität ($\Delta t \rightarrow \infty$): & $\hat{x}(\nu + 1) \approx p_\infty \Delta t \hat{x}(\nu) \Rightarrow$ instabiles Verhalten!
 \end{tabular}
+
+\missingfigure{zinfty}
+\missingfigure{pinfty delta t}
+
+Somit ist die Wahl von $\Delta t$ aus Stabilitätsgründen eingeschränkt. Bei zu großem $\Delta t$ liegt das Produkt $p_\infty \Delta t$ nicht mehr im Stabilitätsbereicht. Praktisch beim expliziten Euler ist hingegen, dass es keine Stabilität in der rechten Halbebene gibt, es werden also instabile System als instabil detektiert.
