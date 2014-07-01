@@ -536,3 +536,114 @@ OK, wie bestimme ich nun $\ma Q,\ma R$?
 \item Hausholder-Transformation
 \item Givens-Rotation
 \end{itemize}
+
+\paragraph{Givens-Rotation}
+auch bekannt unter der Bezeichung Jacobi-Rotation \\
+Eine Rotation ist gegeben durch
+\begin{equation}
+	\ma G(l, k, \Theta) = 
+	\begin{pmatrix}
+		1 & 0 & 0 & \hdots & 0 & \hdots & \hdots & 0 \\
+		0 & \hdots & c & \hdots & \hdots & s & \hdots & 0 \\
+		\vdots & & & & & & & \vdots \\
+		\vdots & & -s & & & -c & & \\ 
+		\vdots & & & & & & 1 & \\ 
+		0 & & & & & & & 1 
+	\end{pmatrix}
+\end{equation}
+wobei $c = \cos \Theta$, $s = \sin \Theta$. Komponentenweise $\ma G(l, k, \Theta) =  (g_{i,j}(l, k, \Theta))$ dargestellt ergibt das
+\begin{equation}
+	g_{i,j} = 
+	\begin{cases} 
+		\cos \Theta & \text{für } i = l, j = l \vee i = k, j = k \\
+		\sin \Theta & \text{für } i = l, j = k \\
+		- \sin \Theta & \text{für } i = k, j = l \\
+		1 & \text{für } i = j \text{ außer } i, j = l, k \\
+		0 & \text{sonst}
+	\end{cases}
+\end{equation}
+Damit bedeutet $\ma G \cdot \vec x$ bzw. $\ma G^T \cdot \vec x$ eine Drehung des Vektors $\vec x$ um $\pm \Theta$ in der $(l, k)$-Ebene. Die Hauptanwendung hierfür ist ein iteratives Vorgehen um Nulleinträge in Matrizen oder Vektoren zu erreichen. Desweiteren ist $\ma G \ma G^T = \ma I$ und somit die Rotationsmatrix $\ma G$ orthogonal.
+\begin{equation}
+	\begin{pmatrix}
+		c & s \\
+		-s & c
+	\end{pmatrix} 
+	\begin{pmatrix}
+		c & -s \\
+		s & c
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		c^2 + s^2 & 0 \\
+		0 & c^2 + s^2
+	\end{pmatrix} =
+	\begin{pmatrix}
+		1 & 0 \\
+		0 & 1
+	\end{pmatrix} 
+\end{equation}
+Damit gilt
+\begin{equation}
+	\ma G_r \ma G_{r - 1} \cdot \ldots \cdot \ma G_2 \ma G_1 \ma A = \ma R
+\end{equation}
+\begin{equation}
+	\ma A = \ma G^T \ma R = \ma Q^T \ma R
+\end{equation}
+Die Frage ist nun, wie $\Theta$ gewählt werden muss. Hierfür genügt die Betrachtung einer zweidimensionalen Struktur
+\begin{equation}
+	\begin{pmatrix}
+		c & s \\
+		-s & c
+	\end{pmatrix} 
+	\begin{pmatrix}
+		x_l \\
+		x_k
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		r \\
+		0
+	\end{pmatrix}
+\end{equation}
+Daraus kann gefolgert werden, dass
+\begin{equation}
+	s = c \frac{x_k}{x_l}
+\end{equation}
+und aus
+\begin{equation}
+	c^2 + s^2 = 1
+\end{equation}
+\begin{equation}
+	c = \sqrt{1 - s^2} = \sqrt{\frac{x_l^2 - c^2 x_k^2}{x_l^2}}
+\end{equation}
+\begin{equation}
+	c^2 x_l^2 = x_l^2 - c^2 - x_k^2
+\end{equation}
+\begin{equation}
+	c = \pm \frac{x_l}{\sqrt{x_l^2 + x_k^2}}
+\end{equation}
+Das ganze an dem Beispiel
+\begin{equation}
+	\ma A = 
+	\begin{pmatrix}
+		3 & 1 & 0 \\
+		1 & 3 & 1 \\
+		0 & 1 & 3	
+	\end{pmatrix}
+\end{equation}
+führt über
+\begin{equation}
+	\ma G = 
+	\begin{pmatrix}
+		c & s & 0 \\
+		-s & c & 1 \\
+		0 & 0 & 1	
+	\end{pmatrix}
+\end{equation}
+zu
+\begin{equation}
+	\ma G \ma A =
+	\begin{pmatrix}
+		\sqrt{10} & 6/\sqrt{10} & 1/\sqrt{10} \\
+		0 & 3/\sqrt{10} & 3/\sqrt{10} \\
+		0 & 1 & 3	
+	\end{pmatrix}
+\end{equation}
