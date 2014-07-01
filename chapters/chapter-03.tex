@@ -416,3 +416,69 @@ Die Einschrittvariante hiervon ist für $m = 0$ der implizite Euler, für $m = 1
 y_{i + 1} = y_i + \frac{h}{12} \left[ 5 f(t_{i + 1}, y_{i + 1} + 8 f(t_i, y_i) - f(t_{i - 1}, y_{i - 1}) \right]
 \end{equation}
 und besitzt ein kubisches Fehlerverhalten.
+
+\section{Ausgleichsrechnung (Approximation, Least Square)}
+\textbf{Ziele der Approximation:} ("`curve fitting"')
+\begin{itemize}
+\item Bestgeeignete Funktion eines bestimmten Typs, um gegebenen Daten anzunähern
+\item Für gegebene Funktionen "`bestmögliche"', einfachere Funktionen zu finden. 
+\end{itemize}
+
+\textbf{"`Bestmögliche"' Funktion zur Annäherung gegebener Stützpunkte}
+\begin{itemize}
+\item Gegeben: Wertepaare $(x_i,y_i),\;i=1,\ldots ,m$
+\item Annahme: Gerade beschriebt Wertepaare $y = f(x) = ax+b$ 
+\end{itemize}
+
+\textbf{Ansätze:} 
+\begin{itemize}
+\item $E = \sum\limits_{i=1}^m l_i = \sum\limits_{i=1}^m\left[y_i-(ax_i+b)\right]$
+\item $E = \sum\limits_{i=1}^m \abs{l_i} = \sum\limits_{i=1}^m\abs{\left[y_i-(ax_i+b)\right]}$
+\item Minmax: $\min E_\infty = \min\max\limits_{i=1,\ldots,m}\left\lbrace\abs{y_i-(ax_i+b)}\right\rbrace$
+\end{itemize}
+
+\paragraph{Linear Least Squares}
+Minimiere: $E_2(a,b) = \sum\limits_{i=1}^m\left(y_i-(ax_i+b)\right)^2$\\
+Bestimmung von $a,b$: $\frac{\partial E_2}{\partial a} = 0,\;\frac{\partial E_2}{\partial b} = 0$\\
+$\Rightarrow$ Normalengleichung:
+\begin{itemize}
+\item $a = ...$
+\item $b = ...$
+\end{itemize}
+
+\paragraph{Polynominale Least Squares}
+Approximation durch $P_n(x) = a_nx^n + \ldots + a_1x + a_0$
+\begin{equation}
+E_2(a_0,a_1,\ldots,a_n)) = \sum\limits_{i=1}^m(y_i - P(x_i)^2) 
+\end{equation}
+Minimierung $\frac{\partial E_2}{\partial a_i} = 0\Rightarrow n+1$ Normalengleichungen in den $n+1$ Unbekannten $a_0,\ldots,a_n$
+
+\paragraph{Linear Least Squares - Sichtweise Lineare Algebra}
+\begin{equation}
+\ma{A}_{<m\times n}\cdot\vec{x}_{n} = \vec{b}_{n}\quad,m>n
+\end{equation}
+Beispiel:
+\begin{itemize}
+\item $m=2,n=1\quad\begin{bmatrix}
+a_1 \\ a_2
+\end{bmatrix}\cdot x = \begin{bmatrix}
+b_1 \\ b_2
+\end{bmatrix}$
+\item $m=3,n=2\quad\begin{bmatrix}
+a_{11} & a_{12} \\ a_{21} & a_{22} \\ a_{31} & a_{32}
+\end{bmatrix}\cdot \begin{bmatrix}
+x_1 \\ x_2
+\end{bmatrix} = \begin{bmatrix}
+b_1 \\ b_2 \\ b_3
+\end{bmatrix}$
+\end{itemize}
+
+Fehler je Zeile: $e_i = b_i - \vec a_i\cdot \vec x$\\
+Vektor der Fehler: $\vec e = \vec b - \ma{A}\cdot \vec x$\\
+Summe der Fehlerquadrate: $E_2 = \norm{e}^2 = \norm{\vec b - \ma A\vec x}^2$\\
+Gesucht $\hat{\vec x}$, so dass $E_2$ minimiert wird.
+\begin{equation}
+\ma A\hat{\vec x} = \vec p \quad ; \quad \vec e = \vec b - \vec p
+\end{equation}
+$\vec p$ ist die Projektion von $\vec b$ in den Spaltenraum von $\col(\ma A)$\\
+$\vec e$ steht senkrecht auf den Spaltenraum $\col(\ma A)$
