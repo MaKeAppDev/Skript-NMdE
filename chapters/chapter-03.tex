@@ -317,13 +317,13 @@ Somit ist die Wahl von $\Delta t$ aus Stabilitätsgründen eingeschränkt. Bei z
 
 Im folgenden noch einmal die Eigenschaften der Verfahren kurz zusammengefasst:
 
-\begin{tabular}{r|c|c|c|c|c}
+\begin{tabular}{r|c|c|c|p{2.2cm}|p{2.3cm}}
 & explizit/implizit & Schritte & Ordnung & stabil für $\Re{p_\infty} < 0$ & asymptotisch stabil \\ \hline
 expliziter Euler & explizit & 1 & 1 & nein & nein \\ \hline
 impliziter Euler & implizit & 1 & 1 & ja & ja \\ \hline
 Trapez & implizit & 1 & 2 & ja & nein \\ \hline
 Gear & implizit & 2 & 2 & ja & ja
-\end{tabular}
+\end{tabular} \hfill \\
 Zudem haben Einschrittverfahren Vorteile beim Starten, mit Mehrschrittverfahren kann nicht direkt gestartet werden.
 
 \section{Taylor-Verfahren höherer Ordnung}
