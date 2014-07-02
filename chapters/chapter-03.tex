@@ -542,14 +542,15 @@ auch bekannt unter der Bezeichung Jacobi-Rotation \\
 Eine Rotation ist gegeben durch
 \begin{equation}
 	\ma G(l, k, \Theta) = 
-	\begin{pmatrix}
-		1 & 0 & 0 & \hdots & 0 & \hdots & \hdots & 0 \\
-		0 & \hdots & c & \hdots & \hdots & s & \hdots & 0 \\
+	\begin{bmatrix}
+		1 & 0 & \hdots & \hdots & \hdots & \hdots & \hdots & 0 \\
+		0 & 1 & & & & & & 0 \\
+		\vdots & & c & & & -s & & \vdots \\
 		\vdots & & & & & & & \vdots \\
-		\vdots & & -s & & & -c & & \\ 
-		\vdots & & & & & & 1 & \\ 
-		0 & & & & & & & 1 
-	\end{pmatrix}
+		\vdots & & -s & & & c & & \vdots \\ 
+		\vdots & & & & & & 1 & 0 \\ 
+		0 & \hdots & \hdots & \hdots & \hdots & \hdots & 0 & 1 
+	\end{bmatrix}
 \end{equation}
 wobei $c = \cos \Theta$, $s = \sin \Theta$. Komponentenweise $\ma G(l, k, \Theta) =  (g_{i,j}(l, k, \Theta))$ dargestellt ergibt das
 \begin{equation}
