@@ -8,6 +8,8 @@ set(CHAPTERS
 	chapters/chapter-01.tex
 	chapters/chapter-02.tex
 	chapters/chapter-03.tex
+	chapters/chapter-04.tex
+	chapters/chapter-05.tex
 )
 
 set(FIGURES

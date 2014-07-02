@@ -1,0 +1,232 @@
+\chapter{Ausgleichsrechnung}
+Auch bekannt unter der Bezeichnung Approximation oder Least Square
+\textbf{Ziele der Approximation:} ("`curve fitting"')
+\begin{itemize}
+\item Bestgeeignete Funktion eines bestimmten Typs, um gegebenen Daten anzunähern
+\item Für gegebene Funktionen "`bestmögliche"', einfachere Funktionen zu finden. 
+\end{itemize}
+
+\textbf{"`Bestmögliche"' Funktion zur Annäherung gegebener Stützpunkte}
+\begin{itemize}
+\item Gegeben: Wertepaare $(x_i,y_i),\;i=1,\ldots ,m$
+\item Annahme: Gerade beschriebt Wertepaare $y = f(x) = ax+b$ 
+\end{itemize}
+
+\textbf{Ansätze:} 
+\begin{itemize}
+\item $E = \sum\limits_{i=1}^m l_i = \sum\limits_{i=1}^m\left[y_i-(ax_i+b)\right]$
+\item $E = \sum\limits_{i=1}^m \abs{l_i} = \sum\limits_{i=1}^m\abs{\left[y_i-(ax_i+b)\right]}$
+\item Minmax: $\min E_\infty = \min\max\limits_{i=1,\ldots,m}\left\lbrace\abs{y_i-(ax_i+b)}\right\rbrace$
+\end{itemize}
+
+\section{Linear Least Squares}
+Minimiere: $E_2(a,b) = \sum\limits_{i=1}^m\left(y_i-(ax_i+b)\right)^2$\\
+Bestimmung von $a,b$: $\frac{\partial E_2}{\partial a} = 0,\;\frac{\partial E_2}{\partial b} = 0$\\
+$\Rightarrow$ Normalengleichung:
+\begin{itemize}
+\item $a = ...$
+\item $b = ...$
+\end{itemize}
+
+\section{Polynominale Least Squares}
+Approximation durch $P_n(x) = a_nx^n + \ldots + a_1x + a_0$
+\begin{equation}
+E_2(a_0,a_1,\ldots,a_n)) = \sum\limits_{i=1}^m(y_i - P(x_i)^2) 
+\end{equation}
+Minimierung $\frac{\partial E_2}{\partial a_i} = 0\Rightarrow n+1$ Normalengleichungen in den $n+1$ Unbekannten $a_0,\ldots,a_n$
+
+\section{Linear Least Squares - Sichtweise Lineare Algebra}
+\begin{equation}
+\ma{A}_{<m\times n}\cdot\vec{x}_{n} = \vec{b}_{n}\quad,m>n
+\end{equation}
+Beispiel:
+\begin{itemize}
+\item $m=2,n=1\quad\begin{bmatrix}
+a_1 \\ a_2
+\end{bmatrix}\cdot x = \begin{bmatrix}
+b_1 \\ b_2
+\end{bmatrix}$
+\item $m=3,n=2\quad\begin{bmatrix}
+a_{11} & a_{12} \\ a_{21} & a_{22} \\ a_{31} & a_{32}
+\end{bmatrix}\cdot \begin{bmatrix}
+x_1 \\ x_2
+\end{bmatrix} = \begin{bmatrix}
+b_1 \\ b_2 \\ b_3
+\end{bmatrix}$
+\end{itemize}
+
+Fehler je Zeile: $e_i = b_i - \vec a_i\cdot \vec x$\\
+Vektor der Fehler: $\vec e = \vec b - \ma{A}\cdot \vec x$\\
+Summe der Fehlerquadrate: $E_2 = \norm{e}^2 = \norm{\vec b - \ma A\vec x}^2$\\
+Gesucht $\hat{\vec x}$, so dass $E_2$ minimiert wird.
+\begin{equation}
+\ma A\hat{\vec x} = \vec p \quad ; \quad \vec e = \vec b - \vec p
+\end{equation}
+$\vec p$ ist die Projektion von $\vec b$ in den Spaltenraum von $\col(\ma A)$\\
+$\vec e$ steht senkrecht auf den Spaltenraum $\col(\ma A)$
+\begin{equation}
+\begin{split}
+E(x) &= \norm{\vec b - \ma A\vec x}^2 = \norm{\ma A\vec x - \vec b}\\
+&= \vec x^T\ma A^T\ma A\vec x - (\ma A\vec x)^T\vec b - \vec b^T\ma A\vec x - \vec b^T\vec b\\
+&= \vec x^T\underbrace{\ma A^T\ma A}_{\ma K}\vec x - 2\vec x^T\underbrace{\ma A^T\vec b}_{\vec f} - \vec b^T\vec b\\
+&= \vec x^T\ma K\vec x - 2\vec x^T\vec f + \vec b^T\vec b\quad\text{zu minimieren}\\
+&= (\vec x-\ma K^{-1}\vec f)^T\ma K(\vec x-\ma K^{-1}ßvec f) - \vec f^T\ma K^{-1}\vec f + \vec b^T\vec b
+\end{split}
+\end{equation}
+Ausdruck kann minimal 0 werden für $\hat{\vec x} = \ma K^{-1}\vec f\Rightarrow$ dort also Minimum vom $E(\vec x)$
+\begin{equation}
+\begin{split}
+E_\text{min} = E(\hat{\vec x}) &= (\vec b - \ma A\hat{\vec x})^T\cdot(\vec b - \ma A\hat{\vec x})\\
+&= \vec b^T\vec b - \vec f^T\ma K^{-1}\vec f\\
+&= \vec b^T\vec b - \vec b^T\ma A(\ma A^T\ma A)^{-1}\ma A^T\vec b
+\end{split}
+\end{equation}
+$\vec e = \vec b - \ma A\vec x$ steht senkrecht auf $\col(\ma A)\Rightarrow\ma A^T\vec e = \vec 0$\\
+\begin{equation}
+\Rightarrow \ma A^T(\vec b - \ma A\hat{\vec x}) = 0 \Rightarrow \ma A^T\ma A\hat{\vec x} = \ma A^T\vec b
+\end{equation}
+$\underbrace{\ma A^T\ma A\hat{\vec x} = \ma A^T\vec b}_{\text{quadratisch, symmetrisch}} \text{ LGS }\Rightarrow\text{ Bestimmung von }\hat{\vec x}$
+
+\textbf{Lösungsverfahren:}
+\begin{itemize}
+\item Gauß LU: OK, aber $\cond(\ma A^T\ma A) = \cond(\ma A)^2\Rightarrow$ Problematisch, wenn $\ma A$ schlecht konditioniert
+\item Orthogonalzerlegung
+\end{itemize}
+
+\section{QR-Zerlegung}
+\[\ma A = \ma Q\ma R \text{ mit }\begin{cases}
+\ma A & \in \R^{n\times n}\\
+\ma Q & \in \R^{n\times n} \text{orthogonale Matrix} (\ma Q^T = \ma Q^{-1})\\
+\ma R & \in \R^{n\times n} \text{rechte obere Dreiecksmatrix}
+\end{cases}\]
+Damit:
+\begin{equation}
+\begin{split}
+\ma A\vec x &= \vec b\\
+\ma A^T\ma A\vec x &= \ma A^T\vec b\\
+(\ma Q\ma R)^T\ma Q\ma R\vec x &= (\ma Q\ma R)^T\vec b\\
+\ma R^T\underbrace{\ma Q^T\ma Q}_{\ma 0}\ma R\vec x &= \ma R^T\ma Q^T\vec b\\
+\ma R^T\ma R\vec x &= \ma R^T\ma Q^T\vec b\quad\vert\cdot{\ma R^{-1}}^{-1}\\
+\ma R\vec x &= \ma Q^T\vec b\Rightarrow \text{simple Rücksubstitution}
+\end{split}
+\end{equation}
+OK, wie bestimme ich nun $\ma Q,\ma R$?
+
+\textbf{3 wesentliche Ansätze:}
+\begin{itemize}
+\item Gram-Schmidt
+\item Hausholder-Transformation
+\item Givens-Rotation
+\end{itemize}
+
+\subsection{Givens-Rotation}
+auch bekannt unter der Bezeichung Jacobi-Rotation \\
+Eine Rotation ist gegeben durch
+\begin{equation}
+	\ma G(l, k, \Theta) = 
+	\begin{bmatrix}
+		1 & 0 & \hdots & \hdots & \hdots & \hdots & \hdots & 0 \\
+		0 & 1 & & & & & & 0 \\
+		\vdots & & c & & & -s & & \vdots \\
+		\vdots & & & & & & & \vdots \\
+		\vdots & & -s & & & c & & \vdots \\ 
+		\vdots & & & & & & 1 & 0 \\ 
+		0 & \hdots & \hdots & \hdots & \hdots & \hdots & 0 & 1 
+	\end{bmatrix}
+\end{equation}
+wobei $c = \cos \Theta$, $s = \sin \Theta$. Komponentenweise $\ma G(l, k, \Theta) =  (g_{i,j}(l, k, \Theta))$ dargestellt ergibt das
+\begin{equation}
+	g_{i,j} = 
+	\begin{cases} 
+		\cos \Theta & \text{für } i = l, j = l \vee i = k, j = k \\
+		\sin \Theta & \text{für } i = l, j = k \\
+		- \sin \Theta & \text{für } i = k, j = l \\
+		1 & \text{für } i = j \text{ außer } i, j = l, k \\
+		0 & \text{sonst}
+	\end{cases}
+\end{equation}
+Damit bedeutet $\ma G \cdot \vec x$ bzw. $\ma G^T \cdot \vec x$ eine Drehung des Vektors $\vec x$ um $\pm \Theta$ in der $(l, k)$-Ebene. Die Hauptanwendung hierfür ist ein iteratives Vorgehen um Nulleinträge in Matrizen oder Vektoren zu erreichen. Desweiteren ist $\ma G \ma G^T = \ma I$ und somit die Rotationsmatrix $\ma G$ orthogonal.
+\begin{equation}
+	\begin{pmatrix}
+		c & s \\
+		-s & c
+	\end{pmatrix} 
+	\begin{pmatrix}
+		c & -s \\
+		s & c
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		c^2 + s^2 & 0 \\
+		0 & c^2 + s^2
+	\end{pmatrix} =
+	\begin{pmatrix}
+		1 & 0 \\
+		0 & 1
+	\end{pmatrix} 
+\end{equation}
+Damit gilt
+\begin{equation}
+	\ma G_r \ma G_{r - 1} \cdot \ldots \cdot \ma G_2 \ma G_1 \ma A = \ma R
+\end{equation}
+\begin{equation}
+	\ma A = \ma G^T \ma R = \ma Q^T \ma R
+\end{equation}
+Die Frage ist nun, wie $\Theta$ gewählt werden muss. Hierfür genügt die Betrachtung einer zweidimensionalen Struktur
+\begin{equation}
+	\begin{pmatrix}
+		c & s \\
+		-s & c
+	\end{pmatrix} 
+	\begin{pmatrix}
+		x_l \\
+		x_k
+	\end{pmatrix} = 
+	\begin{pmatrix}
+		r \\
+		0
+	\end{pmatrix}
+\end{equation}
+Daraus kann gefolgert werden, dass
+\begin{equation}
+	s = c \frac{x_k}{x_l}
+\end{equation}
+und aus
+\begin{equation}
+	c^2 + s^2 = 1
+\end{equation}
+\begin{equation}
+	c = \sqrt{1 - s^2} = \sqrt{\frac{x_l^2 - c^2 x_k^2}{x_l^2}}
+\end{equation}
+\begin{equation}
+	c^2 x_l^2 = x_l^2 - c^2 - x_k^2
+\end{equation}
+\begin{equation}
+	c = \pm \frac{x_l}{\sqrt{x_l^2 + x_k^2}}
+\end{equation}
+Das ganze an dem Beispiel
+\begin{equation}
+	\ma A = 
+	\begin{pmatrix}
+		3 & 1 & 0 \\
+		1 & 3 & 1 \\
+		0 & 1 & 3	
+	\end{pmatrix}
+\end{equation}
+führt über
+\begin{equation}
+	\ma G = 
+	\begin{pmatrix}
+		c & s & 0 \\
+		-s & c & 1 \\
+		0 & 0 & 1	
+	\end{pmatrix}
+\end{equation}
+zu
+\begin{equation}
+	\ma G \ma A =
+	\begin{pmatrix}
+		\sqrt{10} & 6/\sqrt{10} & 1/\sqrt{10} \\
+		0 & 3/\sqrt{10} & 3/\sqrt{10} \\
+		0 & 1 & 3	
+	\end{pmatrix}
+\end{equation} 
