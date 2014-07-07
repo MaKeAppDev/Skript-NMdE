@@ -70,7 +70,7 @@ E(x) &= \norm{\vec b - \ma A\vec x}^2 = \norm{\ma A\vec x - \vec b}\\
 &= \vec x^T\ma A^T\ma A\vec x - (\ma A\vec x)^T\vec b - \vec b^T\ma A\vec x - \vec b^T\vec b\\
 &= \vec x^T\underbrace{\ma A^T\ma A}_{\ma K}\vec x - 2\vec x^T\underbrace{\ma A^T\vec b}_{\vec f} - \vec b^T\vec b\\
 &= \vec x^T\ma K\vec x - 2\vec x^T\vec f + \vec b^T\vec b\quad\text{zu minimieren}\\
-&= (\vec x-\ma K^{-1}\vec f)^T\ma K(\vec x-\ma K^{-1}ßvec f) - \vec f^T\ma K^{-1}\vec f + \vec b^T\vec b
+&= (\vec x-\ma K^{-1}\vec f)^T\ma K(\vec x-\ma K^{-1} \vec f) - \vec f^T\ma K^{-1}\vec f + \vec b^T\vec b
 \end{split}
 \end{equation}
 Ausdruck kann minimal 0 werden für $\hat{\vec x} = \ma K^{-1}\vec f\Rightarrow$ dort also Minimum vom $E(\vec x)$
@@ -89,7 +89,7 @@ $\underbrace{\ma A^T\ma A\hat{\vec x} = \ma A^T\vec b}_{\text{quadratisch, symme
 
 \textbf{Lösungsverfahren:}
 \begin{itemize}
-\item Gauß LU: OK, aber $\cond(\ma A^T\ma A) = \cond(\ma A)^2\Rightarrow$ Problematisch, wenn $\ma A$ schlecht konditioniert
+\item Gauß LU: OK, aber $\cond{\ma A^T\ma A} = \cond{\ma A}^2\Rightarrow$ Problematisch, wenn $\ma A$ schlecht konditioniert
 \item Orthogonalzerlegung
 \end{itemize}
 
@@ -105,7 +105,7 @@ Damit:
 \ma A\vec x &= \vec b\\
 \ma A^T\ma A\vec x &= \ma A^T\vec b\\
 (\ma Q\ma R)^T\ma Q\ma R\vec x &= (\ma Q\ma R)^T\vec b\\
-\ma R^T\underbrace{\ma Q^T\ma Q}_{\ma 0}\ma R\vec x &= \ma R^T\ma Q^T\vec b\\
+\ma R^T\underbrace{\ma Q^T\ma Q}_{\ma I}\ma R\vec x &= \ma R^T\ma Q^T\vec b\\
 \ma R^T\ma R\vec x &= \ma R^T\ma Q^T\vec b\quad\vert\cdot{\ma R^{-1}}^{-1}\\
 \ma R\vec x &= \ma Q^T\vec b\Rightarrow \text{simple Rücksubstitution}
 \end{split}

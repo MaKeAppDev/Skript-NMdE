@@ -1022,14 +1022,20 @@ In \autoref{eq:bj3}:
 Mit \autoref{eq:hj-big}:
 \begin{equation}
 	\begin{bmatrix}
-	1 & 0 & 0 & 0 & \ldots & & \\
-	h_0 & 2\cdot(h_0 + h_1) & h_1 & 0 & & &\\
-	0 & h_1 & 2\cdot(h_1 + h_2) & h_2 & 0 & &\\
-	0 & \ldots & & & & &\\
-	0 & \ldots & & & 0 & 0 & 1
-	\end{bmatrix} \cdot \begin{bmatrix}
-	c_0 \\ c_1 \\ \vdots \\  \\ c_n
-	\end{bmatrix} = \begin{bmatrix}
+		1 & 0 & 0 & 0 & \ldots & & \\
+		h_0 & 2\cdot(h_0 + h_1) & h_1 & 0 & & &\\
+		0 & h_1 & 2\cdot(h_1 + h_2) & h_2 & 0 & &\\
+		0 & \ldots & & & & &\\
+		0 & \ldots & & & 0 & 0 & 1
+	\end{bmatrix} \cdot 
+	\begin{bmatrix}
+		c_0 \\ 
+		c_1 \\ 
+		\vdots \\  
+		\\ 
+		c_n
+	\end{bmatrix} = 
+	\begin{bmatrix}
 	0 \\ \frac{3}{h_j} \cdot (a_2 - a_1) - \frac{3}{h_0} \cdot (a_1 - a_0) \\ \vdots \\ \vdots \\ 0
 	\end{bmatrix}
 \end{equation}
