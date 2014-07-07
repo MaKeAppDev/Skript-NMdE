@@ -1,5 +1,4 @@
-\chapter{Numerische Integration}
-Alternativer Begriff: "`Numerische Quadratur"' (bestimmte Integrale)
+\chapter{Numerische Infinitesimalrechnung}
 
 \section{Numerisches Differenzieren}
 
@@ -36,7 +35,8 @@ Annahmen: $\abs{e_{-1}},\abs{e_{+1}} \leq\varepsilon$ und $\abs{f^{(3)}(\xi)} \l
 Damit $\abs{f'(x_0) - \frac{\tilde{f}(x_0+h) - \tilde{f}(x_0-h)}{2h}} \leq\frac{\varepsilon}{h} + \frac{h^2M}{6}$\\
 $\Rightarrow h_{\text{opt}} = \sqrt[3]{\frac{3\xi}{M}}$
 
-\section{Newton-Cotes-Ansätze}
+\section{Numerische Integration}
+Alternativer Begriff: "`Numerische Quadratur"' (bestimmte Integrale)
 \begin{equation}
 \begin{split}
 J &= \int\limits_a^bf(x)\diff x \cong\int\limits_a^bP_h(x)\diff x\\
@@ -138,7 +138,7 @@ Also, mit $\mu \in (a, b)$:
 
 Wie man sich nun vielleicht vorstellen kann gibt es unendlich viele mögliche numerische Integrationsverfahren. Das Composite Simpson-Verfahren ist allerdings ein häufig eingesetztes allgemeines Verfahren.
 
-\section{Genauigkeit}
+\subsection{Genauigkeit}
 Zur Bestimmung der Genauigkeit gibt es zwei Ansätze:
 \begin{enumerate}
 	\item Gegeben sei ein Verfahren, eine Funktion $f$, ein Interval $[a, b]$ und eine Stützstellenanzahl $n$ und gesucht sei der Fehler
