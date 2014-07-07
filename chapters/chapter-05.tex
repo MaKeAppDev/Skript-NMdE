@@ -1,6 +1,6 @@
 \chapter{Numerische Infinitesimalrechnung}
 
-\section{Numerisches Differenzieren}
+\section{Numerische Differentiation}
 
 \begin{equation}
 	f'(x_0) = \lim\limits_{h\rightarrow 0} \frac{f(x_0 + h) - f(x_0)}{h}
@@ -9,19 +9,22 @@
 Taylor-Polynom: \[ f(x_0 + h) = f(x_0) + h\cdot f'(x_0) + \frac{h^2}{2} \cdot f''(x_0) + \frac{h^3}{3}\cdot f^{(3)}(x_0) + \ldots\]
 Abbruch nach linearem Term: \[f(x_0+h) = f(x_0) + h\cdot f'(x_0) + R(h^2)\]
 
-"'Vorwärtsdifferenz"':
+\subsection{Vorwärtsdifferenz}
 \begin{equation}
-	f'(x_0) = \frac{f(x_0 + h) - f(x_0)}{h} + R(h)
+	f'(x_0) \approx \frac{f(x_0 + h) - f(x_0)}{h} + R(h)
 \end{equation}
 
-"'Rückwärtsdifferenz:"'
+\subsection{Rückwärtsdifferenz}
 \begin{equation}
-	f(x_0 - h) = f(x_0) - h \cdot f(x_0) + \frac{h^2}{2} \cdot f''(x_0) - \ldots
+	f'(x_0) \approx \frac{f(x_0) - f(x_0 - h)}{h}
 \end{equation}
 
-\subsection{Fehleranalyse}
-Zentrierte Differenz $f'(x_0) = \frac{f(x_0+h) - f(x_0-h)}{2h} - \frac{f^{(3)}(\xi)}{6}h^2$\\
-Rundungsfehler:
+\subsection{Zentrierte Differenz}
+\begin{equation*}
+	f'(x_0) \approx \frac{f(x_0 + h) - f(x_0 - h)}{2h}
+\end{equation*}
+
+\subsubsection{Fehleranalyse}
 \begin{equation}
 \begin{split}
 f(x_0+h) &= \underset{\text{gerundeter Wert}}{\tilde{f}(x_0-h)} + e_{-1}\\
