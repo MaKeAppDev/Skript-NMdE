@@ -229,10 +229,10 @@ Bedingungen für \textbf{Matrixnormen}:
 
 \subsection{Vektornormen}
 \begin{tabular}{r@{ = }ll}
-	$\norm{\vec{x}}_1$ & $\sum\limits_{i=1}^n\abs{xi}$ & Betragssummennorm, $l_1$-Norm\\
-	$\norm{\vec{x}}_2$ & $\sqrt{\sum\limits_{i=1}^n\abs{xi}^2}$ & Euklidnorm, $l_2$-Norm, Vektorlänge\\
-	$\norm{\vec{x}}_\infty$ & $\underset{i}{\max}{\abs{xi}}$ & Maximumsnorm, $l_\infty$-Norm, Tschebychefnorm\\
-	$\norm{\vec{x}}_p$ & $\sqrt[p]{\sum\limits_{i=1}^n\abs{xi}^p}$, $p\geq 1$ & Höldernormnorm, $l_p$-Norm
+	$\norm{\vec{x}}_1$ & $\sum\limits_{i=1}^n\abs{x_i}$ & Betragssummennorm, $l_1$-Norm\\
+	$\norm{\vec{x}}_2$ & $\sqrt{\sum\limits_{i=1}^n\abs{x_i}^2}$ & Euklidnorm, $l_2$-Norm, Vektorlänge\\
+	$\norm{\vec{x}}_\infty$ & $\underset{i}{\max}{\abs{x_i}}$ & Maximumsnorm, $l_\infty$-Norm, Tschebychefnorm\\
+	$\norm{\vec{x}}_p$ & $\sqrt[p]{\sum\limits_{i=1}^n\abs{x_i}^p}$, $p\geq 1$ & Höldernormnorm, $l_p$-Norm
 \end{tabular}
 
 \subsection{Matrixnormen $(A\in\mathbb{R}^{n\times n})$}
@@ -241,7 +241,7 @@ Bedingungen für \textbf{Matrixnormen}:
 	$(||\ma{A}||_\infty = )||\ma{A}||_Z$ & $\underset{i}{\max}\sum\limits_{j=1}^n\abs{a_{ij}}$ & Zeilennorm $(||\ma{I}||_Z = 1)$\\
 	$(||\ma{A}||_1 = )||\ma{A}||_S$ & $\underset{j}{\max}\sum\limits_{i=1}^n\abs{a_{ij}}$ & Spaltennorm $(||\ma{I}||_S = 1)$\\
 	$||\ma{A}||_E$ & $\sqrt{\sum\limits_{i=1}\sum\limits_{j=1}\abs{a_{ij}}^2}$ & Euklidnorm, Schurnorm, Frobeniusnorm $(||\ma{I}||_E = \sqrt{n})$\\
-	$(\ma{A}||_\lambda = )||\ma{A}||_\lambda$ & $\sqrt{\lambda_\text{max}(\ma{A}^T\cdot\ma{A})}$ & Spektralnorm, Hilbertnorm $(||\ma{I}||_\lambda = 1)$\\
+	$(\ma{A}||_\lambda = )||\ma{A}||_\lambda$ & $\sqrt{\lambda_\text{max}(\ma{A}^T \ma{A})}$ & Spektralnorm, Hilbertnorm $(||\ma{I}||_\lambda = 1)$\\
 \end{tabular}
 
 \subsection{Kompatibilität zwischen Vektor und Matrixnorm}
@@ -256,12 +256,12 @@ Bedingungen für \textbf{Matrixnormen}:
 Ausgehend von einem linearen Gleichungssystem
 \[\ma{A} \cdot \vec{x} = \vec{b}\]
 kann man auf der rechten Seite einen Fehler $\Delta \vec{b}$ hinzufügen.
-\[\ma{A} ( \cdot \vec{x} + \Delta \vec{x} = \vec{b} + \Delta \vec{b}\]
+\[\ma{A} \left( \vec{x} + \Delta \vec{x} \right) = \vec{b} + \Delta \vec{b}\]
 Dieser resultiert dann in einem Fehler $\Delta \vec{x}$ der Lösung in $\vec{x}$.
 Der Zusammenhang zwischen diesen Größen lautet
 \[\ma{A} \Delta \vec{x} = \Delta \vec{b}\]
 und kann umgeformt werden zu
-\[ \Delta \vec{x} = \ma{A}^{-1} \cdot \Delta \vec{b}\]
+\[ \Delta \vec{x} = \ma{A}^{-1} \Delta \vec{b}\]
 \[ ||\Delta \vec{x}|| \le ||\ma{A}^{-1}|| \cdot ||\Delta \vec{b}||\]
 Gleichzeitig kann
 \[\vec{b} = \ma{A} \vec{x}\]
@@ -300,9 +300,9 @@ Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(
 \subsection{Intervallhalbierung}
 \begin{enumerate}
 	\item Startintervall $[a^{(0)}, b^{(0)}] = [a, b]$, $k = 0$
-	\item Intervallmitte $m = \frac{a^{(k)} \cdot b^{(k)}}{2}$
+	\item Intervallmitte $m = \frac{a^{(k)} + b^{(k)}}{2}$
 	\item $[a^{k + 1)}, b^{(k + 1)}] = \begin{cases} [m, b^{(k)}] & \text{fuer\ } F(m) \cdot F(a^{(k)}) > 0 \\ [a^{(k)}, m] & \text{fuer\ } F(m) \cdot F(a^{(k)}) < 0 \end{cases}$
-	\item Falls $\abs{a^{k + 1)} - b^{k + 1)}} > \epsilon$ dann gehe zu Schritt 2, $k = k + 1$
+	\item Falls $\abs{a^{(k + 1)} - b^{k + 1)}} > \epsilon$ dann gehe zu Schritt 2, $k = k + 1$
 \end{enumerate}
 
 \begin{figure}[htdp]
@@ -347,7 +347,10 @@ Dadurch ist pro Schritt nur eine Funktionsauswertung nötig.
 
 
 \subsection{Fixpunktiteration}
-Fixpunkt $x^*$ einer Funktion $g(x)\cdot x^* = g(x^*)$.\\
+Fixpunkt $x^*$ einer Funktion $g(x)$
+\begin{equation}
+	x^* = g(x^*)
+\end{equation}
 Nullstellenproblem und Fixpunktproblem können ineinander überführt werden., z.B.
 \[g(x) = x - F(x)\]
 
@@ -355,7 +358,7 @@ Nullstellenproblem und Fixpunktproblem können ineinander überführt werden., z
 \begin{enumerate}
 	\item Sei $g(x)$ stetig auf $[a,b]$, sowie $g(x)\in [a,b]$ für alle $x\in [a,b]$.\\
 	Dann hat $g(x)$ mindestens einen Fixpunkt auf $[a,b]$
-	\item Existiere zusaätzlich $g'(x) auf (a,b)$, sowie eine positive Konstante $k<1$ mit $\abs{g'(x)}\leq k$, für alle $x\in (a,b)$
+	\item Existiere zusätzlich $g'(x)$ auf $(a,b)$, sowie eine positive Konstante $k<1$ mit \mbox{$\abs{g'(x)}\leq k$}, für alle $x\in (a,b)$
 	\begin{itemize}
 		\item Dann hat $g(x)$ exakt einen Fixpunkt auf $[a,b]$
 		\item Gilt $0<k<1$, dann konvergiert für jedes $x^{(0)}\in [a,b]$ die Folge 
@@ -397,7 +400,7 @@ Taylorreihe von $g(x)$ um $x^*$
 	\vdots & & \vdots\\
 	\frac{\partial\vec{F}_r}{\partial\vec{x}_1} & \ldots & \frac{\partial\vec{F}_r}{\partial\vec{x}_r}
 	\end{pmatrix}\\
-	\vec{F}(\vec{x}^{(k+1)}) &= \vec{0}\Rightarrow\ma{J}(\vec{x}^{(k)})\cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right) = -\vec{F}(\vec{x}^{(1)})
+	\vec{F}(\vec{x}^{(k+1)}) &= \vec{0}\Rightarrow\ma{J}(\vec{x}^{(k)})\cdot\left(\vec{x}^{(k+1)}-\vec{x}^{(k)}\right) = -\vec{F}(\vec{x}^{(k)})
 \end{align}
 \[\vec{x}^{(k+1)} = \vec{x}^{(k)}-\ma{J}^{-1}(\vec{x}^{(k)})\cdot\vec{F}(\vec{x}^{(k)})\]
 \textbf{Praktisch:}
@@ -420,7 +423,7 @@ oder
 \[\frac{|| \vec \epsilon^{(k)} ||}{|| \vec x^\star ||} \le || \vec \epsilon^{(R)} ||\]
 Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in der Anwendung ein anderes Kriterium wählen:
 \begin{itemize}
-	\item $||\vec x^{(k + 1)} - \vec x^{(k)}|| \vec \epsilon^{(A)} ||$ bzw. $\frac{||\vec x^{(k + 1)} - \vec x^{(k)}||}{|| \vec x^{(k + 1)} ||} \le || \vec \epsilon^{(R)} ||$
+	\item $||\vec x^{(k + 1)} - \vec x^{(k)} || \le || \vec \epsilon^{(A)} ||$ bzw. $\frac{||\vec x^{(k + 1)} - \vec x^{(k)}||}{|| \vec x^{(k + 1)} ||} \le || \vec \epsilon^{(R)} ||$
 	\item $||\vec F(\vec x^{(k + 1)}) - \vec F(\vec x^{(k)})|| \le \Delta_F^{(A)}$
 	\item $||\vec F(\vec x^{(k)})|| \le F_{min}$
 	\item $k > k_{max}$
@@ -431,15 +434,15 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 	\ma{A} \cdot \vec{x} &= \vec{b}\\
 	\vec{x}^{(k+1)} &= \vec{\Phi} \left( \vec{x}^{(k)}\right)\\
 	\ma{B} &\text{ beliebig}\\
-	\ma{B} \cdot \vec{x} + \left( \ma{A} \cdot \ma{B} \right) \cdot \vec{x} &= \vec{b} \quad \\
+	\ma{B} \vec{x} + \left( \ma{A} - \ma{B} \right) \vec{x} &= \vec{b} \quad \\
 	\Rightarrow \text{ Iterationsvorschrift:}&\\
 	\ma{B} \cdot \vec{x}^{(k+1)} + \left(  \ma{A} - \ma{B} \right) \cdot \vec{x}^{(k)} &= \vec{b}\\
-	\vec{x}^{(k+1)} &= \vec{x}^{(k)} - \ma{B}^{-1} \cdot \left( \ma{A} \cdot \vec{x}^{(k) - \vec{b}} \right) \\
+	\vec{x}^{(k+1)} &= \vec{x}^{(k)} - \ma{B}^{-1} \cdot \left( \ma{A} \cdot \vec{x}^{(k)} - \vec{b} \right) \\
 	&= \underbrace{\left( \ma{I} - \ma{B}^{-1} \cdot \ma{A}\right)}_{\text{Konvergenz, wenn }|\lambda| < 1} \cdot \vec{x}^{(k)} + \ma{B}^{-1} \cdot \vec{b}
 \end{align}
 
 \subsection{Iterative Verfahren zum Lösen linearer Gleichungssysteme}
-\[\ma{A} \cdot \vec{x} = \vec{b},\ \ma{A} \in \mathrm{R}^{n\times n},\ \vec{x},\vec{b} \in \mathrm{R}^n,\ \ma{A} \text{ nicht singulär}\]
+\[\ma{A} \vec{x} = \vec{b},\ \ma{A} \in \mathrm{R}^{n\times n},\ \vec{x},\vec{b} \in \mathrm{R}^n,\ \ma{A} \text{ nicht singulär}\]
 
 \begin{align}
 	\textbf{Splitting: } \ma{A} &= \begin{bmatrix}a_{ij}\end{bmatrix} = \ma{D} + \ma{L} + \ma{U}\\
@@ -477,10 +480,10 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 	\[\vec{x}^{(k + 1)} = \ma{K}_g \vec{x}^{(k)} + \vec{c}_g\]
 	\item Successive Over-Relaxation: $\ma{S} = \frac{1}{\omega} (\ma{D} + \omega \ma{L})$
 	\[\ma{A} \vec{x} = \vec{b}\]
-	\[\frac{1}{\omega} (\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = \frac{1}{\omega} (\ma{D} + \omega \ma{L} - \ma{A}) \vec{x}^{(k)} + \vec{b}\]
-	\[\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = (\ma{D} + \omega \ma{L} - \omega \ma{A}) \vec{x}^{(k)} + \omega \vec{b}\]
-	\[\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = (\ma{D}(1 - \omega) - \omega \ma{U}) \vec{x}^{(k)} + \omega \vec{b}\]
-	\[\vec{x}^{(k + 1)} = \underbrace{(\ma{D} + \omega \ma{L})^{-1} (\ma{D} (1 - \omega) - \omega \ma{U})}_{\ma{K}_\omega} \vec{x}^{(k)} + \underbrace{(\ma{D} + \omega \ma{L}) \omega \vec{b}}_{\vec{c}_\omega}\]
+	\[\frac{1}{\omega} (\ma{D} + \omega \ma{L}) \vec{x}^{(k + 1)} = \frac{1}{\omega} (\ma{D} + \omega \ma{L} - \omega \ma{A}) \vec{x}^{(k)} + \vec{b}\]
+	\[\left( \ma{D} + \omega \ma{L} \right) \vec{x}^{(k + 1)} = (\ma{D} + \omega \ma{L} - \omega \ma{A}) \vec{x}^{(k)} + \omega \vec{b}\]
+	\[\left( \ma{D} + \omega \ma{L} \right) \vec{x}^{(k + 1)} = (\ma{D}(1 - \omega) - \omega \ma{U}) \vec{x}^{(k)} + \omega \vec{b}\]
+	\[\vec{x}^{(k + 1)} = \underbrace{(\ma{D} + \omega \ma{L})^{-1} (\ma{D} (1 - \omega) - \omega \ma{U})}_{\ma{K}_\omega} \vec{x}^{(k)} + \underbrace{\left( \ma{D} + \omega \ma{L} \right)^{-1} \omega \vec{b}}_{\vec{c}_\omega}\]
 	\[\vec{x}^{(k + 1)} = \ma{K}_\omega \vec{x}^{(k)} + \vec{c}_\omega\]
 	Die jeweilige Wahl von $\omega$ bei SOR beeinflusst dann das Konvergenzverhalten. Für Spezialfälle können Empfehlungen gegeben werden:
 	\begin{enumerate}
@@ -501,9 +504,9 @@ Ein Beispiel zum Vergleich zwischen Jacobi und Gauß-Seidel
 Jacobi:
 \begin{align}
 	x_1^{(k + 1)} &= \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
-	x_2^{(k + 1)} &= \frac{1}{10} x_1^{(k)} + \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
+	x_2^{(k + 1)} &= \frac{1}{11} x_1^{(k)} + \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
 	x_3^{(k + 1)} &=  -\frac{1}{5} x_1^{(k)} + \frac{1}{10} x_2^{(k)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
-	x_4^{(k + 1)} &= \frac{3}{8} x_2^{(k)} + \frac{1}{8} x_3^{(k)} + \frac{15}{8}
+	x_4^{(k + 1)} &= -\frac{3}{8} x_2^{(k)} + \frac{1}{8} x_3^{(k)} + \frac{15}{8}
 \end{align}
 
 Gauß-Seidel:
@@ -511,7 +514,7 @@ Gauß-Seidel:
 x_1^{(k + 1)} &= \frac{1}{10} x_2^{(k)} - \frac{1}{5} x_3^{(k)} + \frac{3}{5} \\
 x_2^{(k + 1)} &= \frac{1}{11} x_1^{(k + 1)} + \frac{1}{11} x_3^{(k)} - \frac{3}{11} x_4^{(k)} + \frac{25}{11} \\
 x_3^{(k + 1)} &= -\frac{1}{5} x_1^{(k + 1)} + \frac{1}{10} x_2^{(k + 1)} + \frac{1}{10} x_4^{(k)} - \frac{11}{10} \\
-x_4^{(k + 1)} &= \frac{3}{8} x_2^{(k + 1)} + \frac{1}{8} x_3^{(k + 1)} + \frac{15}{8}
+x_4^{(k + 1)} &= -\frac{3}{8} x_2^{(k + 1)} + \frac{1}{8} x_3^{(k + 1)} + \frac{15}{8}
 \end{align}
 Man erkennt bei Gauß-Seidel die Abhängigkeit von Werten, welche erst im aktuellen Iterationsschritt berechnet werden. In der Praxis bietet Gauß-Seidel dadurch in der Regel eine schneller Konvergenz. Vorteil von Jacobi ist jedoch die bessere Parallelisierbarkeit eines Iterationsschrittes.
 
@@ -563,7 +566,7 @@ $\Rightarrow$ Minimierung der quadratischen Form entspricht Lösung des linearen
 \end{figure}
 
 \begin{align}
-	\vec{d}^{(k)} &= - \nabla \Phi(\vec{x}^{(k)}) = \vec{b} \cdot \ma{A} \cdot \vec{x}^{(k)} =: \vec{r}^{(k)} \text{ Residium}\\
+	\vec{d}^{(k)} &= - \nabla \Phi(\vec{x}^{(k)}) = \vec{b} - \ma{A} \vec{x}^{(k)} =: \vec{r}^{(k)} \text{ Residium}\\
 \end{align}
 $\alpha_k = ? \quad \Rightarrow $ Minimiere $ \vec{\Phi}$\\
 \begin{align}
@@ -572,12 +575,12 @@ $\alpha_k = ? \quad \Rightarrow $ Minimiere $ \vec{\Phi}$\\
 	\frac{\partial \vec{\Phi}(x^{(k+1)})}{\partial \alpha_k} &= \frac{1}{2} {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{x}^{(k)} + \frac{1}{2} {\vec{x}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b}\\
 	&= {\vec{r}^{(k)}}^T \cdot \ma{A} \vec{x}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} \neq 0\\
 	\ldots\\
-	\Rightarrow \alpha &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}
+	\Rightarrow \alpha_k &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}
 \end{align}
 \textbf{Verfahren: }\\
 Für $k = 0,1,2,\ldots$
 \begin{align}
-	\vec{r}^{(k)} &= \vec{b} \cdot \ma{A} \cdot \vec{x}^{(k)}\\
+	\vec{r}^{(k)} &= \vec{b} - \ma{A} \vec{x}^{(k)}\\
 	\alpha_k &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
 	\vec{x}^{(k+1)} &= \vec{x}^{(k)} + \alpha_k \cdot \vec{r}^{(k)} \label{eq:verfahren-schritt-3}
 \end{align}
@@ -613,8 +616,9 @@ $\Rightarrow$ \text{ nur eine Matrix-Vektormultiplikation je Iteration}
 
 \begin{align}
 ||\vec{x}||_A &= \sqrt{\vec{x}^T \cdot \ma{A} \cdot \vec{x}} \text{ Energienorm}\\
-\text{Es gilt: } ||\vec{e}^{(k+1)}||_A &= \frac{k_2(\ma{A})-1}{k_2(\ma{A})+1} \cdot ||\vec{e}^{(k)}||_A
+\text{Es gilt: } ||\vec{e}^{(k+1)}||_A &= \frac{\kappa_2(\ma{A})-1}{\kappa_2(\ma{A})+1} \cdot ||\vec{e}^{(k)}||_A
 \end{align}
+mit $\kappa_2$ als die Kondition bezüglich der Spektralnorm
 
 \section{CG - Konjugierte Gradientenmethode}
 $ \vec{p}^{(k)} $ ist eine Menge mit $ \underbrace{{\vec{p}^{(i)}}^T}_{\text{paarweise A-orthogonal bzw. A-konjugiert}} \cdot \ma{A} \cdot \vec{p}^{(j)} = 0, \forall i,j=1,\ldots,n\quad i \neq j$\\
@@ -1026,7 +1030,7 @@ Mit \autoref{eq:hj-big}:
 	\end{bmatrix} \cdot \begin{bmatrix}
 	c_0 \\ c_1 \\ \vdots \\  \\ c_n
 	\end{bmatrix} = \begin{bmatrix}
-%	0 \\ \frac{3}{h_j} \cdot (a_2 - a_1) - \frac{3}{h_0} \cdot (a_1 - a_0) \\ \vdots \\ \vdots \\ 0
+	0 \\ \frac{3}{h_j} \cdot (a_2 - a_1) - \frac{3}{h_0} \cdot (a_1 - a_0) \\ \vdots \\ \vdots \\ 0
 	\end{bmatrix}
 \end{equation}
 
