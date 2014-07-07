@@ -10,6 +10,8 @@ set(CHAPTERS
 	chapters/chapter-03.tex
 	chapters/chapter-04.tex
 	chapters/chapter-05.tex
+	chapters/chapter-06.tex
+	chapters/chapter-07.tex
 )
 
 set(FIGURES

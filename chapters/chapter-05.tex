@@ -1,232 +1,161 @@
-\chapter{Ausgleichsrechnung}
-Auch bekannt unter der Bezeichnung Approximation oder Least Square
-\textbf{Ziele der Approximation:} ("`curve fitting"')
-\begin{itemize}
-\item Bestgeeignete Funktion eines bestimmten Typs, um gegebenen Daten anzunähern
-\item Für gegebene Funktionen "`bestmögliche"', einfachere Funktionen zu finden. 
-\end{itemize}
+\chapter{Numerische Integration}
+Alternativer Begriff: "`Numerische Quadratur"' (bestimmte Integrale)
 
-\textbf{"`Bestmögliche"' Funktion zur Annäherung gegebener Stützpunkte}
-\begin{itemize}
-\item Gegeben: Wertepaare $(x_i,y_i),\;i=1,\ldots ,m$
-\item Annahme: Gerade beschriebt Wertepaare $y = f(x) = ax+b$ 
-\end{itemize}
+\section{Numerisches Differenzieren}
 
-\textbf{Ansätze:} 
-\begin{itemize}
-\item $E = \sum\limits_{i=1}^m l_i = \sum\limits_{i=1}^m\left[y_i-(ax_i+b)\right]$
-\item $E = \sum\limits_{i=1}^m \abs{l_i} = \sum\limits_{i=1}^m\abs{\left[y_i-(ax_i+b)\right]}$
-\item Minmax: $\min E_\infty = \min\max\limits_{i=1,\ldots,m}\left\lbrace\abs{y_i-(ax_i+b)}\right\rbrace$
-\end{itemize}
-
-\section{Linear Least Squares}
-Minimiere: $E_2(a,b) = \sum\limits_{i=1}^m\left(y_i-(ax_i+b)\right)^2$\\
-Bestimmung von $a,b$: $\frac{\partial E_2}{\partial a} = 0,\;\frac{\partial E_2}{\partial b} = 0$\\
-$\Rightarrow$ Normalengleichung:
-\begin{itemize}
-\item $a = ...$
-\item $b = ...$
-\end{itemize}
-
-\section{Polynominale Least Squares}
-Approximation durch $P_n(x) = a_nx^n + \ldots + a_1x + a_0$
 \begin{equation}
-E_2(a_0,a_1,\ldots,a_n)) = \sum\limits_{i=1}^m(y_i - P(x_i)^2) 
+	f'(x_0) = \lim\limits_{h\rightarrow 0} \frac{f(x_0 + h) - f(x_0)}{h}
 \end{equation}
-Minimierung $\frac{\partial E_2}{\partial a_i} = 0\Rightarrow n+1$ Normalengleichungen in den $n+1$ Unbekannten $a_0,\ldots,a_n$
 
-\section{Linear Least Squares - Sichtweise Lineare Algebra}
-\begin{equation}
-\ma{A}_{<m\times n}\cdot\vec{x}_{n} = \vec{b}_{n}\quad,m>n
-\end{equation}
-Beispiel:
-\begin{itemize}
-\item $m=2,n=1\quad\begin{bmatrix}
-a_1 \\ a_2
-\end{bmatrix}\cdot x = \begin{bmatrix}
-b_1 \\ b_2
-\end{bmatrix}$
-\item $m=3,n=2\quad\begin{bmatrix}
-a_{11} & a_{12} \\ a_{21} & a_{22} \\ a_{31} & a_{32}
-\end{bmatrix}\cdot \begin{bmatrix}
-x_1 \\ x_2
-\end{bmatrix} = \begin{bmatrix}
-b_1 \\ b_2 \\ b_3
-\end{bmatrix}$
-\end{itemize}
+Taylor-Polynom: \[ f(x_0 + h) = f(x_0) + h\cdot f'(x_0) + \frac{h^2}{2} \cdot f''(x_0) + \frac{h^3}{3}\cdot f^{(3)}(x_0) + \ldots\]
+Abbruch nach linearem Term: \[f(x_0+h) = f(x_0) + h\cdot f'(x_0) + R(h^2)\]
 
-Fehler je Zeile: $e_i = b_i - \vec a_i\cdot \vec x$\\
-Vektor der Fehler: $\vec e = \vec b - \ma{A}\cdot \vec x$\\
-Summe der Fehlerquadrate: $E_2 = \norm{e}^2 = \norm{\vec b - \ma A\vec x}^2$\\
-Gesucht $\hat{\vec x}$, so dass $E_2$ minimiert wird.
+"'Vorwärtsdifferenz"':
 \begin{equation}
-\ma A\hat{\vec x} = \vec p \quad ; \quad \vec e = \vec b - \vec p
+	f'(x_0) = \frac{f(x_0 + h) - f(x_0)}{h} + R(h)
 \end{equation}
-$\vec p$ ist die Projektion von $\vec b$ in den Spaltenraum von $\col(\ma A)$\\
-$\vec e$ steht senkrecht auf den Spaltenraum $\col(\ma A)$
+
+"'Rückwärtsdifferenz:"'
+\begin{equation}
+	f(x_0 - h) = f(x_0) - h \cdot f(x_0) + \frac{h^2}{2} \cdot f''(x_0) - \ldots
+\end{equation}
+
+\subsection{Fehleranalyse}
+Zentrierte Differenz $f'(x_0) = \frac{f(x_0+h) - f(x_0-h)}{2h} - \frac{f^{(3)}(\xi)}{6}h^2$\\
+Rundungsfehler:
 \begin{equation}
 \begin{split}
-E(x) &= \norm{\vec b - \ma A\vec x}^2 = \norm{\ma A\vec x - \vec b}\\
-&= \vec x^T\ma A^T\ma A\vec x - (\ma A\vec x)^T\vec b - \vec b^T\ma A\vec x - \vec b^T\vec b\\
-&= \vec x^T\underbrace{\ma A^T\ma A}_{\ma K}\vec x - 2\vec x^T\underbrace{\ma A^T\vec b}_{\vec f} - \vec b^T\vec b\\
-&= \vec x^T\ma K\vec x - 2\vec x^T\vec f + \vec b^T\vec b\quad\text{zu minimieren}\\
-&= (\vec x-\ma K^{-1}\vec f)^T\ma K(\vec x-\ma K^{-1} \vec f) - \vec f^T\ma K^{-1}\vec f + \vec b^T\vec b
+f(x_0+h) &= \underset{\text{gerundeter Wert}}{\tilde{f}(x_0-h)} + e_{-1}\\
+f(x_0-h) &= \tilde{f}(x_0+h) + e_{+1}
 \end{split}
 \end{equation}
-Ausdruck kann minimal 0 werden für $\hat{\vec x} = \ma K^{-1}\vec f\Rightarrow$ dort also Minimum vom $E(\vec x)$
+\begin{equation}
+f'(x_0) = \frac{\tilde{f}(x_0+h) - \tilde{f}(x_0-h)}{2h} + \frac{e_{+1} - e_{-1}}{2h} - \frac{f^{(3)}(\xi)}{6}h^2
+\end{equation}
+Annahmen: $\abs{e_{-1}},\abs{e_{+1}} \leq\varepsilon$ und $\abs{f^{(3)}(\xi)} \leq M$\\
+Damit $\abs{f'(x_0) - \frac{\tilde{f}(x_0+h) - \tilde{f}(x_0-h)}{2h}} \leq\frac{\varepsilon}{h} + \frac{h^2M}{6}$\\
+$\Rightarrow h_{\text{opt}} = \sqrt[3]{\frac{3\xi}{M}}$
+
+\section{Newton-Cotes-Ansätze}
 \begin{equation}
 \begin{split}
-E_\text{min} = E(\hat{\vec x}) &= (\vec b - \ma A\hat{\vec x})^T\cdot(\vec b - \ma A\hat{\vec x})\\
-&= \vec b^T\vec b - \vec f^T\ma K^{-1}\vec f\\
-&= \vec b^T\vec b - \vec b^T\ma A(\ma A^T\ma A)^{-1}\ma A^T\vec b
+J &= \int\limits_a^bf(x)\diff x \cong\int\limits_a^bP_h(x)\diff x\\
+P_n(x) &= a_0 + a_1x + \ldots + a_nx^n
 \end{split}
 \end{equation}
-$\vec e = \vec b - \ma A\vec x$ steht senkrecht auf $\col(\ma A)\Rightarrow\ma A^T\vec e = \vec 0$\\
-\begin{equation}
-\Rightarrow \ma A^T(\vec b - \ma A\hat{\vec x}) = 0 \Rightarrow \ma A^T\ma A\hat{\vec x} = \ma A^T\vec b
-\end{equation}
-$\underbrace{\ma A^T\ma A\hat{\vec x} = \ma A^T\vec b}_{\text{quadratisch, symmetrisch}} \text{ LGS }\Rightarrow\text{ Bestimmung von }\hat{\vec x}$
 
-\textbf{Lösungsverfahren:}
-\begin{itemize}
-\item Gauß LU: OK, aber $\cond{\ma A^T\ma A} = \cond{\ma A}^2\Rightarrow$ Problematisch, wenn $\ma A$ schlecht konditioniert
-\item Orthogonalzerlegung
-\end{itemize}
+\begin{figure}
+	\center
+	\begin{subfigure}{0.3\textwidth}
+		\input{figures/newton_cotes_linear}
+		\caption{Polynom 1. Ordnung}
+	\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}
+		\input{figures/newton_cotes_quadratisch}
+		\caption{Polynom 2. Ordnung}
+	\end{subfigure}
+	\begin{subfigure}{0.3\textwidth}
+		\input{figures/newton_cotes_multi}
+		\caption{mehrere Polynome}
+	\end{subfigure}
+	\caption{Unterschiedliche Methoden eine Funktion bei einer numerischen Integration anzunähern}
+\end{figure}
 
-\section{QR-Zerlegung}
-\[\ma A = \ma Q\ma R \text{ mit }\begin{cases}
-\ma A & \in \R^{n\times n}\\
-\ma Q & \in \R^{n\times n} \text{orthogonale Matrix} (\ma Q^T = \ma Q^{-1})\\
-\ma R & \in \R^{n\times n} \text{rechte obere Dreiecksmatrix}
-\end{cases}\]
-Damit:
+\subsection{Trapezregel}
+Lineares Lagrange Polynom
 \begin{equation}
 \begin{split}
-\ma A\vec x &= \vec b\\
-\ma A^T\ma A\vec x &= \ma A^T\vec b\\
-(\ma Q\ma R)^T\ma Q\ma R\vec x &= (\ma Q\ma R)^T\vec b\\
-\ma R^T\underbrace{\ma Q^T\ma Q}_{\ma I}\ma R\vec x &= \ma R^T\ma Q^T\vec b\\
-\ma R^T\ma R\vec x &= \ma R^T\ma Q^T\vec b\quad\vert\cdot{\ma R^{-1}}^{-1}\\
-\ma R\vec x &= \ma Q^T\vec b\Rightarrow \text{simple Rücksubstitution}
+P_1(x) &= \frac{x-x_1}{x_0-x_1}\cdot f(x_0) + \frac{x-x_0}{x_1-x_0}\cdot f(x_1)\\
+\int\limits_a^b &= \int\limits_{x_0}^{x_1}P_1(x)\diff x + \underbrace{\frac{1}{2}\int\limits_{x_0}^{x_1}f''(\xi(x))\cdot (x-x_0)\cdot (x-x_1)\diff x}_{\text{Fehlerterm\ } \epsilon}\\
+ & \text{Mittelwert Integralrechnung}\\
+ &\epsilon = \frac{1}{2}f''(\xi)\int\limits_{x_0}^{x_1}(x-x_0)\cdot (x-x_1)\diff x = \frac{1}{2}f''(\xi)\left[\frac{x^3}{3}-\frac{(x_1+x_0)}{2}x^2+x_0x_1x\right]_{x_0}^{x_1} = \frac{-h^3}{12}f''(\xi)
 \end{split}
 \end{equation}
-OK, wie bestimme ich nun $\ma Q,\ma R$?
+mit $h = b-a = x_1-x_0$
 
-\textbf{3 wesentliche Ansätze:}
+Also:
+\begin{equation}
+\int\limits_a^bf(x)\diff x = \left[\frac{(x-x_1)^2}{2(x_0-x_1)}\cdot f(x_0) + \frac{(x-x_0)^2}{2(x_1-x_0)}\cdot f(x_1)\right]_{x_0}^{x_1} - \frac{h^3}{12}f''(\xi) = \frac{h}{2}\left[f(x_0) + f(x_1)\right] - \frac{h^3}{12}f''(\xi)
+\end{equation}
+Exakt, sofern $f(x)$ höchstens linear ist
+
+\subsection{Simpson Regel}
+Quadratisches Lagrange Polynom
+\begin{equation}
+\begin{split}
+\int\limits_a^bf(x)\diff x &= \int\limits_{x_0}^{x_2}\frac{(x-x_1)(x-x_2)}{(x_0-x_1)(x_0-x_2)}f(x_0) + \frac{(x-x_0)(x-x_2)}{(x_1-x_0)(x_1-x_2)}f(x_1) + \frac{(x-x_0)(x-x_1)}{(x_2-x_1)(x_2-x_1)}f(x_2)\diff x\\ &+ \int\limits_{x_0}^{x_2}\frac{(x-x_0)(x-x_1)(x-x_2)}{6}f^{(3)}(\xi(x))\diff x\\
+&= \frac{h}{3}\left[f(x_0)+4f(x_1)+f(x_2)\right]-\frac{h^5}{90}f^{(4)}(\xi)
+\end{split}
+\end{equation}
+mit $h=x_1-x_0 = x_2-x_1$
+
+\subsubsection{Simpson $\frac{3}{8}$ Regel}
+\begin{equation}
+\int\limits_a^bf(x)\diff x = \frac{3h}{8}\left[f(x_0)+3f(x_1)+3f(x_2)+f(x_3)\right]-\frac{h^5}{6480}f^{(4)}(\xi)
+\end{equation}
 \begin{itemize}
-\item Gram-Schmidt
-\item Hausholder-Transformation
-\item Givens-Rotation
+\item benötigt $3m$ Segmente bzw. $3m+1$ Stützpunkte
+\item Grad der Genauigkeit/"`Degree of precision"'\\
+Größte ganze Zahl $n$, so dass eine Integrationsformel für $x^k,\; k=0,1,\ldots,n$ exakte Resultate liefert.
 \end{itemize}
 
-\subsection{Givens-Rotation}
-auch bekannt unter der Bezeichung Jacobi-Rotation \\
-Eine Rotation ist gegeben durch
+\subsubsection{Composite Simpson $\frac{1}{3}$}
+Teile $[a,b]$ in $n$ Teilintervalle auf. Wende die Simpson Regel auf jedes Paar nacheinanderfolgender Teilintervalle an.\\
+$h = \frac{b-a}{n}$; $x_j=a+j\cdot h$, $j=0,1,\ldots ,n$
 \begin{equation}
-	\ma G(l, k, \Theta) = 
-	\begin{bmatrix}
-		1 & 0 & \hdots & \hdots & \hdots & \hdots & \hdots & 0 \\
-		0 & 1 & & & & & & 0 \\
-		\vdots & & c & & & -s & & \vdots \\
-		\vdots & & & & & & & \vdots \\
-		\vdots & & -s & & & c & & \vdots \\ 
-		\vdots & & & & & & 1 & 0 \\ 
-		0 & \hdots & \hdots & \hdots & \hdots & \hdots & 0 & 1 
-	\end{bmatrix}
+\begin{split}
+\int\limits_a^bf(x)\diff x &= \sum_{j=1}^{\frac{n}{2}}\int\limits_{x_{2j-2}}^{x_{2j}}f(x)\diff x\\
+&= \sum_{j=1}^{\frac{n}{2}}\frac{h}{3}\left[f(x_{2j-2})+4f(x_{2j-1})+f(x_{2j})\right]\frac{h^5}{90}f^{(4)}(\xi_j)\\
+&= \frac{h}{3}\left[f(x_0)+2\sum_{j=1}^{\frac{n}{2}-1}f(x_{2j}) + 4\sum_{j=1}^{\frac{n}{2}}f(x_{2j-1} + f(x_n)\right] - \frac{h^5}{90}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_0)
+\end{split}
 \end{equation}
-wobei $c = \cos \Theta$, $s = \sin \Theta$. Komponentenweise $\ma G(l, k, \Theta) =  (g_{i,j}(l, k, \Theta))$ dargestellt ergibt das
+mit $x_{2j-2} < \xi_j y x_{2j}, f$ auf $[a,b]$ 4-mal stetig differenzierbar.
+
+\subsubsection{Fehler} $E(f) = \frac{-h^5}{90}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j)$, mit $x_{2j-2} < \xi_j y x_{2j}, j=1,2,\ldots,\frac{n}{2}$
+
+\subsubsection{Extremwertsatz}: $f^{(4)}$ nimmt Max und Min auf $[a,b]$ an, also
 \begin{equation}
-	g_{i,j} = 
-	\begin{cases} 
-		\cos \Theta & \text{für } i = l, j = l \vee i = k, j = k \\
-		\sin \Theta & \text{für } i = l, j = k \\
-		- \sin \Theta & \text{für } i = k, j = l \\
-		1 & \text{für } i = j \text{ außer } i, j = l, k \\
-		0 & \text{sonst}
-	\end{cases}
+\begin{split}
+\min\limits_{x\in[a,b]}f^{(4)}(x) \leq f^{(4)}(\xi_j) \leq \max\limits_{x\in[a,b]}f^{(4)}(x)\\
+\frac{n}{2}\min\limits_{x\in[a,b]}f^{(4)}(x) \leq \sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j) \leq \frac{n}{2}\max\limits_{x\in[a,b]}f^{(4)}(x)\\
+\min\limits_{x\in[a,b]}f^{(4)}(x) \leq \frac{n}{2}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j) \leq \max\limits_{x\in[a,b]}f^{(4)}(x)
+\end{split}
 \end{equation}
-Damit bedeutet $\ma G \cdot \vec x$ bzw. $\ma G^T \cdot \vec x$ eine Drehung des Vektors $\vec x$ um $\pm \Theta$ in der $(l, k)$-Ebene. Die Hauptanwendung hierfür ist ein iteratives Vorgehen um Nulleinträge in Matrizen oder Vektoren zu erreichen. Desweiteren ist $\ma G \ma G^T = \ma I$ und somit die Rotationsmatrix $\ma G$ orthogonal.
+
+\subsubsection{Zwischenwertsatz} Es existiert ein $\mu\in(a,b)$, so dass
 \begin{equation}
-	\begin{pmatrix}
-		c & s \\
-		-s & c
-	\end{pmatrix} 
-	\begin{pmatrix}
-		c & -s \\
-		s & c
-	\end{pmatrix} = 
-	\begin{pmatrix}
-		c^2 + s^2 & 0 \\
-		0 & c^2 + s^2
-	\end{pmatrix} =
-	\begin{pmatrix}
-		1 & 0 \\
-		0 & 1
-	\end{pmatrix} 
+f^{(4)}(\mu) = \frac{2}{n}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j)
 \end{equation}
-Damit gilt
+Damit
 \begin{equation}
-	\ma G_r \ma G_{r - 1} \cdot \ldots \cdot \ma G_2 \ma G_1 \ma A = \ma R
+E(f) = \frac{-h^5}{90}\sum_{j=1}^{\frac{n}{2}}f^{(4)}(\xi_j) = \frac{-h^5}{180}n\cdot f^{(4)}(\mu) \overset{h=\frac{b-a}{n}}{=} \frac{-(b-a)}{180}h^4\cdot f^{(4)}(\mu)
 \end{equation}
+
+Also, mit $\mu \in (a, b)$:
 \begin{equation}
-	\ma A = \ma G^T \ma R = \ma Q^T \ma R
+	\int_a^b f(x) \diff x = \frac{h}{3} \left[ f(a) + 2 \sum_{j = 1}^{n/2 - 1} f(x_{2j} + 4 \sum_{j = 1}^{n/2} f(x_{2j - 1}) + f(b) \right] - \frac{b - a}{180} h^4 f^{(4)}(\mu)
 \end{equation}
-Die Frage ist nun, wie $\Theta$ gewählt werden muss. Hierfür genügt die Betrachtung einer zweidimensionalen Struktur
+
+Wie man sich nun vielleicht vorstellen kann gibt es unendlich viele mögliche numerische Integrationsverfahren. Das Composite Simpson-Verfahren ist allerdings ein häufig eingesetztes allgemeines Verfahren.
+
+\section{Genauigkeit}
+Zur Bestimmung der Genauigkeit gibt es zwei Ansätze:
+\begin{enumerate}
+	\item Gegeben sei ein Verfahren, eine Funktion $f$, ein Interval $[a, b]$ und eine Stützstellenanzahl $n$ und gesucht sei der Fehler
+	\item Gegeben sei eine Funktion $f$, ein Interval $[a, b]$ und ein gewünschter Fehler und gesucht sei ein Verfahren und eine Stützstellenanzahl $n$
+\end{enumerate}
+
+Der Rundungsfehler wird definiert über
 \begin{equation}
-	\begin{pmatrix}
-		c & s \\
-		-s & c
-	\end{pmatrix} 
-	\begin{pmatrix}
-		x_l \\
-		x_k
-	\end{pmatrix} = 
-	\begin{pmatrix}
-		r \\
-		0
-	\end{pmatrix}
+	f(x_i) = \underbrace{\tilde{f}(x_i)}_{\text{gerundeter Wert}} + \underbrace{e_i}_{\text{Rundungsfehler}}
 \end{equation}
-Daraus kann gefolgert werden, dass
+
+Damit erhält man dann einen akkumulierten Fehler $e(h)$ bei Composite-Simpson von
 \begin{equation}
-	s = c \frac{x_k}{x_l}
+	e(h) = \left| \frac{h}{3} \left[ e_0 + 2 \sum_{j = 1}^{n/2 - 1} e_{2j} + 4 \sum_{j = 1}^{n/2} e_{2j - 1} + e_n \right] \right| \le \frac{h}{3} \left[ |e_0| + 2 \sum_{j = 1}^{n/2 - 1} |e_{2j}| + 4 \sum_{j = 1}^{n/2} |e_{2j - 1}| + |e_n| \right]
 \end{equation}
-und aus
+Seine alle Rundungsfehler $|e_i| \le \varepsilon$, dann gilt
 \begin{equation}
-	c^2 + s^2 = 1
+	e(h) \le \frac{h}{3} \left[ \varepsilon + 2(\frac{n}{2} - 1) \varepsilon + 4 \frac{n}{2} \varepsilon + \varepsilon \right] = n h \varepsilon = (b - a) \varepsilon \ne f(h, n)
 \end{equation}
-\begin{equation}
-	c = \sqrt{1 - s^2} = \sqrt{\frac{x_l^2 - c^2 x_k^2}{x_l^2}}
-\end{equation}
-\begin{equation}
-	c^2 x_l^2 = x_l^2 - c^2 - x_k^2
-\end{equation}
-\begin{equation}
-	c = \pm \frac{x_l}{\sqrt{x_l^2 + x_k^2}}
-\end{equation}
-Das ganze an dem Beispiel
-\begin{equation}
-	\ma A = 
-	\begin{pmatrix}
-		3 & 1 & 0 \\
-		1 & 3 & 1 \\
-		0 & 1 & 3	
-	\end{pmatrix}
-\end{equation}
-führt über
-\begin{equation}
-	\ma G = 
-	\begin{pmatrix}
-		c & s & 0 \\
-		-s & c & 1 \\
-		0 & 0 & 1	
-	\end{pmatrix}
-\end{equation}
-zu
-\begin{equation}
-	\ma G \ma A =
-	\begin{pmatrix}
-		\sqrt{10} & 6/\sqrt{10} & 1/\sqrt{10} \\
-		0 & 3/\sqrt{10} & 3/\sqrt{10} \\
-		0 & 1 & 3	
-	\end{pmatrix}
-\end{equation} 
+Erstaunlich ist somit, dass der Rundungsfehler nicht wächst, wenn der zu integrierende Bereich in mehr Teilintervalle unterteilt wird.
