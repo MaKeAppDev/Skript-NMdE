@@ -1,1 +1,271 @@
- 
+ \chapter{Interpolation}
+Aufgabe: Eine (stetige) Funktion zu bestimmen, welche gegebene Datenpunkte \textit{bestmöglichst} abbildet.
+
+Eine möglicher Herangehensweise an diese Problem ist eine Entwicklung in eine Taylorreihe, welche allerdings gewisse Nachteile aufweist:
+\begin{itemize}
+	\item konzentriert sich auf einen Punkt
+	\item keine Aussage über Genauigkeit an anderen Punkten
+	\item Approximation verbessert sich nicht mit höheren Graden des Approximationspolynoms: z.B.: $e^x$, $\frac{1}{x}$
+\end{itemize}
+		
+Eine Interpolation hingegen zielt auf eine exakte Abbildung an den gegebenen Stützstellen eine Näherung dazwischen ab.
+
+Allgemein formuliert lautet das Interpolationsproblem: Gegeben $n + 1$ Paare von reellen oder komplexen Zahlen $\left( (x_0, f(x_0)), (x_1, f(x_1)), \ldots , (x_n, f(x_n)) \right)$. Mit Stützstellen bezeichnet man $x_i$, mit Stützwert $f(x_i)$ und mit Stützpunkt $(x_i, f(x_i))$.
+
+Ziel ist die Bestimmung von $\Phi(x, a_0, \ldots, a_n), a_0, a_1, \ldots, a_n$, so dass $\forall_{i = 0}^n f(x_i) = \Phi(x_i)$
+
+\section{Lagrange Interpolationspolynom}
+\begin{equation}
+	L_{n, k} (x) = \frac{(x - x_0) \cdot (x - x_1) \cdot \ldots \cdot (x - x_{k-1}) \cdot (x - x_{k + 1}) \cdot \ldots \cdot (x - x_n)}{(x_k - x_0) \cdot (x_k - x_1) \cdot \ldots \cdot (x_k - x_{k - 1}) \cdot (x_k - x_{k + 1}) \cdot \ldots \cdot (x_k - x_n)}
+\end{equation}
+\begin{equation}
+	L_k(x) = L_{n, k} = \prod_{i = 0, i \ne k}^n \frac{(x - x_i)}{x_k - x_i)}
+\end{equation}
+$L_{n, k}(x_k) = 1$, $L_{n, k}(x_i) = 0$ für $x_i \ne x_k$
+\begin{equation}
+	P(x) = \sum_{k = 0}^n f(x_k) \cdot L_{n, k}(x)
+\end{equation}
+
+Theorem: Seien $n + 1$ paarweise unterschiedliche Stützstellen $x_i$ sowie die zugehörigen Stützwerte $f(x_i)$ gegeben. Dann existiert ein eindeutiges Interpolationspolynom $P(x)$ vom Grad höchstens $n$ mit $P(x_i) = f(x_i)$
+
+Fehlerabschätzung: Gegeben seien $n + 1$ paarweise unterschiedliche Stützstellen $x_i \in [a, b]$ sowie eine Funktion $f$ die auf diesem Intervall $[a, b]$ $(n + 1)$-mal stetig differenzierbar ist. Dann existiert für $x \in [a, b]$ ein $\xi(x) \in (a, b)$ mit der Eigenschaft
+\begin{equation}
+	f(x) = P(x) + \frac{f^{(n + 1)}(\xi(x))}{(n + 1)!} \prod_{i = 0}^{n} (x - x_i)
+\end{equation}
+
+\section{Dividierte Differenzen} Sei $P(x)$ das Lagrange-Polynom $n$-ter Ordnung. Wähle
+\begin{equation}
+	P_n(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + \ldots + a_n(x - x_0)(x - x_1) \cdot \ldots \cdot (x - x_{n-1})
+\end{equation}
+Setzt man nun kontiniuerlich die Stützstellen $x_i$ in $P_n(x)$ erhält man
+\begin{equation}
+	P_n(x_0) = a_0 = f(x_0)
+\end{equation}
+und somit den Wert für $a_0$. Aus
+\begin{equation}
+	P_n(x_1) = f(x_0) + a_1(x_1 - x_0) = f(x_1)
+\end{equation}
+folgt dann die Bestimmung von $a_1$
+\begin{equation}
+	a_1 = \frac{f(x_1) - f(x_0)}{x_1 - x_0}
+\end{equation}
+
+\textit{Dividierte Differenzen}-Notation:
+\begin{itemize}
+	\item 0. dividierte Differenz
+	\begin{equation}
+		f[x_i] = f(x_i)
+	\end{equation}
+	\item 1. dividierte Differenz
+	\begin{equation}
+		f[x_i, x_{i + 1}] = \frac{f[x_{i + 1}] - f[x_i]}{x_{i + 1} - x_i} = \frac{f(x_{i + 1} - f(x_i)}{x_{i + 1} - x_i}
+	\end{equation}
+	\item k. dividierte Differenz
+	\begin{equation}
+		f[x_i, x_{i + 1}, \ldots, x_{i + k}] = \frac{f[x_{i + 1}, x_{i + 2}, \ldots x_{i + k}] - f[x_i, x_{i + 1}, x_{i + 2}, \ldots x_{i + k - 1}]}{x_{i + k} - x_i}
+	\end{equation}
+\end{itemize}
+
+Mithilfe dieser Notation erhält man $P_n(x)$ als sogenannte Newtons dividierte Differenz
+\begin{equation}
+	P_n(x) = f[x_0] + \sum_{k = 1}^n f[x_0, x_1, \ldots, x_k] \cdot (x - x_0) \cdot (x - x_{k - 1})
+\end{equation}
+
+Durch eine tabellarische Darstellung erhält man eine systematische Vorgehensweise zur Berechnung der dividierten Differenzen.
+
+\begin{tabular}{c|c|c|c}
+	$x$ & $f(x)$ & 1. div. Diff. & 2. div. Diff. \\ \hline
+	$x_0$ & $f[x_0]$ & $f[x_0, x_1] = \frac{f[x_1] - f[x_0]}{x_1 - x_0}$ & $f[x_0, x_1, x_2] = \frac{f[x_1, x_2] - f[x_1, x_0]}{x_2 - x_0}$ \\
+	$x_1$ & $f[x_1]$ & $f[x_1, x_2] = \frac{f[x_2] - f[x_1]}{x_2 - x_1}$ & \vdots \\
+	$x_2$ & $f[x_2]$ & $f[x_2, x_3] = \frac{f[x_3] - f[x_2]}{x_3 - x_2}$ & \\
+\vdots & \vdots & \vdots & 
+\end{tabular}
+
+Bei äquidistanten Stützstellen bietet sich eine vereinfachte Notation an
+\begin{equation}
+	h = x_{i + 1} - x_i
+\end{equation}
+\begin{equation}
+	x = x_0 + s h
+\end{equation}
+\begin{equation}
+	x - x_i = (s - i) \cdot h
+\end{equation}
+Damit ist dann
+\begin{equation}
+	P_n(x) = P_n(x_0 + s \cdot h) = s \cdot h \cdot f[x_0, x_1] + s \cdot (s - 1) \cdot h^2 f[x_0, x_1, x_2] + \ldots + (s - n + 1) h^n f[x_0, x_1, \ldots, x_n]
+\end{equation}
+
+Mithilfe von Binomialkoeffizienten
+\begin{equation}
+	\begin{pmatrix} s \\ k \end{pmatrix} = \frac{s (s - 1) \cdot \ldots \cdot (s - k + 1)}{k!}
+\end{equation}
+\begin{equation}
+	P_n(x) = f[x_0] + \sum_{k = 1}^n \begin{pmatrix} s \\ k	\end{pmatrix} k! h^k f[x_0, x_1, \ldots, x_k]
+\end{equation}
+
+$\Delta$-Notation: $\Delta f(x_i) = f(x_{i + 1}) - f(x_i)$
+\begin{equation}
+	f[x_0, x_1] = \frac{f(x_1) - f(x_0)}{x_1 - x_0} = \frac{\Delta f(x_i)}{h}
+\end{equation}
+\begin{equation}
+	f[x_0, x_1, x_2] = \frac{1}{2h} \frac{\Delta f(x_1) - \Delta f(x_0)}{h} = \frac{1}{2} \Delta^2 f(x_0)
+\end{equation}
+\begin{equation}
+	f[x_0, x_1, \ldots, x_k] = \frac{1}{k! h!} \Delta^k f(x_0)
+\end{equation}
+Damit erhält man dann die Newton'sche Vorwärtsdifferenz
+\begin{equation}
+	P_n(x) = f(x_0) + \sum_{k = 1}^n \begin{pmatrix} s \\ k \end{pmatrix} \Delta^k f(x_0)
+\end{equation}
+
+\section{Spline - Interpolation}
+\textbf{Grundidee:} Interpolation durch stückweise stetige Polynome.\\
+Einfachste Variante: stückweise lineare Interpolation (siehe \autoref{fig:lineare-interpol})\\
+Nachteil: keine Differenzierbarkeit an Endpunkten der einzelnen linearen Polynome gewährleistet.\\
+\begin{figure}[htbp]
+	\begin{center}
+		\input{figures/stueckweise_lin_interpolation}
+	\end{center}
+	\caption{Beispielhafte Darstellung einer stückweise linearen Interpolation}
+	\label{fig:lineare-interpol}
+\end{figure}
+
+Alternative: stückweise quadratische Polynome
+\begin{itemize}
+	\item je 3 Koeffizienten\\
+	$\Rightarrow$ nur 2 für Bestimmung der Endpunkte erforderlich\\
+	$\Rightarrow$ 3. Koeffizient kann stetige Differenzierbarkeit auf $[x_0,x_n]$ sicherstellen\\
+	\item ABER: Anforderung an Ableitung in $[x_0,x_n]$ können nicht berücksichtigt werden.
+\end{itemize}
+Weitere Alternative: stückweise kubische Polynome ("'cubic splines"')
+\begin{itemize}
+	\item je 4 Koeffizienten\\
+	$\Rightarrow$ stetige Differenzierbarkeit auf $[x_0,x_n]$ \\
+	$\Rightarrow$ stetige 2. Ableitung
+\end{itemize}
+
+\textbf{Definition:} Gegeben sei eine auf $[a,b]$ definierte Funktion $f$ sowie Stützstellen $a=x_0<x_1<\ldots<x_n = b$. Ein kubischer Spline-Interpolant $S$ erfüllt folgende Bedingungen:
+\begin{enumerate}
+	\item $S(x)$ ist ein kubisches Polynom, auf $[x_j,x_{j+1}]$ als $S_j(x)$ bezeichnet, für $j=0,1,\ldots,n-1$
+	\item $S_j(x_j) = f(x_j)$, $S_j(x_{j+1}) = f(x_{j+1})$, für $j=0,1,\ldots,n-1$
+	\item $S_j(x_{j+1}) = S_{j+1}(x_{j+1})$, für $j=0,1,\ldots,n-2$
+	\item $S_{j+1}'(x_{j+1}) = S_j'(x_{j+1})$, für $j=0,1,\ldots,n-2$
+	\item $S_{j+1}''(x_{j+1}) = S_j''(x_{j+1})$, für $j=0,1,\ldots,n-2$
+	\item Eine der folgenden Randbedingungen ist erfüllt
+	\begin{itemize}
+		\item $S''(x_0) = S''(x_n) = 0$ (freier bzw. natürlicher Rand)
+		\item $S'(x_0) = f'(x_0)$, $S'(x_n) = f'(x_n)$ (eingespannter Rand)
+	\end{itemize}
+\end{enumerate}
+
+\begin{equation}
+	S_j(x) = a_j + b_j\, (x-x_j) + c_j\, (x-x_j)^2 + d_j\, (x-x_j)^3\ , \ j=0,1,\ldots,n-1
+\end{equation}
+\begin{equation}
+	S_j(x_j) = a_j = f(x_j)\ , \ j=0,1,\ldots,n-1
+\end{equation}
+\begin{equation} % Split this!
+	a_{j+1} = S_{j+1}(x_{j+1}) = S_j(x_{j+1}) = a_j + b_j\, (x_{j+1}-x_j) + c_j\, (x_{j+1}-x_j)^2 + d_j\, (x_{j+1}-x_j)^3\ , \ j=0,1,\ldots,n-1
+\end{equation}
+\begin{equation}
+	\text{mit } h_j = x_{j+1} - x_j:\ a_{j+1} = a_j + b_j \cdot h_j + c_j \cdot h_j^2 + d_j \cdot d_j \cdot h_j^3\ , \ j=0,1,\ldots,n-1
+	\label{eq:aj-def}
+\end{equation}
+\begin{equation}
+	a_n := f(x_n) \text{ (Hilfsdefinition)}
+\end{equation}
+\begin{equation}
+	b_n := S'(x_n)
+\end{equation}
+\begin{equation}
+	S_j'(x) = b_j + 2\, c_j \cdot (x-x_j) + 3\, d_j \cdot (x-x_j)^2\ , \ j=0,1,\ldots,n-1
+\end{equation}
+\begin{equation}
+	S_j'(x_j) = b_j
+\end{equation}
+\begin{equation}
+	b_{j+1} = b_j + 2\, c_j \cdot h_j + 3\, d_j \cdot h_j^2
+	\label{eq:bj-def}
+\end{equation}
+\begin{equation}
+	c := \frac{S''(x_n)}{2}
+\end{equation}
+\begin{equation}
+	S_j''(x) = 2\, c_j + 6\, d_j \cdot (x-x_j)
+\end{equation}
+\begin{equation}
+	S_j''(x) = 2\, c_j
+\end{equation}
+\begin{equation}
+	S_{j+1}''(x_{j+1} = 2\, c_{j+1})
+\end{equation}
+\begin{equation}
+	S_{j+1}''(x_{j+1} = S_j''(x_{j+1})
+\end{equation}
+\begin{equation}
+	c_{j+1} = c_j + 3\, d_j \cdot h_j
+\end{equation}
+\begin{equation}
+	d_j = \frac{1}{3\, h_j} \cdot (c_{j+1} - c_j)\ , \ j=0,1,\ldots,n-1
+	\label{eq:dj-def}
+\end{equation}
+\autoref{eq:aj-def} in \autoref{eq:bj-def}:
+\begin{equation}
+	a_{j+1} = a_j + b_j \cdot h_j + \frac{h_j^2}{3} \cdot (2\, c_j + c_{j+1})
+	\label{eq:aj+1}
+\end{equation}
+\begin{equation}
+	b_{j+1} = b_j + h_j \cdot (c_j + c_{j+1})
+\end{equation}
+\begin{equation}
+	b_j = b_{j-1} + h_j \cdot (c_{j+1} + c_j)
+	\label{eq:bj2-def}
+\end{equation}
+
+Aus \autoref{eq:aj+1}:
+\begin{equation}
+	b_j = \frac{1}{h_j} \cdot (a_{j+1} - a_j) - \frac{h_j}{3} \cdot (2\, c_j + c_{j+1})
+	\label{eq:bj3}
+\end{equation}
+\begin{equation}
+	b_{j-1} = \frac{1}{h_{j-1}} \cdot (a_j - a_{j-1}) - \frac{h_{j-1}}{3} \cdot (2\, c_{j-1} + c_j)
+\end{equation}
+
+In \autoref{eq:bj3}:
+\begin{equation}
+	h_{j-1}\, c_{j-1} +2 \cdot (h_{j-1} + h_j) \cdot c_j + h_j\, c_{j+1} = \frac{3}{h_j} \cdot (a_{j+1} - a_j) - \frac{3}{h_{j-1}} \cdot (a_j - a_{j-1})\ , \ j=0,1,\ldots,n-1
+	\label{eq:hj-big}
+\end{equation}
+
+\textbf{Natürliche Splines: } $S''(x_0) = S''(x_n) = 0$
+\begin{equation}
+	\Rightarrow c_n = \frac{S'(x_n)}{2} = 0
+\end{equation}
+\begin{equation}
+	0 = S''(x_0) = 2\, c_0 + 6\, d_0 \cdot (x_0 - x_0) \Rightarrow c_0 = 0
+\end{equation}
+
+Mit \autoref{eq:hj-big}:
+\begin{equation}
+	\begin{bmatrix}
+		1 & 0 & 0 & 0 & \ldots & & \\
+		h_0 & 2\cdot(h_0 + h_1) & h_1 & 0 & & &\\
+		0 & h_1 & 2\cdot(h_1 + h_2) & h_2 & 0 & &\\
+		0 & \ldots & & & & &\\
+		0 & \ldots & & & 0 & 0 & 1
+	\end{bmatrix} \cdot 
+	\begin{bmatrix}
+		c_0 \\ 
+		c_1 \\ 
+		\vdots \\  
+		\\ 
+		c_n
+	\end{bmatrix} = 
+	\begin{bmatrix}
+	0 \\ \frac{3}{h_j} \cdot (a_2 - a_1) - \frac{3}{h_0} \cdot (a_1 - a_0) \\ \vdots \\ \vdots \\ 0
+	\end{bmatrix}
+\end{equation}
+
+Matrix streng diagonaldominant (Diagonalelemente betragsmäßig größer als Summe aller anderen Elemente einer Zeile)\\
+$\Rightarrow$ eindeutige Lösung
