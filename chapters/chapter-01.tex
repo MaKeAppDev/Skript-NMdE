@@ -50,49 +50,49 @@
 \subsection{Matrizen}
 \subsubsection{Elementare Matrix-Operationen}
 
-\textbf{Addition:}
+\paragraph{Addition}
 \begin{align}
 	\ma{A}_{<m\times n>} + \ma{B}_{<m\times n>} &= \ma{C}_{<m\times n>}\\
 	c_{\mu\nu} &= a_{\mu\nu} + b_{\mu\nu}
 \end{align}
 
-\textbf{Multiplikation mit Skalar:}
+\paragraph{Multiplikation mit Skalar}
 \begin{align}
 	k \cdot \ma{A} = \ma{A} \cdot k = B\\
 	b_{\mu\nu} = k \cdot a_{\mu\nu}
 \end{align}
 
-\textbf{Matrix-Multiplikation:}
+\paragraph{Matrix-Multiplikation}
 \begin{align}
 	\ma{A}_{<m\times n>} \cdot \ma{B}_{<n\times l>} &= \ma{C}_{<m\times l>}\\
 	c_{\mu\nu} &= \sum_{\nu=1}^{n} a_{\mu\nu} \cdot b_{\mu\lambda};\quad \mu=1\ldots m,\ \lambda=1\ldots l
 \end{align}
 
-\textbf{Multiplikation Matrix-Vektor:}
+\paragraph{Multiplikation Matrix-Vektor}
 \begin{align}
 	\text{Spezialfall der Matrix-Multiplikation: } <n\times 1> \text{ bzw. } <1\times n>
 \end{align}
 
-\textbf{Auffassen als Linearkombination der Spalten der Matrix:}
+\paragraph{Auffassen als Linearkombination der Spalten der Matrix}
 \begin{align}
 	\ma{A} \cdot \vec{x} &= \vec{b}\\
 	\begin{bmatrix}\vec{a}_1 & \vec{a}_2 & \ldots & \vec{a}_n\end{bmatrix} \cdot \vec{x} &= \vec{b}\\
 	\vec{a}_1\,\vec{x} + \ldots + \vec{a}_n\,\vec{x}_n &= \vec{b}
 \end{align}
 
-\textbf{Vektoren:}
+\paragraph{Vektoren}
 \begin{align}
 	\text{Spaltenvektor:} \quad & \vec{a}_{<n\times 1>}: \vec{a}\\
 	\text{Zeilenvektor:} \quad & \vec{b}_{<1\times m>}^T: \vec{b}^T
 \end{align}
 
-\subsubsection{Vektormultiplikation}
+\paragraph{Vektormultiplikation}
 \begin{align}
 	\vec{b}^T\cdot \vec{a} &= c \quad \text{(Skalarprodukt $m=n$!)}\\
 	\vec{a} \cdot \vec{b}^T &= \ma{C} \quad \text{(Vektorprodukt, dyadisches Produkt)}
 \end{align}
 
-\textbf{Matrix als Kombination von Zeilen- und Spaltenvektoren:}
+\paragraph{Matrix als Kombination von Zeilen- und Spaltenvektoren}
 \begin{align}
 	\ma{A}_{<m\times n>} &= \begin{bmatrix} \vec{a}_1^T \\ \vec{a}_2^T \\ \vdots \\ \vec{a}_m^T \end{bmatrix}\\
 	\ma{B}_{<n\times l>} &= \begin{bmatrix} \vec{b}_1 & \vec{b}_2 & \ldots & \vec{b}_l \end{bmatrix}\\
@@ -100,20 +100,20 @@
 	\vec{c}_{\mu\lambda} &= \vec{a}_\mu^T \cdot \vec{b}_\lambda
 \end{align}
 
-\textbf{Rechenregeln:}
+\paragraph{Rechenregeln}
 \begin{align}
 	\left(\ma{A}\cdot \ma{B}\right)\cdot \ma{C} &= \ma{A} \cdot \left(\ma{B} \cdot \ma{C}\right) \quad \text{Assoziativität}\\
 	\ma{A} \cdot \left(\ma{B} + \ma{C}\right) &= \ma{A}\,\ma{B} + \ma{A}\,\ma{B} \quad \text{Distributivität}\\
 	\ma{A} \cdot \ma{B} &\neq \ma{B} \cdot \ma{A} \quad \text{Kumutativität gilt im Allgemeinen nicht}
 \end{align}
 
-\textbf{Diagonalmatrix:}
+\paragraph{Diagonalmatrix}
 \begin{align}
 	\ma{D} &= \text{diag}\begin{bmatrix}d_1 & d_2 & \ldots & d_n\end{bmatrix} = \begin{bmatrix}d_1 & \ldots & 0 \\ 0 & \ldots & d_n\end{bmatrix}\\
 	\ma{D}_1 \cdot \ma{D}_2 &= \ma{D}_2 \cdot \ma{D}_1
 \end{align}
 
-\textbf{Einheitsmatrix:}
+\paragraph{Einheitsmatrix}
 \begin{align}
 	\ma{I} = \ma{E} = \ma{1} = \text{diag}\begin{bmatrix}1 & \ldots & 1\end{bmatrix}\\
 	\ma{A} \cdot \ma{I} = \ma{I} \cdot \ma{A}\\
@@ -121,14 +121,14 @@
 	\ma{I}^{-1} = \ma{I}
 \end{align}
 
-\textbf{Transponierte Matrix:}
+\paragraph{Transponierte Matrix}
 \begin{align}
 	\ma{A}_{<m\times n>}^T &= \ma{B}_{<n\times m>},\ b_{\nu\mu} = a_{\mu\nu}\\
 	\left(\ma{A} \cdot \ma{B}\right)^T &= \ma{B}^T \cdot \ma{A}^T\\
 	\ma{A} &= \ma{A}^T \quad \Rightarrow \text{ symmetrische Matrix}
 \end{align}
 
-\textbf{Inverse Matrix:}
+\paragraph{Inverse Matrix}
 \begin{align}
 	\ma{A} &\in \mathbb{R}^{n\times n}\\
 	\ma{A}^{-1} \cdot \ma{A} &= \ma{A} \cdot \ma{A}^{-1} = \ma{I}\\
@@ -136,6 +136,50 @@
 	\ma{A} = \text{diag}\begin{bmatrix}d_1 & \ldots & d_n\end{bmatrix} & \Rightarrow \ma{A}^{-1} = \text{diag}\begin{bmatrix}\frac{1}{d_1} & \ldots & \frac{1}{d_n}\end{bmatrix}\\
 	\left(\ma{A} \cdot \ma{B}\right) &= \ma{B}^{-1} \cdot \ma{A}^{-1}
 \end{align}
+
+\subsubsection{Matrix- und Vektornormen}
+
+\[||\cdot||:\ \mathbb{R}^n \rightarrow \mathbb{R};\ \mathbb{R}^{n\times n} \rightarrow \mathbb{R}\]\\
+Bedingungen für \textbf{Vektornormen}:
+\begin{itemize}
+	\item \[||\vec{x}|| \geq 0,\ ||\vec{x}|| = 0 \text{ nur für } \vec{x} = \vec{0}\]
+	\item \[||c \cdot\vec{x}|| = \abs{c} \cdot ||\vec{x}||,\ c \in \mathbb{R}\]
+	\item \[||\vec{x} + \vec{y}|| \leq ||\vec{x}|| + ||\vec{y}||\] Dreiecksungleichung
+\end{itemize}
+
+Bedingungen für \textbf{Matrixnormen}:
+\begin{itemize}
+	\item \[||\ma{A}|| \geq 0,\ ||\ma{A}|| = 0 \text{ nur für } \ma{A} = \ma{0}\]
+	\item \[|| c \cdot \ma{A}|| = \abs{c} \cdot ||\ma{A}||,\ c \in \mathbb{R}\]
+	\item \[||\ma{A} + \ma{B}|| \leq ||\ma{A}|| + ||\ma{B}||\]
+	\item \[||\ma{A} \cdot \ma{B}|| \leq ||\ma{A}|| \cdot ||\ma{B}||\] Multiplikativitätsbedingung
+	\item \[||\ma{A} \cdot \vec{x}|| \leq ||\ma{A}|| \cdot ||\vec{x}||\] Kompatibilitätsbedingung
+\end{itemize}
+
+\paragraph{Vektornormen} \hfill \\
+\begin{tabular}{r@{ = }ll}
+	$\norm{\vec{x}}_1$ & $\sum\limits_{i=1}^n\abs{x_i}$ & Betragssummennorm, $l_1$-Norm\\
+	$\norm{\vec{x}}_2$ & $\sqrt{\sum\limits_{i=1}^n\abs{x_i}^2}$ & Euklidnorm, $l_2$-Norm, Vektorlänge\\
+	$\norm{\vec{x}}_\infty$ & $\underset{i}{\max}{\abs{x_i}}$ & Maximumsnorm, $l_\infty$-Norm, Tschebychefnorm\\
+	$\norm{\vec{x}}_p$ & $\sqrt[p]{\sum\limits_{i=1}^n\abs{x_i}^p}$, $p\geq 1$ & Höldernormnorm, $l_p$-Norm
+\end{tabular}
+
+\paragraph{Matrixnormen $(A\in\mathbb{R}^{n\times n})$} \hfill \\
+\begin{tabular}{r@{ = }ll}
+	$||\ma{A}||_M$ & $n\cdot\underset{i,j}{\max}\abs{a_{ij}}$ & Gesamtnorm, Matrixnorm $(||\ma{I}|| = n)$\\
+	$(||\ma{A}||_\infty = )||\ma{A}||_Z$ & $\underset{i}{\max}\sum\limits_{j=1}^n\abs{a_{ij}}$ & Zeilennorm $(||\ma{I}||_Z = 1)$\\
+	$(||\ma{A}||_1 = )||\ma{A}||_S$ & $\underset{j}{\max}\sum\limits_{i=1}^n\abs{a_{ij}}$ & Spaltennorm $(||\ma{I}||_S = 1)$\\
+	$||\ma{A}||_E$ & $\sqrt{\sum\limits_{i=1}\sum\limits_{j=1}\abs{a_{ij}}^2}$ & Euklidnorm, Schurnorm, Frobeniusnorm $(||\ma{I}||_E = \sqrt{n})$\\
+	$(\ma{A}||_\lambda = )||\ma{A}||_\lambda$ & $\sqrt{\lambda_\text{max}(\ma{A}^T \ma{A})}$ & Spektralnorm, Hilbertnorm $(||\ma{I}||_\lambda = 1)$\\
+\end{tabular}
+
+\paragraph{Kompatibilität zwischen Vektor und Matrixnorm} \hfill \\
+\begin{tabular}{r@{\hspace{0.7cm}}l}
+	$l_1$ : & $||\ma{A}\vec{x}||_1 \leq ||\ma{A}||_M\cdot||\vec{x}||_1$\\
+	& $||\ma{A}\vec{x}||_1 \leq ||\ma{A}||_S\cdot||\vec{x}||_1$\\
+	$l_2$ : & $M,\lambda,E$\\
+	$l_\infty$ : & $M,Z$\\
+\end{tabular}
 
 \section{Schaltungsanalyse}
 \begin{figure}[htdp]

@@ -175,50 +175,6 @@ Uns interessieren also zwei Themen:
 	\item \textbf{Stabilität} des Lösungsverfahrens
 \end{itemize}
 
-\section{Matrix- und Vektornormen}
-
-\[||\cdot||:\ \mathbb{R}^n \rightarrow \mathbb{R};\ \mathbb{R}^{n\times n} \rightarrow \mathbb{R}\]\\
-Bedingungen für \textbf{Vektornormen}:
-\begin{itemize}
-	\item \[||\vec{x}|| \geq 0,\ ||\vec{x}|| = 0 \text{ nur für } \vec{x} = \vec{0}\]
-	\item \[||c \cdot\vec{x}|| = \abs{c} \cdot ||\vec{x}||,\ c \in \mathbb{R}\]
-	\item \[||\vec{x} + \vec{y}|| \leq ||\vec{x}|| + ||\vec{y}||\] Dreiecksungleichung
-\end{itemize}
-
-Bedingungen für \textbf{Matrixnormen}:
-\begin{itemize}
-	\item \[||\ma{A}|| \geq 0,\ ||\ma{A}|| = 0 \text{ nur für } \ma{A} = \ma{0}\]
-	\item \[|| c \cdot \ma{A}|| = \abs{c} \cdot ||\ma{A}||,\ c \in \mathbb{R}\]
-	\item \[||\ma{A} + \ma{B}|| \leq ||\ma{A}|| + ||\ma{B}||\]
-	\item \[||\ma{A} \cdot \ma{B}|| \leq ||\ma{A}|| \cdot ||\ma{B}||\] Multiplikativitätsbedingung
-	\item \[||\ma{A} \cdot \vec{x}|| \leq ||\ma{A}|| \cdot ||\vec{x}||\] Kompatibilitätsbedingung
-\end{itemize}
-
-\subsection{Vektornormen}
-\begin{tabular}{r@{ = }ll}
-	$\norm{\vec{x}}_1$ & $\sum\limits_{i=1}^n\abs{x_i}$ & Betragssummennorm, $l_1$-Norm\\
-	$\norm{\vec{x}}_2$ & $\sqrt{\sum\limits_{i=1}^n\abs{x_i}^2}$ & Euklidnorm, $l_2$-Norm, Vektorlänge\\
-	$\norm{\vec{x}}_\infty$ & $\underset{i}{\max}{\abs{x_i}}$ & Maximumsnorm, $l_\infty$-Norm, Tschebychefnorm\\
-	$\norm{\vec{x}}_p$ & $\sqrt[p]{\sum\limits_{i=1}^n\abs{x_i}^p}$, $p\geq 1$ & Höldernormnorm, $l_p$-Norm
-\end{tabular}
-
-\subsection{Matrixnormen $(A\in\mathbb{R}^{n\times n})$}
-\begin{tabular}{r@{ = }ll}
-	$||\ma{A}||_M$ & $n\cdot\underset{i,j}{\max}\abs{a_{ij}}$ & Gesamtnorm, Matrixnorm $(||\ma{I}|| = n)$\\
-	$(||\ma{A}||_\infty = )||\ma{A}||_Z$ & $\underset{i}{\max}\sum\limits_{j=1}^n\abs{a_{ij}}$ & Zeilennorm $(||\ma{I}||_Z = 1)$\\
-	$(||\ma{A}||_1 = )||\ma{A}||_S$ & $\underset{j}{\max}\sum\limits_{i=1}^n\abs{a_{ij}}$ & Spaltennorm $(||\ma{I}||_S = 1)$\\
-	$||\ma{A}||_E$ & $\sqrt{\sum\limits_{i=1}\sum\limits_{j=1}\abs{a_{ij}}^2}$ & Euklidnorm, Schurnorm, Frobeniusnorm $(||\ma{I}||_E = \sqrt{n})$\\
-	$(\ma{A}||_\lambda = )||\ma{A}||_\lambda$ & $\sqrt{\lambda_\text{max}(\ma{A}^T \ma{A})}$ & Spektralnorm, Hilbertnorm $(||\ma{I}||_\lambda = 1)$\\
-\end{tabular}
-
-\subsection{Kompatibilität zwischen Vektor und Matrixnorm}
-\begin{tabular}{r@{\hspace{0.7cm}}l}
-	$l_1$ : & $||\ma{A}\vec{x}||_1 \leq ||\ma{A}||_M\cdot||\vec{x}||_1$\\
-	& $||\ma{A}\vec{x}||_1 \leq ||\ma{A}||_S\cdot||\vec{x}||_1$\\
-	$l_2$ : & $M,\lambda,E$\\
-	$l_\infty$ : & $M,Z$\\
-\end{tabular}
-
 \section{Kondition einer Matrix}
 Ausgehend von einem linearen Gleichungssystem
 \[\ma{A} \cdot \vec{x} = \vec{b}\]
