@@ -1,4 +1,3 @@
-syntax: glob
 *build/*
 *.aux
 *.log
