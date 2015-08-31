@@ -25,3 +25,22 @@ build:
           name: saving pdf
           code: |
             cp build/*.pdf $WERCKER_REPORT_ARTIFACTS_DIR
+
+deploy:
+  steps:
+    - add-to-known_hosts:
+        hostname: lootsch.cetus.uberspace.de
+    - mktemp:
+        envvar: PRIVATEKEY_PATH
+    - create-file:
+        name: write key
+        filename: $PRIVATEKEY_PATH
+        content: $sshkey_PRIVATE
+        overwrite: true
+        hide-from-log: true
+    - script:
+        name: deploy pdf
+        code: |
+          pwd
+          ls -la
+          scp -i $PRIVATEKEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=no build/skript.pdf lootsch@lootsch.cetus.uberspace.de:~/html/latex/$WERCKER_APPLICATION_NAME.pdf

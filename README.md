@@ -3,10 +3,14 @@
 
 Script of the [EDA's](https://www.eda.ei.tum.de) course [Numerische Methoden der Elektrotechnik](https://www.eda.ei.tum.de/en/courses/lectures/numerische-methoden-der-elektrotechnik/).
 
-Written by:
+### Links
+
+Fresh Development Version: [TUM-Projekte](https://makeappdev.github.io/TUM-Projekte/)  
+Public Version: [latex4ei.de](http://latex4ei.de)  
+Check out the associated [exercise](https://bitbucket.org/thetexteam/numerik-uebung).
+
+## Written by:
 
 -   Markus Hofbauer
 -   Kevin Meyer
 -   Benedikt Schmidt
-
-Check out the associated [exercise](https://bitbucket.org/thetexteam/numerik-uebung).
