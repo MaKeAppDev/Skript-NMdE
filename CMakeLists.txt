@@ -43,6 +43,6 @@ set(LATEX_INPUTS
 	${FIGURES}
 )
 
-add_latex_document(skript.tex DEFAULT_PDF
+add_latex_document(skript.tex FORCE_PDF
 	INPUTS ${LATEX_INPUTS}
 	IMAGES ${IMAGES})
