@@ -1,6 +1,7 @@
 %+------------------------------------------------------------------------------+
 %| Numerische Methoden der Elektrotechnik                                       |
-%| Skript geschrieben von Markus Hofbauer, Kevin Meyer und Benedikt Schmidt	    |
+%| Skript geschrieben von Markus Hofbauer, Kevin Meyer und Benedikt Schmidt     |
+%| based on template from www.latex4ei.de	                                      |
 %+------------------------------------------------------------------------------+
 \documentclass[fontsize=11pt,   % Schriftgröße
     DIV=12,          % Seitenaufteilung
@@ -51,8 +52,8 @@
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{2}
 % Schusterjungen und Hurenkinder vermeiden
-\clubpenalty = 10000 
-\widowpenalty = 10000 
+\clubpenalty = 10000
+\widowpenalty = 10000
 \displaywidowpenalty = 10000
 
 \newcommand{\rang}[1]{\ensuremath{\text{rang}\left(#1\right)}}
@@ -71,7 +72,7 @@
 
 
 \begin{document}
-	
+
 	\input{title}
 	\listoftodos
 	% Inhaltsverzeichnis
@@ -79,7 +80,7 @@
 	\pagenumbering{Roman}
 	\pdfbookmark[1]{Inhaltsverzeichnis}{toc}
 	\tableofcontents
-	
+
 	% Inhalt
 	\cleardoublepage
 	\pagenumbering{arabic}
@@ -90,7 +91,7 @@
 	\input{chapters/chapter-05}
 	\input{chapters/chapter-06}
 	\input{chapters/chapter-07}
-	
+
 	% Verzeichnisse
 	\cleardoublepage
 	\pagenumbering{roman}
@@ -98,5 +99,5 @@
 	%\setcounter{lofdepth}{2}
 	\listoffigures
 	%\listoftables
-	
+
 \end{document}

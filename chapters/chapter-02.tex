@@ -1,7 +1,7 @@
 \chapter{Nichtlineare Gleichungen}
 Dies ist nötig beispielsweise in der Schaltungsanalyse inklusiver nichtlinearer Elemente (z.B. Diode, Transistor).
 
-\begin{figure}[htdp]
+\begin{figure}
 	\center
 	\input{figures/schaltung_beispiel_2}
 	\caption{Beispiel einer Schaltung}
@@ -15,7 +15,7 @@ Nullstellensuchen sind meist iterative Verfahren welche aus einem Startwert $\ve
 \[F(x) = 0\]
 Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(b) < 0$ und gesucht ist $x^\star$ mit $F(x^\star) = 0$, $a \le x^\star \le b$.
 
-\begin{figure}[htdp]
+\begin{figure}
 	\center
 	\input{figures/arbeitspunkt}
 	\caption{Arbeitspunktermittlung durch Nullstellensuche}
@@ -29,7 +29,7 @@ Gegeben ist dabei ein $F(x)$, welches stetig auf $[a, b]$ ist mit $F(a) \cdot F(
 	\item Falls $\abs{a^{(k + 1)} - b^{k + 1)}} > \epsilon$ dann gehe zu Schritt 2, $k = k + 1$
 \end{enumerate}
 
-\begin{figure}[htdp]
+\begin{figure}
 	\center
 	\input{figures/intervallhalbierung}
 	\caption{Intervallhalbierung}
@@ -42,7 +42,7 @@ Die Konvergenz eines iterativen Verfahrens wird mithilfe der Parameter $L$, dem 
 Die Intervallhalbierung liegt bei $p = 1$, also linearer Konvergenz, und $L = 1/2$. Die Anzahl der Iterationsschritte bis zu einem Restfehler $\Delta^R$ ist damit
 \[\kappa = \ceil{\log2 \left( \frac{\Delta^{(0)}}{\Delta^R}\right)}\]
 
-\begin{figure}[htdp]
+\begin{figure}
 	\center
 	\input{figures/newton_iteration}
 	\caption{Newton-Iteration}
@@ -106,7 +106,7 @@ Taylorreihe von $g(x)$ um $x^*$
 	\item $g'(x^*) = 0$, $g''(x^*)\neq 0 \quad\Rightarrow$ quadratische Konvergenz ("Konstruktionshinweis")
 \end{itemize}
 
-\begin{figure}[htdp]
+\begin{figure}
 	\center
 	\input{figures/fixpunktiteration}
 	\caption{Fixpunktiteration}

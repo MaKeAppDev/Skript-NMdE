@@ -9,10 +9,6 @@ build:
           echo $PATH
           pdflatex --version
     - script:
-        name: add scientific package
-        code: |
-          curl -O https://raw.githubusercontent.com/latex4ei/latex4ei-packages/master/scientific.sty
-    - script:
         name: generate pdf
         code: |
           mkdir -p build
