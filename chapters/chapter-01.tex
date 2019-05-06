@@ -273,7 +273,7 @@ Vektor im Nullraum von $\ma{A}$:
 
 \subsection{Kirchhoffsches Spannungsgesetz (KVL)}
 \begin{tabular}{ll}
-	$\vec{e} = \vec{b} - \ma{A} \cdot \vec{u}$ & $\vec{u}$: Kantenspannungen - GESUCHT\\
+	$\vec{e} = \vec{b} - \ma{A} \cdot \vec{u}$ & $\vec{u}$: Knotenspannungen - GESUCHT\\
 	 & $\vec{b}$: Spannungsquellen
 \end{tabular}
 
@@ -281,7 +281,7 @@ Vektor im Nullraum von $\ma{A}$:
 	\ma{A}^T \cdot \vec{w} = \vec{f}\\
 	\ma{A}^T \cdot \ma{C} \cdot \vec{e} = \vec{f}\\
 	\ma{A}^T \cdot \ma{C} \left( \vec{b} - \ma{A}\cdot\vec{u}\right) = \vec{f}\\
-	\underset{\text{Systemmatrix, gewichtete Laplace Matrix}}{\ma{A}^T \cdot \ma{C} \cdot \ma{A}} \cal \vec{u} = \ma{A}^T \cdot \ma{C} \cdot \vec{b} \cdot \vec{f}\\
+	\underset{\text{Systemmatrix, gewichtete Laplace Matrix}}{\ma{A}^T \cdot \ma{C} \cdot \ma{A}} \cal \vec{u} = \ma{A}^T \cdot \ma{C} \cdot \vec{b} - \vec{f}\\
 	\ma{Y}_{<n\times n>} \cdot \vec{u}_{<n>} = \vec{d}_{<n>}
 \end{align}
 
