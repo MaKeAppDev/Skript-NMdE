@@ -1,6 +1,6 @@
 # Numerische Methoden der Elektrotechnik - Vorlesung
 
-[![Build Status](https://travis-ci.org/MaKeAppDev/FS-NMdE.svg?branch=master)](https://travis-ci.org/MaKeAppDev/FS-NMdE)
+[![Build Status](https://travis-ci.org/MaKeAppDev/Skript-NMdE.svg?branch=master)](https://travis-ci.org/MaKeAppDev/Skript-NMdE)
 [![Join the chat at https://gitter.im/LaTeX4Ei/Lobby](https://badges.gitter.im/LaTeX4Ei/Lobby.svg)](https://gitter.im/LaTeX4Ei/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Script of the [EDA's](https://www.eda.ei.tum.de) course [Numerische Methoden der Elektrotechnik](https://www.eda.ei.tum.de/en/courses/lectures/numerische-methoden-der-elektrotechnik/).
