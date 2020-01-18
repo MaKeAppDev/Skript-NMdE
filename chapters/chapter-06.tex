@@ -99,13 +99,13 @@ y(\nu +1) &\approx y(\nu) + \tilde{\Delta y} = y(\nu) + \frac{\Delta t \cdot \ti
 \end{equation}
 
 \textbf{Expliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot \dot{y}(\nu)$ (FE, Forward Euler)\\
-\missingfigure{plot}\\
+\missingfigure{plot} \leavevmode \\
 
 \textbf{Impliziter Euler: } $y(\nu +1) \approx y(\nu) + \Delta t \cdot \dot{y}(\nu +1)$ (BE, Backward Euler)\\
-\missingfigure{plot}\\
+\missingfigure{plot} \leavevmode \\
 
 \textbf{Trapez-Methode: } $y(\nu +1) \approx y(\nu) + \frac{\Delta t}{2} \cdot (\dot{y}(\nu) + \dot{y}(\nu + 1)$ (TR, Trapezvidal)\\
-\missingfigure{plot}\\
+\missingfigure{plot} \leavevmode \\
 
 \section{Eigenschaften numerischer Integrationsverfahren}
 \begin{itemize}
@@ -207,7 +207,7 @@ y' = f(t, y)
 \end{equation}
 wobei $a \le t \le b$ und $y(a) = \alpha$.
 
-Adams-Bashforth und Adams-Moulton sind $m$-schrittige Mehrschrittverfahren, in denen $y_{i + 1}$ ersetzt wird durch 
+Adams-Bashforth und Adams-Moulton sind $m$-schrittige Mehrschrittverfahren, in denen $y_{i + 1}$ ersetzt wird durch
 \begin{equation}
 y_{i + 1} = a_{m - 1} y_i + a_{m - 2} y_{i - 1} + \dots + a_0 y_{i + 1 - m} + h \left[ b_m f(t_{i + 1}, y_{i + 1}) + b_{m - 1} f(t_i, y_i) + \dots + b_0 f(t_{i + 1 - m}, y_{i + 1 - m}) \right]
 \end{equation}
@@ -251,4 +251,4 @@ Die Einschrittvariante hiervon ist für $m = 0$ der implizite Euler, für $m = 1
 \begin{equation}
 y_{i + 1} = y_i + \frac{h}{12} \left[ 5 f(t_{i + 1}, y_{i + 1} + 8 f(t_i, y_i) - f(t_{i - 1}, y_{i - 1}) \right]
 \end{equation}
-und besitzt ein kubisches Fehlerverhalten. 
+und besitzt ein kubisches Fehlerverhalten.

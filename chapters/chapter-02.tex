@@ -84,7 +84,7 @@ Nullstellenproblem und Fixpunktproblem können ineinander überführt werden., z
 	\item Existiere zusätzlich $g'(x)$ auf $(a,b)$, sowie eine positive Konstante $k<1$ mit \mbox{$\abs{g'(x)}\leq k$}, für alle $x\in (a,b)$
 	\begin{itemize}
 		\item Dann hat $g(x)$ exakt einen Fixpunkt auf $[a,b]$
-		\item Gilt $0<k<1$, dann konvergiert für jedes $x^{(0)}\in [a,b]$ die Folge 
+		\item Gilt $0<k<1$, dann konvergiert für jedes $x^{(0)}\in [a,b]$ die Folge
 		\[x^{(n)} = g(x^{(n-1)})\quad,n\geq 1\]
 		zum eindeutigen Fixpunkt $x^*\in [0,b]$.
 	\end{itemize}
@@ -96,7 +96,7 @@ Nullstellenproblem und Fixpunktproblem können ineinander überführt werden., z
 	x^* &= g(x^*) & \text{Fixpunkt}
 \end{align}
 
-Taylorreihe von $g(x)$ um $x^*$ 
+Taylorreihe von $g(x)$ um $x^*$
 \begin{align}
 	\left[g(x^{(k)})\right]x^{(k+1)} &= \underbrace{g(x^*)}_{x^*} + g'(x^*)\cdot (x^{(k)}-x^*) + \frac{1}{2} g''(x^*)\cdot (x^{(k)}-x^*)^2 + \ldots\\
 	\varepsilon^{(k+1)} &= g'(x^*)\cdot \varepsilon^{(k)} + \frac{1}{2} g''(x^*)\cdot {\varepsilon^{(k)}}^2 + \ldots
@@ -132,7 +132,7 @@ Taylorreihe von $g(x)$ um $x^*$
 \subsection{Konvergenz}
 \[\vec x^{(k + 1)} = \vec \Phi(\vec x^{(k)}) = \vec \Phi(\vec x^\star) + \frac{\partial \vec \Phi}{\partial \vec x^T} \bigg|_{\vec x  = \vec x^\star} \cdot \left( \vec x^{(k)} - \vec x^\star \right) + \mathcal O\left( \left( \vec x^{(k)} - \vec x^\star \right) \cdot \left( \vec x^{(k)} - \vec x^\star \right)^T\right)\]
 
-\[\vec \epsilon^{(k + 1)} = \frac{\partial \vec \Phi}{\partial \vec x^T} \bigg|_{\vec x = \vec x^\star} \vec \epsilon^{(k)} + \mathcal O \left( \vec \epsilon^{(k)} \cdot {\vec \epsilon^{(k)}}^T \right)\]
+\[\vec \epsilon^{(k + 1)} = \frac{\partial \vec \Phi}{\partial \vec x^T} \bigg|_{\vec x = \vec x^\star} \vec \epsilon^{(k)} + \mathcal O \left( \vec \epsilon^{(k)} \cdot \vec \epsilon^{{(k)}^T} \right)\]
 
 \[\vec \Phi(\vec x) = \vec x - \ma{J}^{-1} \cdot \vec F\]
 \[\frac{\partial \vec \Phi}{\partial \vec x^T} = \underbrace{\ma{E} - \underbrace{\ma{J}^{-1} \underbrace{\frac{\partial \vec F}{\partial \vec x^T}}_{\ma J^{-1}}}_{\ma E}}_{\ma 0} - \underbrace{\frac{\partial \ma{J}^{-1}}{\partial \vec x^T} \cdot \vec F}_{\ma 0}\]
@@ -150,4 +150,4 @@ Problematisch dabei ist, dass $\vec x^\star$ unbekannt ist. Daher muss man in de
 	\item $||\vec F(\vec x^{(k + 1)}) - \vec F(\vec x^{(k)})|| \le \Delta_F^{(A)}$
 	\item $||\vec F(\vec x^{(k)})|| \le F_{min}$
 	\item $k > k_{max}$
-\end{itemize} 
+\end{itemize}

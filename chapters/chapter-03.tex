@@ -2,7 +2,7 @@
 \begin{align}
 	\ma{A} \cdot \vec{x} = \vec{b}, \qquad \ma{A} \in \mathbb{R}^{n\times n}; \quad \vec{b}, \vec{x} \in \mathbb{R}^n, \quad \ma{A} \neq 0\\
 	\text{Theoretische: } \vec{x} = \ma{A}^{-1} \cdot \vec{b}\\
-	\text{Alternativ: Lösung durch "`Division"'-Eliminierung} 
+	\text{Alternativ: Lösung durch "`Division"'-Eliminierung}
 \end{align}
 
 \section{Methode zur Bestimmung von $A^{-1}$}
@@ -26,7 +26,7 @@ Aufwand $n\cdot 2\cdot\frac{1}{2}(n^2 + n) = n^3 + n^2 \rightarrow O(n^3)$ für 
 
 Probleme:
 \begin{itemize}
-	\item Pivot $p = 0$ \lightning\lightning 
+	\item Pivot $p = 0$ \lightning\lightning
 	\item Pivot $p$ "'sehr klein"'
 \end{itemize}
 Abhilfe: "'Pivotisierung"'- Zeilen-/Spaltentausch
@@ -39,8 +39,8 @@ Abhilfe: "'Pivotisierung"'- Zeilen-/Spaltentausch
 Beispiel $p = 0$
 \begin{align}
 	\begin{pmatrix}
-	10 & -7 & 0 \\ 
-	-3 & \num{2.1} & 6 \\ 
+	10 & -7 & 0 \\
+	-3 & \num{2.1} & 6 \\
 	5 & -1 & 5
 	\end{pmatrix}\cdot\vec{x} &= \begin{pmatrix}
 	7\\ \num{3.9}\\ 6
@@ -48,8 +48,8 @@ Beispiel $p = 0$
 	p_{21} = \frac{5}{10} = \frac{1}{2}\\ p_{31} = \frac{-3}{10}
 	\end{matrix}\\
 	\begin{pmatrix}
-	10 & -7 & 0 \\ 
-	0 & 0 & 6 \\ 
+	10 & -7 & 0 \\
+	0 & 0 & 6 \\
 	0 & \num{2.5} & 5
 	\end{pmatrix}\cdot\vec{x}& = \begin{pmatrix}
 	7\\ 6\\ \num{2.5}
@@ -61,7 +61,7 @@ Beispiel $p = 0$
 	0 & 0 & 6
 	\end{pmatrix}\cdot\vec{x}& = \begin{pmatrix}
 	7\\ \num{2.5}\\ 6
-	\end{pmatrix} 
+	\end{pmatrix}
 \end{align}
 Zeilentausch durch Permutationsmatrix $\ma{P}$.\\
 $\ma{P}\ma{A}\vec{x} = \ma{P}\vec{b}\Rightarrow$ dann $\ma{P}\ma{A}\rightarrow\ma{L}\ma{U}$\\
@@ -129,12 +129,12 @@ Zerlegung $\ma{B} = \ma{L}\ma{D}\ma{U}$ (ohne Genauigkeitsbeschränkung)
 	\begin{array}{c}
 	\text{("'out of}\\ \text{scale}\\ \text{with }\ma{B}\text{ "')}
 	\end{array}\quad = \begin{pmatrix}
-	1 & 0 \\ 
+	1 & 0 \\
 	\num{10000} & 1
 	\end{pmatrix}\cdot\begin{pmatrix}
 	\num{0.0001} & 0 \\ 0 & -9999
 	\end{pmatrix}\cdot\begin{pmatrix}
-	1 & \num{10000} \\ 
+	1 & \num{10000} \\
 	0 & 1
 	\end{pmatrix}
 \end{align}
@@ -214,8 +214,8 @@ welche offensichtlich abhängig von der gewählten Matrixnorm ist. Eine $\cond{\
 
 \begin{align}
 	\textbf{Splitting: } \ma{A} &= \begin{bmatrix}a_{ij}\end{bmatrix} = \ma{D} + \ma{L} + \ma{U}\\
-	&= \begin{bmatrix}a_{11} & & & \\ & a_{22} & &\\ & & \ddots & \\ & & & a_{nn}\end{bmatrix} + 
-	\begin{bmatrix}0 & & & \\ a_{21} & 0 & &\\ \vdots & & \ddots &  \\ a_{n1} & \ldots & a_{n\, n-1} & 0\end{bmatrix} + 
+	&= \begin{bmatrix}a_{11} & & & \\ & a_{22} & &\\ & & \ddots & \\ & & & a_{nn}\end{bmatrix} +
+	\begin{bmatrix}0 & & & \\ a_{21} & 0 & &\\ \vdots & & \ddots &  \\ a_{n1} & \ldots & a_{n\, n-1} & 0\end{bmatrix} +
 	\begin{bmatrix}0 & a_{12} & \ldots & a_{1n} \\ & 0 & & \vdots \\ & & \ddots & a_{n-1\,n} \\ & & & 0\end{bmatrix}
 \end{align}
 
@@ -340,16 +340,16 @@ $\alpha_k = ? \quad \Rightarrow $ Minimiere $ \vec{\Phi}$\\
 \begin{align}
 	\vec{x}^{(k+1)} &= \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\\
 	\vec{\Phi}(x^{(k+1)}) &= \frac{1}{2} \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right)^T \cdot \ma{A} \cdot \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right) - \left( \vec{x}^{(k)} + \alpha_k \vec{r}^{(k)}\right)^T \cdot \vec{b}\\
-	\frac{\partial \vec{\Phi}(x^{(k+1)})}{\partial \alpha_k} &= \frac{1}{2} {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{x}^{(k)} + \frac{1}{2} {\vec{x}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b}\\
-	&= {\vec{r}^{(k)}}^T \cdot \ma{A} \vec{x}^{(k)} - {\vec{r}^{(k)}}^T \cdot \vec{b} + \alpha_k \cdot {\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)} \neq 0\\
+	\frac{\partial \vec{\Phi}(x^{(k+1)})}{\partial \alpha_k} &= \frac{1}{2} \vec{r}^{{(k)}^T} \cdot \ma{A} \cdot \vec{x}^{(k)} + \frac{1}{2} \vec{x}^{{(k)}^T} \cdot \ma{A} \cdot \vec{r}^{(k)} + \alpha_k \cdot \vec{r}^{{(k)}^T} \cdot \ma{A} \cdot \vec{r}^{(k)} - \vec{r}^{{(k)}^T} \cdot \vec{b}\\
+	&= \vec{r}^{{(k)}^T} \cdot \ma{A} \vec{x}^{(k)} - \vec{r}^{{(k)}^T} \cdot \vec{b} + \alpha_k \cdot \vec{r}^{{(k)}^T} \cdot \ma{A} \cdot \vec{r}^{(k)} \neq 0\\
 	\ldots\\
-	\Rightarrow \alpha_k &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}
+	\Rightarrow \alpha_k &= \frac{\vec{r}^{{(k)}^T} \cdot \vec{r}^{(k)}}{\vec{r}^{{(k)}^T} \cdot \ma{A} \cdot \vec{r}^{(k)}}
 \end{align}
 \textbf{Verfahren: }\\
 Für $k = 0,1,2,\ldots$
 \begin{align}
 	\vec{r}^{(k)} &= \vec{b} - \ma{A} \vec{x}^{(k)}\\
-	\alpha_k &= \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
+	\alpha_k &= \frac{\vec{r}^{{(k)}^T} \cdot \vec{r}^{(k)}}{\vec{r}^{{(k)}^T} \cdot \ma{A} \cdot \vec{r}^{(k)}}\\
 	\vec{x}^{(k+1)} &= \vec{x}^{(k)} + \alpha_k \cdot \vec{r}^{(k)} \label{eq:verfahren-schritt-3}
 \end{align}
 
@@ -375,8 +375,8 @@ $\Rightarrow$ \text{ nur eine Matrix-Vektormultiplikation je Iteration}
 \begin{align}
 	\text{Aus \autoref{eq:verfahren-schritt-3}: } \vec{x}^{(k+1)} &= \vec{x}^{(k)} + \alpha_k \cdot \vec{r}^{(k)}\\
 	\vec{e}^{(k+1)} &= \vec{e}^{(k)} + \alpha_k \cdot \vec{r}^{(k)}\\
-	&= \vec{e}^{(k)} + \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \ma{A} \cdot \vec{r}^{(k)}} \cdot \left( -\lambda_e \cdot \vec{e}^{(k)}\right)\\
-	&= \vec{e}^{(k)} + \frac{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{r}^{(k)}}^T \cdot \vec{r}^{(k)} \cdot \lambda_e} \cdot \left( -\lambda_e \cdot \vec{e}^{(k)}\right)\\
+	&= \vec{e}^{(k)} + \frac{\vec{r}^{{(k)}^T} \cdot \vec{r}^{(k)}}{\vec{r}^{{(k)}^T} \cdot \ma{A} \cdot \vec{r}^{(k)}} \cdot \left( -\lambda_e \cdot \vec{e}^{(k)}\right)\\
+	&= \vec{e}^{(k)} + \frac{\vec{r}^{{(k)}^T} \cdot \vec{r}^{(k)}}{\vec{r}^{{(k)}^T} \cdot \vec{r}^{(k)} \cdot \lambda_e} \cdot \left( -\lambda_e \cdot \vec{e}^{(k)}\right)\\
 	&= \vec{e}^{(k)} - \vec{e}^{(k)} = \vec{0} \Rightarrow \text{Exakte Lösung in einem Schritt}
 \end{align}
 
@@ -389,7 +389,7 @@ $\Rightarrow$ \text{ nur eine Matrix-Vektormultiplikation je Iteration}
 mit $\kappa_2$ als die Kondition bezüglich der Spektralnorm
 
 \section{CG - Konjugierte Gradientenmethode}
-$ \vec{p}^{(k)} $ ist eine Menge mit $ \underbrace{{\vec{p}^{(i)}}^T}_{\text{paarweise A-orthogonal bzw. A-konjugiert}} \cdot \ma{A} \cdot \vec{p}^{(j)} = 0, \forall i,j=1,\ldots,n\quad i \neq j$\\
+$ \vec{p}^{(k)} $ ist eine Menge mit $ \underbrace{\vec{p}^{{(i)}^T}}_{\text{paarweise A-orthogonal bzw. A-konjugiert}} \cdot \ma{A} \cdot \vec{p}^{(j)} = 0, \forall i,j=1,\ldots,n\quad i \neq j$\\
 $ \Rightarrow \vec{p}^{(k)}$ bilden eine Basis des $\mathbb{R}^n$
 
 \begin{align}
@@ -400,7 +400,7 @@ $ \Rightarrow \vec{p}^{(k)}$ bilden eine Basis des $\mathbb{R}^n$
 \subsection{Schrittweite}
 \begin{align}
 0 = \frac{\partial\vec{\Phi}}{\partial\alpha_k}\left(\vec{x}^{(k)}+\alpha_k\vec{p}^{(k)}\right)\\
-\Rightarrow\alpha_k = \frac{{\vec{p}^{(k)}}^T\cdot\vec{r}^{(k)}}{{\vec{p}^{(k)}}^T\cdot\ma{A}\cdot\vec{p}^{(k)}}
+\Rightarrow\alpha_k = \frac{\vec{p}^{{(k)}^T}\cdot\vec{r}^{(k)}}{\vec{p}^{{(k)}^T}\cdot\ma{A}\cdot\vec{p}^{(k)}}
 \end{align}
 Wie Gradientenverfahren, aber Suchrichtung $\vec{p}$
 
@@ -415,7 +415,7 @@ Wie Gradientenverfahren, aber Suchrichtung $\vec{p}$
 \text{Sei }\vec{x}^{(k+1)} = \vec{x}^{(k)} + \vec{q}\Rightarrow\vec{r}^{(k+1)} &= \vec{b}\cdot\ma{A}\cdot\vec{x}^{(k+1)}\\
 &= \vec{b}\cdot\ma{A}\cdot\vec{x}^{(k)} - \ma{A}\vec{q}\\
 &= \vec{r}^{(k)} - \ma{A}\vec{q}
-\end{align} 
+\end{align}
 Forderung $\vec{x}^{(k+1)}$ ebenfalls optimal bzgl. $\vec{p}$, also
 \begin{align}
 0 = \vec{p}^T\cdot\vec{r}^{(k+1)} &= \vec{p}^T\cdot(\vec{r}^{(k)} - \ma{A}\vec{q})\\
@@ -427,7 +427,7 @@ Forderung $\vec{x}^{(k+1)}$ ebenfalls optimal bzgl. $\vec{p}$, also
 \item Start $\vec{p}^{(0)} = \vec{r}^{(0)}$ (Ausgehend von Initiallösung $\vec{x}^{(0)}$, Gradient an $\vec{x}^{(0)}$)
 \item Suche Richtungen $\vec{p}^{(k+1)} = \vec{r}^{(k+1)} - \beta_k\cdot\vec{p}^{(k)}\;,k=0,1,2,\ldots$ mit $\beta_k\in\R$, so dass gilt:
 \begin{align}
-{\vec{p}^{(j)}}^T\cdot\ma{A}\cdot\vec{p}^{(k+1)} = 0 = {\left(\ma{A}\cdot\vec{p}^{(j)}\right)}^T\cdot\vec{p}^{(k+1)} = 0\;,j=0,1,\ldots,k\\
+\vec{p}^{{(j)}^T}\cdot\ma{A}\cdot\vec{p}^{(k+1)} = 0 = {\left(\ma{A}\cdot\vec{p}^{(j)}\right)}^T\cdot\vec{p}^{(k+1)} = 0\;,j=0,1,\ldots,k\\
 \Rightarrow {\left(\ma{A}\cdot\vec{p}^{(j)}\right)}^T\cdot\left(\vec{r}^{(k+1)}-\beta_k\cdot\vec{p}^{(k)}\right) = 0 \underset{(j=k)}{\Rightarrow}\beta_k = \frac{\left(\ma{A}\cdot\vec{p}^{(k)}\right)^T\cdot\vec{r}^{(k+1)}}{\left(\ma{A}\cdot\vec{p}^{(k)}\right)^T\cdot\vec{p}^{(k)}}
 \end{align}
 \end{itemize}
@@ -443,7 +443,7 @@ Beweisidee: vollständige Induktion
 \end{equation}
 Für $k = 0, 1, \ldots$
 \begin{equation}
-	\alpha_k = \frac{{\vec{p}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{p}^{(k + 1)}}^T \ma{A} \vec{p}^{(k)}}
+	\alpha_k = \frac{\vec{p}^{{(k)}^T} \cdot \vec{r}^{(k)}}{\vec{p}^{{(k + 1)}^T} \ma{A} \vec{p}^{(k)}}
 \end{equation}
 \begin{equation}
 	\vec{x}^{(k + 1)} = \vec{x}^{(k)} + \alpha_k \vec{p}^{(k)}
@@ -521,7 +521,7 @@ Das Verfahren sieht dann wie folgt aus
 \end{equation}
 Für $k = 0, 1, 2, \ldots$
 \begin{equation}
-	\alpha_k = \frac{{\vec{p}^{(k)}}^T \cdot \vec{r}^{(k)}}{{\vec{p}^{(k)}}^T \cdot \ma{A} \vec{p}^{(k)}}
+	\alpha_k = \frac{\vec{p}^{{(k)}^T} \cdot \vec{r}^{(k)}}{\vec{p}^{{(k)}^T} \cdot \ma{A} \vec{p}^{(k)}}
 \end{equation}
 \begin{equation}
 	\vec{x}^{(k + 1)} = \vec{x}^{(k)} + \alpha_k \vec{p}^{(k)}
